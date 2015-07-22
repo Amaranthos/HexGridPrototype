@@ -12,14 +12,12 @@ public class Grid : MonoBehaviour {
 
 	private void GenerateGrid() {
 
-		int numAlongSide = 4;
-
-		for (int q = -gridSize.x / 2; q <= gridSize.x / 2; q++) {
-			int r1 = Mathf.Max(-gridSize.x / 2, -q - gridSize.x / 2);
-			int r2 = Mathf.Min(gridSize.x/2, -q + gridSize.x/2);
+		for (int q = -gridSize.x; q <= gridSize.x; q++) {
+			int r1 = Mathf.Max(-gridSize.x, -q - gridSize.x);
+			int r2 = Mathf.Min(gridSize.x, -q + gridSize.x);
 
 			for (int r = r1; r <= r2; r++) {
-				Instantiate(hexObj, new Vector3(q, 0, r), Quaternion.identity);
+				Instantiate(hexObj, Hex.CubeCoords(q, r), Quaternion.identity);//Quaternion.Euler(Vector3.up * 90));
 			}
 		}
 

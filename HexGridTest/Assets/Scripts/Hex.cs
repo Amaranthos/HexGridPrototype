@@ -69,6 +69,10 @@ public struct Hex {
 	static public Hex Neighbour(Hex hex, int direction) {
 		return hex + Direction(direction);
 	}
+
+	static public Vector3 CubeCoords(int q, int r) {
+		return new Vector3(q, 0, r + (q - (q & 1)) / 2);
+	}
 }
 
 public struct FractionalHex {
