@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
-public class Tile : MonoBehaviour {
+public class Unit : MonoBehaviour {
 
+	public UnitType type;
 	private HG.PairInt index;
 	public bool isSelected = false;
 
+	[Range(0, 5)]
+	public int movePoints;
 
 	private void OnMouseUp() {
-		Logic.inst.TileSelected(this);
+		Logic.inst.UnitSelected(this);
 		isSelected = true;
+	}
+
+	public void MoveTowardsTile(Tile tile) {
+		transform.position = tile.transform.position;
 	}
 
 	public HG.PairInt Index {
