@@ -11,5 +11,6 @@ public class Player : MonoBehaviour {
 
 		GameObject temp = (GameObject)Instantiate(Logic.inst.unitList.GetUnit(type), tile.transform.position, Quaternion.identity);
 		army.Add(temp.GetComponent<Unit>());
+		temp.transform.parent = this.transform;
 	}
 }

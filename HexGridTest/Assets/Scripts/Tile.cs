@@ -5,6 +5,7 @@ public class Tile : MonoBehaviour {
 
 	private HG.PairInt index;
 	public bool isSelected = false;
+	public bool isOccupied = false;
 
 
 	private void OnMouseUp() {
@@ -20,5 +21,10 @@ public class Tile : MonoBehaviour {
 	public bool IsSelected {
 		get { return isSelected; }
 		set { isSelected = value; }
+	}
+
+	public bool IsOccupied {
+		get {return isOccupied;}
+		set {isOccupied = value;}
 	}
 }

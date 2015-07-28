@@ -17,6 +17,8 @@ public class Unit : MonoBehaviour {
 
 	public void MoveTowardsTile(Tile tile) {
 		transform.position = tile.transform.position;
+		index = tile.Index;
+		tile.isOccupied = true;
 	}
 
 	public HG.PairInt Index {

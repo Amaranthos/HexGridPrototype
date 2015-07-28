@@ -50,9 +50,10 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
-	public void TileSelected() {
+	public void TileSelected(Tile tile) {
 		for(int i = 0; i < grid.Length; i++) {
-			grid[i].GetComponent<Tile>().IsSelected = false;
+			if(grid[i] != tile)
+				grid[i].GetComponent<Tile>().IsSelected = false;
 		}
 	}
 
