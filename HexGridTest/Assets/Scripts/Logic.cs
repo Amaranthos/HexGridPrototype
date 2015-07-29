@@ -61,8 +61,8 @@ public class Logic : MonoBehaviour {
 		selectedUnit = unit;
 	}
 
-	private void EndTurn() {
-		if (currentPlayer < players.Length)
+	public void EndTurn() {
+		if (currentPlayer + 1 < players.Length)
 			currentPlayer++;
 		else
 			currentPlayer = 0;
