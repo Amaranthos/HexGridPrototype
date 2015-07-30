@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class Tile : MonoBehaviour {
 
 	private HG.PairInt index;
-	public bool isSelected = false;
-	public bool isOccupied = false;
+	private bool isSelected = false;
+	private bool isOccupied = false;
 
+	public Unit occupyingUnit = null;
 
 	private void OnMouseUp() {
 		Logic.inst.TileSelected(this);
@@ -27,4 +27,9 @@ public class Tile : MonoBehaviour {
 		get {return isOccupied;}
 		set {isOccupied = value;}
 	}
+
+	public Unit OccupyngUnit {
+		get { return occupyingUnit; }
+		set { occupyingUnit = value; }
+	} 
 }
