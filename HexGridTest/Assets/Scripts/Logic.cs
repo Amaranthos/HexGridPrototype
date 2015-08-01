@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Logic : MonoBehaviour {
 
-	public static Logic inst;
-	public UnitList unitList;
-	public Combat combatManager;
-
-	public Unit selectedUnit;
-
+	private static Logic inst;
 	private Grid grid;
+	private UnitList unitList;
+	private InfoPanel infoPanel;
+
+	private Combat combatManager;
+
+	private Unit selectedUnit;
+	private Tile selectedTile;
 
 	private Player[] players;
 	private int currentPlayer = 0;
+
+	private GamePhase gamePhase = GamePhase.PlacingPhase;	
 
 	private void Awake() {
 		if (!inst)
@@ -34,6 +39,14 @@ public class Logic : MonoBehaviour {
 
 		if (!combatManager)
 			Debug.LogError("Combat Manager does not exist!");
+
+		infoPanel = GetComponent<InfoPanel>();
+
+		if (!infoPanel)
+			Debug.LogError("InfoPanel does not exist!");
+
+		infoPanel.Clear();
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	private void Update() {
@@ -48,33 +61,46 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	public void TileSelected(Tile tile) {
-		grid.TileSelected(tile);
+	public void TileClicked(Tile tile) {
+		infoPanel.UpdateTileInfo(tile);
 
 		if (selectedUnit) {
-			if(!tile.IsOccupied){
-				grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).IsOccupied = false;
-				grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).OccupyngUnit = null;
-				selectedUnit.MoveTowardsTile(tile);
-				tile.IsSelected = false;
-				selectedUnit.IsSelected = false;
-				selectedUnit = null;
-
-				EndTurn();
+			if(!tile.OccupyngUnit){
+				if (selectedUnit.InMoveRange(tile)) {
+					grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).OccupyngUnit = null;
+					selectedUnit.MoveTowardsTile(tile);
+					EndTurn();
+				}
 			}
 			else {
 				if (tile.OccupyngUnit.Owner != selectedUnit.Owner) {
 					combatManager.ResolveCombat(selectedUnit, tile.OccupyngUnit);
+
 					if(tile.occupyingUnit)
 						combatManager.ResolveCombat(tile.OccupyngUnit, selectedUnit);
+
 					EndTurn();
 				}
 			}
 		}
 	}
 
-	public void UnitSelected(Unit unit) {
-		selectedUnit = unit;
+	public void UnitClicked(Unit unit) {
+		infoPanel.UpdateUnitInfo(unit);
+
+		if(unit.Owner == CurrentPlayer)
+			selectedUnit = unit;
+		else if (unit.Owner != CurrentPlayer) { 
+			if (selectedUnit) { 
+				if (selectedUnit.InAttackRange(unit)) { 
+					combatManager.ResolveCombat(selectedUnit, unit);
+					if(unit)
+						combatManager.ResolveCombat(unit, selectedUnit);
+
+					EndTurn();
+				}	
+			}
+		}
 	}
 
 	public void EndTurn() {
@@ -82,12 +108,40 @@ public class Logic : MonoBehaviour {
 			currentPlayer++;
 		else
 			currentPlayer = 0;
+
+		ClearSelected();
+
+		infoPanel.Clear();
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
+	private void ClearSelected() {
+		if(selectedUnit)
+			selectedUnit = null;
+		if(selectedTile)
+			selectedTile = null;
+	}
 
 	#region Getters and Setters 	
+	public static Logic Inst {
+		get { return inst; }
+	}
+
 	public Player CurrentPlayer {
 		get { return players[currentPlayer]; }
 	}
+
+	public Grid Grid {
+		get { return grid; }
+	}
+
+	public UnitList UnitList {
+		get { return unitList; }
+	}
+
+	public InfoPanel InfoPanel {
+		get { return infoPanel; }
+	}
+
 	#endregion
 }

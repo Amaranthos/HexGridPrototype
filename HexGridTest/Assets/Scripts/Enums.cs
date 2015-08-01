@@ -3,3 +3,12 @@
 	Axemen,
 	Swordsmen
 }
+
+public enum Heroes {
+	Thor
+}
+
+public enum GamePhase {
+	PlacingPhase,
+	CombatPhase
+}

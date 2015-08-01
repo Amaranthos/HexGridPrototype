@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Unit : MonoBehaviour {
 
 	public UnitType type;
-	private HG.PairInt index;
-	public bool isSelected = false;
+	private PairInt index;
 
 	[Range(0, 5)]
 	public int movePoints;
@@ -32,32 +32,41 @@ public class Unit : MonoBehaviour {
 	}
 
 	private void OnMouseUp() {
-		if (owner == Logic.inst.CurrentPlayer) {
-			Logic.inst.UnitSelected(this);
-			isSelected = true;
-		}
+		Logic.Inst.UnitClicked(this);
+	}
+
+	private void OnMouseEnter() {
+		Logic.Inst.InfoPanel.UpdateUnitHInfo(this);
+	}
+
+	private void OnMouseExit() {
+		Logic.Inst.InfoPanel.UpdateUnitHInfo(null);
 	}
 
 	public void MoveTowardsTile(Tile tile) {
 		transform.position = tile.transform.position;
 		index = tile.Index;
-		tile.IsOccupied = true;
 		tile.OccupyngUnit = this;
 	}
 
 	public void UnitKilled() {
-		
+		owner.RemoveUnit(this);
+		Debug.Log(type + " was killed");
+		DestroyImmediate(this.gameObject);
 	}
 
+	public bool InAttackRange(Unit unit) {
+		return Logic.Inst.Grid.GetNeighbours(index.x, index.y).Contains(Logic.Inst.Grid.GetTile(unit.Index.x, unit.Index.y));
+	}
+
+	public bool InMoveRange(Tile tile) {
+		return Logic.Inst.Grid.GetNeighbours(index.x, index.y).Contains(tile);
+	}
+	
 	#region Getters and Setters
-	public HG.PairInt Index {
+	public PairInt Index {
 		get { return index; }
 		set { index = value; }
-	}
-
-	public bool IsSelected {
-		get { return isSelected; }
-		set { isSelected = value; }
 	}
 
 	public int CurrentHitpoints {

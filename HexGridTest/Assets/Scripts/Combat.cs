@@ -8,6 +8,8 @@ public class Combat : MonoBehaviour {
 			if (damage > 0) {
 				defender.CurrentHitpoints -= damage;
 				Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
+				if (defender.CurrentHitpoints <= 0)
+					defender.UnitKilled();
 			}
 		}
 		else

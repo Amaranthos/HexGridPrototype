@@ -2,34 +2,22 @@
 
 public class Tile : MonoBehaviour {
 
-	private HG.PairInt index;
-	private bool isSelected = false;
-	private bool isOccupied = false;
-
+	private PairInt index;
 	public Unit occupyingUnit = null;
 
 	private void OnMouseUp() {
-		Logic.inst.TileSelected(this);
-		isSelected = true;
+		Logic.Inst.TileClicked(this);
 	}
 
-	public HG.PairInt Index {
+	#region Getters and Setters
+	public PairInt Index {
 		get { return index; }
 		set { index = value; }
-	}
-
-	public bool IsSelected {
-		get { return isSelected; }
-		set { isSelected = value; }
-	}
-
-	public bool IsOccupied {
-		get {return isOccupied;}
-		set {isOccupied = value;}
 	}
 
 	public Unit OccupyngUnit {
 		get { return occupyingUnit; }
 		set { occupyingUnit = value; }
 	} 
+	#endregion
 }
