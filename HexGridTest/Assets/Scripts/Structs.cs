@@ -25,4 +25,12 @@ public struct Rect {
 		this.y = y;
 		this.h = h;
 	}
+
+	public bool CoordsInRange(int i, int j) {
+		return (i >= x && i < x + w && j >= y && j < y + h);
+	}
+
+	public bool CoordsInRange(PairInt coords) {
+		return CoordsInRange(coords.x, coords.y);
+	}
 }

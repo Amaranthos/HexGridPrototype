@@ -3,7 +3,7 @@
 public class Tile : MonoBehaviour {
 
 	private PairInt index;
-	public Unit occupyingUnit = null;
+	private Unit occupyingUnit = null;
 
 	private void OnMouseUp() {
 		Logic.Inst.TileClicked(this);

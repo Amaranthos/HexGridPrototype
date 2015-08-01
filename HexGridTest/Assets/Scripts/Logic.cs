@@ -16,7 +16,9 @@ public class Logic : MonoBehaviour {
 	private Player[] players;
 	private int currentPlayer = 0;
 
-	private GamePhase gamePhase = GamePhase.PlacingPhase;	
+	private UnitType unitToBuild = UnitType.None;
+
+	public GamePhase gamePhase = GamePhase.PlacingPhase;
 
 	private void Awake() {
 		if (!inst)
@@ -40,6 +42,9 @@ public class Logic : MonoBehaviour {
 		if (!combatManager)
 			Debug.LogError("Combat Manager does not exist!");
 
+		foreach (Player player in players)
+			player.StartPlacing();
+
 		infoPanel = GetComponent<InfoPanel>();
 
 		if (!infoPanel)
@@ -50,69 +55,132 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetKeyUp(KeyCode.Alpha1)) {
-			CurrentPlayer.AddUnit(UnitType.Spearman, grid.GetTile(Random.Range(0, grid.gridSize.x), Random.Range(0, grid.gridSize.y)));
-		}
-		if (Input.GetKeyUp(KeyCode.Alpha2)) {
-			CurrentPlayer.AddUnit(UnitType.Axemen, grid.GetTile(Random.Range(0, grid.gridSize.x), Random.Range(0, grid.gridSize.y)));
-		}
-		if (Input.GetKeyUp(KeyCode.Alpha3)) {
-			CurrentPlayer.AddUnit(UnitType.Swordsmen, grid.GetTile(Random.Range(0, grid.gridSize.x), Random.Range(0, grid.gridSize.y)));
-		}
+		if (Input.GetMouseButtonUp(1))
+			ClearSelected();
 	}
 
 	public void TileClicked(Tile tile) {
 		infoPanel.UpdateTileInfo(tile);
 
-		if (selectedUnit) {
-			if(!tile.OccupyngUnit){
-				if (selectedUnit.InMoveRange(tile)) {
-					grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).OccupyngUnit = null;
-					selectedUnit.MoveTowardsTile(tile);
-					EndTurn();
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+				if (CurrentPlayer.placementField.CoordsInRange(tile.Index)){
+					if (!tile.OccupyngUnit) { 
+						if (unitToBuild != UnitType.None) {
+							CurrentPlayer.AddUnit(unitToBuild, tile);
+							EndTurn();
+						}
+					}
 				}
-			}
-			else {
-				if (tile.OccupyngUnit.Owner != selectedUnit.Owner) {
-					combatManager.ResolveCombat(selectedUnit, tile.OccupyngUnit);
+				break;
 
-					if(tile.occupyingUnit)
-						combatManager.ResolveCombat(tile.OccupyngUnit, selectedUnit);
-
-					EndTurn();
+			case GamePhase.CombatPhase:
+				if (selectedUnit) {
+					if (CurrentPlayer.CurrentCommandPoints > 0) {
+						if(!tile.OccupyngUnit) {
+							if (selectedUnit.InMoveRange(tile)) {
+								grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).OccupyngUnit = null;
+								selectedUnit.MoveTowardsTile(tile);
+							}
+						}
+						else {
+							if (tile.OccupyngUnit.Owner != selectedUnit.Owner) {
+								UnitCombat(selectedUnit, tile.OccupyngUnit);
+							}
+						}
+					}
 				}
-			}
+				break;
+
+			default:
+				break;
 		}
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	public void UnitClicked(Unit unit) {
-		infoPanel.UpdateUnitInfo(unit);
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+				break;
 
-		if(unit.Owner == CurrentPlayer)
-			selectedUnit = unit;
-		else if (unit.Owner != CurrentPlayer) { 
-			if (selectedUnit) { 
-				if (selectedUnit.InAttackRange(unit)) { 
-					combatManager.ResolveCombat(selectedUnit, unit);
-					if(unit)
-						combatManager.ResolveCombat(unit, selectedUnit);
+			case GamePhase.CombatPhase:
+				infoPanel.UpdateUnitInfo(unit);
 
-					EndTurn();
-				}	
-			}
+				if(unit.Owner == CurrentPlayer)
+					selectedUnit = unit;
+				else if (unit.Owner != CurrentPlayer) {
+					if (CurrentPlayer.CurrentCommandPoints > 0) {
+						if (selectedUnit && selectedUnit.InAttackRange(unit)) { 
+							UnitCombat(selectedUnit, unit);	
+						}
+					}
+				}
+				break;
+
+			default:
+				break;
 		}
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
-	public void EndTurn() {
+	private void UnitCombat(Unit att, Unit def) {
+		combatManager.ResolveCombat(att, def);
+		if (def)
+			combatManager.ResolveCombat(def, att);
+
+		att.Owner.CurrentCommandPoints--;
+
+		if (att.Owner.CurrentCommandPoints == 0)
+			EndTurn();
+	}
+
+	private void ChangePlayer() {
 		if (currentPlayer + 1 < players.Length)
 			currentPlayer++;
 		else
 			currentPlayer = 0;
+	}
 
+	private bool PlayersCanPlace() {
+		bool success = false;
+
+		foreach(Player player in players)
+			if(player.CurrentFood > unitList.LowestCost())
+				success = true;
+
+		return success;
+	}
+
+	public void EndTurn() {
+		ChangePlayer();
+
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+				if (PlayersCanPlace()) {
+					if (CurrentPlayer.CurrentFood < unitList.LowestCost())
+						ChangePlayer();
+				}
+				else {
+					CurrentPlayer.StartTurn();
+					gamePhase = GamePhase.CombatPhase;
+				}
+				break;
+
+			case GamePhase.CombatPhase:
+				CurrentPlayer.StartTurn();
+				break;
+
+			default:
+				break;
+		}
+		
 		ClearSelected();
-
-		infoPanel.Clear();
+				
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
+	}
+
+	public void UpdateBuildUnit(GameObject unit) {
+		unitToBuild = unit.GetComponent<Unit>().type;
 	}
 
 	private void ClearSelected() {
@@ -120,6 +188,10 @@ public class Logic : MonoBehaviour {
 			selectedUnit = null;
 		if(selectedTile)
 			selectedTile = null;
+
+		unitToBuild = UnitType.None;
+
+		infoPanel.Clear();
 	}
 
 	#region Getters and Setters 	
@@ -142,6 +214,5 @@ public class Logic : MonoBehaviour {
 	public InfoPanel InfoPanel {
 		get { return infoPanel; }
 	}
-
 	#endregion
 }

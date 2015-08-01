@@ -21,7 +21,7 @@ public class InfoPanel : MonoBehaviour {
 		if (!showPanel)
 			return;
 		if(player)
-			turnInfo.text = player.name + "'s turn";
+			turnInfo.text = player.name + "'s turn" + "\nFood Remaining: " + player.CurrentFood + "\nCommand Points: " + player.CurrentCommandPoints + "/" + player.commandPoints;
 	}
 
 	public void UpdateTileInfo(Tile tile) {
@@ -49,8 +49,8 @@ public class InfoPanel : MonoBehaviour {
 			return;
 
 		if (unit)
-			unitHInfo.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
+			unitHInfo.text = "Hovered Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
 		else
-			unitHInfo.text = "Selected Unit: \n Hp: \n Attack: \n Defense: \n Hit Chance: \n Dodge Chance: \n Range: \n Move Points: ";
+			unitHInfo.text = "Hovered Unit: \n Hp: \n Attack: \n Defense: \n Hit Chance: \n Dodge Chance: \n Range: \n Move Points: ";
 	}
 }

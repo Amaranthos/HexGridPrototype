@@ -6,11 +6,11 @@ public class Unit : MonoBehaviour {
 	public UnitType type;
 	private PairInt index;
 
-	[Range(0, 5)]
 	public int movePoints;
 	public int maxHitpoints;
 	public int attack;
 	public int defense;
+	public int cost;
 
 	[Range(0,100)]
 	public int hitChance;
@@ -21,10 +21,8 @@ public class Unit : MonoBehaviour {
 	private int defenseModifer = 0;
 	private int hitModifier = 0;
 	private int dodgeModifier = 0;
-	[SerializeField]
 	private int currentHP;
 
-	[SerializeField]
 	private Player owner;
 
 	private void Start() {
@@ -47,6 +45,9 @@ public class Unit : MonoBehaviour {
 		transform.position = tile.transform.position;
 		index = tile.Index;
 		tile.OccupyngUnit = this;
+		owner.CurrentCommandPoints--;
+		if (owner.CurrentCommandPoints == 0)
+			Logic.Inst.EndTurn();
 	}
 
 	public void UnitKilled() {

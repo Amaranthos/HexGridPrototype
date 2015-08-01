@@ -7,7 +7,7 @@ public class Grid : MonoBehaviour {
 	public PairInt gridSize;
 	public Vector2 hexSize;
 
-	public Tile[] grid;
+	public Tile[,] grid;
 
 	private void Start() {
 
@@ -16,7 +16,7 @@ public class Grid : MonoBehaviour {
 		hexSize.x = renderer.bounds.size.x;
 		hexSize.y = renderer.bounds.size.y;
 
-		grid = new Tile[gridSize.x * gridSize.y];
+		grid = new Tile[gridSize.x, gridSize.y];
 
 		GenerateGrid();
 	}
@@ -24,12 +24,12 @@ public class Grid : MonoBehaviour {
 	private void GenerateGrid() {
 		for (int i = 0; i < gridSize.x; i++) {
 			for (int j = 0; j < gridSize.y; j++) {
-				GameObject temp = (GameObject)Instantiate(hexObj, new Vector3(j * hexSize.y + ((i & 1) * 0.5f), 0.0f, i * hexSize.x), Quaternion.identity);
+				GameObject temp = (GameObject)Instantiate(hexObj, new Vector3(i * hexSize.x, 0.0f, j * hexSize.y + ((i & 1) * 0.5f)), Quaternion.Euler(Vector3.up * 90));
 				temp.name = temp.name + "[" + i + "," + j + "]";
 				temp.transform.parent = this.transform;
 				Tile tile = temp.AddComponent<Tile>();
 				tile.Index = new PairInt(i, j);
-				grid[i * gridSize.x + j] = tile;
+				grid[i, j] = tile;
 			}
 		}
 	}
@@ -68,7 +68,7 @@ public class Grid : MonoBehaviour {
 	public Tile GetTile(int i, int j) {
 		if (i < gridSize.x && i >= 0) {
 			if (j < gridSize.y && j >= 0) {
-				return grid[i * gridSize.x + j];
+				return grid[i, j];
 			}
 		}
 		return null;

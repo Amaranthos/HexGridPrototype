@@ -1,7 +1,8 @@
 ﻿public enum UnitType {
 	Spearman,
 	Axemen,
-	Swordsmen
+	Swordsmen,
+	None
 }
 
 public enum Heroes {

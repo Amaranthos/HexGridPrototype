@@ -86,11 +86,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  isSelected: 0
   movePoints: 3
   maxHitpoints: 100
   attack: 50
   defense: 15
+  cost: 3
   hitChance: 80
   dodgeChance: 30
   attackRange: 2
@@ -144,6 +144,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
