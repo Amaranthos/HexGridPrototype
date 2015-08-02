@@ -5,63 +5,53 @@ public class Grid : MonoBehaviour {
 	public GameObject hexObj;
 
 	public PairInt gridSize;
-	public Vector2 hexSize;
+	public float hexRadius;
 
+	private float hexWidth;
+	private float hexHeight;
+	
 	public Tile[,] grid;
 
 	private void Start() {
-
-		MeshRenderer renderer = hexObj.GetComponent<MeshRenderer>();
-
-		hexSize.x = renderer.bounds.size.x;
-		hexSize.y = renderer.bounds.size.y;
-
 		grid = new Tile[gridSize.x, gridSize.y];
 
 		GenerateGrid();
 	}
 
 	private void GenerateGrid() {
+		hexWidth = hexRadius * 2;
+		hexHeight = (Mathf.Sqrt(3) / 2) * hexWidth;
+
 		for (int i = 0; i < gridSize.x; i++) {
 			for (int j = 0; j < gridSize.y; j++) {
-				GameObject temp = (GameObject)Instantiate(hexObj, new Vector3(i * hexSize.x, 0.0f, j * hexSize.y + ((i & 1) * 0.5f)), Quaternion.Euler(Vector3.up * 90));
-				temp.name = temp.name + "[" + i + "," + j + "]";
+				GameObject temp = (GameObject)Instantiate(hexObj, Vector3.zero, Quaternion.identity);
+				temp.transform.position = new Vector3(i * hexWidth * 3 / 4, 0.0f, j * hexHeight + ((i & 1) * 0.5f * hexHeight));
+				temp.name = "Hex [" + i + "," + j + "]";
 				temp.transform.parent = this.transform;
-				Tile tile = temp.AddComponent<Tile>();
+				
+				Tile tile = temp.GetComponent<Tile>();
+				tile.Radius = hexRadius;
 				tile.Index = new PairInt(i, j);
 				grid[i, j] = tile;
+			}
+		}
+
+		for (int i = 0; i < gridSize.x; i++) {
+			for (int j = 0; j < gridSize.y; j++) {
+				grid[i, j].neighbours.AddRange(GetNeighbours(i,j));
 			}
 		}
 	}
 
 	public List<Tile> GetNeighbours(int x, int y) {
 		List<Tile> ret = new List<Tile>();
-		Tile temp;
 
-		temp = GetTile(x, y - 1);
-		if (temp)
-			ret.Add(temp);
+		int parity = x & 1;
 
-		temp = GetTile(x, y + 1);
-		if (temp)
-			ret.Add(temp);
-
-		temp = GetTile(x + 1, y - 1);
-		if (temp)
-			ret.Add(temp);
-
-		temp = GetTile(x + 1, y);
-		if (temp)
-			ret.Add(temp);
-
-		temp = GetTile(x - 1, y - 1);
-		if (temp)
-			ret.Add(temp);
-
-		temp = GetTile(x - 1, y);
-		if (temp)
-			ret.Add(temp);
-
+		for (int i = 0; i < 6; i++) {
+			PairInt dir = directions[parity, i];
+			ret.Add(GetTile(x + dir.x, y + dir.y));
+		}
 		return ret;
 	}
 
@@ -76,4 +66,9 @@ public class Grid : MonoBehaviour {
 
 	#region Getters and Setters
 	#endregion
+
+	PairInt[,] directions = new PairInt[,] {{new PairInt(1, 0), new PairInt(1, -1), new PairInt(0, -1), 
+												new PairInt(-1, -1), new PairInt(-1, 0), new PairInt(0, 1)}, 
+											{new PairInt(1, 1), new PairInt(1, 0), new PairInt(0, -1), 
+												new PairInt(-1, 0), new PairInt(-1, 1), new PairInt(0, 1)}};
 }

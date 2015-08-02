@@ -188,11 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af0b57b093015a4fbec409c2e4674a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexObj: {fileID: 100000, guid: dadedc4989a6e2241b97076c807c85d8, type: 3}
+  hexObj: {fileID: 123734, guid: ce89a4a15ac81a548a497de7de1fdca9, type: 2}
   gridSize:
     x: 10
     y: 15
-  hexSize: {x: .860000014, y: .949999988}
+  hexRadius: .600000024
 --- !u!4 &15888651
 Transform:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 692991050}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 10, y: 19, z: 9.5}
+  m_LocalPosition: {x: 10, y: 19, z: 8.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
