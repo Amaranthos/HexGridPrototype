@@ -14,16 +14,17 @@ public class Tile : MonoBehaviour {
 		Logic.Inst.TileClicked(this);
 	}
 
-	private Vector3 Corner(int index) {
+	public Vector3 Corner(int index) {
 		float angle = Mathf.PI / 180 * (60 * index);
 		return new Vector3(transform.position.x + radius * Mathf.Cos(angle), 0.0f, transform.position.z + radius * Mathf.Sin(angle));
 	}
 
+	public static Vector3 Corner(Vector3 centre, float radius, int index) {
+		float angle = Mathf.PI / 180 * (60 * index);
+		return new Vector3(centre.x + radius * Mathf.Cos(angle), 0.0f, centre.z + radius * Mathf.Sin(angle));
+	}
+
 	public void Start(){
-
-		Mesh mesh = new Mesh();
-
-
 
 		LineRenderer lines = gameObject.GetComponent<LineRenderer>();
 		lines.SetVertexCount(7);
@@ -31,6 +32,11 @@ public class Tile : MonoBehaviour {
 		for (int i = 0; i < 7; i++) {
 			lines.SetPosition(i, Corner(i));
 		}
+	}
+
+	public void SetMesh(Mesh mesh) {
+		GetComponent<MeshFilter>().sharedMesh = mesh;
+		GetComponent<MeshCollider>().sharedMesh = mesh;
 	}
 
 	#region Getters and Setters

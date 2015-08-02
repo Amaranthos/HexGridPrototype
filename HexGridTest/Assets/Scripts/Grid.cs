@@ -22,16 +22,46 @@ public class Grid : MonoBehaviour {
 		hexWidth = hexRadius * 2;
 		hexHeight = (Mathf.Sqrt(3) / 2) * hexWidth;
 
+		Mesh mesh = new Mesh();
+
+		List<Vector3> verts = new List<Vector3>();
+		List<int> tris = new List<int>();
+		List<Vector2> uvs = new List<Vector2>();
+
+		for(int i = 0; i < 6; i++)
+			verts.Add(Tile.Corner(Vector3.zero, hexRadius, i));
+
+		tris.Add(0);
+		tris.Add(2);
+		tris.Add(1);
+
+		tris.Add(0);
+		tris.Add(5);
+		tris.Add(2);
+
+		tris.Add(2);
+		tris.Add(5);
+		tris.Add(3);
+
+		tris.Add(3);
+		tris.Add(5);
+		tris.Add(4);
+
+		mesh.vertices = verts.ToArray();
+		mesh.triangles = tris.ToArray();
+
 		for (int i = 0; i < gridSize.x; i++) {
 			for (int j = 0; j < gridSize.y; j++) {
-				GameObject temp = (GameObject)Instantiate(hexObj, Vector3.zero, Quaternion.identity);
-				temp.transform.position = new Vector3(i * hexWidth * 3 / 4, 0.0f, j * hexHeight + ((i & 1) * 0.5f * hexHeight));
-				temp.name = "Hex [" + i + "," + j + "]";
-				temp.transform.parent = this.transform;
+				GameObject go = (GameObject)Instantiate(hexObj, Vector3.zero, Quaternion.identity);
+				go.transform.position = new Vector3(i * hexWidth * 3 / 4, 0.0f, j * hexHeight + ((i & 1) * 0.5f * hexHeight));
+				go.name = "Hex [" + i + "," + j + "]";
+				go.transform.parent = this.transform;
 				
-				Tile tile = temp.GetComponent<Tile>();
+				Tile tile = go.GetComponent<Tile>();
 				tile.Radius = hexRadius;
 				tile.Index = new PairInt(i, j);
+				tile.SetMesh(mesh);
+
 				grid[i, j] = tile;
 			}
 		}
