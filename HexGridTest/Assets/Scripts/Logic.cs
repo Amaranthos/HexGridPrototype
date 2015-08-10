@@ -57,6 +57,9 @@ public class Logic : MonoBehaviour {
 	private void Update() {
 		if (Input.GetMouseButtonUp(1))
 			ClearSelected();
+
+		if(Input.GetKeyUp(KeyCode.Space))
+			grid.FillBoard();
 	}
 
 	public void TileClicked(Tile tile) {

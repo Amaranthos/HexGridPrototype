@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Grid : MonoBehaviour {
 	public GameObject hexObj;
+	public GameObject mountain;
 
 	public PairInt gridSize;
 	public float hexRadius;
@@ -50,6 +51,8 @@ public class Grid : MonoBehaviour {
 		mesh.vertices = verts.ToArray();
 		mesh.triangles = tris.ToArray();
 
+		mesh.RecalculateNormals();
+
 		for (int i = 0; i < gridSize.x; i++) {
 			for (int j = 0; j < gridSize.y; j++) {
 				GameObject go = (GameObject)Instantiate(hexObj, Vector3.zero, Quaternion.identity);
@@ -61,6 +64,9 @@ public class Grid : MonoBehaviour {
 				tile.Radius = hexRadius;
 				tile.Index = new PairInt(i, j);
 				tile.SetMesh(mesh);
+
+				if(Random.Range(0,100)%2 == 1)
+					Instantiate(mountain, go.transform.position, mountain.transform.rotation);
 
 				grid[i, j] = tile;
 			}
@@ -92,6 +98,19 @@ public class Grid : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public void FillBoard() {
+		int counter = 0;
+		for(int i = 0; i < gridSize.x; i++) {
+			for(int j = 0; j < gridSize.y; j++) {
+				GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(UnitType.Spearman), grid[i,j].transform.position, Quaternion.identity);
+				grid[i,j].OccupyngUnit = temp.GetComponent<Unit>();
+				counter++;
+				if(counter >= 50)
+					return;
+			}
+		}
 	}
 
 	#region Getters and Setters
