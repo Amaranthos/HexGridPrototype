@@ -217,5 +217,9 @@ public class Logic : MonoBehaviour {
 	public InfoPanel InfoPanel {
 		get { return infoPanel; }
 	}
+
+	public Player[] Players {
+		get { return players; }
+	}
 	#endregion
 }

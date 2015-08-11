@@ -51,6 +51,7 @@ public class Player : MonoBehaviour {
 
 	public int CurrentFood {
 		get { return currentFood; }
+		set { currentFood = value; }
 	}
 
 	public int CurrentCommandPoints {
