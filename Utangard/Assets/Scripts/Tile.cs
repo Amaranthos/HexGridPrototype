@@ -4,11 +4,12 @@ using System.Collections.Generic;
 public class Tile : MonoBehaviour {
 
 	private PairInt index;
+
 	private Unit occupyingUnit = null;
 
-	private float radius;
+	private bool isPassable = true;
 
-	public List<Tile> neighbours = new List<Tile>();
+	private float radius;
 
 	public Vector3 Corner(int index) {
 		float angle = Mathf.PI / 180 * (60 * index);
@@ -49,6 +50,11 @@ public class Tile : MonoBehaviour {
 	public float Radius {
 		get { return radius; }
 		set { radius = value; }
+	}
+
+	public bool IsPassable {
+		get { return isPassable; }
+		set { isPassable = value; }
 	}
 	#endregion
 }

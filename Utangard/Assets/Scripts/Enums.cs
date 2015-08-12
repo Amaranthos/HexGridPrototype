@@ -10,6 +10,7 @@ public enum Heroes {
 }
 
 public enum GamePhase {
+	CompositionPhase,
 	PlacingPhase,
 	CombatPhase
 }

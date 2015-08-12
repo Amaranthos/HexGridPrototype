@@ -23,7 +23,7 @@ public class InfoPanel : MonoBehaviour {
 		if (!showPanel)
 			return;
 		if(player)
-			turnInfo.text = player.name + "'s turn" + "\nFood Remaining: " + player.CurrentFood + "\nCommand Points: " + player.CurrentCommandPoints + "/" + player.commandPoints;
+			turnInfo.text = player.name + "'s turn" + "\nFood Remaining: " + player.CurrentFood;
 	}
 
 	public void UpdateTileInfo(Tile tile) {
@@ -31,9 +31,9 @@ public class InfoPanel : MonoBehaviour {
 			return;
 
 		if (tile)
-			tileInfo.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y;
+			tileInfo.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y + "\nPassable: " + tile.IsPassable + "\nOccupied: " + (tile.OccupyngUnit != null).ToString();
 		else
-			tileInfo.text = "Selected tile: ";
+			tileInfo.text = "Selected tile: \nPassable: \nOccupied: ";
 	}
 
 	public void UpdateUnitInfo(Unit unit) {
@@ -43,7 +43,7 @@ public class InfoPanel : MonoBehaviour {
 		if (unit)
 			unitInfo.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
 		else
-			unitInfo.text = "Selected Unit: \n Hp: \n Attack: \n Defense: \n Hit Chance: \n Dodge Chance: \n Range: \n Move Points: ";
+			unitInfo.text = "Selected Unit: \nHp: \nAttack: \nDefense: \nHit Chance: \nDodge Chance: \nRange: \nMove Points: ";
 	}
 
 	public void UpdateUnitHInfo(Unit unit) {
@@ -53,7 +53,7 @@ public class InfoPanel : MonoBehaviour {
 		if (unit)
 			unitHInfo.text = "Hovered Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
 		else
-			unitHInfo.text = "Hovered Unit: \n Hp: \n Attack: \n Defense: \n Hit Chance: \n Dodge Chance: \n Range: \n Move Points: ";
+			unitHInfo.text = "Hovered Unit: \nHp: \nAttack: \nDefense: \nHit Chance: \nDodge Chance: \nRange: \nMove Points: ";
 	}
 
 	public void Enabled(bool enabled) {

@@ -5,14 +5,15 @@ public class Player : MonoBehaviour {
 
 	public string playerName = "";
 	public int startingFood;
-	public int commandPoints;
 
 	public Rect placementField;
 
 	private List<Unit> army = new List<Unit>();
 
 	private int currentFood;
-	private int currentCommandPoints;
+
+	[SerializeField]
+	private bool hasFinishedPlacing = false;
 
 	public void AddUnit(UnitType type, Tile tile, int index) {
 		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartTurn() {
-		currentCommandPoints = commandPoints;
+		
 	}
 
 	#region Getters and Setters
@@ -57,9 +58,9 @@ public class Player : MonoBehaviour {
 		set { currentFood = value; }
 	}
 
-	public int CurrentCommandPoints {
-		get { return currentCommandPoints; }
-		set { currentCommandPoints = value; }
+	public bool HasFinishedPlacing {
+		get { return hasFinishedPlacing; }
+		set { hasFinishedPlacing = value; }
 	}
 	#endregion
 }

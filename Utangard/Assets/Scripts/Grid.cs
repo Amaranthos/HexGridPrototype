@@ -74,12 +74,6 @@ public class Grid : MonoBehaviour {
 				grid[i, j] = tile;
 			}
 		}
-
-		for (int i = 0; i < gridSize.x; i++) {
-			for (int j = 0; j < gridSize.y; j++) {
-				grid[i, j].neighbours.AddRange(GetNeighbours(i,j));
-			}
-		}
 	}
 
 	public List<Tile> GetNeighbours(int x, int y) {
@@ -101,6 +95,10 @@ public class Grid : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public Tile GetTile(PairInt index) {
+		return GetTile(index.x, index.y);
 	}
 
 	public void FillBoard() {

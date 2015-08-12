@@ -16,10 +16,14 @@ public class Logic : MonoBehaviour {
 	private Tile selectedTile;
 
 	private Player[] players;
+	[SerializeField]
 	private int currentPlayer = 0;
+	[SerializeField]
 	private int startingPlayer = 0;
 
-	public GamePhase gamePhase = GamePhase.PlacingPhase;
+	public Button endTurn;
+	
+	public GamePhase gamePhase = GamePhase.CompositionPhase;
 
 	private void Awake() {
 		if (!inst)
@@ -101,6 +105,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void UnitLClicked(Unit unit) {
+		UnitSelected(unit);
+
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
 
@@ -113,6 +119,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void TileLClicked(Tile tile) {
+		TileSelected(tile);
+
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
 
@@ -127,7 +135,10 @@ public class Logic : MonoBehaviour {
 	private void UnitRClicked(Unit unit) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-
+				if (CurrentPlayer.placementField.CoordsInRange(unit.Index))
+					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
+						if (grid.GetTile(unit.Index).IsPassable)
+							SwapUnits(grid.GetTile(unit.Index));
 				break;
 
 			case GamePhase.CombatPhase:
@@ -139,13 +150,27 @@ public class Logic : MonoBehaviour {
 	private void TileRClicked(Tile tile) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-
+				if(CurrentPlayer.placementField.CoordsInRange(tile.Index))
+					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
+						if (tile.IsPassable)
+							if (!tile.OccupyngUnit)
+								selectedUnit.MoveTowardsTile(tile);
+							else if (tile.OccupyngUnit.Owner == CurrentPlayer)
+								SwapUnits(tile);
 				break;
 
 			case GamePhase.CombatPhase:
 
 				break;
 		}
+	}
+
+	private void SwapUnits(Tile tile) {
+		Tile prevTile = grid.GetTile(selectedUnit.Index);
+		Unit swap = tile.OccupyngUnit;
+		swap.MoveTowardsTile(prevTile);
+		selectedUnit.MoveTowardsTile(tile);
+		prevTile.OccupyngUnit = swap;
 	}
 
 	public void SetupGameWorld(int[][] armies) {
@@ -157,94 +182,79 @@ public class Logic : MonoBehaviour {
 				players[i].AddUnit((UnitType)armies[i][j], tiles[j], i);
 		}
 
-		StartSetupPhase();
+		SwtichGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 
 		infoPanel.Enabled(true);
-	}
-
-	public void StartCombatPhase() {
-		currentPlayer = startingPlayer;
-	}
-
-	public void TileClicked(Tile tile) {
-		infoPanel.UpdateTileInfo(tile);
-
-		switch (gamePhase) {
-			case GamePhase.CombatPhase:
-				if (selectedUnit) {
-					if (CurrentPlayer.CurrentCommandPoints > 0) {
-						if(!tile.OccupyngUnit) {
-							if (selectedUnit.InMoveRange(tile)) {
-								grid.GetTile(selectedUnit.Index.x, selectedUnit.Index.y).OccupyngUnit = null;
-								selectedUnit.MoveTowardsTile(tile);
-							}
-						}
-						else {
-							if (tile.OccupyngUnit.Owner != selectedUnit.Owner) {
-								UnitCombat(selectedUnit, tile.OccupyngUnit);
-							}
-						}
-					}
-				}
-				break;
-
-			default:
-				break;
-		}
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
-	public void UnitClicked(Unit unit) {
-		switch (gamePhase) {
-			case GamePhase.CombatPhase:
-				infoPanel.UpdateUnitInfo(unit);
+	public void StartCombatPhase() {
+		Debug.Log("Start P: " + startingPlayer);
+		Debug.Log("Current P: " + currentPlayer);
 
-				if(unit.Owner == CurrentPlayer)
-					selectedUnit = unit;
-				else if (unit.Owner != CurrentPlayer) {
-					if (CurrentPlayer.CurrentCommandPoints > 0) {
-						if (selectedUnit && selectedUnit.InAttackRange(unit)) { 
-							UnitCombat(selectedUnit, unit);	
-						}
-					}
-				}
-				break;
+		currentPlayer = startingPlayer;
 
-			default:
-				break;
-		}
+		Debug.Log("Current P: " + currentPlayer);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	public void EndTurn() {
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+				CurrentPlayer.HasFinishedPlacing = true;
+
+				bool placingFinished = true;
+
+				for (int i = 0; i < players.Length; i++)
+					if (!players[i].HasFinishedPlacing)
+						placingFinished = false;
+
+				if (placingFinished)
+					SwtichGamePhase(GamePhase.CombatPhase);
+
+					break;
+
+			case GamePhase.CombatPhase:
+				break;
+		}
+
 		ChangePlayer();
 
 		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+				break;
+
 			case GamePhase.CombatPhase:
 				CurrentPlayer.StartTurn();
 				break;
-
-			default:
-				break;
 		}
-		
+
 		ClearSelected();				
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
+	}
+
+	private void SwtichGamePhase(GamePhase phase) {
+		gamePhase = phase;
+
+		switch (phase) {
+			case GamePhase.PlacingPhase:
+				StartSetupPhase();
+				break;
+
+			case GamePhase.CombatPhase:
+				StartCombatPhase();
+				break;
+		}
 	}
 
 	private void UnitCombat(Unit att, Unit def) {
 		combatManager.ResolveCombat(att, def);
 		if (def)
 			combatManager.ResolveCombat(def, att);
-
-		att.Owner.CurrentCommandPoints--;
-
-		if (att.Owner.CurrentCommandPoints == 0)
-			EndTurn();
 	}
 
 	private void ChangePlayer() {
@@ -261,6 +271,16 @@ public class Logic : MonoBehaviour {
 			selectedTile = null;
 
 		infoPanel.Clear();
+	}
+
+	private void UnitSelected(Unit unit) {
+		selectedUnit = unit;
+		infoPanel.UpdateUnitInfo(unit);
+	}
+
+	private void TileSelected(Tile tile) {
+		selectedTile = tile;
+		infoPanel.UpdateTileInfo(tile);
 	}
 
 	private RaycastHit MouseClick() {

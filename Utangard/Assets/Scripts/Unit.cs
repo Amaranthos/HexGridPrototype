@@ -23,6 +23,8 @@ public class Unit : MonoBehaviour {
 	private int dodgeModifier = 0;
 	private int currentHP;
 
+	private bool hasMoved = false;
+
 	private Player owner;
 
 	private void Start() {
@@ -38,12 +40,14 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void MoveTowardsTile(Tile tile) {
-		transform.position = tile.transform.position;
+		Logic.Inst.Grid.GetTile(index).OccupyngUnit = null;
 		index = tile.Index;
 		tile.OccupyngUnit = this;
-		owner.CurrentCommandPoints--;
-		if (owner.CurrentCommandPoints == 0)
-			Logic.Inst.EndTurn();
+
+		transform.position = tile.transform.position;
+
+		if (Logic.Inst.gamePhase == GamePhase.CombatPhase)
+			hasMoved = true;
 	}
 
 	public void UnitKilled() {
@@ -110,6 +114,11 @@ public class Unit : MonoBehaviour {
 	public Player Owner {
 		get { return owner; }
 		set { owner = value; }
+	}
+
+	public bool HasMoved {
+		get { return hasMoved; }
+		set { hasMoved = value; }
 	}
 	#endregion
 }

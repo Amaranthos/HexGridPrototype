@@ -591,12 +591,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player 2
   startingFood: 25
-  commandPoints: 6
   placementField:
     x: 0
     w: 10
     y: 9
     h: 3
+  hasFinishedPlacing: 0
 --- !u!1 &692991050
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8027aebdec1729743a3ca3c809fb6c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayer: 0
+  startingPlayer: 0
+  endTurn: {fileID: 0}
   gamePhase: 0
 --- !u!114 &884955395
 MonoBehaviour:
@@ -2457,9 +2460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player 1
   startingFood: 25
-  commandPoints: 6
   placementField:
     x: 0
     w: 10
     y: 0
     h: 3
+  hasFinishedPlacing: 0
