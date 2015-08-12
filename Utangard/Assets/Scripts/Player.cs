@@ -14,8 +14,8 @@ public class Player : MonoBehaviour {
 	private int currentFood;
 	private int currentCommandPoints;
 
-	public void AddUnit(UnitType type, Tile tile) {
-		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.identity);
+	public void AddUnit(UnitType type, Tile tile, int index) {
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;

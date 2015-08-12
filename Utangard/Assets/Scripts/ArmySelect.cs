@@ -56,7 +56,6 @@ public struct ArmySelectGuiHolder {
 
 		for (int i = 0; i < units.Length; i++) { 
 			for (int j = 0; j < units[i].count; j++) {
-				Debug.Log("J: " + j);
 				ret.Add(i);
 			}
 		}

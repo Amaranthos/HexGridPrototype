@@ -8,6 +8,7 @@ public class Logic : MonoBehaviour {
 	private Grid grid;
 	private UnitList unitList;
 	private InfoPanel infoPanel;
+	private Audio audio;
 
 	private Combat combatManager;
 
@@ -16,6 +17,7 @@ public class Logic : MonoBehaviour {
 
 	private Player[] players;
 	private int currentPlayer = 0;
+	private int startingPlayer = 0;
 
 	public GamePhase gamePhase = GamePhase.PlacingPhase;
 
@@ -41,6 +43,11 @@ public class Logic : MonoBehaviour {
 		if (!combatManager)
 			Debug.LogError("Combat Manager does not exist!");
 
+		audio = GetComponent<Audio>();
+
+		if (!audio)
+			Debug.LogError("Audio manager does not exist!");
+
 		foreach (Player player in players)
 			player.StartPlacing();
 
@@ -54,26 +61,113 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetMouseButtonUp(1))
-			ClearSelected();
+		if (Input.GetMouseButtonUp(0)) {
+			RaycastHit hit = MouseClick();
+			if (hit.transform) {
+				GameObject go = hit.transform.gameObject;
 
-		if(Input.GetKeyUp(KeyCode.Space))
-			grid.FillBoard();
+				Unit unit = go.GetComponent<Unit>();
+
+				if (unit)
+					UnitLClicked(unit);
+				else {
+					Tile tile = go.GetComponent<Tile>();
+
+					if (tile)
+						TileLClicked(tile);
+				}
+
+			}
+		}
+
+		if (Input.GetMouseButtonUp(1)) {
+			RaycastHit hit = MouseClick();
+			if (hit.transform) {
+				GameObject go = hit.transform.gameObject;
+
+				Unit unit = go.GetComponent<Unit>();
+
+				if (unit)
+					UnitRClicked(unit);
+				else {
+					Tile tile = go.GetComponent<Tile>();
+
+					if (tile)
+						TileRClicked(tile);
+				}
+
+			}
+		}
+	}
+
+	private void UnitLClicked(Unit unit) {
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+
+				break;
+
+			case GamePhase.CombatPhase:
+
+				break;
+		}
+	}
+
+	private void TileLClicked(Tile tile) {
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+
+				break;
+
+			case GamePhase.CombatPhase:
+
+				break;
+		}
+	}
+
+	private void UnitRClicked(Unit unit) {
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+
+				break;
+
+			case GamePhase.CombatPhase:
+
+				break;
+		}
+	}
+
+	private void TileRClicked(Tile tile) {
+		switch (gamePhase) {
+			case GamePhase.PlacingPhase:
+
+				break;
+
+			case GamePhase.CombatPhase:
+
+				break;
+		}
 	}
 
 	public void SetupGameWorld(int[][] armies) {
-		grid.GenerateGrid();
-
-		infoPanel.gameObject.SetActive(true);
-
-		Debug.Log("armies length: " + armies.Length);
+		grid.GenerateGrid();		
 
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();
-			Debug.Log("armies length: " + armies[i].Length);
 			for (int j = 0; j < armies[i].Length; j++)
-				players[i].AddUnit((UnitType)armies[i][j], tiles[j]);
+				players[i].AddUnit((UnitType)armies[i][j], tiles[j], i);
 		}
+
+		StartSetupPhase();
+	}
+
+	public void StartSetupPhase() {
+		currentPlayer = startingPlayer = Random.Range(0, players.Length);
+
+		infoPanel.Enabled(true);
+	}
+
+	public void StartCombatPhase() {
+		currentPlayer = startingPlayer;
 	}
 
 	public void TileClicked(Tile tile) {
@@ -126,6 +220,22 @@ public class Logic : MonoBehaviour {
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
+	public void EndTurn() {
+		ChangePlayer();
+
+		switch (gamePhase) {
+			case GamePhase.CombatPhase:
+				CurrentPlayer.StartTurn();
+				break;
+
+			default:
+				break;
+		}
+		
+		ClearSelected();				
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
+	}
+
 	private void UnitCombat(Unit att, Unit def) {
 		combatManager.ResolveCombat(att, def);
 		if (def)
@@ -143,38 +253,7 @@ public class Logic : MonoBehaviour {
 		else
 			currentPlayer = 0;
 	}
-
-	private bool PlayersCanPlace() {
-		bool success = false;
-
-		foreach(Player player in players)
-			if(player.CurrentFood > unitList.LowestCost())
-				success = true;
-
-		return success;
-	}
-
-	public void EndTurn() {
-		ChangePlayer();
-
-		switch (gamePhase) {
-			case GamePhase.CombatPhase:
-				CurrentPlayer.StartTurn();
-				break;
-
-			default:
-				break;
-		}
-		
-		ClearSelected();
-				
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
-	}
-
-	//public void UpdateBuildUnit(GameObject unit) {
-	//	unitToBuild = unit.GetComponent<Unit>().type;
-	//}
-
+	
 	private void ClearSelected() {
 		if(selectedUnit)
 			selectedUnit = null;
@@ -182,6 +261,13 @@ public class Logic : MonoBehaviour {
 			selectedTile = null;
 
 		infoPanel.Clear();
+	}
+
+	private RaycastHit MouseClick() {
+		RaycastHit hit; 
+		Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+
+		return hit;
 	}
 
 	#region Getters and Setters 	

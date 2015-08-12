@@ -46,8 +46,16 @@ public class Grid : MonoBehaviour {
 		tris.Add(5);
 		tris.Add(4);
 
+		uvs.Add(new Vector2(0.5f, 1));
+		uvs.Add(new Vector2(1, 0.75f));
+		uvs.Add(new Vector2(1, 0.25f));
+		uvs.Add(new Vector2(0.5f, 0));
+		uvs.Add(new Vector2(0, 0.25f));
+		uvs.Add(new Vector2(0, 0.75f));
+
 		mesh.vertices = verts.ToArray();
 		mesh.triangles = tris.ToArray();
+		mesh.uv = uvs.ToArray();
 
 		mesh.RecalculateNormals();
 

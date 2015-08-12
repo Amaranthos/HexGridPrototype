@@ -29,10 +29,6 @@ public class Unit : MonoBehaviour {
 		currentHP = maxHitpoints;
 	}
 
-	private void OnMouseUp() {
-		Logic.Inst.UnitClicked(this);
-	}
-
 	private void OnMouseEnter() {
 		Logic.Inst.InfoPanel.UpdateUnitHInfo(this);
 	}

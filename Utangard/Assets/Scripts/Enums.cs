@@ -13,3 +13,11 @@ public enum GamePhase {
 	PlacingPhase,
 	CombatPhase
 }
+
+public enum Music {
+	BloodOath
+}
+
+public enum SFX {
+
+}

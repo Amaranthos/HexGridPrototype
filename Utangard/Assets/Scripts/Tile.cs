@@ -10,10 +10,6 @@ public class Tile : MonoBehaviour {
 
 	public List<Tile> neighbours = new List<Tile>();
 
-	private void OnMouseUp() {
-		Logic.Inst.TileClicked(this);
-	}
-
 	public Vector3 Corner(int index) {
 		float angle = Mathf.PI / 180 * (60 * index);
 		return new Vector3(transform.position.x + radius * Mathf.Cos(angle), 0.0f, transform.position.z + radius * Mathf.Sin(angle));
