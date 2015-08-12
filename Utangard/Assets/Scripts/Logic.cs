@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Logic : MonoBehaviour {
 
@@ -15,8 +16,6 @@ public class Logic : MonoBehaviour {
 
 	private Player[] players;
 	private int currentPlayer = 0;
-
-	private UnitType unitToBuild = UnitType.None;
 
 	public GamePhase gamePhase = GamePhase.PlacingPhase;
 
@@ -62,21 +61,25 @@ public class Logic : MonoBehaviour {
 			grid.FillBoard();
 	}
 
+	public void SetupGameWorld(int[][] armies) {
+		grid.GenerateGrid();
+
+		infoPanel.gameObject.SetActive(true);
+
+		Debug.Log("armies length: " + armies.Length);
+
+		for (int i = 0; i < armies.Length; i++){
+			List<Tile> tiles = players[i].PlacementField();
+			Debug.Log("armies length: " + armies[i].Length);
+			for (int j = 0; j < armies[i].Length; j++)
+				players[i].AddUnit((UnitType)armies[i][j], tiles[j]);
+		}
+	}
+
 	public void TileClicked(Tile tile) {
 		infoPanel.UpdateTileInfo(tile);
 
 		switch (gamePhase) {
-			case GamePhase.PlacingPhase:
-				if (CurrentPlayer.placementField.CoordsInRange(tile.Index)){
-					if (!tile.OccupyngUnit) { 
-						if (unitToBuild != UnitType.None) {
-							CurrentPlayer.AddUnit(unitToBuild, tile);
-							EndTurn();
-						}
-					}
-				}
-				break;
-
 			case GamePhase.CombatPhase:
 				if (selectedUnit) {
 					if (CurrentPlayer.CurrentCommandPoints > 0) {
@@ -103,9 +106,6 @@ public class Logic : MonoBehaviour {
 
 	public void UnitClicked(Unit unit) {
 		switch (gamePhase) {
-			case GamePhase.PlacingPhase:
-				break;
-
 			case GamePhase.CombatPhase:
 				infoPanel.UpdateUnitInfo(unit);
 
@@ -158,17 +158,6 @@ public class Logic : MonoBehaviour {
 		ChangePlayer();
 
 		switch (gamePhase) {
-			case GamePhase.PlacingPhase:
-				if (PlayersCanPlace()) {
-					if (CurrentPlayer.CurrentFood < unitList.LowestCost())
-						ChangePlayer();
-				}
-				else {
-					CurrentPlayer.StartTurn();
-					gamePhase = GamePhase.CombatPhase;
-				}
-				break;
-
 			case GamePhase.CombatPhase:
 				CurrentPlayer.StartTurn();
 				break;
@@ -182,17 +171,15 @@ public class Logic : MonoBehaviour {
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
-	public void UpdateBuildUnit(GameObject unit) {
-		unitToBuild = unit.GetComponent<Unit>().type;
-	}
+	//public void UpdateBuildUnit(GameObject unit) {
+	//	unitToBuild = unit.GetComponent<Unit>().type;
+	//}
 
 	private void ClearSelected() {
 		if(selectedUnit)
 			selectedUnit = null;
 		if(selectedTile)
 			selectedTile = null;
-
-		unitToBuild = UnitType.None;
 
 		infoPanel.Clear();
 	}

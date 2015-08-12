@@ -15,20 +15,23 @@ public class Player : MonoBehaviour {
 	private int currentCommandPoints;
 
 	public void AddUnit(UnitType type, Tile tile) {
-		int cost = Logic.Inst.UnitList.GetUnit(type).GetComponent<Unit>().cost;
-		if (currentFood >= cost) {
-			GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.identity);
-			Unit unit = temp.GetComponent<Unit>();
-			unit.Index = tile.Index;
-			unit.Owner = this;
-			tile.OccupyngUnit = unit;
-			army.Add(unit);
-			temp.transform.parent = this.transform;
-			currentFood -= cost;
-		}
-		else {
-			Debug.Log("Not enough food to hire warrior!");
-		}
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.identity);
+		Unit unit = temp.GetComponent<Unit>();
+		unit.Index = tile.Index;
+		unit.Owner = this;
+		tile.OccupyngUnit = unit;
+		army.Add(unit);
+		temp.transform.parent = this.transform;
+	}
+
+	public List<Tile> PlacementField() {
+		List<Tile> tiles = new List<Tile>();
+		for (int i = 0; i < Logic.Inst.Grid.gridSize.x; i++)
+			for (int j = 0; j < Logic.Inst.Grid.gridSize.y; j++)
+				if (placementField.CoordsInRange(Logic.Inst.Grid.grid[i, j].Index))
+					tiles.Add(Logic.Inst.Grid.grid[i, j]);
+
+		return tiles;
 	}
 
 	public void RemoveUnit(Unit unit) {

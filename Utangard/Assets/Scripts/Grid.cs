@@ -15,11 +15,9 @@ public class Grid : MonoBehaviour {
 
 	private void Start() {
 		grid = new Tile[gridSize.x, gridSize.y];
-
-		GenerateGrid();
 	}
 
-	private void GenerateGrid() {
+	public void GenerateGrid() {
 		hexWidth = hexRadius * 2;
 		hexHeight = (Mathf.Sqrt(3) / 2) * hexWidth;
 
@@ -64,9 +62,6 @@ public class Grid : MonoBehaviour {
 				tile.Radius = hexRadius;
 				tile.Index = new PairInt(i, j);
 				tile.SetMesh(mesh);
-
-				if(Random.Range(0,100)%2 == 1)
-					Instantiate(mountain, go.transform.position, mountain.transform.rotation);
 
 				grid[i, j] = tile;
 			}
