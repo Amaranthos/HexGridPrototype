@@ -6,6 +6,7 @@ public class InfoPanel : MonoBehaviour {
 	public Text turnInfo;
 	public Text unitInfo;
 	public Text unitHInfo;
+	public Text toolTipInfo;
 	public Text tileInfo;
 
 	public GameObject canvas;
@@ -16,7 +17,7 @@ public class InfoPanel : MonoBehaviour {
 		UpdateTurnInfo(null);
 		UpdateTileInfo(null);
 		UpdateUnitInfo(null);
-		UpdateUnitHInfo(null);
+		//UpdateUnitHInfo(null);
 	}
 
 	public void UpdateTurnInfo(Player player) {
@@ -26,6 +27,14 @@ public class InfoPanel : MonoBehaviour {
 			turnInfo.text = player.name + "'s turn" + "\nFood Remaining: " + player.CurrentFood;
 	}
 
+	public void UpdateToolTip(Unit unit)
+	{
+		if (unit != null)
+			toolTipInfo.text = unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
+		else
+			toolTipInfo.text = "";
+	}
+	
 	public void UpdateTileInfo(Tile tile) {
 		if (!showPanel)
 			return;
@@ -41,20 +50,20 @@ public class InfoPanel : MonoBehaviour {
 			return;
 
 		if (unit)
-			unitInfo.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
+			unitInfo.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
 		else
-			unitInfo.text = "Selected Unit: \nHp: \nAttack: \nDefense: \nHit Chance: \nDodge Chance: \nRange: \nMove Points: ";
+			unitInfo.text = "Selected Unit: \nHp: \nAtk: \nDef: \nHit %: \nDodge %: \nRange: \nMove Pts: ";
 	}
 
-	public void UpdateUnitHInfo(Unit unit) {
-		if (!showPanel)
-			return;
+	//public void UpdateUnitHInfo(Unit unit) {
+	//	if (!showPanel)
+	//		return;
 
-		if (unit)
-			unitHInfo.text = "Hovered Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAttack: " + unit.attack + "\nDefense: " + unit.defense + "\nHit Chance: " + unit.hitChance + "\nDodge Chance: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Points: " + unit.movePoints;
-		else
-			unitHInfo.text = "Hovered Unit: \nHp: \nAttack: \nDefense: \nHit Chance: \nDodge Chance: \nRange: \nMove Points: ";
-	}
+	//	if (unit)
+	//		unitHInfo.text = "Hovered Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
+	//	else
+	//		unitHInfo.text = "Hovered Unit: \nHp: \nAtk: \nDef: \nHit %: \nDodge %: \nRange: \nMove Pts: ";
+	//}
 
 	public void Enabled(bool enabled) {
 		canvas.SetActive(enabled);

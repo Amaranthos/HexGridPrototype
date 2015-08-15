@@ -32,11 +32,11 @@ public class Unit : MonoBehaviour {
 	}
 
 	private void OnMouseEnter() {
-		Logic.Inst.InfoPanel.UpdateUnitHInfo(this);
+		Logic.Inst.InfoPanel.UpdateToolTip(this);
 	}
 
 	private void OnMouseExit() {
-		Logic.Inst.InfoPanel.UpdateUnitHInfo(null);
+		Logic.Inst.InfoPanel.UpdateToolTip(null);
 	}
 
 	public void MoveTowardsTile(Tile tile) {
