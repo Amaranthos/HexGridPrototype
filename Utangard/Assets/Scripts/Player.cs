@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 
 	public Rect placementField;
 
-	private List<Unit> army = new List<Unit>();
+	public List<Unit> army = new List<Unit>();
 
 	private int currentFood;
 

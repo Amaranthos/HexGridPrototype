@@ -27,6 +27,8 @@ public class Unit : MonoBehaviour {
 
 	private Player owner;
 
+	public List<Effect> currentEffects = new List<Effect>();	//Every effect this unit is currently under
+
 	private void Start() {
 		currentHP = maxHitpoints;
 	}
@@ -62,6 +64,24 @@ public class Unit : MonoBehaviour {
 
 	public bool InMoveRange(Tile tile) {
 		return Logic.Inst.Grid.GetNeighbours(index.x, index.y).Contains(tile);
+	}
+
+	private void OnTurnStart(){
+		foreach (Effect eft in currentEffects){
+			eft.duration--;
+			if(eft.duration == 0){				//If the effect is done
+				eft.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
+				currentEffects.Remove(eft);
+			}
+		}
+	}
+
+	public void AddEffect(Effect eft){
+		if(!eft.oneShot){
+			currentEffects.Add(eft);
+		}
+
+		eft.ChangeValue(this,true);
 	}
 	
 	#region Getters and Setters

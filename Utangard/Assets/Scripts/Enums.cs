@@ -2,11 +2,33 @@
 	Spearman,
 	Axemen,
 	Swordsmen,
+	Hero,
 	None
 }
 
-public enum Heroes {
-	Thor
+public enum HeroType {
+	Thor,
+	Heimdal,
+	Eir,
+	Skadi,
+	Sam
+}
+
+public enum EffectType {
+	Health,
+	Attack,
+	Defense,
+	Move,
+	Range,
+	Damage,
+	Hit,
+	Dodge
+}
+
+public enum TargetType {
+	All,
+	Single,
+	AoE
 }
 
 public enum GamePhase {
