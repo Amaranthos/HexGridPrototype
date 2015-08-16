@@ -1952,7 +1952,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.3499999, y: 7.88724995, z: 20.0361862}
+  m_LocalPosition: {x: .690683842, y: 1.32593346, z: -4.01548815}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 437704}
@@ -2242,6 +2242,7 @@ MonoBehaviour:
     cost: 0
     range: 1
     passive: 1
+    hero: {fileID: 11436680}
     affected: 00000000010000000200000003000000
     effects:
     - type: 5
@@ -2255,6 +2256,7 @@ MonoBehaviour:
     cost: 6
     range: 3
     passive: 0
+    hero: {fileID: 11436680}
     affected: 000000000100000002000000
     effects: []
   active2:
@@ -2263,6 +2265,7 @@ MonoBehaviour:
     cost: 50
     range: 0
     passive: 0
+    hero: {fileID: 11436680}
     affected: 00000000010000000200000003000000
     effects:
     - type: 5

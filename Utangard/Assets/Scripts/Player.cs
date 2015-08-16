@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 
 	public Rect placementBoundaries;
 
+	public bool wrathMode = false;
 
 	public List<Unit> army = new List<Unit>();
 
@@ -49,6 +50,12 @@ public class Player : MonoBehaviour {
 	public void StartTurn() {
 		for (int i = 0; i < army.Count; i++) {
 			army[i].HasAttacked = false;
+		}
+
+		foreach(Unit unit in army){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
+			unit.OnTurnStart();
+			
+			Debug.Log(unit.type + " Starting Turn");
 		}
 	}
 

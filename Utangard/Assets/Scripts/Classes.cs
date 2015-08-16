@@ -76,46 +76,65 @@ public class Ability{
 	public int cost;
 	public int range;
 	public bool passive;
+	public Unit hero;
 	public List<UnitType> affected = new List<UnitType>();
 	public List<Effect> effects = new List<Effect>();
 
-	public Ability(TargetType tt, bool hf, int cst, int rng, bool pass, List<UnitType> afd, List<Effect> efs){
+	public Ability(TargetType tt, bool hf, int cst, int rng, bool pass, Unit hro, List<UnitType> afd, List<Effect> efs){
 		target = tt;
 		hitFoe = hf;
 		cost = cst;
 		range = rng;
 		passive = pass;
+		hero = hro;
 		affected = afd;
 		effects = efs;
 	}
 	//Activation still needs to be finished/improved. With targeting in particular.
 	public void Activate(Unit unt){		//Should pass hero unit if target is all, or targeted unit if single/AoE
+		Player enemy;
+
+		if(hero.Owner == Logic.Inst.Players[0]){
+			enemy = Logic.Inst.Players[1];
+		}
+		else{
+			enemy = Logic.Inst.Players[0];
+		}
+
 		if(target == TargetType.All){
 			if(!hitFoe){
-				foreach(Unit unit in unt.Owner.army){
+				foreach(Unit unit in hero.Owner.army){
 					if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
 						ApplyEffects(unit);
 				}
 			}
 			else{
-				//Find opponents army, apply effects to all fo them.
+				foreach(Unit unit in enemy.army){
+					if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
+						ApplyEffects(unit);
+				}
 			}
 		}
 		else if(target == TargetType.Single){
-			//Need to check if friendly or not, and compare to hitFoe
-			ApplyEffects(unt);
+			//Check if the unit is friendly or not and if the ability targets friendly units or not.
+			if(!hitFoe && unt.Owner == hero.Owner && affected.Contains(unt.type)){
+				ApplyEffects(unt);
+			}
+			else if (hitFoe && unt.Owner != hero.Owner && affected.Contains(unt.type)){
+				ApplyEffects(unt);
+			}
+		}
+		else{
+			//Need to determine how to do AoE Targeting. This is going to be complex...
 		}
 	}
 
 	public void ApplyEffects(Unit unt){
-		foreach (Effect eft in effects){		//Need to add check for wrath mode/wrath effects
-			if(eft.wrath){
-				//This should check if the owner of the hero using the ability is in wrath mode. Need a way to get the hero using it...
-//				if(){
-//					unt.AddEffect(eft);
-//				}
+		foreach (Effect eft in effects){
+			if(eft.wrath && hero.Owner.wrathMode){ //Determines if wrath effects should be applied.
+				unt.AddEffect(eft);
 			}
-			else{
+			else if(!eft.wrath){
 				unt.AddEffect(eft);
 			}
 		}
