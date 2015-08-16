@@ -13,6 +13,19 @@ public struct PairInt {
 }
 
 [System.Serializable]
+public struct TripletInt {
+	public int x;
+	public int y;
+	public int z;
+
+	public TripletInt(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+}
+
+[System.Serializable]
 public struct Rect {
 	public int x;
 	public int w;

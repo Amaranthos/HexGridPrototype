@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Logic : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Logic : MonoBehaviour {
 	private UnitList unitList;
 	private InfoPanel infoPanel;
 	private Audio audio;
+	private Path path;
 
 	private Combat combatManager;
 
@@ -20,6 +22,8 @@ public class Logic : MonoBehaviour {
 	private int currentPlayer = 0;
 	[SerializeField]
 	private int startingPlayer = 0;
+
+	private List<Tile> highlightedTiles = new List<Tile>();
 
 	public Button endTurn;
 	
@@ -59,6 +63,11 @@ public class Logic : MonoBehaviour {
 
 		if (!infoPanel)
 			Debug.LogError("InfoPanel does not exist!");
+
+		path = GetComponent<Path>();
+
+		if (!path)
+			Debug.LogError("Pathfinder does not exist!");
 
 		infoPanel.Clear();
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
@@ -113,7 +122,8 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-
+				if(!unit.HasAttacked && unit.Owner == CurrentPlayer)
+					HighlightMoveRange(unit);
 				break;
 		}
 	}
@@ -135,14 +145,17 @@ public class Logic : MonoBehaviour {
 	private void UnitRClicked(Unit unit) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-				if (CurrentPlayer.placementField.CoordsInRange(unit.Index))
+				if (CurrentPlayer.placementBoundaries.CoordsInRange(unit.Index))
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
 						if (grid.GetTile(unit.Index).IsPassable)
 							SwapUnits(grid.GetTile(unit.Index));
 				break;
 
 			case GamePhase.CombatPhase:
-
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
+					if (unit.Owner != CurrentPlayer)
+						if (selectedUnit.InAttackRange(unit))
+							UnitCombat(selectedUnit, unit);
 				break;
 		}
 	}
@@ -150,8 +163,8 @@ public class Logic : MonoBehaviour {
 	private void TileRClicked(Tile tile) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-				if(CurrentPlayer.placementField.CoordsInRange(tile.Index))
-					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
+				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index))
+					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
 						if (tile.IsPassable)
 							if (!tile.OccupyngUnit)
 								selectedUnit.MoveTowardsTile(tile);
@@ -160,7 +173,15 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
+					if (selectedUnit.InMoveRange(tile))
+						if (!tile.OccupyngUnit) {
+							selectedUnit.MoveTowardsTile(tile);
+							HighlightMoveRange(selectedUnit);
+						}
+						else if (tile.OccupyngUnit.Owner != CurrentPlayer)
+							UnitCombat(selectedUnit, tile.OccupyngUnit);
+					
 				break;
 		}
 	}
@@ -174,10 +195,11 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void SetupGameWorld(int[][] armies) {
-		grid.GenerateGrid();		
+		grid.GenerateGrid();
 
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();
+
 			for (int j = 0; j < armies[i].Length; j++)
 				players[i].AddUnit((UnitType)armies[i][j], tiles[j], i);
 		}
@@ -188,53 +210,71 @@ public class Logic : MonoBehaviour {
 	public void StartSetupPhase() {
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 
+		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
+
 		infoPanel.Enabled(true);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	public void StartCombatPhase() {
-		Debug.Log("Start P: " + startingPlayer);
-		Debug.Log("Current P: " + currentPlayer);
-
 		currentPlayer = startingPlayer;
-
-		Debug.Log("Current P: " + currentPlayer);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
-	public void EndTurn() {
-		switch (gamePhase) {
-			case GamePhase.PlacingPhase:
-				CurrentPlayer.HasFinishedPlacing = true;
-
-				bool placingFinished = true;
-
-				for (int i = 0; i < players.Length; i++)
-					if (!players[i].HasFinishedPlacing)
-						placingFinished = false;
-
-				if (placingFinished)
-					SwtichGamePhase(GamePhase.CombatPhase);
-
-					break;
-
-			case GamePhase.CombatPhase:
-				break;
+	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
+		for (int i = 0; i < tiles.Count; i++) {
+			if (tiles[i]) {
+				tiles[i].SetLineColour(colour);
+				tiles[i].SetWidth(thickness);
+			}
 		}
+	}
 
+	private void ClearHighlightedTiles() {
+		ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
+	}
+
+	private void HighlightMoveRange(Unit unit) {
+		ClearHighlightedTiles();
+
+		highlightedTiles = grid.TilesInRange(unit.Index, unit.movePoints);
+		ChangeTileOutlines(highlightedTiles, Color.green, 0.06f);
+	}
+
+	public bool PlayesPositionedUnits() {
+		bool placingFinished = true;
+
+		for (int i = 0; i < players.Length; i++)
+			if (!players[i].HasFinishedPlacing)
+				placingFinished = false;
+
+		return placingFinished;
+	}
+
+	public void EndTurn() {
+		Player prevPlayer = CurrentPlayer;
 		ChangePlayer();
 
+		ClearSelected();
+		infoPanel.UpdateTurnInfo(CurrentPlayer);
+
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
+				prevPlayer.HasFinishedPlacing = true;
+				ChangeTileOutlines(prevPlayer.PlacementField(), Color.black, 0.03f);
+
+				if (PlayesPositionedUnits()) {
+					SwtichGamePhase(GamePhase.CombatPhase);
+					return;
+				}
+
+				ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
 				break;
 
 			case GamePhase.CombatPhase:
-				CurrentPlayer.StartTurn();
+					CurrentPlayer.StartTurn();
 				break;
 		}
-
-		ClearSelected();				
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	private void SwtichGamePhase(GamePhase phase) {
@@ -252,6 +292,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void UnitCombat(Unit att, Unit def) {
+		ClearSelected();
+		att.HasAttacked = true;
 		combatManager.ResolveCombat(att, def);
 		if (def)
 			combatManager.ResolveCombat(def, att);
@@ -270,10 +312,14 @@ public class Logic : MonoBehaviour {
 		if(selectedTile)
 			selectedTile = null;
 
+		ClearHighlightedTiles();
+
 		infoPanel.Clear();
 	}
 
 	private void UnitSelected(Unit unit) {
+		if(gamePhase == GamePhase.CombatPhase)
+			ClearHighlightedTiles();
 		selectedUnit = unit;
 		infoPanel.UpdateUnitInfo(unit);
 	}
@@ -313,6 +359,10 @@ public class Logic : MonoBehaviour {
 
 	public Player[] Players {
 		get { return players; }
+	}
+
+	public Path Path {
+		get { return path; }
 	}
 	#endregion
 }

@@ -5,8 +5,10 @@ public class Player : MonoBehaviour {
 
 	public string playerName = "";
 	public int startingFood;
+	public Color playerColour;
 
-	public Rect placementField;
+	public Rect placementBoundaries;
+
 
 	public List<Unit> army = new List<Unit>();
 
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour {
 		List<Tile> tiles = new List<Tile>();
 		for (int i = 0; i < Logic.Inst.Grid.gridSize.x; i++)
 			for (int j = 0; j < Logic.Inst.Grid.gridSize.y; j++)
-				if (placementField.CoordsInRange(Logic.Inst.Grid.grid[i, j].Index))
+				if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.grid[i, j].Index))
 					tiles.Add(Logic.Inst.Grid.grid[i, j]);
 
 		return tiles;
@@ -45,7 +47,9 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartTurn() {
-		
+		for (int i = 0; i < army.Count; i++) {
+			army[i].HasAttacked = false;
+		}
 	}
 
 	#region Getters and Setters

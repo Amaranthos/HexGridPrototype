@@ -17,13 +17,15 @@ public class Unit : MonoBehaviour {
 	[Range(0,100)]
 	public int dodgeChance;
 	public int attackRange;
+
 	private int attackModifer = 0;
 	private int defenseModifer = 0;
 	private int hitModifier = 0;
 	private int dodgeModifier = 0;
 	private int currentHP;
+	private int currentMP;
 
-	private bool hasMoved = false;
+	private bool hasAttacked = false;
 
 	private Player owner;
 
@@ -42,14 +44,19 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void MoveTowardsTile(Tile tile) {
+		//if (Logic.Inst.gamePhase == GamePhase.CombatPhase) {
+		//	List<Tile> path = Logic.Inst.Path.GetPath(Logic.Inst.Grid.GetTile(index), tile);
+
+		//	foreach (Tile t in path)
+		//		t.SetLineColour(Color.cyan);
+		//}
+
 		Logic.Inst.Grid.GetTile(index).OccupyngUnit = null;
 		index = tile.Index;
 		tile.OccupyngUnit = this;
 
-		transform.position = tile.transform.position;
 
-		if (Logic.Inst.gamePhase == GamePhase.CombatPhase)
-			hasMoved = true;
+		transform.position = tile.transform.position;
 	}
 
 	public void UnitKilled() {
@@ -63,7 +70,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InMoveRange(Tile tile) {
-		return Logic.Inst.Grid.GetNeighbours(index.x, index.y).Contains(tile);
+		return Logic.Inst.Grid.TilesInRange(index, movePoints).Contains(tile);
 	}
 
 	private void OnTurnStart(){
@@ -136,9 +143,14 @@ public class Unit : MonoBehaviour {
 		set { owner = value; }
 	}
 
-	public bool HasMoved {
-		get { return hasMoved; }
-		set { hasMoved = value; }
+	public bool HasAttacked {
+		get { return hasAttacked; }
+		set { hasAttacked = value; }
+	}
+
+	public int CurrentMocePoints {
+		get { return currentMP; }
+		set { currentMP = value; }
 	}
 	#endregion
 }

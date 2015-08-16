@@ -24,7 +24,7 @@ public class InfoPanel : MonoBehaviour {
 		if (!showPanel)
 			return;
 		if(player)
-			turnInfo.text = player.name + "'s turn" + "\nFood Remaining: " + player.CurrentFood;
+			turnInfo.text = player.name + "'s turn" + "\n" + Logic.Inst.gamePhase.ToString();
 	}
 
 	public void UpdateToolTip(Unit unit)

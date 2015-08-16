@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour {
 	private float hexWidth;
 	private float hexHeight;
 	
-	public Tile[,] grid;
+	public Tile[,] grid; //odd-q
 
 	private void Start() {
 		grid = new Tile[gridSize.x, gridSize.y];
@@ -88,6 +88,20 @@ public class Grid : MonoBehaviour {
 		return ret;
 	}
 
+	public List<Tile> GetNeighbours(PairInt index) {
+		return GetNeighbours(index.x, index.y);
+	}
+
+	public List<Tile> GetNeighbours(Tile tile) {
+		return GetNeighbours(tile.Index);
+	}
+
+	public int Distance(Tile a, Tile b) {
+		TripletInt aC = a.CoordsToCubic();
+		TripletInt bC = a.CoordsToCubic();
+		return (Mathf.Abs(aC.x - bC.x) + Mathf.Abs(aC.y - bC.y) + Mathf.Abs(aC.z - bC.z)) / 2;
+	}
+
 	public Tile GetTile(int i, int j) {
 		if (i < gridSize.x && i >= 0) {
 			if (j < gridSize.y && j >= 0) {
@@ -99,6 +113,23 @@ public class Grid : MonoBehaviour {
 
 	public Tile GetTile(PairInt index) {
 		return GetTile(index.x, index.y);
+	}
+
+	public List<Tile> TilesInRange(PairInt index, int range) {
+		List<Tile> tiles = new List<Tile>();
+
+		int cost = range;
+
+		for (int i = -cost; i <= cost; i++)
+			for (int j = Mathf.Max(-cost, -i - cost); j <= Mathf.Min(cost, -i + cost); j++) {
+				PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
+				Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+
+				if(tile && !tile.OccupyngUnit && tile.IsPassable)
+					tiles.Add(tile);
+			}
+
+		return tiles;
 	}
 
 	public void FillBoard() {
