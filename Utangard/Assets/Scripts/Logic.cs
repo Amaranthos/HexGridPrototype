@@ -9,7 +9,7 @@ public class Logic : MonoBehaviour {
 	private Grid grid;
 	private UnitList unitList;
 	private InfoPanel infoPanel;
-	private Audio audio;
+	private Audio _audio;
 	private Path path;
 
 	private Combat combatManager;
@@ -51,9 +51,9 @@ public class Logic : MonoBehaviour {
 		if (!combatManager)
 			Debug.LogError("Combat Manager does not exist!");
 
-		audio = GetComponent<Audio>();
+		_audio = GetComponent<Audio>();
 
-		if (!audio)
+		if (!_audio)
 			Debug.LogError("Audio manager does not exist!");
 
 		foreach (Player player in players)

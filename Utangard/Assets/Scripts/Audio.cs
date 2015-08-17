@@ -7,6 +7,10 @@ public class Audio : MonoBehaviour {
 
 	public List<SFXObj> sfx;
 
+	public void Start() {
+		source.GetComponent<AudioSource>();
+	}
+
 	public void PlaySFX(SFX sound) {
 		source.PlayOneShot(sfx.Find(item=>item.sound == sound).clip);
 	}
