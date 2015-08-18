@@ -209,6 +209,7 @@ public class Logic : MonoBehaviour {
 
 	public void StartSetupPhase() {
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
+		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
 		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
 
@@ -218,6 +219,7 @@ public class Logic : MonoBehaviour {
 
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
+		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
@@ -257,6 +259,7 @@ public class Logic : MonoBehaviour {
 
 		ClearSelected();
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
+		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
@@ -272,7 +275,8 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-					CurrentPlayer.StartTurn();
+				
+				CurrentPlayer.StartTurn();
 				break;
 		}
 	}
