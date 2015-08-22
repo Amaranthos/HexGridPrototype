@@ -8,7 +8,7 @@ public class Audio : MonoBehaviour {
 	public List<SFXObj> sfx;
 
 	public void Start() {
-		source.GetComponent<AudioSource>();
+		source = GetComponentInChildren<AudioSource>();
 	}
 
 	public void PlaySFX(SFX sound) {

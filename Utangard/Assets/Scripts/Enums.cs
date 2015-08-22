@@ -32,7 +32,8 @@ public enum TargetType {
 }
 
 public enum GamePhase {
-	CompositionPhase,
+	HeroSelectPhase,
+	ArmySelectPhase,
 	PlacingPhase,
 	CombatPhase
 }

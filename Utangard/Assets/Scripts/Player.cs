@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 	public bool wrathMode = false;
 
 	public List<Unit> army = new List<Unit>();
+	public Hero hero;
 
 	private int currentFood;
 

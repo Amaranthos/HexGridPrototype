@@ -27,7 +27,7 @@ public class Logic : MonoBehaviour {
 
 	public Button endTurn;
 	
-	public GamePhase gamePhase = GamePhase.CompositionPhase;
+	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
 
 	private void Awake() {
 		if (!inst)
