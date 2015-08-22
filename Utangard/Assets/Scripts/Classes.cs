@@ -39,6 +39,9 @@ public class Effect{
 
 		case EffectType.Health:
 			unt.CurrentHitpoints += strength * multiplier;
+			if(unt.CurrentHitpoints > unt.maxHitpoints){
+				unt.CurrentHitpoints = unt.maxHitpoints;
+			}
 			break;
 
 		case EffectType.Move:
@@ -51,6 +54,9 @@ public class Effect{
 
 		case EffectType.Damage:
 			unt.CurrentHitpoints -= strength * multiplier;
+			if(unt.CurrentHitpoints <= 0){
+				unt.UnitKilled();
+			}
 			break;
 
 		case EffectType.Hit:

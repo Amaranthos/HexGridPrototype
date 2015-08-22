@@ -110,6 +110,11 @@ public class Logic : MonoBehaviour {
 				}
 
 			}
+
+			if(gamePhase == GamePhase.TargetPhase){	//So players can back out of an ability cast;
+				gamePhase = GamePhase.CombatPhase;
+				print ("TARGETING ABORTED");
+			}
 		}
 	}
 
@@ -125,6 +130,16 @@ public class Logic : MonoBehaviour {
 				if(!unit.HasAttacked && unit.Owner == CurrentPlayer)
 					HighlightMoveRange(unit);
 				break;
+
+			case GamePhase.TargetPhase:		//This is horribly ineffecitent. Will likely have to store a record of each hero in logic once selected.
+				foreach (Unit unt in players[currentPlayer].army){
+					if(unt.type == UnitType.Hero){
+						unt.GetComponent<Hero>().ReceiveTarget(unit);
+						print("FOUND TARGET!");
+					}
+				}
+				print("TARGETING COMPLETE!");
+				break;
 		}
 	}
 
@@ -138,6 +153,16 @@ public class Logic : MonoBehaviour {
 
 			case GamePhase.CombatPhase:
 
+				break;
+
+			case GamePhase.TargetPhase:
+				foreach (Unit unit in players[currentPlayer].army){
+					if(unit.type == UnitType.Hero){
+//						unit.GetComponent<Hero>().ReceiveTarget(//THE UNIT ON THE TILE.);
+						print("FOUND TARGET!");
+					}
+				}
+				print("TARGETING COMPLETE!");
 				break;
 		}
 	}

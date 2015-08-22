@@ -35,7 +35,8 @@ public enum GamePhase {
 	HeroSelectPhase,
 	ArmySelectPhase,
 	PlacingPhase,
-	CombatPhase
+	CombatPhase,
+	TargetPhase
 }
 
 public enum Music {
