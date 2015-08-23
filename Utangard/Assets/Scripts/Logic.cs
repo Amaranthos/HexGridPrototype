@@ -9,6 +9,7 @@ public class Logic : MonoBehaviour {
 	private Grid grid;
 	private UnitList unitList;
 	private HeroList heroList;
+	private TerrainList terrainList;
 	private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
@@ -30,6 +31,8 @@ public class Logic : MonoBehaviour {
 	
 	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
 
+	public int numAltars;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -46,6 +49,10 @@ public class Logic : MonoBehaviour {
 		heroList = GetComponent<HeroList>();
 		if (!heroList)
 			Debug.LogError("HeroList does not exist!");
+
+		terrainList = GetComponent<TerrainList>();
+		if (!terrainList)
+			Debug.LogError("TerrainList does not exist!");
 
 		players = GetComponentsInChildren<Player>();
 		if(players.Length == 0)
@@ -252,7 +259,13 @@ public class Logic : MonoBehaviour {
 			players[i].SpawnHero(tiles[armies[i].Length], i);
 		}
 
-		SwtichGamePhase(GamePhase.PlacingPhase);
+		for (int i = 0; i < numAltars; i++) {
+			Tile rand = Grid.GetTile(Random.Range(0, Grid.gridSize.x), Random.Range(0, Grid.gridSize.y));
+
+			Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45));
+		}
+
+			SwtichGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
