@@ -36,7 +36,19 @@ public class InfoPanel : MonoBehaviour {
 	public void UpdateToolTip(Unit unit)
 	{
 		if (unit != null)
-			text.toolTipInfo.text = unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
+			text.toolTipInfo.text = (unit.type
+				+ "\n<size=15>"
+			    + " Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
+			    + "</size>\n<size=14>"
+			    + " Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints
+				+ "\n Move Pts: " + unit.movePoints 
+				+ "\n Atk: " + unit.attack
+			    + "\n Def: " + unit.defense 
+			    + "\n Hit %: " + unit.hitChance 
+			    + "\n Dodge %: " + unit.dodgeChance 
+			    + "\n Range: " + unit.attackRange
+				+ "</size>");
+
 		else
 			text.toolTipInfo.text = "";
 	}
@@ -60,8 +72,27 @@ public class InfoPanel : MonoBehaviour {
 			return;
 
 		if (unit){
-			text.unitInfoP1.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
-			text.unitInfoP2.text = "Selected Unit: " + unit.type + "\nHp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints + "\nAtk: " + unit.attack + "\nDef: " + unit.defense + "\nHit %: " + unit.hitChance + "\nDodge %: " + unit.dodgeChance + "\nRange: " + unit.attackRange + "\nMove Pts: " + unit.movePoints;
+			// if p1 is current player
+			if(Logic.Inst.CurrentPlayerNum == 0)
+				text.unitInfoP1.text = ("Selected Unit: " + unit.type 
+				                        + "\n Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
+				                        + "\n Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints 
+				                        + "\n Atk: " + unit.attack 
+				                        + "\n Def: " + unit.defense 
+				                        + "\n Hit %: " + unit.hitChance 
+				                        + "\n Dodge %: " + unit.dodgeChance 
+				                        + "\n Range: " + unit.attackRange 
+				                        + "\n Move Pts: " + unit.movePoints);
+			else
+				text.unitInfoP2.text = ("Selected Unit: " + unit.type 
+				                        + "\n Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
+				                        + "\n Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints 
+				                        + "\n Atk: " + unit.attack 
+				                        + "\n Def: " + unit.defense 
+				                        + "\n Hit %: " + unit.hitChance 
+				                        + "\n Dodge %: " + unit.dodgeChance 
+				                        + "\n Range: " + unit.attackRange 
+				                        + "\n Move Pts: " + unit.movePoints);
 		}
 		else{
 			text.unitInfoP1.text = "Selected Unit: \nHp: \nAtk: \nDef: \nHit %: \nDodge %: \nRange: \nMove Pts: ";

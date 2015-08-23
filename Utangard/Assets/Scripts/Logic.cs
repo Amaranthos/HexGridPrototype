@@ -128,12 +128,14 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-
+			_audio.PlaySFX(SFX.Unit_Click);
 				break;
 
 			case GamePhase.CombatPhase:
-				if(!unit.HasAttacked && unit.Owner == CurrentPlayer)
+				if(!unit.HasAttacked && unit.Owner == CurrentPlayer){
 					HighlightMoveRange(unit);
+					_audio.PlaySFX(SFX.Unit_Click);
+				}
 				break;
 
 			case GamePhase.TargetPhase:		//This is horribly ineffecitent. Will likely have to store a record of each hero in logic once selected.
@@ -153,11 +155,11 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-
+			_audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.CombatPhase:
-
+			_audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.TargetPhase:
@@ -177,15 +179,20 @@ public class Logic : MonoBehaviour {
 			case GamePhase.PlacingPhase:
 				if (CurrentPlayer.placementBoundaries.CoordsInRange(unit.Index))
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
-						if (grid.GetTile(unit.Index).IsPassable)
+						if (grid.GetTile(unit.Index).IsPassable){
 							SwapUnits(grid.GetTile(unit.Index));
+							_audio.PlaySFX(SFX.Unit_Move);
+							}
+
 				break;
 
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
 					if (unit.Owner != CurrentPlayer)
-						if (selectedUnit.InAttackRange(unit))
+						if (selectedUnit.InAttackRange(unit)){
 							UnitCombat(selectedUnit, unit);
+							_audio.PlaySFX(SFX.Rune_Roll);
+							}
 				break;
 		}
 	}
@@ -193,30 +200,38 @@ public class Logic : MonoBehaviour {
 	private void TileRClicked(Tile tile) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index))
+				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index)){
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
 						if (tile.IsPassable)
 							if (!tile.OccupyngUnit)
 								selectedUnit.MoveTowardsTile(tile);
 							else if (tile.OccupyngUnit.Owner == CurrentPlayer)
 								SwapUnits(tile);
+				}
+				else
+				_audio.PlaySFX(SFX.Unit_CantMoveThere);
 				break;
 
 			case GamePhase.CombatPhase:
-				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked){
 					if (selectedUnit.InMoveRange(tile))
+					{
 						if (!tile.OccupyngUnit) {
 							selectedUnit.MoveTowardsTile(tile);
 							HighlightMoveRange(selectedUnit);
 						}
 						else if (tile.OccupyngUnit.Owner != CurrentPlayer)
 							UnitCombat(selectedUnit, tile.OccupyngUnit);
-					
+					}
+					else
+						_audio.PlaySFX(SFX.Unit_CantMoveThere);
+				}
 				break;
 		}
 	}
 
 	private void SwapUnits(Tile tile) {
+		_audio.PlaySFX(SFX.Unit_Move);
 		Tile prevTile = grid.GetTile(selectedUnit.Index);
 		Unit swap = tile.OccupyngUnit;
 		swap.MoveTowardsTile(prevTile);
@@ -225,6 +240,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void SetupGameWorld(int[][] armies) {
+		GUIManager.inst.AssignTextures();
 		grid.GenerateGrid();
 
 		for (int i = 0; i < armies.Length; i++){
@@ -381,6 +397,15 @@ public class Logic : MonoBehaviour {
 
 	public Player CurrentPlayer {
 		get { return players[currentPlayer]; }
+	}
+
+	// I added this because I wanted to know the number of the current player - Callan
+	public int CurrentPlayerNum {
+		get { return currentPlayer; }
+	}
+
+	public Audio Audio{
+		get { return _audio; }
 	}
 
 	public Grid Grid {

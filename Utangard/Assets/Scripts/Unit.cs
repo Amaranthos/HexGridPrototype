@@ -50,11 +50,10 @@ public class Unit : MonoBehaviour {
 		//	foreach (Tile t in path)
 		//		t.SetLineColour(Color.cyan);
 		//}
-
+		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
 		Logic.Inst.Grid.GetTile(index).OccupyngUnit = null;
 		index = tile.Index;
 		tile.OccupyngUnit = this;
-
 
 		transform.position = tile.transform.position;
 	}
@@ -63,6 +62,7 @@ public class Unit : MonoBehaviour {
 		owner.RemoveUnit(this);
 		Debug.Log(type + " was killed");
 		DestroyImmediate(this.gameObject);
+		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 	}
 
 	public bool InAttackRange(Unit unit) {
