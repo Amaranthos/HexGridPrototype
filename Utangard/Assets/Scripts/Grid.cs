@@ -118,6 +118,11 @@ public class Grid : MonoBehaviour {
 	public List<Tile> TilesInRange(PairInt index, int range) {
 		List<Tile> tiles = new List<Tile>();
 
+		if (range == 0) { 
+			tiles.Add(GetTile(index));
+			return tiles;
+		}
+
 		int cost = range;
 
 		for (int i = -cost; i <= cost; i++)

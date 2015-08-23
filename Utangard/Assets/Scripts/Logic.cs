@@ -8,6 +8,7 @@ public class Logic : MonoBehaviour {
 	private static Logic inst;
 	private Grid grid;
 	private UnitList unitList;
+	private HeroList heroList;
 	private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
@@ -41,6 +42,10 @@ public class Logic : MonoBehaviour {
 		unitList = GetComponent<UnitList>();
 		if(!unitList)
 			Debug.LogError("UnitList does not exist!");
+
+		heroList = GetComponent<HeroList>();
+		if (!heroList)
+			Debug.LogError("HeroList does not exist!");
 
 		players = GetComponentsInChildren<Player>();
 		if(players.Length == 0)
@@ -226,13 +231,17 @@ public class Logic : MonoBehaviour {
 			List<Tile> tiles = players[i].PlacementField();
 
 			for (int j = 0; j < armies[i].Length; j++)
-				players[i].AddUnit((UnitType)armies[i][j], tiles[j], i);
+				players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
+
+			players[i].SpawnHero(tiles[armies[i].Length], i);
 		}
 
 		SwtichGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
+		GUIManager.inst.GUICanvas.SetActive(true);
+
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
@@ -380,6 +389,10 @@ public class Logic : MonoBehaviour {
 
 	public UnitList UnitList {
 		get { return unitList; }
+	}
+
+	public HeroList HeroList {
+		get { return heroList; }
 	}
 
 	public InfoPanel InfoPanel {

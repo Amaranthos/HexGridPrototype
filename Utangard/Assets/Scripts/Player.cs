@@ -19,8 +19,18 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private bool hasFinishedPlacing = false;
 
-	public void AddUnit(UnitType type, Tile tile, int index) {
+	public void SpawnUnit(UnitType type, Tile tile, int index) {
 		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
+		Unit unit = temp.GetComponent<Unit>();
+		unit.Index = tile.Index;
+		unit.Owner = this;
+		tile.OccupyngUnit = unit;
+		army.Add(unit);
+		temp.transform.parent = this.transform;
+	}
+
+	public void SpawnHero(Tile tile, int index) {
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;

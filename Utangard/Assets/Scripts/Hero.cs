@@ -11,8 +11,8 @@ public class Hero : MonoBehaviour {
 	private Unit target;
 
 	void Start () {
-		gameObject.GetComponent<Unit>().Owner = Logic.Inst.Players[0];	//This is purely for testing. Be sure to remove later.
-		Logic.Inst.Players[0].army.Add(gameObject.GetComponent<Unit>());	//Also for testing.
+		//gameObject.GetComponent<Unit>().Owner = Logic.Inst.Players[0];	//This is purely for testing. Be sure to remove later.
+		//Logic.Inst.Players[0].army.Add(gameObject.GetComponent<Unit>());	//Also for testing.
 	}
 
 	void Update () {

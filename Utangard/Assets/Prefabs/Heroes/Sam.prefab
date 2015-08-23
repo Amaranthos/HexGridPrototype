@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdc194f78765db4992c4be496558eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 4
   passive:
     target: 2
     hitFoe: 1
@@ -2273,6 +2273,7 @@ MonoBehaviour:
       strength: 250
       oneShot: 1
       wrath: 0
+  currentAbility: 0
 --- !u!114 &11436680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2293,6 +2294,7 @@ MonoBehaviour:
   hitChance: 80
   dodgeChance: 30
   attackRange: 1
+  defenseModifer: 0
   currentEffects: []
 --- !u!137 &13712552
 SkinnedMeshRenderer:
@@ -2706,7 +2708,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126368}
