@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -7,13 +8,15 @@ public class Effect{
 	public EffectType type;
 	public int duration;
 	public int strength;
+    public int range;
 	public bool oneShot;
 	public bool wrath;
 	
-	public Effect(EffectType et, int dur, int str, bool os, bool wrt){
+	public Effect(EffectType et, int dur, int str, int rng, bool os, bool wrt){
 		type = et;
 		duration = dur;
 		strength = str;
+        range = rng;
 		oneShot = os;
 		wrath = wrt;
 	}
@@ -81,16 +84,18 @@ public class Ability{
 	public bool hitFoe;
 	public int cost;
 	public int range;
-	public bool passive;
+    public int stages;
+	public PassiveType passive;
 	public Unit hero;
 	public List<UnitType> affected = new List<UnitType>();
 	public List<Effect> effects = new List<Effect>();
 
-	public Ability(TargetType tt, bool hf, int cst, int rng, bool pass, Unit hro, List<UnitType> afd, List<Effect> efs){
+	public Ability(TargetType tt, bool hf, int cst, int rng, int stg, PassiveType pass, Unit hro, List<UnitType> afd, List<Effect> efs){
 		target = tt;
 		hitFoe = hf;
 		cost = cst;
 		range = rng;
+        stages = stg;
 		passive = pass;
 		hero = hro;
 		affected = afd;
@@ -107,41 +112,73 @@ public class Ability{
 			enemy = Logic.Inst.Players[0];
 		}
 
-		if(target == TargetType.All){
-			if(!hitFoe){
-				foreach(Unit unit in hero.Owner.army){
-					if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
-						ApplyEffects(unit);
+		if(passive == PassiveType.None){
+			if(target == TargetType.All){
+				if(!hitFoe){
+					foreach(Unit unit in hero.Owner.army){
+						if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
+							ApplyEffects(unit);
+					}
+				}
+				else{
+					foreach(Unit unit in enemy.army){
+						if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
+							ApplyEffects(unit);
+					}
+				}
+			}
+			else if(target == TargetType.Single){
+				//Check if the unit is friendly or not and if the ability targets friendly units or not.
+				if(!hitFoe && unt.Owner == hero.Owner && affected.Contains(unt.type)){
+					ApplyEffects(unt);
+				}
+				else if (hitFoe && unt.Owner != hero.Owner && affected.Contains(unt.type)){
+					ApplyEffects(unt);
 				}
 			}
 			else{
-				foreach(Unit unit in enemy.army){
-					if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
-						ApplyEffects(unit);
-				}
-			}
-		}
-		else if(target == TargetType.Single){
-			//Check if the unit is friendly or not and if the ability targets friendly units or not.
-			if(!hitFoe && unt.Owner == hero.Owner && affected.Contains(unt.type)){
-				ApplyEffects(unt);
-			}
-			else if (hitFoe && unt.Owner != hero.Owner && affected.Contains(unt.type)){
 				ApplyEffects(unt);
 			}
 		}
-		else{
-			//Need to determine how to do AoE Targeting. This is going to be complex...
+		else if(passive == PassiveType.OneShot){
+			ApplyEffects(unt);
 		}
 	}
 
 	public void ApplyEffects(Unit unt){
+		List<Tile> inRange = new List<Tile>();
+
 		foreach (Effect eft in effects){
+
 			if(eft.wrath && hero.Owner.wrathMode){ //Determines if wrath effects should be applied.
-				unt.AddEffect(eft);
+				inRange = Logic.Inst.Grid.AbilityRange(unt.Index,eft.range);
+				foreach(Tile tile in inRange){
+					if(!hitFoe){
+						if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner){
+							tile.OccupyngUnit.AddEffect(eft);
+						}
+					}
+					else{
+						if(tile.OccupyngUnit && tile.OccupyngUnit.Owner != hero.Owner){
+							tile.OccupyngUnit.AddEffect(eft);
+						}
+					}
+				}
 			}
 			else if(!eft.wrath){
-				unt.AddEffect(eft);
+				inRange = Logic.Inst.Grid.AbilityRange(unt.Index,eft.range);
+				foreach(Tile tile in inRange){
+					if(!hitFoe){
+						if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner){
+							tile.OccupyngUnit.AddEffect(eft);
+						}
+					}
+					else{
+						if(tile.OccupyngUnit && tile.OccupyngUnit.Owner != hero.Owner){
+							tile.OccupyngUnit.AddEffect(eft);
+						}
+					}
+				}
 			}
 		}
 	}

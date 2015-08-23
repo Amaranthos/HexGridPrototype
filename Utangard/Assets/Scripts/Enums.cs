@@ -25,6 +25,13 @@ public enum EffectType {
 	Dodge
 }
 
+public enum PassiveType {
+	None,
+	Global,
+    Persitent,
+    OneShot
+}
+
 public enum TargetType {
 	All,
 	Single,

@@ -2236,13 +2236,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  movePoints: 3
-  maxHitpoints: 90
-  attack: 60
+  movePoints: 2
+  maxHitpoints: 100
+  attack: 30
   defense: 20
-  cost: 3
-  hitChance: 80
-  dodgeChance: 30
+  cost: 0
+  hitChance: 70
+  dodgeChance: 20
   attackRange: 1
   currentEffects: []
 --- !u!114 &11406314
@@ -2261,14 +2261,16 @@ MonoBehaviour:
     target: 2
     hitFoe: 0
     cost: 0
-    range: 1
-    passive: 1
+    range: 0
+    stages: 0
+    passive: 3
     hero: {fileID: 11405034}
     affected: 000000000100000002000000
     effects:
     - type: 0
       duration: 0
       strength: 10
+      range: 1
       oneShot: 1
       wrath: 0
   active1:
@@ -2276,6 +2278,7 @@ MonoBehaviour:
     hitFoe: 0
     cost: 12
     range: 3
+    stages: 0
     passive: 0
     hero: {fileID: 11405034}
     affected: 00000000010000000200000003000000
@@ -2283,11 +2286,13 @@ MonoBehaviour:
     - type: 0
       duration: 0
       strength: 50
+      range: 0
       oneShot: 1
       wrath: 0
     - type: 2
       duration: 1
       strength: 20
+      range: 0
       oneShot: 0
       wrath: 1
   active2:
@@ -2295,6 +2300,7 @@ MonoBehaviour:
     hitFoe: 0
     cost: 18
     range: 0
+    stages: 0
     passive: 0
     hero: {fileID: 11405034}
     affected: 00000000010000000200000003000000
@@ -2302,18 +2308,23 @@ MonoBehaviour:
     - type: 0
       duration: 0
       strength: 15
+      range: 0
       oneShot: 1
       wrath: 0
     - type: 1
       duration: 2
       strength: 10
+      range: 0
       oneShot: 0
       wrath: 1
     - type: 2
       duration: 2
       strength: 10
+      range: 0
       oneShot: 0
       wrath: 1
+  currentAbility: 0
+  currentRange: 0
 --- !u!137 &13720984
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2726,7 +2737,43 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: passive.passive
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.effects.Array.data[0].range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movePoints
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHitpoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitChance
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeChance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 181458}

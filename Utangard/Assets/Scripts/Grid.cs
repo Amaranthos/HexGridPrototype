@@ -137,6 +137,28 @@ public class Grid : MonoBehaviour {
 		return tiles;
 	}
 
+	public List<Tile> AbilityRange(PairInt index, int range) {
+		List<Tile> tiles = new List<Tile>();
+		
+		if (range == 0) { 
+			tiles.Add(GetTile(index));
+			return tiles;
+		}
+		
+		int cost = range;
+		
+		for (int i = -cost; i <= cost; i++)
+		for (int j = Mathf.Max(-cost, -i - cost); j <= Mathf.Min(cost, -i + cost); j++) {
+			PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
+			Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+			
+			if(tile)
+				tiles.Add(tile);
+		}
+		
+		return tiles;
+	}
+
 	public void FillBoard() {
 		int counter = 0;
 		for(int i = 0; i < gridSize.x; i++) {

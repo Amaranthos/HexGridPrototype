@@ -2237,14 +2237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   movePoints: 3
-  maxHitpoints: 90
-  attack: 60
-  defense: 20
-  cost: 3
-  hitChance: 80
+  maxHitpoints: 70
+  attack: 70
+  defense: 15
+  cost: 0
+  hitChance: 100
   dodgeChance: 30
-  attackRange: 1
-  defenseModifer: 0
+  attackRange: 2
   currentEffects: []
 --- !u!114 &11480754
 MonoBehaviour:
@@ -2263,6 +2262,7 @@ MonoBehaviour:
     hitFoe: 0
     cost: 0
     range: 0
+    stages: 0
     passive: 1
     hero: {fileID: 11473060}
     affected: 00000000010000000200000003000000
@@ -2272,6 +2272,7 @@ MonoBehaviour:
     hitFoe: 0
     cost: 15
     range: 0
+    stages: 0
     passive: 0
     hero: {fileID: 11473060}
     affected: 00000000
@@ -2279,11 +2280,13 @@ MonoBehaviour:
     - type: 4
       duration: 1
       strength: 1
+      range: 0
       oneShot: 0
       wrath: 0
     - type: 6
       duration: 1
       strength: 35
+      range: 0
       oneShot: 0
       wrath: 1
   active2:
@@ -2291,6 +2294,7 @@ MonoBehaviour:
     hitFoe: 0
     cost: 12
     range: 0
+    stages: 0
     passive: 0
     hero: {fileID: 11473060}
     affected: 00000000
@@ -2298,19 +2302,23 @@ MonoBehaviour:
     - type: 1
       duration: 1
       strength: 25
+      range: 0
       oneShot: 0
       wrath: 0
     - type: 4
       duration: 1
       strength: -1
+      range: 0
       oneShot: 0
       wrath: 0
     - type: 1
       duration: 1
       strength: 15
+      range: 0
       oneShot: 0
       wrath: 1
   currentAbility: 0
+  currentRange: 0
 --- !u!137 &13700766
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2727,6 +2735,34 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHitpoints
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defense
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hitChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeChance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackRange
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

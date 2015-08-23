@@ -19,7 +19,7 @@ public class Unit : MonoBehaviour {
 	public int attackRange;
 
 	private int attackModifer = 0;
-	public int defenseModifer = 0;
+	private int defenseModifer = 0;
 	private int hitModifier = 0;
 	private int dodgeModifier = 0;
 	private int currentHP;
@@ -81,13 +81,17 @@ public class Unit : MonoBehaviour {
 //				currentEffects.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
 			}
 		}
+
+		if(type == UnitType.Hero){
+			gameObject.GetComponent<Hero>().ApplyPassive();
+		}
 	}
 
 	public void AddEffect(Effect eft){
 		Effect nEft;
 
 		if(!eft.oneShot){
-			nEft = new Effect(eft.type,eft.duration,eft.strength,eft.oneShot,eft.wrath);
+			nEft = new Effect(eft.type,eft.duration,eft.strength,eft.range,eft.oneShot,eft.wrath);
 			currentEffects.Add(nEft);
 		}
 
