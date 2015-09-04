@@ -276,6 +276,8 @@ public class Logic : MonoBehaviour {
 
 		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
 
+		Camera.main.GetComponent<Vision>().enabled = true;
+
 		infoPanel.Enabled(true);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
