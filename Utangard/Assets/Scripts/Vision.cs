@@ -36,18 +36,18 @@ public class Vision : MonoBehaviour {
 
 		transform.position += move * moveSpeed;
 
-		float currSize = Input.GetAxis("Mouse ScrollWheel");
+		float currSize = camSize - Input.GetAxis("Mouse ScrollWheel");
 
-		//if (zoomRange.x > currSize || currSize < zoomRange.y)
-		//	camSize = currSize;
+		if (zoomRange.x > currSize || currSize < zoomRange.y)
+			camSize = currSize;
 
-		if (cam.orthographicSize > zoomRange.x && cam.orthographicSize < zoomRange.y)
-			cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camSize - currSize, Time.deltaTime * zoomSpeed);
-		//else
-		//	if (cam.orthographicSize < zoomRange.x)
-		//		cam.orthographicSize = zoomRange.x;
-		//	else
-		//		cam.orthographicSize = zoomRange.y;
+		if (cam.orthographicSize >= zoomRange.x && cam.orthographicSize <= zoomRange.y)
+			cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, camSize, Time.deltaTime * zoomSpeed);
+		else
+			if (cam.orthographicSize < zoomRange.x) {
+				cam.orthographicSize = zoomRange.x + Mathf.Epsilon;
+				camSize = cam.orthographicSize;
+			}
 	}
 
 	private void LateUpdate() {
