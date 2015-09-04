@@ -10,7 +10,9 @@ public class Grid : MonoBehaviour {
 
 	private float hexWidth;
 	private float hexHeight;
-	
+
+	public Vector3 centre;
+
 	public Tile[,] grid; //odd-q
 
 	private void Start() {
@@ -63,6 +65,7 @@ public class Grid : MonoBehaviour {
 			for (int j = 0; j < gridSize.y; j++) {
 				GameObject go = (GameObject)Instantiate(hexObj, Vector3.zero, Quaternion.identity);
 				go.transform.position = new Vector3(i * hexWidth * 3 / 4, 0.0f, j * hexHeight + ((i & 1) * 0.5f * hexHeight));
+				centre += go.transform.position;
 				go.name = "Hex [" + i + "," + j + "]";
 				go.transform.parent = this.transform;
 				
@@ -74,6 +77,10 @@ public class Grid : MonoBehaviour {
 				grid[i, j] = tile;
 			}
 		}
+
+		centre /= gridSize.x * gridSize.y;
+
+		transform.position -= centre;
 	}
 
 	public List<Tile> GetNeighbours(int x, int y) {
