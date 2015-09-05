@@ -10,6 +10,14 @@ public struct PairInt {
 		this.x = x;
 		this.y = y;
 	}
+
+	public static bool operator ==(PairInt lhs, PairInt rhs) {
+		return (lhs.x == rhs.x) && (lhs.y == rhs.y);
+	}
+
+	public static bool operator !=(PairInt lhs, PairInt rhs) {
+		return (lhs.x != rhs.x) || (lhs.y != rhs.y);
+	}
 }
 
 [System.Serializable]

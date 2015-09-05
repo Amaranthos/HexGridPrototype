@@ -14,7 +14,10 @@ public class Player : MonoBehaviour {
 	public List<Unit> army = new List<Unit>();
 	public Hero hero;
 
+	public List<Altar> capturedAltars;
+
 	private int currentFood;
+	private int faith;
 
 	[SerializeField]
 	private bool hasFinishedPlacing = false;
@@ -83,6 +86,11 @@ public class Player : MonoBehaviour {
 	public bool HasFinishedPlacing {
 		get { return hasFinishedPlacing; }
 		set { hasFinishedPlacing = value; }
+	}
+
+	public int Faith {
+		get { return faith; }
+		set { faith = value; }
 	}
 	#endregion
 }

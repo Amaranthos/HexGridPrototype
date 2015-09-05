@@ -27,6 +27,9 @@ public class Logic : MonoBehaviour {
 
 	private List<Tile> highlightedTiles = new List<Tile>();
 
+	[SerializeField]
+	private List<Altar> altars = new List<Altar>();
+
 	public Button endTurn;
 	
 	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
@@ -100,6 +103,12 @@ public class Logic : MonoBehaviour {
 
 					if (tile)
 						TileLClicked(tile);
+					else {
+						Altar altar = go.GetComponent<Altar>();
+
+						if (altar)
+							TileLClicked(grid.GetTile(altar.Index));
+					}
 				}
 
 			}
@@ -119,6 +128,12 @@ public class Logic : MonoBehaviour {
 
 					if (tile)
 						TileRClicked(tile);
+					else {
+						Altar altar = go.GetComponent<Altar>();
+
+						if (altar)
+							TileRClicked(grid.GetTile(altar.Index));
+					}
 				}
 
 			}
@@ -199,7 +214,7 @@ public class Logic : MonoBehaviour {
 						if (selectedUnit.InAttackRange(unit)){
 							UnitCombat(selectedUnit, unit);
 							_audio.PlaySFX(SFX.Rune_Roll);
-							}
+						}
 				break;
 		}
 	}
@@ -261,11 +276,12 @@ public class Logic : MonoBehaviour {
 
 		for (int i = 0; i < numAltars; i++) {
 			Tile rand = Grid.GetTile(Random.Range(0, Grid.gridSize.x), Random.Range(0, Grid.gridSize.y));
-
-			Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45));
+			Altar altar =  ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
+			altar.Index = rand.Index;
+			altars.Add(altar);
 		}
 
-			SwtichGamePhase(GamePhase.PlacingPhase);
+		SwtichGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
@@ -403,6 +419,10 @@ public class Logic : MonoBehaviour {
 		Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 
 		return hit;
+	}
+
+	public Altar GetAltar(PairInt Index) {
+		return altars.Find(item=>item.Index==Index);
 	}
 
 	#region Getters and Setters 	

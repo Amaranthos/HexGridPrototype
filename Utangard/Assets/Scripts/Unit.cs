@@ -56,6 +56,11 @@ public class Unit : MonoBehaviour {
 		tile.OccupyngUnit = this;
 
 		transform.position = tile.transform.position;
+
+		Altar altar = Logic.Inst.GetAltar(tile.Index);
+
+		if (altar)
+			altar.PlayerCaptureAltar(owner);
 	}
 
 	public void UnitKilled() {
