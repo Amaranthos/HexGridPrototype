@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
+public class CSVParser{
+	public string GetCSV(string filePath)
+	{
+		string fileData = System.IO.File.ReadAllText(filePath);
+		return fileData;
+	}
+}
+
+[System.Serializable]
 public class Effect{
 	
 	public EffectType type;
