@@ -74,6 +74,13 @@ public class Hero : MonoBehaviour {
 				}
 
 				target = unit;
+
+				ready = true;
+			}
+
+			else{
+				target = null;
+				ready = false;
 			}
 		}
 		else{
@@ -93,9 +100,10 @@ public class Hero : MonoBehaviour {
 		if(currentStage == AbilityStage.Done){
 			Logic.Inst.gamePhase = GamePhase.CombatPhase;
 			Logic.Inst.ClearHighlightedTiles();
+			target = null;
 			print("Back to combat!");
 		}
-		else{
+		else if(ready){
 			currentStage = currentStage = AbilityStage.GetLocation;
 		}
 	}
