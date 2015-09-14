@@ -23,8 +23,8 @@ public class Vision : MonoBehaviour {
 		cam = GetComponent<Camera>();
 		camSize = cam.orthographicSize;
 
-		mapX = Logic.Inst.Grid.gridSize.x * (Logic.Inst.Grid.hexRadius + 0.5f);
-		mapY = Logic.Inst.Grid.gridSize.y * (Logic.Inst.Grid.hexRadius + 0.6f);
+		mapX = Logic.Inst.Grid.gridSize.x * (Logic.Inst.Grid.hexRadius + 0.6f);
+		mapY = Logic.Inst.Grid.gridSize.y * (Logic.Inst.Grid.hexRadius + 0.7f);
 
 		CalculateCameraBounds();
 	}
@@ -51,7 +51,6 @@ public class Vision : MonoBehaviour {
 	}
 
 	private void LateUpdate() {
-		
 
 		Vector3 pos = transform.position;
 
@@ -59,6 +58,8 @@ public class Vision : MonoBehaviour {
 		pos.z = Mathf.Clamp(pos.z, minY, maxY);
 
 		transform.position = pos;
+
+		CalculateCameraBounds();
 	}
 
 	private void CalculateCameraBounds() {

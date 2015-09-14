@@ -20,10 +20,10 @@ public class Logic : MonoBehaviour {
 	private Tile selectedTile;
 
 	private Player[] players;
+	private int currentPlayer = -1;
+	private int startingPlayer = -1;
 	[SerializeField]
-	private int currentPlayer = 0;
-	[SerializeField]
-	private int startingPlayer = 0;
+	private int winningPlayer = -1;
 
 	private List<Tile> highlightedTiles = new List<Tile>();
 
@@ -35,6 +35,10 @@ public class Logic : MonoBehaviour {
 	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
 
 	public int numAltars;
+
+	public int turnsForVictory;
+	[SerializeField]
+	private int turnsRemaining;
 
 	private void Awake() {
 		if (!inst)
@@ -85,7 +89,6 @@ public class Logic : MonoBehaviour {
 			Debug.LogError("Pathfinder does not exist!");
 
 		infoPanel.Clear();
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	private void Update() {
@@ -356,10 +359,53 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-				
+				CheckIfPlayerWinning();
+
 				CurrentPlayer.StartTurn();
 				break;
 		}
+	}
+
+	private void CheckIfPlayerWinning() {
+		int winning = -1;
+		for (int i = 0; i < players.Length; i++)
+			if (players[i].capturedAltars.Count == numAltars)
+				winning = i;
+
+		if (winning != -1) {
+			if (winning == winningPlayer) {
+				turnsRemaining -= 1;
+
+				if (turnsRemaining <= 0)
+					EndGame();
+			}
+			else {
+				winningPlayer = winning;
+				turnsRemaining = turnsForVictory;
+			}
+		}
+		else {
+			for (int i = 0; i < players.Length; i++)
+				if (players[i].army.Count <= 0)
+					PlayerEliminated(i);
+		}
+	}
+
+	private void PlayerEliminated(int player) {
+		players[player].Defeated = true;
+
+		int countAlive = 0;
+
+		for (int i = 0; i < players.Length; i++)
+			if (!players[i].Defeated)
+				countAlive++;
+
+		if (countAlive <= 1)
+			EndGame();
+	}
+
+	private void EndGame() {
+		gamePhase = GamePhase.FinishedPhase;
 	}
 
 	private void SwtichGamePhase(GamePhase phase) {
@@ -389,6 +435,9 @@ public class Logic : MonoBehaviour {
 			currentPlayer++;
 		else
 			currentPlayer = 0;
+
+		if (CurrentPlayer.Defeated)
+			ChangePlayer();
 	}
 	
 	private void ClearSelected() {

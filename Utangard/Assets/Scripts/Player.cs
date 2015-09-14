@@ -19,8 +19,14 @@ public class Player : MonoBehaviour {
 	private int currentFood;
 	private int faith;
 
+	public bool Defeated { get; set; }
+
 	[SerializeField]
 	private bool hasFinishedPlacing = false;
+
+	private void Awake() {
+		Defeated = false;
+	}
 
 	public void SpawnUnit(UnitType type, Tile tile, int index) {
 		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));

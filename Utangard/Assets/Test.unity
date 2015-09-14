@@ -663,8 +663,8 @@ MonoBehaviour:
   hexObj: {fileID: 123734, guid: ce89a4a15ac81a548a497de7de1fdca9, type: 2}
   mountain: {fileID: 100000, guid: bd1492a25ccdd944d99ad687343cc178, type: 3}
   gridSize:
-    x: 10
-    y: 10
+    x: 20
+    y: 20
   hexRadius: .600000024
   centre: {x: 0, y: 0, z: 0}
 --- !u!4 &15888651
@@ -4318,8 +4318,8 @@ MonoBehaviour:
   playerColour: {r: 1, g: 0, b: 0, a: 1}
   placementBoundaries:
     x: 0
-    w: 10
-    y: 9
+    w: 20
+    y: 17
     h: 3
   wrathMode: 0
   army: []
@@ -9948,7 +9948,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9996,11 +9996,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab009b50017ec442822a6f07391eea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: .125
+  moveSpeed: .25
   zoomRange:
-    x: 1
-    y: 6
-  zoomSpeed: 2
+    x: 2
+    y: 10
+  zoomSpeed: 5
 --- !u!1 &700538394
 GameObject:
   m_ObjectHideFlags: 0
@@ -12173,12 +12173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8027aebdec1729743a3ca3c809fb6c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayer: 0
-  startingPlayer: 0
+  winningPlayer: -1
   altars: []
   endTurn: {fileID: 0}
   gamePhase: 0
-  numAltars: 8
+  numAltars: 2
+  turnsForVictory: 2
+  turnsRemaining: 0
 --- !u!114 &884955395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27544,7 +27545,7 @@ MonoBehaviour:
   playerColour: {r: 0, g: 0, b: 1, a: 1}
   placementBoundaries:
     x: 0
-    w: 10
+    w: 20
     y: 0
     h: 3
   wrathMode: 0
