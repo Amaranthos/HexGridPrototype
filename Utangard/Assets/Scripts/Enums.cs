@@ -22,7 +22,8 @@ public enum EffectType {
 	Range,
 	Damage,
 	Hit,
-	Dodge
+	Dodge,
+	Position
 }
 
 public enum PassiveType {
@@ -45,6 +46,12 @@ public enum GamePhase {
 	CombatPhase,
 	TargetPhase,
 	FinishedPhase
+}
+
+public enum AbilityStage {
+	GetUnit,
+	GetLocation,
+	Done
 }
 
 public enum Music {

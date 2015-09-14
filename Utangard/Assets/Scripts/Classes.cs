@@ -83,7 +83,7 @@ public class Effect{
 			Debug.Log("Something went terribly wrong with this effect.");
 			break;
 		}
-	}	
+	}
 }
 
 [System.Serializable]
@@ -190,5 +190,19 @@ public class Ability{
 				}
 			}
 		}
+	}
+
+	public void TeleportUnit(Unit unit, Tile tile){
+		//Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
+		Logic.Inst.Grid.GetTile(unit.Index).OccupyngUnit = null;
+		unit.Index = tile.Index;
+		tile.OccupyngUnit = unit;
+		
+		unit.transform.position = tile.transform.position;
+		
+		Altar altar = Logic.Inst.GetAltar(tile.Index);
+		
+		if (altar)
+			altar.PlayerCaptureAltar(unit.Owner);
 	}
 }

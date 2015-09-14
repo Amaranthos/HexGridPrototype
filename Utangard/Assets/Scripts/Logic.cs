@@ -144,6 +144,8 @@ public class Logic : MonoBehaviour {
 			if(gamePhase == GamePhase.TargetPhase){	//So players can back out of an ability cast;
 				gamePhase = GamePhase.CombatPhase;
 				print ("TARGETING ABORTED");
+				ClearHighlightedTiles();
+				UnitLClicked(heroList.heroes[currentPlayer].hero);
 			}
 		}
 	}
@@ -164,10 +166,14 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.TargetPhase:		//This is horribly ineffecitent. Will likely have to store a record of each hero in logic once selected.
+				Hero hero;
 				foreach (Unit unt in players[currentPlayer].army){
 					if(unt.type == UnitType.Hero){
-						unt.GetComponent<Hero>().ReceiveTarget(unit);
-						print("FOUND TARGET!");
+						hero = unt.GetComponent<Hero>();
+						if(hero.currentStage == AbilityStage.GetUnit){
+							hero.ReceiveTarget(unit,grid.GetTile(unit.Index));
+							print("FOUND TARGET!");
+						}
 					}
 				}
 				print("TARGETING COMPLETE!");
@@ -188,10 +194,19 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.TargetPhase:
+				Hero hero;
 				foreach (Unit unit in players[currentPlayer].army){
 					if(unit.type == UnitType.Hero){
-//						unit.GetComponent<Hero>().ReceiveTarget(//THE UNIT ON THE TILE.);
-						print("FOUND TARGET!");
+						hero = unit.GetComponent<Hero>();
+						if(hero.currentStage == AbilityStage.GetUnit){
+							hero.ReceiveTarget(tile.OccupyngUnit,tile);
+							print("FOUND TARGET!");
+						}
+
+						else{
+							hero.ReceiveTarget(unit,tile);
+							print ("FOUND LOCATION");
+						}
 					}
 				}
 				print("TARGETING COMPLETE!");
@@ -316,7 +331,7 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	private void ClearHighlightedTiles() {
+	public void ClearHighlightedTiles() {
 		ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
 	}
 
@@ -325,6 +340,13 @@ public class Logic : MonoBehaviour {
 
 		highlightedTiles = grid.TilesInRange(unit.Index, unit.movePoints);
 		ChangeTileOutlines(highlightedTiles, Color.green, 0.06f);
+	}
+
+	public void HighlightAbilityRange (Ability ability, Unit unit){
+		ClearHighlightedTiles();
+
+		highlightedTiles = grid.TilesInRange(unit.Index, ability.range);
+		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.06f);
 	}
 
 	public bool PlayesPositionedUnits() {

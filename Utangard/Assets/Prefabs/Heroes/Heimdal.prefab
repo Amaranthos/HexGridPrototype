@@ -2276,7 +2276,13 @@ MonoBehaviour:
     passive: 0
     hero: {fileID: 11468216}
     affected: 00000000010000000200000003000000
-    effects: []
+    effects:
+    - type: 8
+      duration: 0
+      strength: 0
+      range: 3
+      oneShot: 1
+      wrath: 0
   active2:
     target: 2
     hitFoe: 0
@@ -2301,6 +2307,8 @@ MonoBehaviour:
       wrath: 1
   currentAbility: 0
   currentRange: 0
+  currentStage: 2
+  hero: {fileID: 0}
 --- !u!137 &13707916
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2716,7 +2724,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: active1.effects.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: active2.affected.Array.size
@@ -2724,7 +2732,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: active1.effects.Array.data[0].type
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: active1.effects.Array.data[0].strength
@@ -2785,6 +2793,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dodgeChance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.effects.Array.data[0].range
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
