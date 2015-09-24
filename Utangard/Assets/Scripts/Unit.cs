@@ -57,6 +57,12 @@ public class Unit : MonoBehaviour {
 
 		transform.position = tile.transform.position;
 
+		if(owner.hero.type == HeroType.Heimdal){
+			foreach(Unit unit in owner.army){
+				CalculateModifiers();
+			}
+		}
+
 		Altar altar = Logic.Inst.GetAltar(tile.Index);
 
 		if (altar)
@@ -84,8 +90,13 @@ public class Unit : MonoBehaviour {
 			if(eft.duration == 0){				//If the effect is done
 				eft.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
 //				currentEffects.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
+				if(eft.skadiWrath){				//Oh god I need a better check than this.
+					owner.hero.skadiWrathCheck = false;
+				}
 			}
 		}
+
+		CalculateModifiers();
 
 		if(type == UnitType.Hero){
 			gameObject.GetComponent<Hero>().ApplyPassive();
@@ -96,13 +107,57 @@ public class Unit : MonoBehaviour {
 		Effect nEft;
 
 		if(!eft.oneShot){
-			nEft = new Effect(eft.type,eft.duration,eft.strength,eft.range,eft.oneShot,eft.wrath);
+			nEft = new Effect(eft.type,eft.duration,eft.strength,eft.range,eft.oneShot,eft.wrath,eft.skadiWrath);
 			currentEffects.Add(nEft);
 		}
 
 		eft.ChangeValue(this,true);
 	}
-	
+
+	public void CalculateModifiers(){
+		attackModifer = 0;
+		defenseModifer = 0;
+		hitModifier = 0;
+		dodgeModifier = 0;
+		
+		CheckForAllies();
+		foreach (Effect eft in currentEffects){
+			if(eft.duration > 0){
+				eft.ChangeValue(this,true);
+			}
+		}
+	}
+
+	public void CheckForAllies(){
+		List<Tile> inRange = new List<Tile>();
+
+		if(owner.hero.type == HeroType.Heimdal){
+			inRange = Logic.Inst.Grid.AbilityRange(index,1);
+			foreach(Tile tile in inRange){
+				if(tile.OccupyngUnit){
+					if(tile.OccupyngUnit.owner == owner){
+						defenseModifer += owner.hero.passive.effects[0].strength;
+					}
+				}
+			}
+			defenseModifer -= owner.hero.passive.effects[0].strength;	//To account for the fact that the unit will count itself.
+		}
+//		else if(owner.hero.type == HeroType.Skadi){			//Super Broken. Not friendly right now.
+//			if(owner.hero.skadiWrathCheck){		//Need a better check here to see if her Active 2 wrath effect has been applied.
+//				inRange = Logic.Inst.Grid.AbilityRange(index,1);
+//				foreach(Tile tile in inRange){
+//					if(tile.OccupyngUnit){
+//						if(tile.OccupyngUnit.owner == owner && tile.OccupyngUnit.type == UnitType.Spearman && type == UnitType.Spearman){
+//							attackModifer += owner.hero.active2.effects[2].strength;
+//						}
+//					}
+//				}
+//
+//				attackModifer -= owner.hero.active2.effects[2].strength * 2; //To account for the unit counting itself, and for the initial buff effects.
+//			}
+//		}
+	}
+		
 	#region Getters and Setters
 	public PairInt Index {
 		get { return index; }

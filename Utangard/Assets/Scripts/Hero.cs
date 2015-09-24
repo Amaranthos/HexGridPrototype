@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour {
 	public int currentRange; 
 	public AbilityStage currentStage = AbilityStage.Done;
 	public Unit hero;
+	public bool skadiWrathCheck = false;
 	private Unit target;
 	private Tile teleLocation;
 
@@ -131,6 +132,10 @@ public class Hero : MonoBehaviour {
 			Debug.Log("Entering Target Mode!");
 			currentAbility = 2;
 			currentRange = active2.range;
+		}
+
+		if(type == HeroType.Skadi && hero.Owner.wrathMode){
+			skadiWrathCheck = true;
 		}
 	}
 

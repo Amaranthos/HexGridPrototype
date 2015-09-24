@@ -2283,12 +2283,14 @@ MonoBehaviour:
       range: 0
       oneShot: 0
       wrath: 0
+      skadiWrath: 0
     - type: 6
       duration: 1
       strength: 35
       range: 0
       oneShot: 0
       wrath: 1
+      skadiWrath: 0
   active2:
     target: 0
     hitFoe: 0
@@ -2305,20 +2307,26 @@ MonoBehaviour:
       range: 0
       oneShot: 0
       wrath: 0
+      skadiWrath: 0
     - type: 4
       duration: 1
       strength: -1
       range: 0
       oneShot: 0
       wrath: 0
+      skadiWrath: 0
     - type: 1
       duration: 1
       strength: 15
       range: 0
       oneShot: 0
       wrath: 1
+      skadiWrath: 1
   currentAbility: 0
   currentRange: 0
+  currentStage: 2
+  hero: {fileID: 0}
+  skadiWrathCheck: 0
 --- !u!137 &13700766
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2763,6 +2771,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.effects.Array.data[2].skadiWrath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skadiWrathCheck
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

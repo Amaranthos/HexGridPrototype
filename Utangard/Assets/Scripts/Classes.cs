@@ -20,14 +20,16 @@ public class Effect{
     public int range;
 	public bool oneShot;
 	public bool wrath;
+	public bool skadiWrath;
 	
-	public Effect(EffectType et, int dur, int str, int rng, bool os, bool wrt){
+	public Effect(EffectType et, int dur, int str, int rng, bool os, bool wrt, bool swt){
 		type = et;
 		duration = dur;
 		strength = str;
         range = rng;
 		oneShot = os;
 		wrath = wrt;
+		skadiWrath = swt;
 	}
 
 	public void ChangeValue(Unit unt, bool add){	//'add' is if the effect is being added to or removed from a unit
