@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
 	public string playerName = "";
 	public int startingFood;
+	public int startingFaith;
 	public Color playerColour;
 
 	public Rect placementBoundaries;
@@ -17,16 +18,16 @@ public class Player : MonoBehaviour {
 	public List<Altar> capturedAltars;
 
 	private int currentFood;
-	[SerializeField]
 	private int faith;
 
 	public bool Defeated { get; set; }
-
-	[SerializeField]
-	private bool hasFinishedPlacing = false;
+	private bool FinishedPlacing
+		= false;
 
 	private void Awake() {
 		Defeated = false;
+		currentFood = startingFood;
+		faith = startingFaith;
 	}
 
 	public void SpawnUnit(UnitType type, Tile tile, int index) {
@@ -65,12 +66,12 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartPlacing() {
-		currentFood = startingFood;
+
 	}
 
 	public void StartTurn() {
 		for (int i = 0; i < army.Count; i++) {
-			army[i].HasAttacked = false;
+			army[i].CanMove = true;
 		}
 
 		foreach(Unit unit in army){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
@@ -91,8 +92,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public bool HasFinishedPlacing {
-		get { return hasFinishedPlacing; }
-		set { hasFinishedPlacing = value; }
+		get { return FinishedPlacing; }
+		set { FinishedPlacing = value; }
 	}
 
 	public int Faith {

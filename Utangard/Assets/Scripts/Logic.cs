@@ -22,24 +22,23 @@ public class Logic : MonoBehaviour {
 	private Player[] players;
 	private int currentPlayer = -1;
 	private int startingPlayer = -1;
-	[SerializeField]
 	private int winningPlayer = -1;
+	private int turnsRemaining;
 
 	private List<Tile> highlightedTiles = new List<Tile>();
 
-	[SerializeField]
 	private List<Altar> altars = new List<Altar>();
 
 	public Button endTurn;
+	public Button sacrifice;
 	
 	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
 
 	public int numAltars;
 	public int faithPtsPerAltar;
+	public int faithPtsPerSacrifice;
 
 	public int turnsForVictory;
-	[SerializeField]
-	private int turnsRemaining;
 
 	private void Awake() {
 		if (!inst)
@@ -93,6 +92,18 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
+		if(gamePhase == GamePhase.CombatPhase){
+			if(selectedUnit && selectedUnit.CanMove){
+				Altar altar = GetAltar(selectedUnit.Index);
+				if(altar){
+					sacrifice.interactable = true;
+				}
+			}
+			else {
+				sacrifice.interactable = false;
+			}
+		}
+
 		if (Input.GetMouseButtonUp(0)) {
 			RaycastHit hit = MouseClick();
 			if (hit.transform) {
@@ -160,7 +171,7 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-				if(!unit.HasAttacked && unit.Owner == CurrentPlayer){
+				if(unit.CanMove && unit.Owner == CurrentPlayer){
 					HighlightMoveRange(unit);
 					_audio.PlaySFX(SFX.Unit_Click);
 				}
@@ -228,7 +239,7 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove)
 					if (unit.Owner != CurrentPlayer)
 						if (selectedUnit.InAttackRange(unit)){
 							UnitCombat(selectedUnit, unit);
@@ -242,7 +253,7 @@ public class Logic : MonoBehaviour {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
 				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index)){
-					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked)
+					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove)
 						if (tile.IsPassable)
 							if (!tile.OccupyngUnit)
 								selectedUnit.MoveTowardsTile(tile);
@@ -254,7 +265,7 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && !selectedUnit.HasAttacked){
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove){
 					if (selectedUnit.InMoveRange(tile))
 					{
 						if (!tile.OccupyngUnit) {
@@ -298,6 +309,7 @@ public class Logic : MonoBehaviour {
 			Altar altar =  ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
 			altar.Index = rand.Index;
 			altars.Add(altar);
+			altar.PlayerCaptureAltar(players[Random.Range(0, players.Length)]);
 		}
 
 		SwitchGamePhase(GamePhase.PlacingPhase);
@@ -448,7 +460,7 @@ public class Logic : MonoBehaviour {
 
 	private void UnitCombat(Unit att, Unit def) {
 		ClearSelected();
-		att.HasAttacked = true;
+		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
 		if (def)
 			combatManager.ResolveCombat(def, att);
@@ -476,8 +488,9 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void UnitSelected(Unit unit) {
-		if(gamePhase == GamePhase.CombatPhase)
+		if(gamePhase == GamePhase.CombatPhase){
 			ClearHighlightedTiles();
+		}
 		selectedUnit = unit;
 		infoPanel.UpdateUnitInfo(unit);
 	}
@@ -498,7 +511,10 @@ public class Logic : MonoBehaviour {
 		for(int j = 0; j < CurrentPlayer.capturedAltars.Count; j++){
 			CurrentPlayer.Faith += faithPtsPerAltar;
 		}
+	}
 
+	public void SacrificeUnit() {
+		selectedUnit.UnitSacrificed();
 	}
 
 	#region Getters and Setters 	

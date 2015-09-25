@@ -25,7 +25,7 @@ public class Unit : MonoBehaviour {
 	private int currentHP;
 	private int currentMP;
 
-	private bool hasAttacked = false;
+	private bool canMove = true;
 
 	private Player owner;
 
@@ -44,12 +44,12 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void MoveTowardsTile(Tile tile) {
-		//if (Logic.Inst.gamePhase == GamePhase.CombatPhase) {
-		//	List<Tile> path = Logic.Inst.Path.GetPath(Logic.Inst.Grid.GetTile(index), tile);
-
-		//	foreach (Tile t in path)
-		//		t.SetLineColour(Color.cyan);
-		//}
+//		if (Logic.Inst.gamePhase == GamePhase.CombatPhase) {
+//			List<Tile> path = Logic.Inst.Path.GetPath(Logic.Inst.Grid.GetTile(index), tile);
+//
+//			foreach (Tile t in path)
+//				t.SetLineColour(Color.cyan);
+//		}
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
 		Logic.Inst.Grid.GetTile(index).OccupyngUnit = null;
 		index = tile.Index;
@@ -72,6 +72,14 @@ public class Unit : MonoBehaviour {
 	public void UnitKilled() {
 		owner.RemoveUnit(this);
 		Debug.Log(type + " was killed");
+		DestroyImmediate(this.gameObject);
+		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+	}
+
+	public void UnitSacrificed() {
+		owner.Faith += Logic.Inst.faithPtsPerSacrifice;
+		owner.RemoveUnit(this);
+		Debug.Log(type + " was sacrificed");
 		DestroyImmediate(this.gameObject);
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 	}
@@ -210,9 +218,9 @@ public class Unit : MonoBehaviour {
 		set { owner = value; }
 	}
 
-	public bool HasAttacked {
-		get { return hasAttacked; }
-		set { hasAttacked = value; }
+	public bool CanMove {
+		get { return canMove; }
+		set { canMove = value; }
 	}
 
 	public int CurrentMocePoints {

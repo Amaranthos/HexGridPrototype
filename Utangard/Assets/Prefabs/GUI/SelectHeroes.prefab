@@ -11808,36 +11808,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 154210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eb1353d05834d04ab7b5041c22e7c66, type: 3}
+  m_Script: {fileID: 11500000, guid: dde3ecec7361cb04e8756fccfc72b703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   heroes:
   - model: {fileID: 157386}
-    name: 456972
+    name: Eir
     desc: 
     passive: 
     actives: 
     isTaken: 0
   - model: {fileID: 123000}
-    name: 4865696d64616c
+    name: Heimdal
     desc: 
     passive: 
     actives: 
     isTaken: 0
   - model: {fileID: 181230}
-    name: 536b616469
+    name: Skadi
     desc: 
     passive: 
     actives: 
     isTaken: 0
   - model: {fileID: 193454}
-    name: 54686f72
+    name: Thor
     desc: 
     passive: 
     actives: 
     isTaken: 0
   - model: {fileID: 179934}
-    name: 53616d
+    name: Sam
     desc: 
     passive: 
     actives: 
@@ -11850,10 +11850,6 @@ MonoBehaviour:
   - {fileID: 11406834}
   - {fileID: 11487184}
   selectedHero: 2
-  p1Hero: {fileID: 0}
-  p2Hero: {fileID: 0}
-  fileCSV: {}
-  p1HasChosen: 0
 --- !u!114 &11411114
 MonoBehaviour:
   m_ObjectHideFlags: 1
