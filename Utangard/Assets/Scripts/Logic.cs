@@ -35,6 +35,7 @@ public class Logic : MonoBehaviour {
 	public GamePhase gamePhase = GamePhase.ArmySelectPhase;
 
 	public int numAltars;
+	public int faithPtsPerAltar;
 
 	public int turnsForVictory;
 	[SerializeField]
@@ -299,7 +300,7 @@ public class Logic : MonoBehaviour {
 			altars.Add(altar);
 		}
 
-		SwtichGamePhase(GamePhase.PlacingPhase);
+		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
@@ -373,7 +374,7 @@ public class Logic : MonoBehaviour {
 				ChangeTileOutlines(prevPlayer.PlacementField(), Color.black, 0.03f);
 
 				if (PlayesPositionedUnits()) {
-					SwtichGamePhase(GamePhase.CombatPhase);
+					SwitchGamePhase(GamePhase.CombatPhase);
 					return;
 				}
 
@@ -384,6 +385,7 @@ public class Logic : MonoBehaviour {
 				CheckIfPlayerWinning();
 
 				CurrentPlayer.StartTurn();
+				AddFaithPerAltar();
 				break;
 		}
 	}
@@ -430,7 +432,7 @@ public class Logic : MonoBehaviour {
 		gamePhase = GamePhase.FinishedPhase;
 	}
 
-	private void SwtichGamePhase(GamePhase phase) {
+	private void SwitchGamePhase(GamePhase phase) {
 		gamePhase = phase;
 
 		switch (phase) {
@@ -492,11 +494,18 @@ public class Logic : MonoBehaviour {
 		return hit;
 	}
 
+	private void AddFaithPerAltar() {
+		for(int j = 0; j < CurrentPlayer.capturedAltars.Count; j++){
+			CurrentPlayer.Faith += faithPtsPerAltar;
+		}
+
+	}
+
+	#region Getters and Setters 	
 	public Altar GetAltar(PairInt Index) {
 		return altars.Find(item=>item.Index==Index);
 	}
 
-	#region Getters and Setters 	
 	public static Logic Inst {
 		get { return inst; }
 	}

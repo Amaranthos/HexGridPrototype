@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 	public List<Altar> capturedAltars;
 
 	private int currentFood;
+	[SerializeField]
 	private int faith;
 
 	public bool Defeated { get; set; }
