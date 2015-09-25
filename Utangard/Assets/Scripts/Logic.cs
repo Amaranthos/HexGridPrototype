@@ -188,6 +188,13 @@ public class Logic : MonoBehaviour {
 						}
 					}
 				}
+				
+				if(players[currentPlayer].hero.currentAbility == 1){
+					players[currentPlayer].Faith -= players[currentPlayer].hero.active1.cost;
+				}
+				else{
+					players[currentPlayer].Faith -= players[currentPlayer].hero.active2.cost;
+				}
 				print("TARGETING COMPLETE!");
 				break;
 		}

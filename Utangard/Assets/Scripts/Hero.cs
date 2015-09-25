@@ -24,17 +24,21 @@ public class Hero : MonoBehaviour {
 
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Alpha1) && gameObject.GetComponent<Unit>().Owner == Logic.Inst.Players[0]){
-			if(active1.target == TargetType.Single){
-				Logic.Inst.HighlightAbilityRange(active1,hero);
+			if(hero.Owner.Faith >= active1.cost){	
+				if(active1.target == TargetType.Single){
+					Logic.Inst.HighlightAbilityRange(active1,hero);
+				}
+				ActivateAbility1();
 			}
-			ActivateAbility1();
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha2) && gameObject.GetComponent<Unit>().Owner == Logic.Inst.Players[0]){
-			if(active2.target == TargetType.Single){
-				Logic.Inst.HighlightAbilityRange(active2,hero);
+			if(hero.Owner.Faith >= active2.cost){	
+				if(active2.target == TargetType.Single){
+					Logic.Inst.HighlightAbilityRange(active2,hero);
+				}
+				ActivateAbility2();
 			}
-			ActivateAbility2();
 		}
 
 		if(Input.GetKeyDown(KeyCode.Alpha3) && gameObject.GetComponent<Unit>().Owner == Logic.Inst.Players[1]){
@@ -110,33 +114,33 @@ public class Hero : MonoBehaviour {
 	}
 
 	void ActivateAbility1(){
-		if(active1.target == TargetType.All || active1.target == TargetType.AoE){
-			active1.Activate(gameObject.GetComponent<Unit>());
-		}
-		else if(active1.target == TargetType.Single){
-			currentStage = AbilityStage.GetUnit;
-			Logic.Inst.gamePhase = GamePhase.TargetPhase;
-			Debug.Log("Entering Target Mode!");
-			currentAbility = 1;
-			currentRange = active1.range;
-		}
+			if(active1.target == TargetType.All || active1.target == TargetType.AoE){
+				active1.Activate(gameObject.GetComponent<Unit>());
+			}
+			else if(active1.target == TargetType.Single){
+				currentStage = AbilityStage.GetUnit;
+				Logic.Inst.gamePhase = GamePhase.TargetPhase;
+				Debug.Log("Entering Target Mode!");
+				currentAbility = 1;
+				currentRange = active1.range;
+			}
 	}
 
 	void ActivateAbility2(){
-		if(active2.target == TargetType.All || active2.target == TargetType.AoE){
-			active2.Activate(gameObject.GetComponent<Unit>());
-		}
-		else if(active2.target == TargetType.Single){
-			currentStage = AbilityStage.GetUnit;
-			Logic.Inst.gamePhase = GamePhase.TargetPhase;
-			Debug.Log("Entering Target Mode!");
-			currentAbility = 2;
-			currentRange = active2.range;
-		}
+			if (active2.target == TargetType.All || active2.target == TargetType.AoE) {
+				active2.Activate (gameObject.GetComponent<Unit> ());
+			} 
+			else if (active2.target == TargetType.Single) {
+				currentStage = AbilityStage.GetUnit;
+				Logic.Inst.gamePhase = GamePhase.TargetPhase;
+				Debug.Log ("Entering Target Mode!");
+				currentAbility = 2;
+				currentRange = active2.range;
+			}
 
-		if(type == HeroType.Skadi && hero.Owner.wrathMode){
-			skadiWrathCheck = true;
-		}
+			if (type == HeroType.Skadi && hero.Owner.wrathMode) {
+				skadiWrathCheck = true;
+			}
 	}
 
 	public void ApplyPassive(){
