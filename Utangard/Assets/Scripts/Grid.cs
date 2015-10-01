@@ -132,14 +132,32 @@ public class Grid : MonoBehaviour {
 
 		int cost = range;
 
-		for (int i = -cost; i <= cost; i++)
-			for (int j = Mathf.Max(-cost, -i - cost); j <= Mathf.Min(cost, -i + cost); j++) {
-				PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
-				Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+//		for (int i = -cost; i <= cost; i++){
+//			for (int j = Mathf.Max(-cost, -i - cost); j <= Mathf.Min(cost, -i + cost); j++) {
+//				PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
+//				Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+//
+//
+//				if(tile && !tile.OccupyngUnit && tile.IsPassable){
+//					tiles.Add(tile);
+//					Debug.Log(tile.Index.x.ToString() + ',' + tile.Index.y.ToString());
+//				}
+//			}
+//		}
 
-				if(tile && !tile.OccupyngUnit && tile.IsPassable)
-					tiles.Add(tile);
+		for (int i = -range; i < range+1; i++){
+			for(int j = -range; j < range+1; j++) {
+				for(int k = -range; k < range+1; k++){
+					if(i + j + k == 0){
+						PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
+						Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+		
+						if(tile && !tile.OccupyngUnit && tile.IsPassable)
+							tiles.Add(tile);
+					}
+				}
 			}
+		}
 
 		return tiles;
 	}
@@ -153,11 +171,12 @@ public class Grid : MonoBehaviour {
 		}
 		
 		int cost = range;
-		
+
 		for (int i = -cost; i <= cost; i++)
 		for (int j = Mathf.Max(-cost, -i - cost); j <= Mathf.Min(cost, -i + cost); j++) {
 			PairInt offset = Tile.CubicToIndex(new TripletInt(i, j, -i-j));
-			Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+//			Tile tile = GetTile(index.x + offset.x, index.y + offset.y);
+			Tile tile = GetTile(index.x + i, index.y + j);
 			
 			if(tile)
 				tiles.Add(tile);

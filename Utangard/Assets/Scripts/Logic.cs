@@ -312,7 +312,7 @@ public class Logic : MonoBehaviour {
 			Altar altar =  ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
 			altar.Index = rand.Index;
 			altars.Add(altar);
-			altar.PlayerCaptureAltar(players[Random.Range(0, players.Length)]);
+			altar.PlayerCaptureAltar(players[i % players.Length]);
 		}
 
 		for(int i = 0; i < players.Length; i++){
@@ -427,15 +427,25 @@ public class Logic : MonoBehaviour {
 					EndGame();
 			}
 			else {
+				SetWrathMode();
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
+
 			}
 		}
 		else {
+			SetWrathMode();
 			for (int i = 0; i < players.Length; i++)
 				if (players[i].army.Count <= 0)
 					PlayerEliminated(i);
 		}
+	}
+
+	private void SetWrathMode() {
+		players[winningPlayer].wrathMode = false;
+		for(int i = 0; i < players.Length; i++)
+			if(i != winningPlayer)
+				players[i].wrathMode = true;
 	}
 
 	private void PlayerEliminated(int player) {

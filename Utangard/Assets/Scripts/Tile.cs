@@ -52,12 +52,24 @@ public class Tile : MonoBehaviour {
 		lines.SetWidth(thickness, thickness);
 	}
 
-	public TripletInt CoordsToCubic() {
-		return new TripletInt(index.x, -index.x - (index.y - (index.x - (index.x & 1)) / 2), index.y - (index.x - (index.x & 1)) / 2);
-	}
+//	public TripletInt CoordsToCubic() {
+//		int x = index.x;
+//		int z = index.y - (index.x - (index.x&1))/2;
+//		int y = -x-z;
+//		return new TripletInt(x,y,z);
+//	}
 
+	public TripletInt CoordsToCubic() {
+		int x = index.x;
+		int z = index.y - (index.x + (index.x&1))/2;
+		int y = -x-z;
+		return new TripletInt(x,y,z);
+	}
+	
 	public static PairInt CubicToIndex(TripletInt cubic) {
-		return new PairInt(cubic.x, cubic.z + ( cubic.x - (cubic.x&1)) / 2);
+		int col = cubic.x;
+		int row = cubic.z + (cubic.x + (cubic.x&1))/2;
+		return new PairInt(col, row);
 	}
 
 	#region Getters and Setters
