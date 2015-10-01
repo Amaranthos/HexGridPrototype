@@ -14,13 +14,17 @@ public class CSVParser{
 [System.Serializable]
 public class Target{
 	public Unit unit;
-	public PairInt Index;
+	public PairInt Index, origin;
 	public TargetType type;
+	public bool needsUnit;
+	public bool needsSpace;
 
-	public Target (Unit unt, PairInt pint, TargetType tt){
+	public Target (Unit unt, PairInt pint, TargetType tt, bool nu, bool ns){
 		unit = unt;
 		Index = pint;
 		type = tt;
+		needsUnit = nu;
+		needsSpace = ns;
 	}
 }
 

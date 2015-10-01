@@ -178,23 +178,20 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.TargetPhase:		//This is horribly ineffecitent. Will likely have to store a record of each hero in logic once selected.
-				Hero hero;
+				Hero hero = null;
 				foreach (Unit unt in players[currentPlayer].army){
 					if(unt.type == UnitType.Hero){
 						hero = unt.GetComponent<Hero>();
-						if(hero.currentStage == AbilityStage.GetUnit){
-							hero.ReceiveTarget(unit,grid.GetTile(unit.Index));
-							print("FOUND TARGET!");
-						}
 					}
 				}
-				
-				if(players[currentPlayer].hero.currentAbility == 1){
-					players[currentPlayer].Faith -= players[currentPlayer].hero.active1.cost;
+
+				hero.CheckTarget(grid.GetTile(unit.Index));	
+
+				if(hero.targets.Count == hero.currentAbility.targets.Count){
+					hero.CastAbility();
+					gamePhase = GamePhase.CombatPhase;
 				}
-				else{
-					players[currentPlayer].Faith -= players[currentPlayer].hero.active2.cost;
-				}
+
 				print("TARGETING COMPLETE!");
 				break;
 		}
@@ -213,21 +210,20 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.TargetPhase:
-				Hero hero;
+				Hero hero = null;
 				foreach (Unit unit in players[currentPlayer].army){
 					if(unit.type == UnitType.Hero){
 						hero = unit.GetComponent<Hero>();
-						if(hero.currentStage == AbilityStage.GetUnit){
-							hero.ReceiveTarget(tile.OccupyngUnit,tile);
-							print("FOUND TARGET!");
-						}
-
-						else{
-							hero.ReceiveTarget(unit,tile);
-							print ("FOUND LOCATION");
-						}
 					}
 				}
+				
+				hero.CheckTarget(tile);	
+
+				if(hero.targets.Count == hero.currentAbility.targets.Count){
+					hero.CastAbility();
+					gamePhase = GamePhase.CombatPhase;
+				}
+
 				print("TARGETING COMPLETE!");
 				break;
 		}

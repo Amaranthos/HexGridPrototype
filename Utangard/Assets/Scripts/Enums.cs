@@ -28,9 +28,9 @@ public enum EffectType {
 
 public enum PassiveType {
 	None,
-	Global,
-    Persitent,
-    OneShot
+	Buff,
+    PersitentAoE,
+    OneShotAoE
 }
 
 public enum AimType {

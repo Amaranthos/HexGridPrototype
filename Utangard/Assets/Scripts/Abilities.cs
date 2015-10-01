@@ -4,25 +4,25 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class Skill{
+	public AbilityType abilityType;
 	public AimType target;	//When in wrath mode, some abilities have an added AoE effect. May need to apply AoE to effects, rather than to abilites.
 	public PassiveType passive;
 	public bool hitFoe;
 	public int cost;
 	public int castRange;
 	public int AoERange;
-	public int stages;
-	public List<TargetType> targets = new List<TargetType>();
+	public List<Target> targets = new List<Target>();
 	public Unit hero;
 	public List<UnitType> affected = new List<UnitType>();
 	public List<Buff> buffs = new List<Buff>();
 	
-	public Skill(AimType tt, bool hf, int cst, int crng, int arng, int stg, List<TargetType> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf){
+	public Skill(AbilityType at, AimType tt, bool hf, int cst, int crng, int arng, List<Target> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf){
+		abilityType = at;
 		target = tt;
 		hitFoe = hf;
 		cost = cst;
 		castRange = crng;
 		AoERange = arng;
-		stages = stg;
 		targets = targs;
 		passive = pass;
 		hero = hro;
@@ -65,7 +65,7 @@ public class Skill{
 			}
 		}
 	}
-
+	
 	public void AddBuffs(Unit unit){
 		foreach(Buff buff in buffs){
 			if(buff.wrath && hero.Owner.wrathMode){
