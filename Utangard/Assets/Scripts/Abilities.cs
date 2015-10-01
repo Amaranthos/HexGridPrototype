@@ -54,12 +54,12 @@ public class Skill{
 		inRange = Logic.Inst.Grid.AbilityRange(tileIndex,AoERange);
 		foreach(Tile tile in inRange){
 			if(!hitFoe){
-				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner){
+				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner && affected.Contains(tile.OccupyngUnit.type)){
 					AddBuffs(tile.OccupyngUnit);
 				}
 			}
 			else{
-				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner != hero.Owner){
+				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner != hero.Owner && affected.Contains(tile.OccupyngUnit.type)){
 					AddBuffs(tile.OccupyngUnit);
 				}
 			}
@@ -72,7 +72,7 @@ public class Skill{
 				unit.AddBuff(buff);
 			}
 			else if(!buff.wrath){
-
+				unit.AddBuff(buff);
 			}
 		}
 	}
@@ -88,6 +88,7 @@ public class Buff{
 	public int strength;
 	public bool wrath;
 	public TargetType targetType;
+	public bool permanent;
 	
 	//For Stat Buffs
 	public bool oneShot;
@@ -99,7 +100,7 @@ public class Buff{
 	//For Terrain Buffs
 	public TerrainType terType;
 
-	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool os, AdjacencyType at, List<UnitType> ut, TerrainType tt){
+	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool os, AdjacencyType at, List<UnitType> ut, TerrainType tt){
 		ID = id;
 		buffType = bt;
 		duration = dur;
@@ -107,6 +108,7 @@ public class Buff{
 		strength = str;
 		wrath = wrt;
 		targetType = targ;
+		permanent = perm;
 		oneShot = os;
 		adjType = at;
 		adjUnits = ut;

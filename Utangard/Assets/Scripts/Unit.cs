@@ -57,11 +57,12 @@ public class Unit : MonoBehaviour {
 
 		transform.position = tile.transform.position;
 
-		if(owner.hero.type == HeroType.Heimdal){
-			foreach(Unit unit in owner.army){
-				CalculateModifiers();
-			}
-		}
+		//Handles adjacency buffs
+		AdjacencyCheck();
+
+		//Handles persistent passives
+		PersistentAoECheck();
+
 
 		Altar altar = Logic.Inst.GetAltar(tile.Index);
 
@@ -93,14 +94,11 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnTurnStart(){
-		foreach (Buff eft in currentBuffs){
-			eft.duration--;
-			if(eft.duration == 0){				//If the effect is done
-				eft.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
+		foreach (Buff bff in currentBuffs){
+			bff.duration--;
+			if(bff.duration == 0){				//If the effect is done
+				bff.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
 //				currentBuffs.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
-//				if(eft.skadiWrath){				//Oh god I need a better check than this.
-//					owner.hero.skadiWrathCheck = false;
-//				}
 			}
 		}
 
@@ -115,12 +113,33 @@ public class Unit : MonoBehaviour {
 		Buff nEft;
 
 		if(!bff.oneShot){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.oneShot,bff.adjType,bff.adjUnits,bff.terType);
+			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.oneShot,bff.adjType,bff.adjUnits,bff.terType);
 			currentBuffs.Add(nEft);
 		}
 
 		if(bff.buffType == BuffType.Stat){
 			bff.ChangeValue(this,true);
+		}
+	}
+
+	public void AdjacencyCheck(){
+		foreach(Buff buff in currentBuffs){
+			List<Tile> inRange = new List<Tile>();
+			inRange = Logic.Inst.Grid.AbilityRange(index,1);
+			
+			if(buff.buffType == BuffType.Adjacent){
+				CalculateModifiers();
+			}
+			
+			foreach(Tile adjTile in inRange){
+				if(adjTile.OccupyngUnit){
+					foreach(Buff adjBuff in adjTile.OccupyngUnit.currentBuffs){
+						if(adjBuff.buffType == BuffType.Adjacent){
+							adjTile.OccupyngUnit.CalculateModifiers();
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -130,42 +149,92 @@ public class Unit : MonoBehaviour {
 		hitModifier = 0;
 		dodgeModifier = 0;
 		
-		CheckForAllies();
-		foreach (Buff eft in currentBuffs){
-			if(eft.duration > 0){
-				eft.ChangeValue(this,true);
+		CalcAdjacency();
+
+		foreach (Buff bff in currentBuffs){
+			if((bff.duration > 0 || bff.permanent) && bff.buffType != BuffType.Adjacent){
+				bff.ChangeValue(this,true);
 			}
 		}
 	}
 
-	public void CheckForAllies(){
+	public void CalcAdjacency(){
 		List<Tile> inRange = new List<Tile>();
+		bool proced = false;
 
-		if(owner.hero.type == HeroType.Heimdal){
-			inRange = Logic.Inst.Grid.AbilityRange(index,1);
-			foreach(Tile tile in inRange){
-				if(tile.OccupyngUnit){
-					if(tile.OccupyngUnit.owner == owner){
-//						defenseModifer += owner.hero.passive.effects[0].strength;
+		foreach(Buff buff in currentBuffs){
+			proced = false;
+			if(buff.buffType == BuffType.Adjacent){
+				inRange = Logic.Inst.Grid.AbilityRange(index,1);
+				foreach(Tile tile in inRange){
+					if(tile.OccupyngUnit){
+						switch(buff.adjType){
+						case AdjacencyType.Friends:
+							if(buff.adjUnits.Contains(tile.OccupyngUnit.type) && tile.OccupyngUnit.owner == owner){
+								buff.ChangeValue(this,true);
+								proced = true;
+							}
+							break;
+
+						case AdjacencyType.Enemies:
+							if(buff.adjUnits.Contains(tile.OccupyngUnit.type) && tile.OccupyngUnit.owner != owner){
+								buff.ChangeValue(this,true);
+								proced = true;
+							}
+							break;
+
+						case AdjacencyType.Both:
+							if(buff.adjUnits.Contains(tile.OccupyngUnit.type)){
+								buff.ChangeValue(this,true);
+								proced = true;
+							}
+							break;
+
+						default:
+							break;
+
+						}
+					}
+				}
+
+				if(proced){
+					buff.ChangeValue(this,false); //To account for the fact that the unit will count itself.
+				}
+			}
+		}
+	}
+
+	public void PersistentAoECheck(){
+		List<Tile> inRange = new List<Tile>();
+		inRange = Logic.Inst.Grid.AbilityRange(index,owner.hero.passive.AoERange);
+
+		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
+			foreach(Unit unit in owner.army){
+				foreach(Buff buff in unit.currentBuffs){
+					foreach(Buff passBuff in owner.hero.passive.buffs){
+						if(buff.ID == passBuff.ID){
+							unit.currentBuffs.Remove(buff);	//This is probably going to break.
+						}
 					}
 				}
 			}
-//			defenseModifer -= owner.hero.passive.effects[0].strength;	//To account for the fact that the unit will count itself.
+			
+			owner.hero.passive.ApplyBuffAoE(index);
 		}
-//		else if(owner.hero.type == HeroType.Skadi){			//Super Broken. Not friendly right now.
-//			if(owner.hero.skadiWrathCheck){		//Need a better check here to see if her Active 2 wrath effect has been applied.
-//				inRange = Logic.Inst.Grid.AbilityRange(index,1);
-//				foreach(Tile tile in inRange){
-//					if(tile.OccupyngUnit){
-//						if(tile.OccupyngUnit.owner == owner && tile.OccupyngUnit.type == UnitType.Spearman && type == UnitType.Spearman){
-//							attackModifer += owner.hero.active2.effects[2].strength;
-//						}
-//					}
-//				}
-//
-//				attackModifer -= owner.hero.active2.effects[2].strength * 2; //To account for the unit counting itself, and for the initial buff effects.
-//			}
-//		}
+		else if(owner.hero.passive.passive == PassiveType.PersitentAoE){
+			if(inRange.Contains(Logic.Inst.Grid.GetTile(owner.hero.hero.index))){
+				owner.hero.passive.ApplyBuffSingle(index);
+			}
+			else{
+				foreach(Buff buff in currentBuffs){
+					foreach(Buff passBuff in owner.hero.passive.buffs){
+						if(buff.ID == passBuff.ID){
+							currentBuffs.Remove(buff);	//This is probably going to break.
+						}
+					}
+				}
+			}
+		}
 	}
 		
 	#region Getters and Setters

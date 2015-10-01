@@ -12,9 +12,7 @@ public class Hero : MonoBehaviour {
 	public Skill currentAbility;
 	public int currentRange; 
 	public int currentStage = 0;
-	//public AbilityStage currentStage = AbilityStage.Done;
 	public Unit hero;
-	public bool skadiWrathCheck = false;
 	private Unit target;
 	private Tile teleLocation;
 	public List<Target> targets  = new List<Target>();
@@ -92,16 +90,21 @@ public class Hero : MonoBehaviour {
 
 	public void ActivateAbility1(){
 		if(hero.Owner.Faith >= active1.cost){
-			active1.targets[0].origin = hero.Index;
+			if(active1.targets.Count > 0){
+				active1.targets[0].origin = hero.Index;
+			}
 			targets.Clear();
+			currentStage = 0;
+			currentAbility = active1;
+			currentRange = active1.castRange;
 			if(active1.target == AimType.Single || active1.target == AimType.TargetAoE){
-				currentStage = 0;
-				currentAbility = active1;
-				currentRange = active1.castRange;
 				Logic.Inst.HighlightAbilityRange(active1,hero);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
 				Debug.Log("Entering Target Mode!");
-			}	
+			}
+			else if(active1.target == AimType.All || active1.target == AimType.SelfAoE){
+				CastAbility();
+			}
 		}
 	}
 
@@ -135,27 +138,28 @@ public class Hero : MonoBehaviour {
 
 	void ActivateAbility2(){
 		if(hero.Owner.Faith >= active2.cost){	
-			active2.targets[0].origin = hero.Index;
+			if(active2.targets.Count > 0){
+				active2.targets[0].origin = hero.Index;
+			}
 			targets.Clear();
+			currentStage = 0;
+			currentAbility = active2;
+			currentRange = active2.castRange;
 			if(active2.target == AimType.Single || active2.target == AimType.TargetAoE){
-				currentStage = 0;
-				currentAbility = active2;
-				currentRange = active2.castRange;
 				Logic.Inst.HighlightAbilityRange(active2,hero);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
 				Debug.Log("Entering Target Mode!");
-			}	
+			}
+			else if(active2.target == AimType.All || active2.target == AimType.SelfAoE){
+				CastAbility();
+			}
 		}
 	}
 
 	public void ApplyPassive(){
 		if(passive.passive == PassiveType.OneShotAoE || passive.passive == PassiveType.PersitentAoE){
-			if(passive.hitFoe){
-				passive.ApplyBuffAll((Logic.Inst.currentPlayer-1) % 2);
-			}
-			else{
-				passive.ApplyBuffAll(Logic.Inst.currentPlayer);
-			}
+			print ("" + hero.Index);
+			passive.ApplyBuffAoE(hero.Index);
 		}
 	}
 
@@ -164,10 +168,10 @@ public class Hero : MonoBehaviour {
 
 		inRange = Logic.Inst.Grid.AbilityRange(currentAbility.targets[currentStage].origin,currentAbility.castRange);
 
-		if(inRange.Contains(tile)){
+		if(inRange.Contains(tile) && targets.Count < currentAbility.targets.Count){
 			//Oh god this if is so long...Designed to make sure you can't put the wrong kind of targets on the list. Eg. Makes sure you're targeting a tile with a unit, if the ability hurts a specific unit.
 			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyngUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyngUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
-				targets.Add(null);
+				targets.Add(new Target(null,new PairInt(),TargetType.Single,false,false));
 				targets[currentStage].unit = tile.OccupyngUnit;
 				targets[currentStage].Index = tile.Index;
 				targets[currentStage].type = currentAbility.targets[currentStage].type;

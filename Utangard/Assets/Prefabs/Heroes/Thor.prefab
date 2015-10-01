@@ -2244,7 +2244,7 @@ MonoBehaviour:
   hitChance: 80
   dodgeChance: 30
   attackRange: 1
-  currentEffects: []
+  currentBuffs: []
 --- !u!114 &11462428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2256,69 +2256,129 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdc194f78765db4992c4be496558eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 3
   passive:
+    abilityType: 0
     target: 2
+    passive: 2
     hitFoe: 0
     cost: 0
-    range: 2
-    stages: 0
-    passive: 1
+    castRange: 0
+    AoERange: 2
+    targets: []
     hero: {fileID: 11409366}
     affected: 000000000100000002000000
-    effects:
-    - type: 1
-      duration: 1
+    buffs:
+    - ID: 15
+      buffType: 0
+      duration: 0
+      effectType: 1
       strength: 15
-      range: 0
-      oneShot: 0
       wrath: 0
+      targetType: 0
+      permanent: 1
+      oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
   active1:
+    abilityType: 0
     target: 1
+    passive: 0
     hitFoe: 1
     cost: 15
-    range: 3
-    stages: 0
-    passive: 0
+    castRange: 3
+    AoERange: 0
+    targets:
+    - unit: {fileID: 0}
+      Index:
+        x: 0
+        y: 0
+      origin:
+        x: 0
+        y: 0
+      type: 0
+      needsUnit: 1
+      needsSpace: 0
     hero: {fileID: 11409366}
     affected: 00000000010000000200000003000000
-    effects:
-    - type: 5
+    buffs:
+    - ID: 16
+      buffType: 0
       duration: 0
+      effectType: 5
       strength: 40
-      range: 0
-      oneShot: 1
       wrath: 0
-    - type: 5
-      duration: 0
-      strength: 20
-      range: 1
+      targetType: 0
+      permanent: 0
       oneShot: 1
+      adjType: 0
+      adjUnits: 
+      terType: 0
+    - ID: 17
+      buffType: 0
+      duration: 0
+      effectType: 5
+      strength: 20
       wrath: 1
+      targetType: 1
+      permanent: 0
+      oneShot: 1
+      adjType: 0
+      adjUnits: 
+      terType: 0
   active2:
+    abilityType: 0
     target: 0
+    passive: 0
     hitFoe: 0
     cost: 15
-    range: 0
-    stages: 0
-    passive: 0
+    castRange: 0
+    AoERange: 0
+    targets: []
     hero: {fileID: 11409366}
     affected: 00000000010000000200000003000000
-    effects:
-    - type: 2
+    buffs:
+    - ID: 18
+      buffType: 0
       duration: 2
+      effectType: 2
       strength: 15
-      range: 0
-      oneShot: 0
       wrath: 0
-    - type: 3
-      duration: 2
-      strength: 2
-      range: 0
+      targetType: 0
+      permanent: 0
       oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
+    - ID: 19
+      buffType: 0
+      duration: 2
+      effectType: 3
+      strength: 2
       wrath: 1
-  currentAbility: 0
+      targetType: 0
+      permanent: 0
+      oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
+  currentAbility:
+    abilityType: 0
+    target: 0
+    passive: 0
+    hitFoe: 0
+    cost: 0
+    castRange: 0
+    AoERange: 0
+    targets: []
+    hero: {fileID: 0}
+    affected: 
+    buffs: []
   currentRange: 0
+  currentStage: 0
+  hero: {fileID: 0}
+  targets: []
 --- !u!137 &13712034
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2733,8 +2793,24 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: active1.effects.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.targets.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: active1.effects.Array.data[1].range
@@ -2755,6 +2831,118 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cost
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.passive
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.AoERange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].ID
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].effectType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].strength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].permanent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.castRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].oneShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].effectType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].strength
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].ID
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].ID
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].strength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].effectType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].wrath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].targetType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].oneShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].ID
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].effectType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].strength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].ID
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].effectType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].wrath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.targets.Array.data[0].needsUnit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

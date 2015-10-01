@@ -315,6 +315,13 @@ public class Logic : MonoBehaviour {
 			altar.PlayerCaptureAltar(players[Random.Range(0, players.Length)]);
 		}
 
+		for(int i = 0; i < players.Length; i++){
+			if(players[i].hero.passive.passive == PassiveType.Buff){
+				players[i].hero.passive.ApplyBuffAll(i);
+				
+			}
+		}
+
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
@@ -336,6 +343,7 @@ public class Logic : MonoBehaviour {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
+		CurrentPlayer.hero.ApplyPassive();
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {

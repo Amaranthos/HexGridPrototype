@@ -2244,7 +2244,7 @@ MonoBehaviour:
   hitChance: 60
   dodgeChance: 10
   attackRange: 1
-  currentEffects: []
+  currentBuffs: []
 --- !u!114 &11486430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2258,68 +2258,125 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   passive:
+    abilityType: 0
     target: 0
+    passive: 1
     hitFoe: 0
     cost: 0
-    range: 0
-    stages: 0
-    passive: 1
+    castRange: 0
+    AoERange: 0
+    targets: []
     hero: {fileID: 11468216}
     affected: 00000000010000000200000003000000
-    effects:
-    - type: 2
+    buffs:
+    - ID: 6
+      buffType: 1
       duration: 0
+      effectType: 2
       strength: 10
-      range: 0
-      oneShot: 0
       wrath: 0
-      skadiWrath: 0
+      targetType: 0
+      permanent: 1
+      oneShot: 0
+      adjType: 0
+      adjUnits: 00000000010000000200000003000000
+      terType: 0
   active1:
+    abilityType: 1
     target: 1
+    passive: 0
     hitFoe: 0
     cost: 12
-    range: 3
-    stages: 2
-    passive: 0
+    castRange: 2
+    AoERange: 1
+    targets:
+    - unit: {fileID: 0}
+      Index:
+        x: 0
+        y: 0
+      origin:
+        x: 0
+        y: 0
+      type: 0
+      needsUnit: 1
+      needsSpace: 0
+    - unit: {fileID: 0}
+      Index:
+        x: 0
+        y: 0
+      origin:
+        x: 0
+        y: 0
+      type: 1
+      needsUnit: 0
+      needsSpace: 1
     hero: {fileID: 11468216}
     affected: 00000000010000000200000003000000
-    effects:
-    - type: 8
-      duration: 0
-      strength: 0
-      range: 3
-      oneShot: 1
-      wrath: 0
-      skadiWrath: 0
+    buffs:
+    - ID: 6
+      buffType: 0
+      duration: 2
+      effectType: 2
+      strength: -20
+      wrath: 1
+      targetType: 1
+      permanent: 0
+      oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
   active2:
+    abilityType: 0
     target: 2
+    passive: 0
     hitFoe: 0
     cost: 18
-    range: 0
-    stages: 0
-    passive: 0
+    castRange: 0
+    AoERange: 2
+    targets: []
     hero: {fileID: 11468216}
     affected: 00000000010000000200000003000000
-    effects:
-    - type: 2
+    buffs:
+    - ID: 7
+      buffType: 0
       duration: 2
+      effectType: 2
       strength: 25
-      range: 2
-      oneShot: 0
       wrath: 0
-      skadiWrath: 0
-    - type: 6
-      duration: 2
-      strength: 25
-      range: 2
+      targetType: 0
+      permanent: 0
       oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
+    - ID: 8
+      buffType: 0
+      duration: 2
+      effectType: 6
+      strength: 25
       wrath: 1
-      skadiWrath: 0
-  currentAbility: 0
+      targetType: 0
+      permanent: 0
+      oneShot: 0
+      adjType: 0
+      adjUnits: 
+      terType: 0
+  currentAbility:
+    abilityType: 0
+    target: 0
+    passive: 0
+    hitFoe: 0
+    cost: 0
+    castRange: 0
+    AoERange: 0
+    targets: []
+    hero: {fileID: 0}
+    affected: 
+    buffs: []
   currentRange: 0
   currentStage: 2
   hero: {fileID: 0}
-  skadiWrathCheck: 0
+  targets: []
 --- !u!137 &13707916
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2734,6 +2791,18 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: active1.effects.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2742,11 +2811,19 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: active1.targets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: active2.affected.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passive.affected.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].adjUnits.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -2836,6 +2913,126 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: passive.affected.Array.data[3]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].buffType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].permanent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].effectType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].strength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].adjUnits.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].adjUnits.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].adjUnits.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].ID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.abilityType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.castRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].ID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].effectType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].strength
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].wrath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].targetType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.AoERange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.AoERange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].ID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].effectType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].strength
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[0].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].ID
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].effectType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].strength
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.buffs.Array.data[1].wrath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.targets.Array.data[0].needsUnit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.targets.Array.data[1].needsSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.targets.Array.data[1].type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
