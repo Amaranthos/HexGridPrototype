@@ -29,7 +29,7 @@ public class Unit : MonoBehaviour {
 
 	private Player owner;
 
-	public List<Effect> currentEffects = new List<Effect>();	//Every effect this unit is currently under
+	public List<Buff> currentBuffs = new List<Buff>();	//Every effect this unit is currently under
 
 	private void Start() {
 		currentHP = maxHitpoints;
@@ -93,33 +93,35 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnTurnStart(){
-		foreach (Effect eft in currentEffects){
+		foreach (Buff eft in currentBuffs){
 			eft.duration--;
 			if(eft.duration == 0){				//If the effect is done
 				eft.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
-//				currentEffects.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
-				if(eft.skadiWrath){				//Oh god I need a better check than this.
-					owner.hero.skadiWrathCheck = false;
-				}
+//				currentBuffs.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
+//				if(eft.skadiWrath){				//Oh god I need a better check than this.
+//					owner.hero.skadiWrathCheck = false;
+//				}
 			}
 		}
 
 		CalculateModifiers();
 
 		if(type == UnitType.Hero){
-			gameObject.GetComponent<Hero>().ApplyPassive();
+//			gameObject.GetComponent<Hero>().ApplyPassive();
 		}
 	}
 
-	public void AddEffect(Effect eft){
-		Effect nEft;
+	public void AddBuff(Buff bff){
+		Buff nEft;
 
-		if(!eft.oneShot){
-			nEft = new Effect(eft.type,eft.duration,eft.strength,eft.range,eft.oneShot,eft.wrath,eft.skadiWrath);
-			currentEffects.Add(nEft);
+		if(!bff.oneShot){
+			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.oneShot,bff.adjType,bff.adjUnits,bff.terType);
+			currentBuffs.Add(nEft);
 		}
 
-		eft.ChangeValue(this,true);
+		if(bff.buffType == BuffType.Stat){
+			bff.ChangeValue(this,true);
+		}
 	}
 
 	public void CalculateModifiers(){
@@ -129,7 +131,7 @@ public class Unit : MonoBehaviour {
 		dodgeModifier = 0;
 		
 		CheckForAllies();
-		foreach (Effect eft in currentEffects){
+		foreach (Buff eft in currentBuffs){
 			if(eft.duration > 0){
 				eft.ChangeValue(this,true);
 			}
@@ -144,11 +146,11 @@ public class Unit : MonoBehaviour {
 			foreach(Tile tile in inRange){
 				if(tile.OccupyngUnit){
 					if(tile.OccupyngUnit.owner == owner){
-						defenseModifer += owner.hero.passive.effects[0].strength;
+//						defenseModifer += owner.hero.passive.effects[0].strength;
 					}
 				}
 			}
-			defenseModifer -= owner.hero.passive.effects[0].strength;	//To account for the fact that the unit will count itself.
+//			defenseModifer -= owner.hero.passive.effects[0].strength;	//To account for the fact that the unit will count itself.
 		}
 //		else if(owner.hero.type == HeroType.Skadi){			//Super Broken. Not friendly right now.
 //			if(owner.hero.skadiWrathCheck){		//Need a better check here to see if her Active 2 wrath effect has been applied.

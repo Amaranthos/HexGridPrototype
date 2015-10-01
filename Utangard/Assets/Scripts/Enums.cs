@@ -33,8 +33,14 @@ public enum PassiveType {
     OneShot
 }
 
-public enum TargetType {
+public enum AimType {
 	All,
+	Single,
+	SelfAoE,
+	TargetAoE
+}
+
+public enum TargetType {
 	Single,
 	AoE
 }
@@ -52,6 +58,31 @@ public enum AbilityStage {
 	GetUnit,
 	GetLocation,
 	Done
+}
+
+public enum AbilityType {
+	Buff,
+	Teleport
+}
+
+public enum BuffType {
+	Stat,
+	Adjacent,
+	HexTerrain
+}
+
+public enum AdjacencyType{
+	Friends,
+	Enemies,
+	Both
+}
+
+public enum TerrainType{
+	Grass,
+	Hills,
+	Snow,
+	Forrest,
+	Mountains
 }
 
 public enum Music {

@@ -20,7 +20,7 @@ public class Logic : MonoBehaviour {
 	private Tile selectedTile;
 
 	private Player[] players;
-	private int currentPlayer = -1;
+	public int currentPlayer = -1;
 	private int startingPlayer = -1;
 	private int winningPlayer = -1;
 	private int turnsRemaining;
@@ -362,10 +362,10 @@ public class Logic : MonoBehaviour {
 		ChangeTileOutlines(highlightedTiles, Color.green, 0.06f);
 	}
 
-	public void HighlightAbilityRange (Ability ability, Unit unit){
+	public void HighlightAbilityRange (Skill ability, Unit unit){
 		ClearHighlightedTiles();
 
-		highlightedTiles = grid.TilesInRange(unit.Index, ability.range);
+		highlightedTiles = grid.TilesInRange(unit.Index, ability.castRange);
 		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.06f);
 	}
 
