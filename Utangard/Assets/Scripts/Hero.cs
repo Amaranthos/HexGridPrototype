@@ -18,7 +18,8 @@ public class Hero : MonoBehaviour {
 	public List<Target> targets  = new List<Target>();
 
 	void Start () {
-		hero = gameObject.GetComponent<Unit>();
+		hero = this.gameObject.GetComponent<Unit>();
+		print (hero);
 	}
 
 	void Update () {
@@ -122,6 +123,8 @@ public class Hero : MonoBehaviour {
 				}
 			}
 			else if(currentAbility.target == AimType.SelfAoE){
+				//Debug.Log ("Fuck this " + hero);
+				print (gameObject.name);
 				currentAbility.ApplyBuffAoE(hero.Index);
 			}
 			else{
@@ -157,9 +160,21 @@ public class Hero : MonoBehaviour {
 	}
 
 	public void ApplyPassive(){
+		if(passive.targets.Count > 0){
+			passive.targets[0].origin = hero.Index;
+		}
+		targets.Clear();
+		currentStage = 0;
+		currentAbility = passive;
+		currentRange = passive.castRange;
+
 		if(passive.passive == PassiveType.OneShotAoE || passive.passive == PassiveType.PersitentAoE){
-			print ("" + hero.Index);
-			passive.ApplyBuffAoE(hero.Index);
+			print ("Start block");
+			print (hero);
+			print(this.gameObject);
+			print(gameObject);
+			print ("End block");
+			CastAbility();
 		}
 	}
 

@@ -343,7 +343,6 @@ public class Logic : MonoBehaviour {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);
-		CurrentPlayer.hero.ApplyPassive();
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -409,6 +408,8 @@ public class Logic : MonoBehaviour {
 
 				CurrentPlayer.StartTurn();
 				AddFaithPerAltar();
+
+				CurrentPlayer.hero.ApplyPassive();
 				break;
 		}
 	}
@@ -427,9 +428,9 @@ public class Logic : MonoBehaviour {
 					EndGame();
 			}
 			else {
-				SetWrathMode();
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
+				SetWrathMode();
 
 			}
 		}
@@ -442,10 +443,12 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void SetWrathMode() {
-		players[winningPlayer].wrathMode = false;
-		for(int i = 0; i < players.Length; i++)
-			if(i != winningPlayer)
-				players[i].wrathMode = true;
+		if(winningPlayer != -1){
+			players[winningPlayer].wrathMode = false;
+			for(int i = 0; i < players.Length; i++)
+				if(i != winningPlayer)
+					players[i].wrathMode = true;
+		}
 	}
 
 	private void PlayerEliminated(int player) {

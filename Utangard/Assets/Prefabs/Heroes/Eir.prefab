@@ -2263,7 +2263,7 @@ MonoBehaviour:
     passive: 3
     hitFoe: 0
     cost: 0
-    castRange: 0
+    castRange: 1
     AoERange: 1
     targets: []
     hero: {fileID: 11405034}
@@ -2377,17 +2377,29 @@ MonoBehaviour:
       terType: 0
   currentAbility:
     abilityType: 0
-    target: 0
-    passive: 0
+    target: 2
+    passive: 3
     hitFoe: 0
     cost: 0
-    castRange: 0
-    AoERange: 0
+    castRange: 1
+    AoERange: 1
     targets: []
-    hero: {fileID: 0}
-    affected: 
-    buffs: []
-  currentRange: 0
+    hero: {fileID: 11405034}
+    affected: 000000000100000002000000
+    buffs:
+    - ID: 0
+      buffType: 0
+      duration: 0
+      effectType: 0
+      strength: 10
+      wrath: 0
+      targetType: 1
+      permanent: 0
+      oneShot: 1
+      adjType: 0
+      adjUnits: 
+      terType: 0
+  currentRange: 1
   currentStage: 0
   hero: {fileID: 0}
   targets: []
@@ -2858,7 +2870,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passive.castRange
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passive.AoERange

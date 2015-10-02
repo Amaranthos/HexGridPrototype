@@ -48,6 +48,8 @@ public class Player : MonoBehaviour {
 		tile.OccupyngUnit = unit;
 		army.Add(unit);
 		temp.transform.parent = this.transform;
+		Hero h = temp.GetComponent<Hero>();
+		h.hero = unit;
 	}
 
 	public List<Tile> PlacementField() {

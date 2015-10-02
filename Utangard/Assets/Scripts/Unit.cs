@@ -222,7 +222,7 @@ public class Unit : MonoBehaviour {
 			owner.hero.passive.ApplyBuffAoE(index);
 		}
 		else if(owner.hero.passive.passive == PassiveType.PersitentAoE){
-			if(inRange.Contains(Logic.Inst.Grid.GetTile(owner.hero.hero.index))){
+			if(inRange.Contains(Logic.Inst.Grid.GetTile(owner.hero.gameObject.GetComponent<Unit>().index))){
 				owner.hero.passive.ApplyBuffSingle(index);
 			}
 			else{
