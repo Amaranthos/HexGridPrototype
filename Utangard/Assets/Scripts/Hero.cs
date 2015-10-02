@@ -139,7 +139,7 @@ public class Hero : MonoBehaviour {
 		hero.Owner.Faith -= currentAbility.cost;
 	}
 
-	void ActivateAbility2(){
+	public void ActivateAbility2(){
 		if(hero.Owner.Faith >= active2.cost){	
 			if(active2.targets.Count > 0){
 				active2.targets[0].origin = hero.Index;

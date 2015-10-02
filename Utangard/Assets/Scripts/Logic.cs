@@ -372,6 +372,15 @@ public class Logic : MonoBehaviour {
 		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.06f);
 	}
 
+	public void activateHeroAbility(int abilNum){
+		if(abilNum == 1){
+			CurrentPlayer.hero.ActivateAbility1();
+		}
+		else{
+			CurrentPlayer.hero.ActivateAbility2();
+		}
+	}
+
 	public bool PlayesPositionedUnits() {
 		bool placingFinished = true;
 
