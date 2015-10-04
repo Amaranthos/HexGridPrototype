@@ -295,26 +295,36 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void SetupGameWorld(int[][] armies) {
+		Debug.Log("Starting setup");
 		GUIManager.inst.AssignTextures();
+		Debug.Log("Generating grid");
 		grid.GenerateGrid();
 
+		Debug.Log("Setting up armies for players");
 		for (int i = 0; i < armies.Length; i++){
+			Debug.Log("For player " + i);
 			List<Tile> tiles = players[i].PlacementField();
 
-			for (int j = 0; j < armies[i].Length; j++)
+			Debug.Log ("Field count:" + tiles.Count);
+			for (int j = 0; j < armies[i].Length; j++){
+				Debug.Log("Solider: " + j);
 				players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
+			}
 
 			players[i].SpawnHero(tiles[armies[i].Length], i);
 		}
 
+		Debug.Log("Setting up alatrs");
 		for (int i = 0; i < numAltars; i++) {
-			Tile rand = Grid.TileAt(Random.Range(0, Grid.mapWidth), Random.Range(0, Grid.mapHeight));
-			Altar altar =  ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
+			var tiles = Grid.TilesList;
+			Tile rand = tiles[Random.Range(0, tiles.Count)];
+			Altar altar = ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
 			altar.Index = rand.Index;
 			altars.Add(altar);
 			altar.PlayerCaptureAltar(players[i % players.Length]);
 		}
 
+		Debug.Log("Spawning heroes");
 		for(int i = 0; i < players.Length; i++){
 			if(players[i].hero.passive.passive == PassiveType.Buff){
 				players[i].hero.passive.ApplyBuffAll(i);
@@ -322,6 +332,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
+		Debug.Log("Switchin game phase");
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
@@ -333,7 +344,7 @@ public class Logic : MonoBehaviour {
 
 		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
 
-		Camera.main.GetComponent<Vision>().enabled = true;
+//		Camera.main.GetComponent<Vision>().enabled = true;
 
 		infoPanel.Enabled(true);
 		infoPanel.UpdateTurnInfo(CurrentPlayer);

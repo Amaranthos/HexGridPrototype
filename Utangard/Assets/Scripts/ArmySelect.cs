@@ -24,12 +24,15 @@ public class ArmySelect : MonoBehaviour {
 	}
 
 	public void Finalise() {
+		Debug.Log ("Finalising army selection...");
 		int[][] armies = new int[army.Length][];
 		for (int i = 0; i < army.Length; i++) {
 			armies[i] = army[i].Finalise().ToArray();
 		}
 
+		Debug.Log ("Calling SetupWorld");
 		Logic.Inst.SetupGameWorld(armies);
+		Debug.Log ("After SetupWorld");
 
 		gameObject.SetActive(false);
 	}

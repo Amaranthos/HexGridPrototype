@@ -59,9 +59,9 @@ public class Player : MonoBehaviour {
 //			for (int j = 0; j < Logic.Inst.Grid.mapHeight; j++)
 //				if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.TileAt(i, j).Index))
 //					tiles.Add(Logic.Inst.Grid.TileAt(i, j));
-		Logic.Inst.Grid.Tiles.ToList();
 
-		return tiles;
+
+		return Logic.Inst.Grid.TilesList;
 	}
 
 	public void RemoveUnit(Unit unit) {

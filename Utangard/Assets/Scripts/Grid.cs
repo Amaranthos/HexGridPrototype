@@ -36,6 +36,10 @@ public class Grid : MonoBehaviour {
 	public Dictionary<string, Tile> Tiles {
 		get {return grid;}
 	}
+
+	public List<Tile> TilesList {
+		get {return grid.Values.ToList();}
+	}
 	#endregion
 
 	#region Public Methods
@@ -336,4 +340,4 @@ public enum MapShape {
 public enum HexOrientation {
 	Pointy,
 	Flat
-}
+} 
