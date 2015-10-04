@@ -122,7 +122,7 @@ public class Logic : MonoBehaviour {
 						Altar altar = go.GetComponent<Altar>();
 
 						if (altar)
-							TileLClicked(grid.GetTile(altar.Index));
+							TileLClicked(grid.TileAt(altar.Index));
 					}
 				}
 
@@ -147,7 +147,7 @@ public class Logic : MonoBehaviour {
 						Altar altar = go.GetComponent<Altar>();
 
 						if (altar)
-							TileRClicked(grid.GetTile(altar.Index));
+							TileRClicked(grid.TileAt(altar.Index));
 					}
 				}
 
@@ -185,7 +185,7 @@ public class Logic : MonoBehaviour {
 					}
 				}
 
-				hero.CheckTarget(grid.GetTile(unit.Index));	
+				hero.CheckTarget(grid.TileAt(unit.Index));	
 
 				if(hero.targets.Count == hero.currentAbility.targets.Count){
 					hero.CastAbility();
@@ -234,8 +234,8 @@ public class Logic : MonoBehaviour {
 			case GamePhase.PlacingPhase:
 				if (CurrentPlayer.placementBoundaries.CoordsInRange(unit.Index))
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
-						if (grid.GetTile(unit.Index).IsPassable){
-							SwapUnits(grid.GetTile(unit.Index));
+						if (grid.TileAt(unit.Index).IsPassable){
+					SwapUnits(grid.TileAt(unit.Index));
 							_audio.PlaySFX(SFX.Unit_Move);
 							}
 
@@ -287,7 +287,7 @@ public class Logic : MonoBehaviour {
 
 	private void SwapUnits(Tile tile) {
 		_audio.PlaySFX(SFX.Unit_Move);
-		Tile prevTile = grid.GetTile(selectedUnit.Index);
+		Tile prevTile = grid.TileAt(selectedUnit.Index);
 		Unit swap = tile.OccupyngUnit;
 		swap.MoveTowardsTile(prevTile);
 		selectedUnit.MoveTowardsTile(tile);
@@ -308,7 +308,7 @@ public class Logic : MonoBehaviour {
 		}
 
 		for (int i = 0; i < numAltars; i++) {
-			Tile rand = Grid.GetTile(Random.Range(0, Grid.gridSize.x), Random.Range(0, Grid.gridSize.y));
+			Tile rand = Grid.TileAt(Random.Range(0, Grid.mapWidth), Random.Range(0, Grid.mapHeight));
 			Altar altar =  ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
 			altar.Index = rand.Index;
 			altars.Add(altar);
@@ -348,8 +348,8 @@ public class Logic : MonoBehaviour {
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
 		for (int i = 0; i < tiles.Count; i++) {
 			if (tiles[i]) {
-				tiles[i].SetLineColour(colour);
-				tiles[i].SetWidth(thickness);
+				tiles[i].LineColour(colour);
+				tiles[i].LineWidth(thickness);
 			}
 		}
 	}
@@ -551,7 +551,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	#region Getters and Setters 	
-	public Altar GetAltar(PairInt Index) {
+	public Altar GetAltar(CubeIndex Index) {
 		return altars.Find(item=>item.Index==Index);
 	}
 

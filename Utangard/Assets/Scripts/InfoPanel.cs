@@ -38,15 +38,15 @@ public class InfoPanel : MonoBehaviour {
 		if (unit != null)
 			text.toolTipInfo.text = (unit.type
 				+ "\n<size=15>"
-			    + " Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
-			    + "</size>\n<size=14>"
-			    + " Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints
+				+ " Pos: " + Logic.Inst.Grid.TileAt(unit.Index).ToString()
+				+ "</size>\n<size=14>"
+				+ " Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints
 				+ "\n Move Pts: " + unit.movePoints 
 				+ "\n Atk: " + unit.attack
-			    + "\n Def: " + unit.defense 
-			    + "\n Hit %: " + unit.hitChance 
-			    + "\n Dodge %: " + unit.dodgeChance 
-			    + "\n Range: " + unit.attackRange
+				+ "\n Def: " + unit.defense 
+				+ "\n Hit %: " + unit.hitChance 
+				+ "\n Dodge %: " + unit.dodgeChance 
+				+ "\n Range: " + unit.attackRange
 				+ "</size>");
 
 		else
@@ -75,7 +75,7 @@ public class InfoPanel : MonoBehaviour {
 			// if p1 is current player
 			if(Logic.Inst.CurrentPlayerNum == 0)
 				text.unitInfoP1.text = ("Selected Unit: " + unit.type 
-				                        + "\n Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
+				                        + "\n Pos: " + Logic.Inst.Grid.TileAt(unit.Index).ToString()
 				                        + "\n Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints 
 				                        + "\n Atk: " + unit.attack 
 				                        + "\n Def: " + unit.defense 
@@ -85,7 +85,7 @@ public class InfoPanel : MonoBehaviour {
 				                        + "\n Move Pts: " + unit.movePoints);
 			else
 				text.unitInfoP2.text = ("Selected Unit: " + unit.type 
-				                        + "\n Pos: " + Logic.Inst.Grid.GetTile(unit.Index).Index.x + "," + Logic.Inst.Grid.GetTile(unit.Index).Index.y
+				                        + "\n Pos: " + Logic.Inst.Grid.TileAt(unit.Index).ToString()
 				                        + "\n Hp: " + unit.CurrentHitpoints + "/" + unit.maxHitpoints 
 				                        + "\n Atk: " + unit.attack 
 				                        + "\n Def: " + unit.defense 

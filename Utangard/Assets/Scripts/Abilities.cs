@@ -30,8 +30,8 @@ public class Skill{
 		buffs = buf;
 	}
 
-	public void ApplyBuffSingle(PairInt index){
-		Unit unit = Logic.Inst.Grid.GetTile(index).OccupyngUnit;
+	public void ApplyBuffSingle(CubeIndex index){
+		Unit unit = Logic.Inst.Grid.TileAt(index).OccupyngUnit;
 
 		if(!hitFoe && unit.Owner == hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
@@ -48,11 +48,12 @@ public class Skill{
 		}
 	}
 
-	public void ApplyBuffAoE(PairInt tileIndex){
+	public void ApplyBuffAoE(CubeIndex tileIndex){
 		Debug.Log ("Called");
 		List<Tile> inRange = new List<Tile>();
 
-		inRange = Logic.Inst.Grid.AbilityRange(tileIndex,AoERange);
+//		inRange = Logic.Inst.Grid.AbilityRange(tileIndex,AoERange);
+		inRange = Logic.Inst.Grid.TilesInRange(tileIndex,AoERange);
 		foreach(Tile tile in inRange){
 			if(!hitFoe){
 				Debug.Log("Hits Friends");

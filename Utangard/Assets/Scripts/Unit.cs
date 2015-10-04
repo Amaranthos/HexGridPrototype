@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Unit : MonoBehaviour {
 
 	public UnitType type;
-	private PairInt index;
+	private CubeIndex index;
 
 	public int movePoints;
 	public int maxHitpoints;
@@ -51,7 +51,7 @@ public class Unit : MonoBehaviour {
 //				t.SetLineColour(Color.cyan);
 //		}
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
-		Logic.Inst.Grid.GetTile(index).OccupyngUnit = null;
+		Logic.Inst.Grid.TileAt(index).OccupyngUnit = null;
 		index = tile.Index;
 		tile.OccupyngUnit = this;
 
@@ -86,7 +86,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InAttackRange(Unit unit) {
-		return Logic.Inst.Grid.GetNeighbours(index.x, index.y).Contains(Logic.Inst.Grid.GetTile(unit.Index.x, unit.Index.y));
+		return Logic.Inst.Grid.Neighbours(index.x, index.y).Contains(Logic.Inst.Grid.TileAt(unit.Index.x, unit.Index.y));
 	}
 
 	public bool InMoveRange(Tile tile) {
@@ -125,7 +125,8 @@ public class Unit : MonoBehaviour {
 	public void AdjacencyCheck(){
 		foreach(Buff buff in currentBuffs){
 			List<Tile> inRange = new List<Tile>();
-			inRange = Logic.Inst.Grid.AbilityRange(index,1);
+//			inRange = Logic.Inst.Grid.AbilityRange(index,1);
+			inRange = Logic.Inst.Grid.TilesInRange(index,1);
 			
 			if(buff.buffType == BuffType.Adjacent){
 				CalculateModifiers();
@@ -165,7 +166,8 @@ public class Unit : MonoBehaviour {
 		foreach(Buff buff in currentBuffs){
 			proced = false;
 			if(buff.buffType == BuffType.Adjacent){
-				inRange = Logic.Inst.Grid.AbilityRange(index,1);
+//				inRange = Logic.Inst.Grid.AbilityRange(index,1);
+				inRange = Logic.Inst.Grid.TilesInRange(index,1);
 				foreach(Tile tile in inRange){
 					if(tile.OccupyngUnit){
 						switch(buff.adjType){
@@ -206,7 +208,8 @@ public class Unit : MonoBehaviour {
 
 	public void PersistentAoECheck(){
 		List<Tile> inRange = new List<Tile>();
-		inRange = Logic.Inst.Grid.AbilityRange(index,owner.hero.passive.AoERange);
+//		inRange = Logic.Inst.Grid.AbilityRange(index,owner.hero.passive.AoERange);
+		inRange = Logic.Inst.Grid.TilesInRange(index,owner.hero.passive.AoERange);
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
@@ -222,7 +225,7 @@ public class Unit : MonoBehaviour {
 			owner.hero.passive.ApplyBuffAoE(index);
 		}
 		else if(owner.hero.passive.passive == PassiveType.PersitentAoE){
-			if(inRange.Contains(Logic.Inst.Grid.GetTile(owner.hero.gameObject.GetComponent<Unit>().index))){
+			if(inRange.Contains(Logic.Inst.Grid.TileAt(owner.hero.gameObject.GetComponent<Unit>().index))){
 				owner.hero.passive.ApplyBuffSingle(index);
 			}
 			else{
@@ -238,7 +241,7 @@ public class Unit : MonoBehaviour {
 	}
 		
 	#region Getters and Setters
-	public PairInt Index {
+	public CubeIndex Index {
 		get { return index; }
 		set { index = value; }
 	}

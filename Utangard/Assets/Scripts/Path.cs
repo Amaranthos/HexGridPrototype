@@ -27,7 +27,7 @@ public class Path : MonoBehaviour{
 				if (current == goal)
 					break;
 
-				foreach (Tile tile in Logic.Inst.Grid.GetNeighbours(current)){
+				foreach (Tile tile in Logic.Inst.Grid.Neighbours(current)){
 					if (tile) {
 						if (!tile.IsPassable || tile.OccupyngUnit || closed.Contains(tile))
 							continue;

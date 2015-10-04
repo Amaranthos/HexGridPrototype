@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Player : MonoBehaviour {
 
@@ -30,8 +31,8 @@ public class Player : MonoBehaviour {
 		faith = startingFaith;
 	}
 
-	public void SpawnUnit(UnitType type, Tile tile, int index) {
-		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
+	public void SpawnUnit(UnitType type, Tile tile, int dir) {
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * dir * 180));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour {
 		temp.transform.parent = this.transform;
 	}
 
-	public void SpawnHero(Tile tile, int index) {
-		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * index * 180));
+	public void SpawnHero(Tile tile, int dir) {
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * dir * 180));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
@@ -54,10 +55,11 @@ public class Player : MonoBehaviour {
 
 	public List<Tile> PlacementField() {
 		List<Tile> tiles = new List<Tile>();
-		for (int i = 0; i < Logic.Inst.Grid.gridSize.x; i++)
-			for (int j = 0; j < Logic.Inst.Grid.gridSize.y; j++)
-				if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.grid[i, j].Index))
-					tiles.Add(Logic.Inst.Grid.grid[i, j]);
+//		for (int i = 0; i < Logic.Inst.Grid.mapWidth; i++)
+//			for (int j = 0; j < Logic.Inst.Grid.mapHeight; j++)
+//				if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.TileAt(i, j).Index))
+//					tiles.Add(Logic.Inst.Grid.TileAt(i, j));
+		Logic.Inst.Grid.Tiles.ToList();
 
 		return tiles;
 	}

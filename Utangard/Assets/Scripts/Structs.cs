@@ -1,37 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public struct PairInt {
-	public int x;
-	public int y;
-
-	public PairInt(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-
-	public static bool operator ==(PairInt lhs, PairInt rhs) {
-		return (lhs.x == rhs.x) && (lhs.y == rhs.y);
-	}
-
-	public static bool operator !=(PairInt lhs, PairInt rhs) {
-		return (lhs.x != rhs.x) || (lhs.y != rhs.y);
-	}
-}
-
-[System.Serializable]
-public struct TripletInt {
-	public int x;
-	public int y;
-	public int z;
-
-	public TripletInt(int x, int y, int z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
-}
+//[System.Serializable]
+//public struct PairInt {
+//	public int x;
+//	public int y;
+//
+//	public PairInt(int x, int y) {
+//		this.x = x;
+//		this.y = y;
+//	}
+//
+//	public static bool operator ==(PairInt lhs, PairInt rhs) {
+//		return (lhs.x == rhs.x) && (lhs.y == rhs.y);
+//	}
+//
+//	public static bool operator !=(PairInt lhs, PairInt rhs) {
+//		return (lhs.x != rhs.x) || (lhs.y != rhs.y);
+//	}
+//}
+//
+//[System.Serializable]
+//public struct TripletInt {
+//	public int x;
+//	public int y;
+//	public int z;
+//
+//	public TripletInt(int x, int y, int z) {
+//		this.x = x;
+//		this.y = y;
+//		this.z = z;
+//	}
+//}
 
 [System.Serializable]
 public struct Rect {
@@ -51,7 +51,7 @@ public struct Rect {
 		return (i >= x && i < x + w && j >= y && j < y + h);
 	}
 
-	public bool CoordsInRange(PairInt coords) {
+	public bool CoordsInRange(CubeIndex coords) {
 		return CoordsInRange(coords.x, coords.y);
 	}
 }

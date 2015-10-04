@@ -5,7 +5,7 @@ using System.Collections;
 public class Vision : MonoBehaviour {
 
 	public float moveSpeed;
-	public PairInt zoomRange;
+	public Vector2 zoomRange;
 	public float zoomSpeed;
 
 	private Camera cam;
@@ -23,8 +23,8 @@ public class Vision : MonoBehaviour {
 		cam = GetComponent<Camera>();
 		camSize = cam.orthographicSize;
 
-		mapX = Logic.Inst.Grid.gridSize.x * (Logic.Inst.Grid.hexRadius + 0.6f);
-		mapY = Logic.Inst.Grid.gridSize.y * (Logic.Inst.Grid.hexRadius + 0.7f);
+		mapX = Logic.Inst.Grid.mapWidth * (Logic.Inst.Grid.hexRadius + 0.6f);
+		mapY = Logic.Inst.Grid.mapHeight * (Logic.Inst.Grid.hexRadius + 0.7f);
 
 		CalculateCameraBounds();
 	}
