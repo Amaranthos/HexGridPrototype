@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 	public int startingFaith;
 	public Color playerColour;
 
-	public Rect placementBoundaries;
+	public Field placementBoundaries;
 
 	public bool wrathMode = false;
 
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SpawnUnit(UnitType type, Tile tile, int dir) {
-		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * dir * 180));
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * (dir * 180 + 90)));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SpawnHero(Tile tile, int dir) {
-		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * dir * 180));
+		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * (dir * 180 + 90)));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
@@ -55,13 +55,13 @@ public class Player : MonoBehaviour {
 
 	public List<Tile> PlacementField() {
 		List<Tile> tiles = new List<Tile>();
-//		for (int i = 0; i < Logic.Inst.Grid.mapWidth; i++)
-//			for (int j = 0; j < Logic.Inst.Grid.mapHeight; j++)
-//				if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.TileAt(i, j).Index))
-//					tiles.Add(Logic.Inst.Grid.TileAt(i, j));
+		foreach(Tile tile in Logic.Inst.Grid.TilesList){
+			if (placementBoundaries.CoordsInRange(tile.Index)){
+				tiles.Add(tile);
+			}
+		}
 
-
-		return Logic.Inst.Grid.TilesList;
+		return tiles;
 	}
 
 	public void RemoveUnit(Unit unit) {

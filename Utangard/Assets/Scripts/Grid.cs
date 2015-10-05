@@ -313,7 +313,7 @@ public class Grid : MonoBehaviour {
 			lines.useLightProbes = false;
 			lines.receiveShadows = false;
 
-			lines.SetWidth(0.1f, 0.1f);
+			lines.SetWidth(0.03f, 0.03f);
 			lines.SetColors(Color.black, Color.black);
 			lines.material = lineMaterial;
 

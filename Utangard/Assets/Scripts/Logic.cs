@@ -92,6 +92,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
+		//This currently enables the generic sacrifice button, the button should be included with the player's gui
 		if(gamePhase == GamePhase.CombatPhase){
 			if(selectedUnit && selectedUnit.CanMove){
 				Altar altar = GetAltar(selectedUnit.Index);
@@ -235,9 +236,9 @@ public class Logic : MonoBehaviour {
 				if (CurrentPlayer.placementBoundaries.CoordsInRange(unit.Index))
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
 						if (grid.TileAt(unit.Index).IsPassable){
-					SwapUnits(grid.TileAt(unit.Index));
+							SwapUnits(grid.TileAt(unit.Index));
 							_audio.PlaySFX(SFX.Unit_Move);
-							}
+						}
 
 				break;
 
@@ -305,16 +306,13 @@ public class Logic : MonoBehaviour {
 			Debug.Log("For player " + i);
 			List<Tile> tiles = players[i].PlacementField();
 
-			Debug.Log ("Field count:" + tiles.Count);
 			for (int j = 0; j < armies[i].Length; j++){
-				Debug.Log("Solider: " + j);
 				players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
 			}
 
 			players[i].SpawnHero(tiles[armies[i].Length], i);
 		}
 
-		Debug.Log("Setting up alatrs");
 		for (int i = 0; i < numAltars; i++) {
 			var tiles = Grid.TilesList;
 			Tile rand = tiles[Random.Range(0, tiles.Count)];
@@ -324,7 +322,6 @@ public class Logic : MonoBehaviour {
 			altar.PlayerCaptureAltar(players[i % players.Length]);
 		}
 
-		Debug.Log("Spawning heroes");
 		for(int i = 0; i < players.Length; i++){
 			if(players[i].hero.passive.passive == PassiveType.Buff){
 				players[i].hero.passive.ApplyBuffAll(i);
@@ -332,7 +329,6 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
-		Debug.Log("Switchin game phase");
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
@@ -342,7 +338,7 @@ public class Logic : MonoBehaviour {
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
-		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
+		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.1f);
 
 //		Camera.main.GetComponent<Vision>().enabled = true;
 
@@ -373,14 +369,14 @@ public class Logic : MonoBehaviour {
 		ClearHighlightedTiles();
 
 		highlightedTiles = grid.TilesInRange(unit.Index, unit.movePoints);
-		ChangeTileOutlines(highlightedTiles, Color.green, 0.06f);
+		ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
 	}
 
 	public void HighlightAbilityRange (Skill ability, Unit unit){
 		ClearHighlightedTiles();
 
 		highlightedTiles = grid.TilesInRange(unit.Index, ability.castRange);
-		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.06f);
+		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.1f);
 	}
 
 	public void activateHeroAbility(int abilNum){
@@ -420,7 +416,7 @@ public class Logic : MonoBehaviour {
 					return;
 				}
 
-				ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.06f);
+				ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.1f);
 				break;
 
 			case GamePhase.CombatPhase:

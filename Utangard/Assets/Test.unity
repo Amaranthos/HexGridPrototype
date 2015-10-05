@@ -878,6 +878,14 @@ Prefab:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22580928, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22533112, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
+      propertyPath: m_IgnoreParentGroups
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
   m_IsPrefabParent: 0
@@ -1013,10 +1021,8 @@ MonoBehaviour:
   startingFaith: 0
   playerColour: {r: 1, g: 0, b: 0, a: 1}
   placementBoundaries:
-    x: 0
-    w: 20
-    y: 17
-    h: 3
+    x: 12
+    w: 15
   wrathMode: 0
   army: []
   hero: {fileID: 0}
@@ -4725,9 +4731,7 @@ MonoBehaviour:
   playerColour: {r: 0, g: 0, b: 1, a: 1}
   placementBoundaries:
     x: 0
-    w: 20
-    y: 0
-    h: 3
+    w: 3
   wrathMode: 0
   army: []
   hero: {fileID: 0}

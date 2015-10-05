@@ -34,24 +34,20 @@ using System.Collections;
 //}
 
 [System.Serializable]
-public struct Rect {
+public struct Field {
 	public int x;
 	public int w;
-	public int y;
-	public int h;
 
-	public Rect(int x, int w, int y, int h) {
+	public Field(int x, int w) {
 		this.x = x;
 		this.w = w;
-		this.y = y;
-		this.h = h;
 	}
 
-	public bool CoordsInRange(int i, int j) {
-		return (i >= x && i < x + w && j >= y && j < y + h);
+	public bool CoordsInRange(int i) {
+		return (i >= x && i < x + w);
 	}
 
 	public bool CoordsInRange(CubeIndex coords) {
-		return CoordsInRange(coords.x, coords.y);
+		return CoordsInRange(coords.x);
 	}
 }
