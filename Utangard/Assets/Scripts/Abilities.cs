@@ -56,14 +56,6 @@ public class Skill{
 		inRange = Logic.Inst.Grid.TilesInRange(tileIndex,AoERange);
 		foreach(Tile tile in inRange){
 			if(!hitFoe){
-				Debug.Log("Hits Friends");
-				Debug.Log(tile.OccupyngUnit);
-				if(tile.OccupyngUnit){
-					Debug.Log(tile.OccupyngUnit.Owner);
-				}
-				Debug.Log(hero.Owner);
-				Debug.Log(affected.Contains(tile.OccupyngUnit.type));
-
 				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner && affected.Contains(tile.OccupyngUnit.type)){
 					AddBuffs(tile.OccupyngUnit);
 					Debug.Log("Adding Buff");

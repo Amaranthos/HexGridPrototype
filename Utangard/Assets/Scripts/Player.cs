@@ -51,6 +51,7 @@ public class Player : MonoBehaviour {
 		temp.transform.parent = this.transform;
 		Hero h = temp.GetComponent<Hero>();
 		h.hero = unit;
+		hero = h;
 	}
 
 	public List<Tile> PlacementField() {

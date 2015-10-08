@@ -208,7 +208,7 @@ public class Unit : MonoBehaviour {
 
 	public void PersistentAoECheck(){
 		List<Tile> inRange = new List<Tile>();
-//		inRange = Logic.Inst.Grid.AbilityRange(index,owner.hero.passive.AoERange);
+		int buffToRemove = -1;
 		inRange = Logic.Inst.Grid.TilesInRange(index,owner.hero.passive.AoERange);
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
@@ -216,9 +216,16 @@ public class Unit : MonoBehaviour {
 				foreach(Buff buff in unit.currentBuffs){
 					foreach(Buff passBuff in owner.hero.passive.buffs){
 						if(buff.ID == passBuff.ID){
-							unit.currentBuffs.Remove(buff);	//This is probably going to break.
+							//unit.currentBuffs.Remove(buff);	//This is probably going to break. It did.
+							buffToRemove = unit.currentBuffs.IndexOf(buff);
 						}
 					}
+				}
+
+				if(buffToRemove > -1){
+					unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
+					unit.currentBuffs.RemoveAt(buffToRemove);
+					buffToRemove = -1;
 				}
 			}
 			
@@ -232,9 +239,15 @@ public class Unit : MonoBehaviour {
 				foreach(Buff buff in currentBuffs){
 					foreach(Buff passBuff in owner.hero.passive.buffs){
 						if(buff.ID == passBuff.ID){
-							currentBuffs.Remove(buff);	//This is probably going to break.
+//							currentBuffs.Remove(buff);	//This is probably going to break.
+							buffToRemove = currentBuffs.IndexOf(buff);
 						}
 					}
+				}
+				if(buffToRemove > -1){
+					currentBuffs[buffToRemove].ChangeValue(this,false);
+					currentBuffs.RemoveAt(buffToRemove);
+					buffToRemove = -1;
 				}
 			}
 		}

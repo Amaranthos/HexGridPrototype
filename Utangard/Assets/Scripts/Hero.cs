@@ -19,7 +19,6 @@ public class Hero : MonoBehaviour {
 
 	void Start () {
 		hero = this.gameObject.GetComponent<Unit>();
-		print (hero);
 	}
 
 	void Update () {
@@ -123,7 +122,6 @@ public class Hero : MonoBehaviour {
 				}
 			}
 			else if(currentAbility.target == AimType.SelfAoE){
-				//Debug.Log ("Fuck this " + hero);
 				print (gameObject.name);
 				currentAbility.ApplyBuffAoE(hero.Index);
 			}
@@ -133,6 +131,13 @@ public class Hero : MonoBehaviour {
 						currentAbility.ApplyBuffAoE(targ.Index);
 					}
 				}
+			}
+		}
+		else if (currentAbility.abilityType == AbilityType.Teleport){
+			targets[0].unit.MoveTowardsTile(Logic.Inst.Grid.TileAt(targets[1].Index));
+
+			if(hero.Owner.wrathMode){
+				currentAbility.ApplyBuffAoE(targets[1].Index);
 			}
 		}
 
@@ -169,11 +174,6 @@ public class Hero : MonoBehaviour {
 		currentRange = passive.castRange;
 
 		if(passive.passive == PassiveType.OneShotAoE || passive.passive == PassiveType.PersitentAoE){
-			print ("Start block");
-			print (hero);
-			print(this.gameObject);
-			print(gameObject);
-			print ("End block");
 			CastAbility();
 		}
 	}
@@ -181,17 +181,12 @@ public class Hero : MonoBehaviour {
 	public void CheckTarget(Tile tile){
 		List<Tile> inRange = new List<Tile>();
 
-//		inRange = Logic.Inst.Grid.AbilityRange(currentAbility.targets[currentStage].origin,currentAbility.castRange);
 		inRange = Logic.Inst.Grid.TilesInRange(currentAbility.targets[currentStage].origin,currentAbility.castRange);
 
 		if(inRange.Contains(tile) && targets.Count < currentAbility.targets.Count){
 			//Oh god this if is so long...Designed to make sure you can't put the wrong kind of targets on the list. Eg. Makes sure you're targeting a tile with a unit, if the ability hurts a specific unit.
 			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyngUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyngUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
-//				targets.Add(new Target(null,new CubeIndex(),TargetType.Single,false,false));
 				targets.Add(new Target(tile.OccupyngUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
-//				targets[currentStage].unit = tile.OccupyngUnit;
-//				targets[currentStage].Index = tile.Index;
-//				targets[currentStage].type = currentAbility.targets[currentStage].type;
 				currentStage++;
 
 				try{
