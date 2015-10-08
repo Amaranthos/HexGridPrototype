@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 //[System.Serializable]
@@ -32,6 +33,15 @@ using System.Collections;
 //		this.z = z;
 //	}
 //}
+
+[System.Serializable]
+public struct StatsGUI{
+	public Text hp;
+	public Text moves;
+	public Text atk;
+	public Text def;
+	public Text dodge;
+}
 
 [System.Serializable]
 public struct Field {
