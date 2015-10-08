@@ -9,9 +9,14 @@ public class Hero : MonoBehaviour {
 	public Skill passive;
 	public Skill active1;
 	public Skill active2;
+	private int origActive1Cost;
+	private int origActive2Cost;
+	private List<int> origActive1Strengths = new List<int>();
+	private List<int> origActive2Strengths = new List<int>();
 	public Skill currentAbility;
 	public int currentRange; 
 	public int currentStage = 0;
+	public float abilityBonus, costIncrease;
 	public Unit hero;
 	private Unit target;
 	private Tile teleLocation;
@@ -19,6 +24,16 @@ public class Hero : MonoBehaviour {
 
 	void Start () {
 		hero = this.gameObject.GetComponent<Unit>();
+		origActive1Cost = active1.cost;
+		origActive2Cost = active2.cost;
+
+		foreach(Buff buff in active1.buffs){
+			origActive1Strengths.Add(buff.strength);
+		}
+
+		foreach(Buff buff in active2.buffs){
+			origActive2Strengths.Add(buff.strength);
+		}
 	}
 
 	void Update () {
@@ -196,6 +211,23 @@ public class Hero : MonoBehaviour {
 
 				}
 			}
+		}
+	}
+
+	public void CalcBuffStrength(){
+		active1.cost = Mathf.RoundToInt(origActive1Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
+		active2.cost = Mathf.RoundToInt(origActive2Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
+
+		foreach(Buff buff in active1.buffs){
+			int index;
+			index = active1.buffs.IndexOf(buff);
+			buff.strength = Mathf.RoundToInt(origActive1Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
+		}
+
+		foreach(Buff buff in active2.buffs){
+			int index;
+			index = active2.buffs.IndexOf(buff);
+			buff.strength *= Mathf.RoundToInt(origActive2Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
 		}
 	}
 }

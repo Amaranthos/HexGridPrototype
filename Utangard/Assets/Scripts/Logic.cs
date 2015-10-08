@@ -425,6 +425,7 @@ public class Logic : MonoBehaviour {
 				CurrentPlayer.StartTurn();
 				AddFaithPerAltar();
 
+				CurrentPlayer.hero.CalcBuffStrength();
 				CurrentPlayer.hero.ApplyPassive();
 				break;
 		}

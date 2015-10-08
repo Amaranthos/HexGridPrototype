@@ -2379,6 +2379,8 @@ MonoBehaviour:
     buffs: []
   currentRange: 0
   currentStage: 2
+  abilityBonus: .100000001
+  costIncrease: .100000001
   hero: {fileID: 0}
   targets: []
 --- !u!137 &13700766
@@ -2965,6 +2967,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: passive.buffs.Array.data[0].ID
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: abilityBonus
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: costIncrease
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

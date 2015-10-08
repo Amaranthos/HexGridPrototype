@@ -111,13 +111,21 @@ public class Unit : MonoBehaviour {
 
 	public void AddBuff(Buff bff){
 		Buff nEft;
+		bool newBuff = true;
 
-		if(!bff.oneShot){
+		foreach(Buff buff in currentBuffs){
+			if(buff.ID == bff.ID){
+				newBuff = false;
+				buff.duration = bff.duration;
+			}
+		}
+
+		if(!bff.oneShot && newBuff){
 			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.oneShot,bff.adjType,bff.adjUnits,bff.terType);
 			currentBuffs.Add(nEft);
 		}
 
-		if(bff.buffType == BuffType.Stat){
+		if(bff.buffType == BuffType.Stat && newBuff){
 			bff.ChangeValue(this,true);
 		}
 	}
@@ -125,7 +133,6 @@ public class Unit : MonoBehaviour {
 	public void AdjacencyCheck(){
 		foreach(Buff buff in currentBuffs){
 			List<Tile> inRange = new List<Tile>();
-//			inRange = Logic.Inst.Grid.AbilityRange(index,1);
 			inRange = Logic.Inst.Grid.TilesInRange(index,1);
 			
 			if(buff.buffType == BuffType.Adjacent){
