@@ -110,6 +110,8 @@ public class Logic : MonoBehaviour {
 			if (hit.transform) {
 				GameObject go = hit.transform.gameObject;
 
+				Debug.Log(hit.transform.gameObject);
+
 				Unit unit = go.GetComponent<Unit>();
 
 				if (unit)
@@ -134,6 +136,8 @@ public class Logic : MonoBehaviour {
 			RaycastHit hit = MouseClick();
 			if (hit.transform) {
 				GameObject go = hit.transform.gameObject;
+
+				Debug.Log(hit.transform.gameObject);
 
 				Unit unit = go.GetComponent<Unit>();
 
@@ -199,7 +203,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void TileLClicked(Tile tile) {
-		TileSelected(tile);
+		if(tile.OccupyngUnit)
+			UnitSelected(tile.OccupyngUnit);
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
@@ -300,7 +305,7 @@ public class Logic : MonoBehaviour {
 		grid.GenerateGrid();
 
 		foreach (Tile tile in grid.TilesList) {
-			tile.SetTileModifiers(BiomeType.Grass, TerrainType.Plains);
+			tile.SetTileModifiers((BiomeType)Random.Range(0, System.Enum.GetNames(typeof(BiomeType)).Length), TerrainType.Plains);
 		}
 
 		for (int i = 0; i < armies.Length; i++){
@@ -367,11 +372,19 @@ public class Logic : MonoBehaviour {
 
 	private void HighlightMoveRange(Unit unit) {
 		ClearHighlightedTiles();
-
 		highlightedTiles = grid.TilesInRange(unit.Index, unit.CurrentMovePoints);
-
-
 		ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
+
+		for(int i = 0; i < highlightedTiles.Count; i++) {
+			if(highlightedTiles[i].OccupyngUnit)
+				if(highlightedTiles[i].OccupyngUnit.Owner != CurrentPlayer)
+					if(unit.InAttackRange(highlightedTiles[i].OccupyngUnit))
+						highlightedTiles[i].LineColour(Color.red);
+				else {
+					highlightedTiles[i].LineColour(Color.black);
+					highlightedTiles[i].LineWidth(0.03f);
+				}
+		}
 	}
 
 	public void HighlightAbilityRange (Skill ability, Unit unit){
@@ -522,8 +535,8 @@ public class Logic : MonoBehaviour {
 	private void ClearSelected() {
 		if(selectedUnit)
 			selectedUnit = null;
-		if(selectedTile)
-			selectedTile = null;
+		// if(selectedTile)
+		// 	selectedTile = null;
 
 		ClearHighlightedTiles();
 
@@ -538,10 +551,10 @@ public class Logic : MonoBehaviour {
 		infoPanel.UpdateUnitInfo(unit);
 	}
 
-	private void TileSelected(Tile tile) {
-		selectedTile = tile;
-		infoPanel.UpdateTileInfo(tile);
-	}
+	// private void TileSelected(Tile tile) {
+	// 	selectedTile = tile;
+	// 	infoPanel.UpdateTileInfo(tile);
+	// }
 
 	private RaycastHit MouseClick() {
 		RaycastHit hit; 
@@ -608,6 +621,10 @@ public class Logic : MonoBehaviour {
 
 	public Unit SelectedUnit{
 		get { return selectedUnit; }
+	}
+
+	public TerrainList Terrains {
+		get {return terrainList;}
 	}
 	#endregion
 }

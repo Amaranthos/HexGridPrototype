@@ -55,13 +55,14 @@ public class Unit : MonoBehaviour {
 		if (Logic.Inst.gamePhase == GamePhase.CombatPhase){
 			currentPath = new Queue<Tile>(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile));
 			currentPath = new Queue<Tile>(currentPath.Reverse());
-			Move();
+			StartCoroutine(Move());
 		}		
 		else {
 			transform.position = tile.transform.position;
-			index = tile.Index;
-			tile.OccupyngUnit = this;
 		}
+
+		index = tile.Index;
+		tile.OccupyngUnit = this;
 		//Handles adjacency buffs
 		AdjacencyCheck();
 
@@ -74,24 +75,21 @@ public class Unit : MonoBehaviour {
 			altar.PlayerCaptureAltar(owner);
 	}
 
-	private void Move(){
+	private IEnumerator Move(){
 		while(currentPath.Count != 0){
 			Tile tile = currentPath.Dequeue();
-			Debug.Log(tile);
-			// StartCoroutine(Rotate(tile, 0.1f));
-			// // if(transform.position == tile.transform.position)
-			// // 	// StopCoroutine(Rotate);
+			StartCoroutine(Rotate(tile, 0.1f));
 			transform.position = tile.transform.position;
-			currentMP -= tile.MoveCost;
-			index = tile.Index;
-			tile.OccupyngUnit = this;
+			currentMP -= tile.MoveCost;	
 		}
+		yield return null;
 	}
 
 	private IEnumerator Rotate(Tile target, float step) {
 		Quaternion dir = Quaternion.LookRotation(target.transform.position - transform.position);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, step);
-		yield return new WaitForSeconds(step);
+		yield return new WaitForEndOfFrame();
+		
 	}
 
 	public void UnitKilled() {
@@ -110,7 +108,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InAttackRange(Unit unit) {
-		return Logic.Inst.Grid.Neighbours(index.x, index.y).Contains(Logic.Inst.Grid.TileAt(unit.Index.x, unit.Index.y));
+		return Logic.Inst.Grid.Neighbours(index).Contains(Logic.Inst.Grid.TileAt(unit.Index));
 	}
 
 	public bool InMoveRange(Tile tile) {
@@ -186,7 +184,7 @@ public class Unit : MonoBehaviour {
 		CalcAdjacency();
 
 		foreach (Buff bff in currentBuffs){
-			if((bff.duration > 0 || bff.permanent) && bff.buffType != BuffType.Adjacent){
+			if((bff.duration > 0 || bff.permanent) && bff.buffType == BuffType.Stat){
 				bff.ChangeValue(this,true);
 			}
 		}

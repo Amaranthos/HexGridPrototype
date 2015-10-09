@@ -6,6 +6,8 @@ public class Path : MonoBehaviour{
 	public List<Tile> GetPath(Tile start, Tile goal) {
 		List<Tile> path = new List<Tile>();
 
+		Logic.Inst.Grid.ClearHerustics();
+
 		FindPath(start, goal);
 		path = RetracePath(start, goal);
 

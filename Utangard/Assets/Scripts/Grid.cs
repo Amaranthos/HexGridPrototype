@@ -79,6 +79,12 @@ public class Grid : MonoBehaviour {
 		grid.Clear();
 	}
 
+	public void ClearHerustics(){
+		foreach (Tile tile in grid.Values) {
+			tile.ClearHerustics();
+		}
+	}
+
 	public Tile TileAt(CubeIndex index){
 		if(grid.ContainsKey(index.ToString()))
 		   return grid[index.ToString()];

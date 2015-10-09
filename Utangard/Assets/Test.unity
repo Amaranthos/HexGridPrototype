@@ -914,6 +914,14 @@ Prefab:
       propertyPath: m_IgnoreParentGroups
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 136614, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174096, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3889be061ccaeff4fb6bb7ce5d897ddb, type: 2}
   m_IsPrefabParent: 0
@@ -1218,7 +1226,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 8
   m_Depth: -1
   m_CullingMask:
@@ -1239,7 +1247,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 692991050}
-  m_LocalRotation: {x: .500000179, y: 0, z: 0, w: .866025329}
+  m_LocalRotation: {x: .30070582, y: 0, z: 0, w: .953716934}
   m_LocalPosition: {x: 10, y: 9, z: -1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2077,6 +2085,13 @@ MonoBehaviour:
   - {fileID: 139800, guid: 5c0bd39511ca9dc4984cb917260c98d9, type: 2}
   altars:
   - {fileID: 165278, guid: 3b2b374896e95014ba5122a16548ff5d, type: 2}
+  biomeMaterials:
+  - mat: {fileID: 2100000, guid: fa5226ce33391804d9d36bbb0e82d255, type: 2}
+    biome: 0
+  - mat: {fileID: 2100000, guid: 1c2c95601b976674a9d72ecf5fdaeaa1, type: 2}
+    biome: 1
+  - mat: {fileID: 2100000, guid: 2c90efb9391bf604981975a94142a122, type: 2}
+    biome: 2
 --- !u!114 &884955403
 MonoBehaviour:
   m_ObjectHideFlags: 0

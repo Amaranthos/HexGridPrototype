@@ -68,17 +68,40 @@ public class Tile : MonoBehaviour {
 
 		switch(this.biome){
 		case BiomeType.Grass:
-			MoveCost += TerrainModifiers.inst.grass.moveCost;
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.grass.moveCost);
 			break;
 
 		case BiomeType.Snow:
-			MoveCost += TerrainModifiers.inst.snow.moveCost;
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.snow.moveCost);
 			break;
 
 		case BiomeType.Forest:
-			MoveCost += TerrainModifiers.inst.forest.moveCost;
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.forest.moveCost);
 			break;
 		}
+
+		switch (this.terrain){
+		case TerrainType.Plains:
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.plains.moveCost);	  
+			break;
+
+		case TerrainType.Hills:
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.hills.moveCost);
+			break;
+
+		case TerrainType.Mountains:
+			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.mountains.moveCost);
+			break;
+		}
+
+		GetComponent<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
+	}
+
+	public void ClearHerustics(){
+		GCost = 0;
+		HCost = 0;
+		Parent = null;
+
 	}
 
 	#region Coordinate Conversion Functions
