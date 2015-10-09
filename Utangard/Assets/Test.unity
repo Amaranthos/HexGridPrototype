@@ -1880,6 +1880,7 @@ GameObject:
   - 114: {fileID: 884955399}
   - 114: {fileID: 884955400}
   - 114: {fileID: 884955402}
+  - 114: {fileID: 884955403}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2076,6 +2077,41 @@ MonoBehaviour:
   - {fileID: 139800, guid: 5c0bd39511ca9dc4984cb917260c98d9, type: 2}
   altars:
   - {fileID: 165278, guid: 3b2b374896e95014ba5122a16548ff5d, type: 2}
+--- !u!114 &884955403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884955392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eade9edfcc811a142bcd415fc46a0bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grass:
+    moveCost: 1
+    attactEffect: 0
+    defenseEffect: 0
+  snow:
+    moveCost: 2
+    attactEffect: 0
+    defenseEffect: 0
+  forest:
+    moveCost: 2
+    attactEffect: 0
+    defenseEffect: 0
+  plains:
+    moveCost: 1
+    attactEffect: 0
+    defenseEffect: 0
+  hills:
+    moveCost: 2
+    attactEffect: 0
+    defenseEffect: 0
+  mountains:
+    moveCost: 999
+    attactEffect: 0
+    defenseEffect: 0
 --- !u!114 &908292624 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11480132, guid: 3889be061ccaeff4fb6bb7ce5d897ddb,
@@ -2183,7 +2219,7 @@ Prefab:
       objectReference: {fileID: 1916948026}
     - target: {fileID: 154210, guid: 25202af8db597d640a068724c7796ac9, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25202af8db597d640a068724c7796ac9, type: 2}
@@ -3048,6 +3084,10 @@ Prefab:
     - target: {fileID: 22467748, guid: d30870bd1470afa4ab20b0b8f1136d63, type: 2}
       propertyPath: m_SizeDelta.y
       value: 39.1500015
+      objectReference: {fileID: 0}
+    - target: {fileID: 133768, guid: d30870bd1470afa4ab20b0b8f1136d63, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d30870bd1470afa4ab20b0b8f1136d63, type: 2}

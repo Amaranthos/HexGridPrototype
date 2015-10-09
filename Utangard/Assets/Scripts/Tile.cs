@@ -6,7 +6,10 @@ public class Tile : MonoBehaviour {
 
 	private Unit occupyingUnit = null;
 	private bool isPassable = true;
-	private int moveCost;	
+	private int moveCost;
+
+	private BiomeType biome = BiomeType.Grass;
+	private TerrainType terrain = TerrainType.Plains;
 
 	public static Vector3 Corner(Vector3 origin, float radius, int corner, HexOrientation orientation){
 		float angle = 60 * corner;
@@ -57,6 +60,25 @@ public class Tile : MonoBehaviour {
 		mesh.name = "Hexagonal Plane";
 
 		mesh.RecalculateNormals();
+	}
+
+	public void SetTileModifiers(BiomeType biome, TerrainType terrain){
+		this.biome = biome;
+		this.terrain = terrain;
+
+		switch(this.biome){
+		case BiomeType.Grass:
+			MoveCost += TerrainModifiers.inst.grass.moveCost;
+			break;
+
+		case BiomeType.Snow:
+			MoveCost += TerrainModifiers.inst.snow.moveCost;
+			break;
+
+		case BiomeType.Forest:
+			MoveCost += TerrainModifiers.inst.forest.moveCost;
+			break;
+		}
 	}
 
 	#region Coordinate Conversion Functions
@@ -173,6 +195,16 @@ public class Tile : MonoBehaviour {
 	public bool IsPassable {
 		get { return isPassable; }
 		set { isPassable = value; }
+	}
+
+	public BiomeType Biome{
+		get {return biome;}
+		set {biome = value;}
+	}
+
+	public TerrainType Terrain {
+		get {return terrain;}
+		set {terrain = value;}
 	}
 	#endregion
 }

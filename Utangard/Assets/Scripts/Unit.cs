@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Unit : MonoBehaviour {
 
@@ -30,9 +32,11 @@ public class Unit : MonoBehaviour {
 	private Player owner;
 
 	public List<Buff> currentBuffs = new List<Buff>();	//Every effect this unit is currently under
+	private Queue<Tile> currentPath;
 
 	private void Start() {
 		currentHP = maxHitpoints;
+		currentMP = movePoints;
 	}
 
 	private void OnMouseEnter() {
@@ -44,30 +48,50 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void MoveTowardsTile(Tile tile) {
-//		if (Logic.Inst.gamePhase == GamePhase.CombatPhase) {
-//			List<Tile> path = Logic.Inst.Path.GetPath(Logic.Inst.Grid.GetTile(index), tile);
-//
-//			foreach (Tile t in path)
-//				t.SetLineColour(Color.cyan);
-//		}
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
+
 		Logic.Inst.Grid.TileAt(index).OccupyngUnit = null;
-		index = tile.Index;
-		tile.OccupyngUnit = this;
 
-		transform.position = tile.transform.position;
-
+		if (Logic.Inst.gamePhase == GamePhase.CombatPhase){
+			currentPath = new Queue<Tile>(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile));
+			currentPath = new Queue<Tile>(currentPath.Reverse());
+			Move();
+		}		
+		else {
+			transform.position = tile.transform.position;
+			index = tile.Index;
+			tile.OccupyngUnit = this;
+		}
 		//Handles adjacency buffs
 		AdjacencyCheck();
 
 		//Handles persistent passives
 		PersistentAoECheck();
 
-
 		Altar altar = Logic.Inst.GetAltar(tile.Index);
 
 		if (altar)
 			altar.PlayerCaptureAltar(owner);
+	}
+
+	private void Move(){
+		while(currentPath.Count != 0){
+			Tile tile = currentPath.Dequeue();
+			Debug.Log(tile);
+			// StartCoroutine(Rotate(tile, 0.1f));
+			// // if(transform.position == tile.transform.position)
+			// // 	// StopCoroutine(Rotate);
+			transform.position = tile.transform.position;
+			currentMP -= tile.MoveCost;
+			index = tile.Index;
+			tile.OccupyngUnit = this;
+		}
+	}
+
+	private IEnumerator Rotate(Tile target, float step) {
+		Quaternion dir = Quaternion.LookRotation(target.transform.position - transform.position);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, step);
+		yield return new WaitForSeconds(step);
 	}
 
 	public void UnitKilled() {
@@ -90,10 +114,12 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InMoveRange(Tile tile) {
-		return Logic.Inst.Grid.TilesInRange(index, movePoints).Contains(tile);
+		return Logic.Inst.Grid.TilesInRange(index, currentMP).Contains(tile);
 	}
 
 	public void OnTurnStart(){
+		currentMP = movePoints;
+
 		foreach (Buff bff in currentBuffs){
 			bff.duration--;
 			if(bff.duration == 0){				//If the effect is done
@@ -317,7 +343,7 @@ public class Unit : MonoBehaviour {
 		set { canMove = value; }
 	}
 
-	public int CurrentMocePoints {
+	public int CurrentMovePoints {
 		get { return currentMP; }
 		set { currentMP = value; }
 	}

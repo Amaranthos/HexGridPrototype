@@ -58,7 +58,7 @@ public class Path : MonoBehaviour{
 			current = current.Parent;
 		}
 
-		tiles.Add(start);
+		// tiles.Add(start);
 
 		return tiles;
 	}

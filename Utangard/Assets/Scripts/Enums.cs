@@ -78,11 +78,15 @@ public enum AdjacencyType{
 }
 
 public enum TerrainType{
-	Grass,
 	Hills,
-	Snow,
-	Forrest,
+	Plains,
 	Mountains
+}
+
+public enum BiomeType{
+	Grass,
+	Snow,
+	Forest
 }
 
 public enum Music {

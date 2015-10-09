@@ -270,12 +270,12 @@ public class Logic : MonoBehaviour {
 
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove){
-					if (selectedUnit.InMoveRange(tile))
-					{
-						if (!tile.OccupyngUnit) {
-							selectedUnit.MoveTowardsTile(tile);
-							HighlightMoveRange(selectedUnit);
-						}
+					if (selectedUnit.InMoveRange(tile)) {
+						if (!tile.OccupyngUnit)
+							if(selectedUnit.CurrentMovePoints > 0){
+								selectedUnit.MoveTowardsTile(tile);
+								HighlightMoveRange(selectedUnit);
+							}
 						else if (tile.OccupyngUnit.Owner != CurrentPlayer)
 							UnitCombat(selectedUnit, tile.OccupyngUnit);
 					}
@@ -296,14 +296,14 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void SetupGameWorld(int[][] armies) {
-		Debug.Log("Starting setup");
 		GUIManager.inst.AssignTextures();
-		Debug.Log("Generating grid");
 		grid.GenerateGrid();
 
-		Debug.Log("Setting up armies for players");
+		foreach (Tile tile in grid.TilesList) {
+			tile.SetTileModifiers(BiomeType.Grass, TerrainType.Plains);
+		}
+
 		for (int i = 0; i < armies.Length; i++){
-			Debug.Log("For player " + i);
 			List<Tile> tiles = players[i].PlacementField();
 
 			for (int j = 0; j < armies[i].Length; j++){
@@ -368,7 +368,9 @@ public class Logic : MonoBehaviour {
 	private void HighlightMoveRange(Unit unit) {
 		ClearHighlightedTiles();
 
-		highlightedTiles = grid.TilesInRange(unit.Index, unit.movePoints);
+		highlightedTiles = grid.TilesInRange(unit.Index, unit.CurrentMovePoints);
+
+
 		ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
 	}
 
