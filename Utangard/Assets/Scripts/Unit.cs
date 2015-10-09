@@ -78,18 +78,21 @@ public class Unit : MonoBehaviour {
 	private IEnumerator Move(){
 		while(currentPath.Count != 0){
 			Tile tile = currentPath.Dequeue();
-			StartCoroutine(Rotate(tile, 0.1f));
+			// StartCoroutine(Rotate(tile, 0.1f));
 			transform.position = tile.transform.position;
-			currentMP -= tile.MoveCost;	
+			currentMP -= tile.MoveCost;
+			yield return new WaitForSeconds(1f);
 		}
 		yield return null;
 	}
 
 	private IEnumerator Rotate(Tile target, float step) {
 		Quaternion dir = Quaternion.LookRotation(target.transform.position - transform.position);
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, step);
-		yield return new WaitForEndOfFrame();
-		
+		while(transform.rotation != dir){
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, 0.1f);
+			yield return new WaitForSeconds(0.1f);
+		}
+		yield return null;		
 	}
 
 	public void UnitKilled() {
