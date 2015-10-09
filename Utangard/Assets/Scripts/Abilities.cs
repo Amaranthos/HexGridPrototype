@@ -102,9 +102,11 @@ public class Buff{
 	public List<UnitType> adjUnits = new List<UnitType>();
 
 	//For Terrain Buffs
+	public bool isBio;
 	public TerrainType terType;
+	public BiomeType bioType;
 
-	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool os, AdjacencyType at, List<UnitType> ut, TerrainType tt){
+	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool os, AdjacencyType at, List<UnitType> ut, bool ib, TerrainType tt, BiomeType bi){
 		ID = id;
 		buffType = bt;
 		duration = dur;
@@ -116,7 +118,9 @@ public class Buff{
 		oneShot = os;
 		adjType = at;
 		adjUnits = ut;
+		isBio = ib;
 		terType = tt;
+		bioType = bi;
 	}
 
 	public void ChangeValue(Unit unt, bool add){	//'add' is if the effect is being added to or removed from a unit

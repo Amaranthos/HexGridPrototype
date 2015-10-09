@@ -2280,7 +2280,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 1
       terType: 2
+      bioType: 1
   active1:
     abilityType: 0
     target: 0
@@ -2304,7 +2306,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
     - ID: 11
       buffType: 0
       duration: 1
@@ -2316,7 +2320,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
   active2:
     abilityType: 0
     target: 0
@@ -2340,7 +2346,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
     - ID: 13
       buffType: 0
       duration: 1
@@ -2352,7 +2360,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
     - ID: 14
       buffType: 1
       duration: 1
@@ -2364,7 +2374,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 00000000
+      isBio: 0
       terType: 0
+      bioType: 0
   currentAbility:
     abilityType: 0
     target: 0
@@ -2975,6 +2987,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: costIncrease
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].bioType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.buffs.Array.data[0].isBio
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
