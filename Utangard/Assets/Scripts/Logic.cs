@@ -603,5 +603,9 @@ public class Logic : MonoBehaviour {
 	public Path Path {
 		get { return path; }
 	}
+
+	public Unit SelectedUnit{
+		get { return selectedUnit; }
+	}
 	#endregion
 }
