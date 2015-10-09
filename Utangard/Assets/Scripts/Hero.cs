@@ -44,6 +44,10 @@ public class Hero : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha2) && gameObject.GetComponent<Unit>().Owner == Logic.Inst.Players[0]){
 			ActivateAbility2();
 		}
+
+		if (Input.GetKeyDown (KeyCode.F)) {
+			hero.Owner.Faith += 1000000;
+		}
 	}
 
 //	public void ReceiveTarget(Unit unit, Tile tile){
@@ -148,7 +152,7 @@ public class Hero : MonoBehaviour {
 				}
 			}
 		}
-		else if (currentAbility.abilityType == AbilityType.Teleport){
+		else if (currentAbility.abilityType == AbilityType.Teleport){	//Teleport Unit
 			targets[0].unit.MoveTowardsTile(Logic.Inst.Grid.TileAt(targets[1].Index));
 
 			if(hero.Owner.wrathMode){
@@ -202,13 +206,12 @@ public class Hero : MonoBehaviour {
 			//Oh god this if is so long...Designed to make sure you can't put the wrong kind of targets on the list. Eg. Makes sure you're targeting a tile with a unit, if the ability hurts a specific unit.
 			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyngUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyngUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
 				targets.Add(new Target(tile.OccupyngUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
+				currentAbility.targets[currentStage].unit = tile.OccupyngUnit;
 				currentStage++;
 
-				try{
+				if(currentStage > 0 && currentAbility.targets[currentStage-1].unit){
 					currentAbility.targets[currentStage].origin = currentAbility.targets[currentStage-1].unit.Index;
-				}
-				catch (Exception e){
-
+					print ("Origin Updated");
 				}
 			}
 		}
