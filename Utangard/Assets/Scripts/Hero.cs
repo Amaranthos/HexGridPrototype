@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -204,9 +204,9 @@ public class Hero : MonoBehaviour {
 
 		if(inRange.Contains(tile) && targets.Count < currentAbility.targets.Count){
 			//Oh god this if is so long...Designed to make sure you can't put the wrong kind of targets on the list. Eg. Makes sure you're targeting a tile with a unit, if the ability hurts a specific unit.
-			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyngUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyngUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
-				targets.Add(new Target(tile.OccupyngUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
-				currentAbility.targets[currentStage].unit = tile.OccupyngUnit;
+			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyingUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyingUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
+				targets.Add(new Target(tile.OccupyingUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
+				currentAbility.targets[currentStage].unit = tile.OccupyingUnit;
 				currentStage++;
 
 				if(currentStage > 0 && currentAbility.targets[currentStage-1].unit){

@@ -34,6 +34,8 @@ public class Unit : MonoBehaviour {
 	public List<Buff> currentBuffs = new List<Buff>();	//Every effect this unit is currently under
 	private Queue<Tile> currentPath;
 
+	private List<Tile> highlighted = new List<Tile>();
+
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
@@ -50,7 +52,7 @@ public class Unit : MonoBehaviour {
 	public void MoveTowardsTile(Tile tile) {
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
 
-		Logic.Inst.Grid.TileAt(index).OccupyngUnit = null;
+		Logic.Inst.Grid.TileAt(index).OccupyingUnit = null;
 
 		if (Logic.Inst.gamePhase == GamePhase.CombatPhase){
 			currentPath = new Queue<Tile>(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile));
@@ -62,7 +64,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		index = tile.Index;
-		tile.OccupyngUnit = this;
+		tile.OccupyingUnit = this;
 		//Handles adjacency buffs
 		AdjacencyCheck();
 
@@ -73,6 +75,7 @@ public class Unit : MonoBehaviour {
 
 		if (altar)
 			altar.PlayerCaptureAltar(owner);
+		ClearHighlightedTiles();
 	}
 
 	private IEnumerator Move(){
@@ -81,7 +84,7 @@ public class Unit : MonoBehaviour {
 			// StartCoroutine(Rotate(tile, 0.1f));
 			transform.position = tile.transform.position;
 			currentMP -= tile.MoveCost;
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0.5f);
 		}
 		yield return null;
 	}
@@ -93,6 +96,44 @@ public class Unit : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 		yield return null;		
+	}
+
+	public void UnitSelected(){
+		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
+
+		foreach(Tile tile in ret){
+			if(tile.OccupyingUnit != null){
+				if(tile.OccupyingUnit.Owner != Owner && canMove)
+					if(Logic.Inst.Grid.Distance(tile, Logic.Inst.Grid.TileAt(index)) <= attackRange){
+						tile.LineColour(Color.red);
+						tile.LineWidth(0.1f);
+						highlighted.Add(tile);
+					}
+				else if(InMoveRange(tile)){
+					tile.LineColour(Color.grey);
+					tile.LineWidth(0.1f);
+					highlighted.Add(tile);
+				}
+			}
+			else if(InMoveRange(tile)){
+				tile.LineColour(Color.green);
+				tile.LineWidth(0.1f);
+				highlighted.Add(tile);
+			}
+		}
+
+		Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);
+		Logic.Inst.Grid.TileAt(index).LineWidth(0.1f);
+		highlighted.Add(Logic.Inst.Grid.TileAt(index));
+	}
+
+	public void ClearHighlightedTiles() {
+		foreach(Tile tile in highlighted){
+			tile.LineColour(Color.black);
+			tile.LineWidth(0.03f);			
+		}
+
+		highlighted.Clear();
 	}
 
 	public void UnitKilled() {
@@ -115,7 +156,9 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InMoveRange(Tile tile) {
-		return Logic.Inst.Grid.TilesInRange(index, currentMP).Contains(tile);
+		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
+		ret.RemoveAll(item => (currentMP > 0 && Logic.Inst.Path.PathCost(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile)) > currentMP));
+		return ret.Contains(tile);
 	}
 
 	public void OnTurnStart(){
@@ -167,10 +210,10 @@ public class Unit : MonoBehaviour {
 			}
 			
 			foreach(Tile adjTile in inRange){
-				if(adjTile.OccupyngUnit){
-					foreach(Buff adjBuff in adjTile.OccupyngUnit.currentBuffs){
+				if(adjTile.OccupyingUnit){
+					foreach(Buff adjBuff in adjTile.OccupyingUnit.currentBuffs){
 						if(adjBuff.buffType == BuffType.Adjacent){
-							adjTile.OccupyngUnit.CalculateModifiers();
+							adjTile.OccupyingUnit.CalculateModifiers();
 						}
 					}
 				}
@@ -203,24 +246,24 @@ public class Unit : MonoBehaviour {
 //				inRange = Logic.Inst.Grid.AbilityRange(index,1);
 				inRange = Logic.Inst.Grid.TilesInRange(index,1);
 				foreach(Tile tile in inRange){
-					if(tile.OccupyngUnit){
+					if(tile.OccupyingUnit){
 						switch(buff.adjType){
 						case AdjacencyType.Friends:
-							if(buff.adjUnits.Contains(tile.OccupyngUnit.type) && tile.OccupyngUnit.owner == owner){
+							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner == owner){
 								buff.ChangeValue(this,true);
 								proced = true;
 							}
 							break;
 
 						case AdjacencyType.Enemies:
-							if(buff.adjUnits.Contains(tile.OccupyngUnit.type) && tile.OccupyngUnit.owner != owner){
+							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner != owner){
 								buff.ChangeValue(this,true);
 								proced = true;
 							}
 							break;
 
 						case AdjacencyType.Both:
-							if(buff.adjUnits.Contains(tile.OccupyngUnit.type)){
+							if(buff.adjUnits.Contains(tile.OccupyingUnit.type)){
 								buff.ChangeValue(this,true);
 								proced = true;
 							}

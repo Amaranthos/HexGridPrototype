@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class Path : MonoBehaviour{
@@ -31,7 +31,7 @@ public class Path : MonoBehaviour{
 
 				foreach (Tile tile in Logic.Inst.Grid.Neighbours(current)){
 					if (tile) {
-						if (!tile.IsPassable || tile.OccupyngUnit || closed.Contains(tile))
+						if (!tile.IsPassable || tile.OccupyingUnit || closed.Contains(tile))
 							continue;
 
 						int cost = current.GCost + Logic.Inst.Grid.Distance(current, tile) + tile.MoveCost;
@@ -63,5 +63,14 @@ public class Path : MonoBehaviour{
 		// tiles.Add(start);
 
 		return tiles;
+	}
+
+	public int PathCost(List<Tile> path){
+		int cost = 0;
+
+		foreach(Tile tile in path)
+			cost += tile.MoveCost;
+
+		return cost;
 	}
 }

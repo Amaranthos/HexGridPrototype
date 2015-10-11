@@ -110,8 +110,6 @@ public class Logic : MonoBehaviour {
 			if (hit.transform) {
 				GameObject go = hit.transform.gameObject;
 
-				Debug.Log(hit.transform.gameObject);
-
 				Unit unit = go.GetComponent<Unit>();
 
 				if (unit)
@@ -136,8 +134,6 @@ public class Logic : MonoBehaviour {
 			RaycastHit hit = MouseClick();
 			if (hit.transform) {
 				GameObject go = hit.transform.gameObject;
-
-				Debug.Log(hit.transform.gameObject);
 
 				Unit unit = go.GetComponent<Unit>();
 
@@ -203,8 +199,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void TileLClicked(Tile tile) {
-		if(tile.OccupyngUnit)
-			UnitSelected(tile.OccupyngUnit);
+		if(tile.OccupyingUnit)
+			UnitSelected(tile.OccupyingUnit);
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
@@ -264,9 +260,9 @@ public class Logic : MonoBehaviour {
 				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index)){
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove)
 						if (tile.IsPassable)
-							if (!tile.OccupyngUnit)
+							if (!tile.OccupyingUnit)
 								selectedUnit.MoveTowardsTile(tile);
-							else if (tile.OccupyngUnit.Owner == CurrentPlayer)
+							else if (tile.OccupyingUnit.Owner == CurrentPlayer)
 								SwapUnits(tile);
 				}
 				else
@@ -276,13 +272,13 @@ public class Logic : MonoBehaviour {
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove){
 					if (selectedUnit.InMoveRange(tile)) {
-						if (!tile.OccupyngUnit)
+						if (!tile.OccupyingUnit)
 							if(selectedUnit.CurrentMovePoints > 0){
 								selectedUnit.MoveTowardsTile(tile);
 								HighlightMoveRange(selectedUnit);
 							}
-						else if (tile.OccupyngUnit.Owner != CurrentPlayer)
-							UnitCombat(selectedUnit, tile.OccupyngUnit);
+						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
+							UnitCombat(selectedUnit, tile.OccupyingUnit);
 					}
 					else
 						_audio.PlaySFX(SFX.Unit_CantMoveThere);
@@ -294,10 +290,10 @@ public class Logic : MonoBehaviour {
 	private void SwapUnits(Tile tile) {
 		_audio.PlaySFX(SFX.Unit_Move);
 		Tile prevTile = grid.TileAt(selectedUnit.Index);
-		Unit swap = tile.OccupyngUnit;
+		Unit swap = tile.OccupyingUnit;
 		swap.MoveTowardsTile(prevTile);
 		selectedUnit.MoveTowardsTile(tile);
-		prevTile.OccupyngUnit = swap;
+		prevTile.OccupyingUnit = swap;
 	}
 
 	public void SetupGameWorld(int[][] armies) {
@@ -366,25 +362,37 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
+	private void ChangeTileOutlines(Tile tile, Color colour, float thickness){
+		tile.LineColour(colour);
+		tile.LineWidth(thickness);
+	}
+
 	public void ClearHighlightedTiles() {
 		ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
 	}
 
 	private void HighlightMoveRange(Unit unit) {
 		ClearHighlightedTiles();
-		highlightedTiles = grid.TilesInRange(unit.Index, unit.CurrentMovePoints);
-		ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
+		unit.ClearHighlightedTiles();
+		unit.UnitSelected();
 
-		for(int i = 0; i < highlightedTiles.Count; i++) {
-			if(highlightedTiles[i].OccupyngUnit)
-				if(highlightedTiles[i].OccupyngUnit.Owner != CurrentPlayer)
-					if(unit.InAttackRange(highlightedTiles[i].OccupyngUnit))
-						highlightedTiles[i].LineColour(Color.red);
-				else {
-					highlightedTiles[i].LineColour(Color.black);
-					highlightedTiles[i].LineWidth(0.03f);
-				}
-		}
+		// highlightedTiles = unit.UnitSelected();
+		// ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
+
+		// for(int i = 0; i < highlightedTiles.Count; i++) {
+		// 	if(highlightedTiles[i].OccupyingUnit)
+		// 		if(highlightedTiles[i].OccupyingUnit.Owner != CurrentPlayer)
+		// 			if(unit.InAttackRange(highlightedTiles[i].OccupyingUnit))
+		// 				ChangeTileOutlines(highlightedTiles[i], Color.red, 0.1f);
+		// 		else {
+		// 			ChangeTileOutlines(highlightedTiles[i], Color.grey, 0.1f);
+		// 		}
+		// 	else {
+		// 		ChangeTileOutlines(highlightedTiles[i], Color.grey, 0.1f);
+		// 	}
+		// }
+
+		// ChangeTileOutlines(grid.TileAt(unit.Index), Color.cyan, 0.1f);
 	}
 
 	public void HighlightAbilityRange (Skill ability, Unit unit){
@@ -533,8 +541,11 @@ public class Logic : MonoBehaviour {
 	}
 	
 	private void ClearSelected() {
-		if(selectedUnit)
+
+		if(selectedUnit){
+			selectedUnit.ClearHighlightedTiles();
 			selectedUnit = null;
+		}
 		// if(selectedTile)
 		// 	selectedTile = null;
 
@@ -544,6 +555,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void UnitSelected(Unit unit) {
+		unit.ClearHighlightedTiles();
 		if(gamePhase == GamePhase.CombatPhase){
 			ClearHighlightedTiles();
 		}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour {
@@ -58,8 +58,8 @@ public class InfoPanel : MonoBehaviour {
 			return;
 
 		if (tile){
-			text.tileInfoP1.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y + "\nPassable: " + tile.IsPassable + "\nOccupied: " + (tile.OccupyngUnit != null).ToString();
-			text.tileInfoP2.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y + "\nPassable: " + tile.IsPassable + "\nOccupied: " + (tile.OccupyngUnit != null).ToString();
+			text.tileInfoP1.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y + "\nPassable: " + tile.IsPassable + "\nOccupied: " + (tile.OccupyingUnit != null).ToString();
+			text.tileInfoP2.text = "Selected tile: " + tile.Index.x + "," + tile.Index.y + "\nPassable: " + tile.IsPassable + "\nOccupied: " + (tile.OccupyingUnit != null).ToString();
 		}
 		else{
 			text.tileInfoP1.text = "Selected tile: \nPassable: \nOccupied: ";

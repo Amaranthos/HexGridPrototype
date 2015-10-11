@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour {
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
-		tile.OccupyngUnit = unit;
+		tile.OccupyingUnit = unit;
 		army.Add(unit);
 		temp.transform.parent = this.transform;
 	}
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
 		unit.Owner = this;
-		tile.OccupyngUnit = unit;
+		tile.OccupyingUnit = unit;
 		army.Add(unit);
 		temp.transform.parent = this.transform;
 		Hero h = temp.GetComponent<Hero>();
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour {
 		foreach(Unit unit in army){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
 			unit.OnTurnStart();
 			
-			Debug.Log(unit.type + " Starting Turn");
+			// Debug.Log(unit.type + " Starting Turn");
 		}
 	}
 

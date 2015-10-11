@@ -210,7 +210,7 @@ public class Tile : MonoBehaviour {
 		set { index = value; }
 	}
 	
-	public Unit OccupyngUnit {
+	public Unit OccupyingUnit {
 		get { return occupyingUnit; }
 		set { occupyingUnit = value; }
 	}

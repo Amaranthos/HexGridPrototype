@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -31,7 +31,7 @@ public class Skill{
 	}
 
 	public void ApplyBuffSingle(CubeIndex index){
-		Unit unit = Logic.Inst.Grid.TileAt(index).OccupyngUnit;
+		Unit unit = Logic.Inst.Grid.TileAt(index).OccupyingUnit;
 
 		if(!hitFoe && unit.Owner == hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
@@ -56,14 +56,14 @@ public class Skill{
 		inRange = Logic.Inst.Grid.TilesInRange(tileIndex,AoERange);
 		foreach(Tile tile in inRange){
 			if(!hitFoe){
-				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner == hero.Owner && affected.Contains(tile.OccupyngUnit.type)){
-					AddBuffs(tile.OccupyngUnit);
+				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner == hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
+					AddBuffs(tile.OccupyingUnit);
 					Debug.Log("Adding Buff");
 				}
 			}
 			else{
-				if(tile.OccupyngUnit && tile.OccupyngUnit.Owner != hero.Owner && affected.Contains(tile.OccupyngUnit.type)){
-					AddBuffs(tile.OccupyngUnit);
+				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner != hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
+					AddBuffs(tile.OccupyingUnit);
 				}
 			}
 		}
@@ -76,7 +76,7 @@ public class Skill{
 			}
 			else if(!buff.wrath){
 				unit.AddBuff(buff);
-				Debug.Log ("Buff Added");
+				// Debug.Log ("Buff Added");
 			}
 		}
 	}
