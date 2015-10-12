@@ -99,6 +99,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void UnitSelected(){
+		Debug.Log(type + " selected");
 		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
 
 		foreach(Tile tile in ret){
@@ -157,7 +158,14 @@ public class Unit : MonoBehaviour {
 
 	public bool InMoveRange(Tile tile) {
 		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
-		ret.RemoveAll(item => (currentMP > 0 && Logic.Inst.Path.PathCost(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile)) > currentMP));
+
+		if(currentMP > 0)
+			ret.RemoveAll(item => {
+				int pathCost = Logic.Inst.Path.PathCost(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), item));
+				return (pathCost > currentMP || pathCost <= 0);
+			});
+		else
+			ret.Clear();
 		return ret.Contains(tile);
 	}
 

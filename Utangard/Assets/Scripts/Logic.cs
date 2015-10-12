@@ -275,7 +275,8 @@ public class Logic : MonoBehaviour {
 						if (!tile.OccupyingUnit)
 							if(selectedUnit.CurrentMovePoints > 0){
 								selectedUnit.MoveTowardsTile(tile);
-								HighlightMoveRange(selectedUnit);
+								// HighlightMoveRange(selectedUnit);
+								ClearSelected();
 							}
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
 							UnitCombat(selectedUnit, tile.OccupyingUnit);
@@ -375,24 +376,6 @@ public class Logic : MonoBehaviour {
 		ClearHighlightedTiles();
 		unit.ClearHighlightedTiles();
 		unit.UnitSelected();
-
-		// highlightedTiles = unit.UnitSelected();
-		// ChangeTileOutlines(highlightedTiles, Color.green, 0.1f);
-
-		// for(int i = 0; i < highlightedTiles.Count; i++) {
-		// 	if(highlightedTiles[i].OccupyingUnit)
-		// 		if(highlightedTiles[i].OccupyingUnit.Owner != CurrentPlayer)
-		// 			if(unit.InAttackRange(highlightedTiles[i].OccupyingUnit))
-		// 				ChangeTileOutlines(highlightedTiles[i], Color.red, 0.1f);
-		// 		else {
-		// 			ChangeTileOutlines(highlightedTiles[i], Color.grey, 0.1f);
-		// 		}
-		// 	else {
-		// 		ChangeTileOutlines(highlightedTiles[i], Color.grey, 0.1f);
-		// 	}
-		// }
-
-		// ChangeTileOutlines(grid.TileAt(unit.Index), Color.cyan, 0.1f);
 	}
 
 	public void HighlightAbilityRange (Skill ability, Unit unit){
@@ -560,6 +543,7 @@ public class Logic : MonoBehaviour {
 			ClearHighlightedTiles();
 		}
 		selectedUnit = unit;
+		// unit.UnitSelected();
 		infoPanel.UpdateUnitInfo(unit);
 	}
 

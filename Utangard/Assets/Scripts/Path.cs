@@ -8,13 +8,14 @@ public class Path : MonoBehaviour{
 
 		Logic.Inst.Grid.ClearHerustics();
 
-		FindPath(start, goal);
-		path = RetracePath(start, goal);
+		if(FindPath(start, goal))
+			path = RetracePath(start, goal);
 
 		return path;
 	}
 
-	private void FindPath(Tile start, Tile goal) {
+	private bool FindPath(Tile start, Tile goal) {
+		bool successful = false;
 		if (start.IsPassable && goal.IsPassable) {
 			HashSet<Tile> closed = new HashSet<Tile>();
 			List<Tile> open = new List<Tile>();
@@ -26,8 +27,10 @@ public class Path : MonoBehaviour{
 				open.RemoveAt(0);
 				closed.Add(current);
 
-				if (current == goal)
+				if (current == goal){
+					successful = true;
 					break;
+				}
 
 				foreach (Tile tile in Logic.Inst.Grid.Neighbours(current)){
 					if (tile) {
@@ -48,6 +51,7 @@ public class Path : MonoBehaviour{
 				}
 			}
 		}
+		return successful;
 	}
 
 	private List<Tile> RetracePath(Tile start, Tile goal) {
