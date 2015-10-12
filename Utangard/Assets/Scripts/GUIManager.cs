@@ -8,17 +8,20 @@ public class GUIManager : MonoBehaviour {
 
 	public static GUIManager inst;
 	public GameObject GUICanvas;
+	public GUIAnimationController guiAnim;
 	public Tooltip TooltipPanel;
 	public Text CombatLog;
 	public List<RawImage> playerAvatars;
 	public List<RenderTexture> avatarRenderTextures; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
 
-	private Animator GUICanvasAnimator;
+	//private Animator GUICanvasAnimator;
+	private bool p1Turn;
+	private bool p2Turn;
 
 	void Start()
 	{
 		inst = this;
-		GUICanvasAnimator = GUICanvas.GetComponent<Animator>();
+		//GUICanvasAnimator = GUICanvas.GetComponent<Animator>();
 	}
 
 
@@ -32,12 +35,10 @@ public class GUIManager : MonoBehaviour {
 		CombatLog.text = "";
 		
 		if(currentPlayer == 0){
-			p1Turn = true;
-			p2Turn = false;
+			guiAnim.SetP1Turn();
 		}
 		else{
-			p1Turn = false;
-			p2Turn = true;
+			guiAnim.SetP2Turn();
 		}
 	}
 
@@ -53,17 +54,7 @@ public class GUIManager : MonoBehaviour {
 			panel.IsOpen = true;
 		}
 	}
-
-	private bool p1Turn{
-		get{ return GUICanvasAnimator.GetBool("p1Turn"); }
-		set{ GUICanvasAnimator.SetBool("p1Turn", value); }
-	}
-
-	private bool p2Turn{
-		get{ return GUICanvasAnimator.GetBool("p2Turn"); }
-		set{ GUICanvasAnimator.SetBool("p2Turn", value); }
-	}
-	
+		
 	public void AssignTextures()
 	{
 		switch(Logic.Inst.Players[0].hero.type)

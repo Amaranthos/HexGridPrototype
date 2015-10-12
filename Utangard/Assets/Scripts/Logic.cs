@@ -10,7 +10,7 @@ public class Logic : MonoBehaviour {
 	private UnitList unitList;
 	private HeroList heroList;
 	private TerrainList terrainList;
-	private InfoPanel infoPanel;
+	//private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
 
@@ -78,17 +78,16 @@ public class Logic : MonoBehaviour {
 		foreach (Player player in players)
 			player.StartPlacing();
 
-		infoPanel = GetComponent<InfoPanel>();
+		//infoPanel = GetComponent<InfoPanel>();
 
-		if (!infoPanel)
-			Debug.LogError("InfoPanel does not exist!");
+		//if (!infoPanel)
+			//Debug.LogError("InfoPanel does not exist!");
 
 		path = GetComponent<Path>();
 
 		if (!path)
 			Debug.LogError("Pathfinder does not exist!");
 
-		infoPanel.Clear();
 	}
 
 	private void Update() {
@@ -344,14 +343,14 @@ public class Logic : MonoBehaviour {
 
 //		Camera.main.GetComponent<Vision>().enabled = true;
 
-		infoPanel.Enabled(true);
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
+		//infoPanel.Enabled(true);
+		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
+		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -409,7 +408,7 @@ public class Logic : MonoBehaviour {
 		ChangePlayer();
 
 		ClearSelected();
-		infoPanel.UpdateTurnInfo(CurrentPlayer);
+		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
 		switch (gamePhase) {
@@ -534,7 +533,7 @@ public class Logic : MonoBehaviour {
 
 		ClearHighlightedTiles();
 
-		infoPanel.Clear();
+		//infoPanel.Clear();
 	}
 
 	private void UnitSelected(Unit unit) {
@@ -543,7 +542,6 @@ public class Logic : MonoBehaviour {
 			ClearHighlightedTiles();
 		}
 		selectedUnit = unit;
-		// unit.UnitSelected();
 		infoPanel.UpdateUnitInfo(unit);
 	}
 
@@ -603,9 +601,9 @@ public class Logic : MonoBehaviour {
 		get { return heroList; }
 	}
 
-	public InfoPanel InfoPanel {
-		get { return infoPanel; }
-	}
+	//public InfoPanel InfoPanel {
+	//	get { return infoPanel; }
+	//}
 
 	public Player[] Players {
 		get { return players; }

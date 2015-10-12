@@ -41,6 +41,7 @@ public struct StatsGUI{
 	public Text moves;
 	public Text atk;
 	public Text def;
+	public Text hit;
 	public Text dodge;
 }
 

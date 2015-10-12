@@ -41,13 +41,13 @@ public class Unit : MonoBehaviour {
 		currentMP = movePoints;
 	}
 
-	private void OnMouseEnter() {
-		Logic.Inst.InfoPanel.UpdateToolTip(this);
-	}
-
-	private void OnMouseExit() {
-		Logic.Inst.InfoPanel.UpdateToolTip(null);
-	}
+//	private void OnMouseEnter() {
+//		Logic.Inst.InfoPanel.UpdateToolTip(this);
+//	}
+//
+//	private void OnMouseExit() {
+//		Logic.Inst.InfoPanel.UpdateToolTip(null);
+//	}
 
 	public void MoveTowardsTile(Tile tile) {
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
