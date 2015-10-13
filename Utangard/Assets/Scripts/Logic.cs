@@ -432,6 +432,17 @@ public class Logic : MonoBehaviour {
 
 				CurrentPlayer.hero.CalcBuffStrength();
 				CurrentPlayer.hero.ApplyPassive();
+				
+				foreach(Tile tile in grid.TilesList){
+					if(CurrentPlayer.hero.type == HeroType.Skadi && tile.Biome == BiomeType.Snow){
+						tile.MoveCost = 1;
+//						print ("Low Snow Cost");
+					}
+					else if(tile.Biome == BiomeType.Snow){
+						tile.MoveCost = 2;
+//						print ("High Snow Cost");
+					}
+				}
 				break;
 		}
 	}
