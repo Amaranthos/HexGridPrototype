@@ -84,6 +84,15 @@ public class Unit : MonoBehaviour {
 			// StartCoroutine(Rotate(tile, 0.1f));
 			transform.position = tile.transform.position;
 			currentMP -= tile.MoveCost;
+
+			foreach (Buff bff in currentBuffs){
+				if(bff.buffType == BuffType.HexTerrain){
+					if((bff.isBio && bff.bioType == tile.Biome) || (!bff.isBio&& bff.terType == tile.Terrain)){
+						bff.ChangeValue(this,true);
+					}
+				}
+			}
+
 			yield return new WaitForSeconds(0.5f);
 		}
 		yield return null;

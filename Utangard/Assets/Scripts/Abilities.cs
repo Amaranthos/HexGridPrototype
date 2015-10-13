@@ -150,7 +150,7 @@ public class Buff{
 			break;
 			
 		case EffectType.Move:
-			unt.movePoints += strength * multiplier;
+			unt.CurrentMovePoints += strength * multiplier;
 			break;
 			
 		case EffectType.Range:
