@@ -542,7 +542,7 @@ public class Logic : MonoBehaviour {
 			ClearHighlightedTiles();
 		}
 		selectedUnit = unit;
-		infoPanel.UpdateUnitInfo(unit);
+		//infoPanel.UpdateUnitInfo(unit);
 	}
 
 	// private void TileSelected(Tile tile) {
