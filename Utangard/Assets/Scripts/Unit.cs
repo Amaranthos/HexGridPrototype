@@ -93,8 +93,10 @@ public class Unit : MonoBehaviour {
 //				}
 //			}
 
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.25f);
 		}
+		Logic.Inst.UnitSelected(this);
+		Logic.Inst.HighlightMoveRange(this);
 		yield return null;
 	}
 

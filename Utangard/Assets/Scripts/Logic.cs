@@ -373,7 +373,7 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	private void HighlightMoveRange(Unit unit) {
+	public void HighlightMoveRange(Unit unit) {
 		ClearHighlightedTiles();
 		unit.ClearHighlightedTiles();
 		unit.UnitSelected();
@@ -549,7 +549,7 @@ public class Logic : MonoBehaviour {
 		//infoPanel.Clear();
 	}
 
-	private void UnitSelected(Unit unit) {
+	public void UnitSelected(Unit unit) {
 		unit.ClearHighlightedTiles();
 		if(gamePhase == GamePhase.CombatPhase){
 			ClearHighlightedTiles();
