@@ -83,7 +83,6 @@ public class Unit : MonoBehaviour {
 			Tile tile = currentPath.Dequeue();
 			Quaternion dir = Quaternion.LookRotation(tile.transform.position - transform.position);
 			while(transform.rotation != dir){
-				Debug.Log("Rotating");
 				transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, Time.deltaTime * 2f * 360f/Mathf.PI);
 				yield return new WaitForEndOfFrame();
 			}
@@ -105,19 +104,20 @@ public class Unit : MonoBehaviour {
 
 			yield return new WaitForSeconds(0.25f);
 		}
-		Logic.Inst.UnitSelected(this);
-		Logic.Inst.HighlightMoveRange(this);
+		if(Logic.Inst.CurrentPlayer == Owner && !Logic.Inst.SelectedUnit){
+			Logic.Inst.UnitSelected(this);
+			Logic.Inst.HighlightMoveRange(this);
+		}
 		yield return null;
 	}
 
 	public void UnitSelected(){
-		Debug.Log(type + " selected");
 		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
 
 		foreach(Tile tile in ret){
 			if(tile.OccupyingUnit != null){
 				if(tile.OccupyingUnit.Owner != Owner && canMove)
-					if(Logic.Inst.Grid.Distance(tile, Logic.Inst.Grid.TileAt(index)) <= attackRange){
+					if(InAttackRange(tile.OccupyingUnit)){
 						tile.LineColour(Color.red);
 						tile.LineWidth(0.1f);
 						highlighted.Add(tile);
@@ -165,7 +165,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InAttackRange(Unit unit) {
-		return Logic.Inst.Grid.Neighbours(index).Contains(Logic.Inst.Grid.TileAt(unit.Index));
+		return Logic.Inst.Grid.TilesInRange(index, attackRange).Contains(Logic.Inst.Grid.TileAt(unit.Index));
 	}
 
 	public bool InMoveRange(Tile tile) {

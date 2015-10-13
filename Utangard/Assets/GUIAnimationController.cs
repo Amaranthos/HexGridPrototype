@@ -10,7 +10,7 @@ public class GUIAnimationController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		anim = GetComponent<Animator>();
-		print (anim);
+		// print (anim);
 	}
 
 	void Update(){

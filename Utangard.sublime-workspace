@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"In",
+				"InAttackRange"
+			],
+			[
+				"att",
+				"attackRange"
+			],
+			[
+				"Tile",
+				"TilesInRange"
+			],
+			[
+				"hit",
+				"hitChance"
+			],
+			[
+				"cha",
+				"hitChance"
+			],
+			[
+				"TOt",
+				"TotalDodgeChance"
+			],
+			[
+				"To",
+				"TotalHitChance"
+			],
+			[
 				"De",
 				"Debug"
 			],
@@ -54,14 +82,6 @@
 			[
 				"Unit",
 				"UnitSelected"
-			],
-			[
-				"att",
-				"attackRange"
-			],
-			[
-				"Tile",
-				"TileAt"
 			],
 			[
 				"Cha",
@@ -468,10 +488,6 @@
 				"SiteAdmin"
 			],
 			[
-				"To",
-				"ToolAdmin"
-			],
-			[
 				"Ap",
 				"AppAdmin"
 			],
@@ -498,35 +514,11 @@
 			[
 				"bac",
 				"background-color"
-			],
-			[
-				"font-s",
-				"font-size"
-			],
-			[
-				"back",
-				"background-color"
-			],
-			[
-				"ba",
-				"background-image"
-			],
-			[
-				"pad",
-				"padding-top"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "Utangard/Assets/Scripts/Unit.cs",
-			"settings":
-			{
-				"buffer_size": 10622,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -628,8 +620,11 @@
 	],
 	"file_history":
 	[
-		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/UnitGUI.cs",
+		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Unit.cs",
 		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Logic.cs",
+		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Combat.cs",
+		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/GUIAnimationController.cs",
+		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/UnitGUI.cs",
 		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Path.cs",
 		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Player.cs",
 		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/InfoPanel.cs",
@@ -647,7 +642,6 @@
 		"/C/Users/Josh/AppData/Local/Temp/fz3temp-1/httpd.conf",
 		"/C/Users/Josh/Desktop/Projects/Web/jscsrocks/src/jscsrocks/settings/production.py",
 		"/C/Users/Josh/Desktop/Projects/Web/jscsrocks/src/jscsrocks/settings/__init__.py",
-		"/C/Users/Josh/Desktop/Projects/Games/Utangard/Utangard/Assets/Scripts/Unit.cs",
 		"/C/Users/Josh/Desktop/Projects/Web/jhcom/src/jhcom/settings/__init__.py",
 		"/C/Users/Josh/Desktop/Projects/Web/jscsrocks/src/requirements.txt",
 		"/C/Users/Josh/Desktop/Projects/Web/jhcom/src/jhcom/settings/base.py",
@@ -753,9 +747,7 @@
 		"/C/Users/Josh/AppData/Roaming/Sublime Text 3/Packages/User/HTML (Django).sublime-settings",
 		"/C/Users/Josh/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/Main.sublime-menu",
 		"/C/Users/Josh/Desktop/Projects/Web/jhcom/src/home/templates/home/games.html",
-		"/C/Users/Josh/Desktop/Projects/Web/jhcom/src/home/templates/home/libraries.html",
-		"/C/Users/Josh/Downloads/sdlrpg.html",
-		"/C/Users/Josh/Downloads/games.html"
+		"/C/Users/Josh/Desktop/Projects/Web/jhcom/src/home/templates/home/libraries.html"
 	],
 	"find":
 	{
@@ -774,6 +766,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ClearSelected",
+			"EndTur",
+			"attackChance",
+			"attackRoll",
 			"High",
 			"ClearS",
 			"UnitSelected",
@@ -897,10 +893,6 @@
 			"game",
 			"Game",
 			"game",
-			"Game",
-			"game",
-			"Game",
-			"game",
 			"Game"
 		],
 		"highlight": true,
@@ -920,38 +912,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Utangard/Assets/Scripts/Unit.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2028,
-								2028
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 856.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

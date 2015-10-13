@@ -78,11 +78,6 @@ public class Logic : MonoBehaviour {
 		foreach (Player player in players)
 			player.StartPlacing();
 
-		//infoPanel = GetComponent<InfoPanel>();
-
-		//if (!infoPanel)
-			//Debug.LogError("InfoPanel does not exist!");
-
 		path = GetComponent<Path>();
 
 		if (!path)
@@ -274,7 +269,6 @@ public class Logic : MonoBehaviour {
 						if (!tile.OccupyingUnit)
 							if(selectedUnit.CurrentMovePoints > 0){
 								selectedUnit.MoveTowardsTile(tile);
-								// HighlightMoveRange(selectedUnit);
 								ClearSelected();
 							}
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
@@ -343,14 +337,11 @@ public class Logic : MonoBehaviour {
 
 //		Camera.main.GetComponent<Vision>().enabled = true;
 
-		//infoPanel.Enabled(true);
-		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
-		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -410,7 +401,6 @@ public class Logic : MonoBehaviour {
 		ChangePlayer();
 
 		ClearSelected();
-		//infoPanel.UpdateTurnInfo(CurrentPlayer);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
 		switch (gamePhase) {
@@ -541,12 +531,8 @@ public class Logic : MonoBehaviour {
 			selectedUnit.ClearHighlightedTiles();
 			selectedUnit = null;
 		}
-		// if(selectedTile)
-		// 	selectedTile = null;
 
 		ClearHighlightedTiles();
-
-		//infoPanel.Clear();
 	}
 
 	public void UnitSelected(Unit unit) {
@@ -555,13 +541,7 @@ public class Logic : MonoBehaviour {
 			ClearHighlightedTiles();
 		}
 		selectedUnit = unit;
-		//infoPanel.UpdateUnitInfo(unit);
 	}
-
-	// private void TileSelected(Tile tile) {
-	// 	selectedTile = tile;
-	// 	infoPanel.UpdateTileInfo(tile);
-	// }
 
 	private RaycastHit MouseClick() {
 		RaycastHit hit; 
@@ -613,10 +593,6 @@ public class Logic : MonoBehaviour {
 	public HeroList HeroList {
 		get { return heroList; }
 	}
-
-	//public InfoPanel InfoPanel {
-	//	get { return infoPanel; }
-	//}
 
 	public Player[] Players {
 		get { return players; }
