@@ -117,7 +117,7 @@ public class Hero : MonoBehaviour {
 			currentAbility = active1;
 			currentRange = active1.castRange;
 			if(active1.target == AimType.Single || active1.target == AimType.TargetAoE){
-				Logic.Inst.HighlightAbilityRange(active1,hero);
+				Logic.Inst.HighlightAbilityRange(active1,hero.Index);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
 				Debug.Log("Entering Target Mode!");
 			}
@@ -161,6 +161,7 @@ public class Hero : MonoBehaviour {
 		}
 
 		hero.Owner.Faith -= currentAbility.cost;
+		Logic.Inst.ClearHighlightedTiles();
 	}
 
 	public void ActivateAbility2(){
@@ -173,7 +174,7 @@ public class Hero : MonoBehaviour {
 			currentAbility = active2;
 			currentRange = active2.castRange;
 			if(active2.target == AimType.Single || active2.target == AimType.TargetAoE){
-				Logic.Inst.HighlightAbilityRange(active2,hero);
+				Logic.Inst.HighlightAbilityRange(active2,hero.Index);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
 				Debug.Log("Entering Target Mode!");
 			}
@@ -207,11 +208,17 @@ public class Hero : MonoBehaviour {
 			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyingUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyingUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
 				targets.Add(new Target(tile.OccupyingUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
 				currentAbility.targets[currentStage].unit = tile.OccupyingUnit;
-				currentStage++;
+
+				if(targets.Count < currentAbility.targets.Count){
+					currentStage++;
+				}
+
+				Logic.Inst.ClearHighlightedTiles();
 
 				if(currentStage > 0 && currentAbility.targets[currentStage-1].unit){
 					currentAbility.targets[currentStage].origin = currentAbility.targets[currentStage-1].unit.Index;
 					print ("Origin Updated");
+					Logic.Inst.HighlightAbilityRange(currentAbility,currentAbility.targets[currentStage].origin);
 				}
 			}
 		}

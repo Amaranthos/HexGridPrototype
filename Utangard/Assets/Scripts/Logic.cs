@@ -368,7 +368,9 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void ClearHighlightedTiles() {
-		ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
+		if(highlightedTiles.Count > 0){
+			ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
+		}
 	}
 
 	private void HighlightMoveRange(Unit unit) {
@@ -377,10 +379,10 @@ public class Logic : MonoBehaviour {
 		unit.UnitSelected();
 	}
 
-	public void HighlightAbilityRange (Skill ability, Unit unit){
+	public void HighlightAbilityRange (Skill ability, CubeIndex index){
 		ClearHighlightedTiles();
 
-		highlightedTiles = grid.TilesInRange(unit.Index, ability.castRange);
+		highlightedTiles = grid.TilesInRange(index, ability.castRange);
 		ChangeTileOutlines(highlightedTiles, Color.yellow, 0.1f);
 	}
 
