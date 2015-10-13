@@ -81,7 +81,17 @@ public class Unit : MonoBehaviour {
 	private IEnumerator Move(){
 		while(currentPath.Count != 0){
 			Tile tile = currentPath.Dequeue();
-			// StartCoroutine(Rotate(tile, 0.1f));
+			Quaternion dir = Quaternion.LookRotation(tile.transform.position - transform.position);
+			while(transform.rotation != dir){
+				Debug.Log("Rotating");
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, Time.deltaTime * 2f * 360f/Mathf.PI);
+				yield return new WaitForEndOfFrame();
+			}
+
+			while(transform.position != tile.transform.position){
+				transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime * 2f);
+				yield return new WaitForEndOfFrame();	
+			}
 			transform.position = tile.transform.position;
 			currentMP -= tile.MoveCost;
 
@@ -98,15 +108,6 @@ public class Unit : MonoBehaviour {
 		Logic.Inst.UnitSelected(this);
 		Logic.Inst.HighlightMoveRange(this);
 		yield return null;
-	}
-
-	private IEnumerator Rotate(Tile target, float step) {
-		Quaternion dir = Quaternion.LookRotation(target.transform.position - transform.position);
-		while(transform.rotation != dir){
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, dir, 0.1f);
-			yield return new WaitForSeconds(0.1f);
-		}
-		yield return null;		
 	}
 
 	public void UnitSelected(){
