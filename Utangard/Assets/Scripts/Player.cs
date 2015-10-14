@@ -39,6 +39,7 @@ public class Player : MonoBehaviour {
 		tile.OccupyingUnit = unit;
 		army.Add(unit);
 		temp.transform.parent = this.transform;
+		Logic.Inst.SetUnitMaterial(unit,this);
 	}
 
 	public void SpawnHero(Tile tile, int dir) {

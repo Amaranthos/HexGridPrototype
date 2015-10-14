@@ -40,6 +40,8 @@ public class Logic : MonoBehaviour {
 
 	public int turnsForVictory;
 
+	public List<Material> playerColours = new List<Material>();
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -294,6 +296,9 @@ public class Logic : MonoBehaviour {
 		GUIManager.inst.AssignTextures();
 		grid.GenerateGrid();
 
+		playerColours[0].color = players[0].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
+		playerColours[1].color = players[1].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
+
 		foreach (Tile tile in grid.TilesList) {
 			tile.SetTileModifiers((BiomeType)Random.Range(0, System.Enum.GetNames(typeof(BiomeType)).Length), TerrainType.Plains);
 		}
@@ -320,7 +325,6 @@ public class Logic : MonoBehaviour {
 		for(int i = 0; i < players.Length; i++){
 			if(players[i].hero.passive.passive == PassiveType.Buff){
 				players[i].hero.passive.ApplyBuffAll(i);
-				
 			}
 		}
 
@@ -558,6 +562,45 @@ public class Logic : MonoBehaviour {
 
 	public void SacrificeUnit() {
 		selectedUnit.UnitSacrificed();
+	}
+
+	public void SetUnitMaterial(Unit unit, Player player){
+		MeshRenderer unitColour = null;
+
+		switch(unit.type){
+			case UnitType.Axemen:
+			unitColour = unit.gameObject.transform.FindChild("AxeMan/body").GetComponent<MeshRenderer>();
+			print (unitColour);
+			if(unitColour){
+				print ("Got an Axe shirt");
+			}
+			break;
+
+			case UnitType.Spearman:
+			unitColour = unit.gameObject.transform.FindChild("SpearMan/body").GetComponent<MeshRenderer>();
+			print ("Got a spear shirt");
+			break;
+
+			case UnitType.Swordsmen:
+			unitColour = unit.gameObject.transform.FindChild("SwordMan/body").GetComponent<MeshRenderer>();
+			print ("Got a sword shirt");
+			break;
+
+			default:
+			print("Something went horribliy wrong.");
+			break;
+		}
+
+		if(player == players[0]){
+			unitColour.materials[1].color = playerColours[0].color;
+			//print(unitColour.materials[1]);
+			print ("Changing to colour 1.");
+		}
+		else{
+			unitColour.materials[1].color = playerColours[1].color;
+			//print(unitColour.materials[1]);
+			print ("Changing to colour 2.");
+		}
 	}
 
 	#region Getters and Setters 	
