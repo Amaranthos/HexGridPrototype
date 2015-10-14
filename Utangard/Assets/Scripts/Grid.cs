@@ -326,7 +326,7 @@ public class Grid : MonoBehaviour {
 			lines.SetVertexCount(7);
 
 			for(int vert = 0; vert <= 6; vert++)
-				lines.SetPosition(vert, Tile.Corner(tile.transform.position, hexRadius, vert, hexOrientation));
+				lines.SetPosition(vert, Tile.Corner(tile.transform.position, hexRadius - 0.02f, vert, hexOrientation));
 		}
 
 		return tile;

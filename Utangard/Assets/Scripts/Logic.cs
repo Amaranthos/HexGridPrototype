@@ -540,7 +540,8 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void UnitSelected(Unit unit) {
-		unit.ClearHighlightedTiles();
+		ClearSelected();
+
 		if(gamePhase == GamePhase.CombatPhase){
 			ClearHighlightedTiles();
 		}

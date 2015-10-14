@@ -78,6 +78,7 @@ public class Player : MonoBehaviour {
 	public void StartTurn() {
 		for (int i = 0; i < army.Count; i++) {
 			army[i].CanMove = true;
+			army[i].ClearHighlightedTiles();
 		}
 
 		foreach(Unit unit in army){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
