@@ -23,7 +23,8 @@ public enum EffectType {
 	Damage,
 	Hit,
 	Dodge,
-	Position
+	Position,
+	MaxMove
 }
 
 public enum PassiveType {

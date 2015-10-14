@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
 public class Combat : MonoBehaviour {
+	public GameObject damageText;
+	public float offsetDist;
 
 	public void ResolveCombat(Unit attacker, Unit defender) {
+		GameObject tempText = null;
 		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
 
 		int hitRoll = Random.Range(1, 100);
@@ -13,6 +16,10 @@ public class Combat : MonoBehaviour {
 
 		if (hitRoll >= 100-hitChance) {
 			int damage = attacker.TotalAttack - defender.TotalDefense;
+
+			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = "- " + damage;
+
 			if (damage > 0) {
 				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
 				defender.CurrentHitpoints -= damage;
@@ -27,6 +34,9 @@ public class Combat : MonoBehaviour {
 			Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
 			Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
 			GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
+
+			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = "MISS!";
 		}
 	}
 }

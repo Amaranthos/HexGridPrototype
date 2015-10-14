@@ -42,6 +42,12 @@ public class Logic : MonoBehaviour {
 
 	public List<Material> playerColours = new List<Material>();
 
+	//For Damage/Heal Popups
+	public GameObject damageText;
+	public GameObject healText;
+	public GameObject buffText;
+	public float offsetDist;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;

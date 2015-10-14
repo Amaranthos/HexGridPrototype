@@ -125,40 +125,71 @@ public class Buff{
 
 	public void ChangeValue(Unit unt, bool add){	//'add' is if the effect is being added to or removed from a unit
 		int multiplier;
+		GameObject tempText = null;
+		string operatorString;
 		
 		if(add){
 			multiplier = 1;
+			operatorString = "+ ";
 		}
 		else{
 			multiplier = -1;
+			operatorString = "";
 		}
 		
 		switch(effectType){
 		case EffectType.Attack:
 			unt.AttackModifier += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Defense:
 			unt.DefenseModifier += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Health:
 			unt.CurrentHitpoints += strength * multiplier;
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.healText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+
 			if(unt.CurrentHitpoints > unt.maxHitpoints){
+				tempText.GetComponent<TextMesh>().text = operatorString + ((strength * multiplier) - (unt.CurrentHitpoints - unt.maxHitpoints));
 				unt.CurrentHitpoints = unt.maxHitpoints;
 			}
 			break;
 			
 		case EffectType.Move:
 			unt.CurrentMovePoints += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+			break;
+
+		case EffectType.MaxMove:
+			unt.movePoints += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Range:
 			unt.attackRange += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Damage:
 			unt.CurrentHitpoints -= strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.damageText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = "- " + (strength * multiplier);
+
 			if(unt.CurrentHitpoints <= 0){
 				unt.UnitKilled();
 			}
@@ -166,10 +197,16 @@ public class Buff{
 			
 		case EffectType.Hit:
 			unt.HitModifier += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Dodge:
 			unt.DodgeModifier += strength * multiplier;
+
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		default:
