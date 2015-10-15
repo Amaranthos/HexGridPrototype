@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bedd57706af214ebd107476a95436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: .5
+  moveSpeed: .300000012
   fadeSpeed: .0250000004
   currentAlpha: 0
 --- !u!1001 &100100000
@@ -95,7 +95,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: fadeSpeed
+      value: .0250000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: .300000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110120}

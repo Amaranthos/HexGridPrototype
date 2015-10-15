@@ -66,16 +66,20 @@ public class Combat : MonoBehaviour {
 			int damage = atk.TotalAttack - def.TotalDefense;
 			
 			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = "- " + damage;
 			
 			if (damage > 0) {
 				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
 				def.CurrentHitpoints -= damage;
 				Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
 				GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
+
+				tempText.GetComponent<TextMesh>().text = "- " + damage;
 				
 				if (def.CurrentHitpoints <= 0)
 					def.UnitKilled();
+			}
+			else{
+				tempText.GetComponent<TextMesh>().text = "- 0";
 			}
 		}
 		else{

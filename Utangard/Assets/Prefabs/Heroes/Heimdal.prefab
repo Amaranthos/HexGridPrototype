@@ -2273,14 +2273,16 @@ MonoBehaviour:
       buffType: 1
       duration: 0
       effectType: 2
-      strength: 10
+      strength: 5
       wrath: 0
       targetType: 0
       permanent: 1
       oneShot: 0
       adjType: 0
       adjUnits: 00000000010000000200000003000000
+      isBio: 0
       terType: 0
+      bioType: 0
   active1:
     abilityType: 1
     target: 1
@@ -2328,7 +2330,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
   active2:
     abilityType: 0
     target: 2
@@ -2352,7 +2356,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
     - ID: 8
       buffType: 0
       duration: 2
@@ -2364,7 +2370,9 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      isBio: 0
       terType: 0
+      bioType: 0
   currentAbility:
     abilityType: 0
     target: 0
@@ -2934,7 +2942,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passive.buffs.Array.data[0].strength
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passive.buffs.Array.data[0].adjUnits.Array.data[1]

@@ -273,7 +273,7 @@ MonoBehaviour:
   maxHitpoints: 75
   attack: 40
   defense: 0
-  cost: 1
+  cost: 2
   hitChance: 70
   dodgeChance: 20
   attackRange: 2
@@ -307,7 +307,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hitChance
-      value: 70
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dodgeChance
@@ -323,7 +323,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cost
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
