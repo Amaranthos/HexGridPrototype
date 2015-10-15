@@ -36,6 +36,9 @@ public class UnitGUI : MonoBehaviour {
 						if(altar){
 							sacrifice.interactable = true;
 						}
+						else{
+							sacrifice.interactable = false;
+						}
 					}
 					else {
 						sacrifice.interactable = false;
