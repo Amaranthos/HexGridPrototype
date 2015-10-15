@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Tile : MonoBehaviour {
+public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	public CubeIndex index;
 
 	private Unit occupyingUnit = null;
@@ -103,7 +103,6 @@ public class Tile : MonoBehaviour {
 		Parent = null;
 
 	}
-
 	#region Coordinate Conversion Functions
 	public static OffsetIndex CubeToEvenFlat(CubeIndex c) {
 		OffsetIndex o;
@@ -202,6 +201,15 @@ public class Tile : MonoBehaviour {
 	public int HCost { get; set; }
 	public int FCost { get { return GCost + HCost; } }
 	public Tile Parent { get; set; }
+
+	public int CompareTo(Tile t){
+		int c = FCost.CompareTo(t.FCost);
+
+		if(c == 0)
+			c = HCost.CompareTo(t.HCost);
+
+		return -c;
+	}
 	#endregion
 
 	#region Getters and Setters
@@ -229,6 +237,8 @@ public class Tile : MonoBehaviour {
 		get {return terrain;}
 		set {terrain = value;}
 	}
+
+	public int HeapIndex {get;set;}
 	#endregion
 }
 

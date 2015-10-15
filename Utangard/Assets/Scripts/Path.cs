@@ -18,13 +18,12 @@ public class Path : MonoBehaviour{
 		bool successful = false;
 		if (start.IsPassable && goal.IsPassable) {
 			HashSet<Tile> closed = new HashSet<Tile>();
-			List<Tile> open = new List<Tile>();
+			BinaryHeap<Tile> open = new BinaryHeap<Tile>(Logic.Inst.Grid.TilesList.Count);
 
 			open.Add(start);
 
 			while(open.Count > 0) {
-				Tile current = open[0];
-				open.RemoveAt(0);
+				Tile current = open.RemoveFirst();
 				closed.Add(current);
 
 				if (current == goal){
