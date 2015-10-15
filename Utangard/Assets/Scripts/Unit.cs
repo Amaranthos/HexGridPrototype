@@ -151,6 +151,26 @@ public class Unit : MonoBehaviour {
 
 	public void UnitKilled() {
 		owner.RemoveUnit(this);
+
+		if(owner.army.Count <= 0){
+			if(owner == Logic.Inst.Players[0]){
+				print ("PLAYER 1 DEFEATED");
+				Logic.Inst.winningPlayer = 1;
+				Logic.Inst.PlayerEliminated(0);				
+			}
+			else{
+				print ("PLAYER 2 DEFEATED");
+				Logic.Inst.winningPlayer = 0;
+				Logic.Inst.PlayerEliminated(1);
+			}
+		}
+
+		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
+			foreach(Unit unit in owner.army){
+				RemovePassiveBuff(unit);
+			}
+		}
+
 		Debug.Log(type + " was killed");
 		DestroyImmediate(this.gameObject);
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
@@ -316,25 +336,12 @@ public class Unit : MonoBehaviour {
 
 	public void PersistentAoECheck(){
 		List<Tile> inRange = new List<Tile>();
-		int buffToRemove = -1;
+
 		inRange = Logic.Inst.Grid.TilesInRange(index,owner.hero.passive.AoERange);
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
-				foreach(Buff buff in unit.currentBuffs){
-					foreach(Buff passBuff in owner.hero.passive.buffs){
-						if(buff.ID == passBuff.ID){
-							//unit.currentBuffs.Remove(buff);	//This is probably going to break. It did.
-							buffToRemove = unit.currentBuffs.IndexOf(buff);
-						}
-					}
-				}
-
-				if(buffToRemove > -1){
-					unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
-					unit.currentBuffs.RemoveAt(buffToRemove);
-					buffToRemove = -1;
-				}
+				RemovePassiveBuff(unit);
 			}
 			
 			owner.hero.passive.ApplyBuffAoE(index);
@@ -344,20 +351,25 @@ public class Unit : MonoBehaviour {
 				owner.hero.passive.ApplyBuffSingle(index);
 			}
 			else{
-				foreach(Buff buff in currentBuffs){
-					foreach(Buff passBuff in owner.hero.passive.buffs){
-						if(buff.ID == passBuff.ID){
-//							currentBuffs.Remove(buff);	//This is probably going to break.
-							buffToRemove = currentBuffs.IndexOf(buff);
-						}
-					}
-				}
-				if(buffToRemove > -1){
-					currentBuffs[buffToRemove].ChangeValue(this,false);
-					currentBuffs.RemoveAt(buffToRemove);
-					buffToRemove = -1;
+				RemovePassiveBuff(this);
+			}
+		}
+	}
+
+	private void RemovePassiveBuff(Unit unit){
+		int buffToRemove = -1;
+
+		foreach(Buff buff in unit.currentBuffs){
+			foreach(Buff passBuff in unit.owner.hero.passive.buffs){
+				if(buff.ID == passBuff.ID){
+					buffToRemove = unit.currentBuffs.IndexOf(buff);
 				}
 			}
+		}
+		if(buffToRemove > -1){
+			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
+			unit.currentBuffs.RemoveAt(buffToRemove);
+			buffToRemove = -1;
 		}
 	}
 		

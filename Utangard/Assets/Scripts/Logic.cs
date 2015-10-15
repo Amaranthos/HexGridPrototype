@@ -23,7 +23,7 @@ public class Logic : MonoBehaviour {
 	private Player[] players;
 	public int currentPlayer = -1;
 	private int startingPlayer = -1;
-	private int winningPlayer = -1;
+	public int winningPlayer = -1;
 	private int turnsRemaining;
 
 	private List<Tile> highlightedTiles = new List<Tile>();
@@ -495,17 +495,22 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	private void PlayerEliminated(int player) {
+	public void PlayerEliminated(int player) {
 		players[player].Defeated = true;
 
 		int countAlive = 0;
 
 		for (int i = 0; i < players.Length; i++)
-			if (!players[i].Defeated)
+			if (!players[i].Defeated){
 				countAlive++;
+//				winningPlayer = i;
+			}
 
-		if (countAlive <= 1)
+		if (countAlive <= 1){
+//			print ("Wiiner is " + (player + 1) % 2);
+//			winningPlayer = ((player + 1)% 2) + 1;
 			EndGame();
+		}
 	}
 
 	private void EndGame() {
