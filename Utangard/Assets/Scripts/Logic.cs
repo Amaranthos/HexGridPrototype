@@ -48,6 +48,10 @@ public class Logic : MonoBehaviour {
 	public GameObject buffText;
 	public float offsetDist;
 
+	//For Victory
+	public GameObject winText;
+	public GameObject timerText;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -441,11 +445,9 @@ public class Logic : MonoBehaviour {
 				foreach(Tile tile in grid.TilesList){
 					if(CurrentPlayer.hero.type == HeroType.Skadi && tile.Biome == BiomeType.Snow){
 						tile.MoveCost = 1;
-//						print ("Low Snow Cost");
 					}
 					else if(tile.Biome == BiomeType.Snow){
 						tile.MoveCost = 2;
-//						print ("High Snow Cost");
 					}
 				}
 				break;
@@ -462,14 +464,17 @@ public class Logic : MonoBehaviour {
 			if (winning == winningPlayer) {
 				turnsRemaining -= 1;
 
+				timerText.SetActive(true);
+				timerText.GetComponent<TextMesh>().text = turnsRemaining + " Turns Until P" + (winningPlayer + 1) + " Victory";
+
 				if (turnsRemaining <= 0)
 					EndGame();
 			}
 			else {
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
+				timerText.SetActive(false);
 				SetWrathMode();
-
 			}
 		}
 		else {
@@ -504,6 +509,8 @@ public class Logic : MonoBehaviour {
 
 	private void EndGame() {
 		gamePhase = GamePhase.FinishedPhase;
+		winText.SetActive(true);
+		winText.GetComponent<TextMesh>().text = "Player " + (winningPlayer + 1) + " Wins!";
 	}
 
 	private void SwitchGamePhase(GamePhase phase) {

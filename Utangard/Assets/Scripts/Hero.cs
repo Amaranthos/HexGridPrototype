@@ -50,63 +50,6 @@ public class Hero : MonoBehaviour {
 		}
 	}
 
-//	public void ReceiveTarget(Unit unit, Tile tile){
-//		List<Tile> inRange = new List<Tile>();
-//		bool ready = false;
-//
-//		if(currentStage == AbilityStage.GetUnit){
-//			print("Target Received!");
-//			inRange = Logic.Inst.Grid.AbilityRange(gameObject.GetComponent<Unit>().Index,currentRange);
-//
-//			if(inRange.Contains(Logic.Inst.Grid.GetTile(unit.Index))){
-//				if(currentAbility == 1){
-//					active1.Activate(unit);
-//					if(active1.stages <= 1){
-//						currentStage = AbilityStage.Done;
-//					}
-//				}
-//				else{
-//					active2.Activate(unit);
-//					if(active2.stages <= 1){
-//						currentStage = AbilityStage.Done;
-//					}
-//				}
-//
-//				target = unit;
-//
-//				ready = true;
-//			}
-//
-//			else{
-//				target = null;
-//				ready = false;
-//			}
-//		}
-//		else{
-//			inRange = Logic.Inst.Grid.AbilityRange(target.Index,currentRange);
-//
-//			if(inRange.Contains(Logic.Inst.Grid.GetTile(tile.Index)) && !tile.OccupyngUnit){
-//				if(currentAbility == 1){
-//					active1.TeleportUnit(target,tile);
-//				}
-//				else{
-//					active2.TeleportUnit(target,tile);
-//				}
-//				currentStage = AbilityStage.Done;
-//			}
-//		}
-//
-//		if(currentStage == AbilityStage.Done){
-//			Logic.Inst.gamePhase = GamePhase.CombatPhase;
-//			Logic.Inst.ClearHighlightedTiles();
-//			target = null;
-//			print("Back to combat!");
-//		}
-//		else if(ready){
-//			currentStage = currentStage = AbilityStage.GetLocation;
-//		}
-//	}
-
 	public void ActivateAbility1(){
 		if(hero.Owner.Faith >= active1.cost){
 			if(active1.targets.Count > 0){
@@ -237,7 +180,7 @@ public class Hero : MonoBehaviour {
 		foreach(Buff buff in active2.buffs){
 			int index;
 			index = active2.buffs.IndexOf(buff);
-			buff.strength *= Mathf.RoundToInt(origActive2Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
+			buff.strength = Mathf.RoundToInt(origActive2Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
 		}
 	}
 }
