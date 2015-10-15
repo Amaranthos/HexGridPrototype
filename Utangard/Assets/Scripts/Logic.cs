@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 public class Logic : MonoBehaviour {
 
@@ -253,7 +254,7 @@ public class Logic : MonoBehaviour {
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0)
 					if (unit.Owner != CurrentPlayer)
 						if (selectedUnit.InAttackRange(unit)){
-							UnitCombat(selectedUnit, unit);
+							StartCoroutine(UnitCombat(selectedUnit, unit));
 							_audio.PlaySFX(SFX.Rune_Roll);
 						}
 				break;
@@ -284,7 +285,7 @@ public class Logic : MonoBehaviour {
 								ClearSelected();
 							}
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
-							UnitCombat(selectedUnit, tile.OccupyingUnit);
+							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
 					else
 						_audio.PlaySFX(SFX.Unit_CantMoveThere);
@@ -527,10 +528,11 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	private void UnitCombat(Unit att, Unit def) {
+	private IEnumerator UnitCombat(Unit att, Unit def) {
 		ClearSelected();
 		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
+		yield return new WaitForSeconds(3f);
 		if (def)
 			combatManager.ResolveCombat(def, att);
 	}

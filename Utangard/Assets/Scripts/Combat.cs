@@ -1,42 +1,93 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Combat : MonoBehaviour {
 	public GameObject damageText;
+	public TextMesh rollText;
 	public float offsetDist;
+	public int spinCount;
+	private Unit atk,def;
 
 	public void ResolveCombat(Unit attacker, Unit defender) {
-		GameObject tempText = null;
-		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
+		atk = attacker;
+		def = defender;
+		StartCoroutine("timedCombat");
 
-		int hitRoll = Random.Range(1, 100);
-		int hitChance = attacker.TotalHitChance - defender.TotalDodgeChance;
-		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));
+//		GameObject tempText = null;
+//		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
+
+//		int hitRoll = Random.Range(1, 100);
+//		int hitChance = attacker.TotalHitChance - defender.TotalDodgeChance;
+//		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));
 
 		// Debug.Log("Attacker Hit Chance: " + attacker.TotalHitChance + " Defender Dodge Chance: " + defender.TotalDodgeChance + " Total Hit Chance: " + hitChance + " Roll: " + hitRoll);
 
+//		if (hitRoll >= 100-hitChance) {
+//			int damage = attacker.TotalAttack - defender.TotalDefense;
+//
+//			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = "- " + damage;
+//
+//			if (damage > 0) {
+//				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
+//				defender.CurrentHitpoints -= damage;
+//				Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
+//				GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
+//				
+//				if (defender.CurrentHitpoints <= 0)
+//					defender.UnitKilled();
+//			}
+//		}
+//		else{
+//			Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
+//			Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
+//			GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
+//
+//			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = "MISS!";
+//		}
+	}
+
+	public IEnumerator timedCombat(){
+		GameObject tempText = null;
+		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
+		int hitRoll = 0;
+
+		int hitChance = atk.TotalHitChance - def.TotalDodgeChance;
+		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));
+
+		for(int i = 0; i < spinCount; i++){
+			yield return new WaitForSeconds(0.05f);
+			hitRoll = Random.Range(1, 100);
+			rollText.text = atk.Owner.hero.type + "'s " + atk.type + " Rolled... " + hitRoll + "\nNeeds " + (100-hitChance) + "+ To Hit";
+		}
+
 		if (hitRoll >= 100-hitChance) {
-			int damage = attacker.TotalAttack - defender.TotalDefense;
-
-			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+			int damage = atk.TotalAttack - def.TotalDefense;
+			
+			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
 			tempText.GetComponent<TextMesh>().text = "- " + damage;
-
+			
 			if (damage > 0) {
 				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
-				defender.CurrentHitpoints -= damage;
-				Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
-				GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
+				def.CurrentHitpoints -= damage;
+				Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
+				GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
 				
-				if (defender.CurrentHitpoints <= 0)
-					defender.UnitKilled();
+				if (def.CurrentHitpoints <= 0)
+					def.UnitKilled();
 			}
 		}
 		else{
 			Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
-			Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
-			GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
-
-			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
+			Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " misses");
+			GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " misses");
+			
+			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
 			tempText.GetComponent<TextMesh>().text = "MISS!";
 		}
+
+		yield return new WaitForSeconds(2f);
+		rollText.text = "";
 	}
 }
