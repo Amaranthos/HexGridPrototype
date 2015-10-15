@@ -12,7 +12,6 @@ public struct HeroStruct {
 	public string actives;
 	public bool isTaken;
 
-
 	public HeroStruct(GameObject model, string name, string desc, string passive, string actives) {
 		this.model = model;
 		this.name = name;
@@ -26,10 +25,13 @@ public struct HeroStruct {
 public class NewHeroSelect : MonoBehaviour {
 
 	public HeroStruct[] heroes;
+	public GameObject[] indexArrows;
+	public GameObject[] heroCircles;
 	public int numHeroes;
 
 	public GameObject armySelect;
 	public Text[] textBoxes = new Text[4]; // 1 = Hero Name 2 = Hero Desc 3 = Passive Skill 4 = Abilities
+	public Text selectionText;
 
 	public HeroType selectedHero = HeroType.Skadi;
 	Hero p1Hero;
@@ -52,7 +54,8 @@ public class NewHeroSelect : MonoBehaviour {
 			if(!p1HasChosen){
 				p1HasChosen = true;
 				p1Hero = Logic.Inst.HeroList.GetHero(selectedHero).GetComponent<Hero>();
-
+				heroCircles[(int)selectedHero].transform.GetChild(0).GetComponent<RawImage>().color = Color.grey;
+				selectionText.text = "Player 2 Choosing";
 			}
 			else{
 				p2Hero = Logic.Inst.HeroList.GetHero(selectedHero).GetComponent<Hero>();
@@ -98,6 +101,7 @@ public class NewHeroSelect : MonoBehaviour {
 	void UpdateHeroInfo(){
 		ToggleModels((int)selectedHero);
 		SetInfo((int)selectedHero);
+		ToggleIndexArrows((int)selectedHero);
 	}
 
 	void SetInfo(int i){
@@ -116,7 +120,18 @@ public class NewHeroSelect : MonoBehaviour {
 				heroes[j].model.SetActive(true);
 		}
 	}
-	
+
+	void ToggleIndexArrows(int i)
+	{
+		for(int j = 0; j < numHeroes; j++){
+			if(j != i){
+				indexArrows[j].SetActive(false);
+			}
+			else
+				indexArrows[j].SetActive(true);
+		}
+	}
+
 	void LoadDataFromFile(){
 		string[] strings = new string[numHeroes];
 
