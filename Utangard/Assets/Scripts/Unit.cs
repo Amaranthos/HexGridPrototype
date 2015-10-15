@@ -181,6 +181,17 @@ public class Unit : MonoBehaviour {
 		return ret.Contains(tile);
 	}
 
+	public void SetUnitMaterial(){
+		if(gameObject.transform.childCount > 0){
+			Transform model = gameObject.transform.GetChild(0);
+			foreach(Transform child in model){
+				if(child.name == "body"){
+					child.GetComponent<MeshRenderer>().materials[1].color = Owner.playerColour;
+				}
+			}
+		}
+	}
+
 	public void OnTurnStart(){
 		currentMP = movePoints;
 

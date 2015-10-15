@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public string playerName = "";
 	public int startingFood;
 	public int startingFaith;
+	public int startingCommandPoints;
 	public Color playerColour;
 
 	public Field placementBoundaries;
@@ -19,16 +20,17 @@ public class Player : MonoBehaviour {
 	public List<Altar> capturedAltars;
 
 	private int currentFood;
+	private int currentCP;
 	private int faith;
 
 	public bool Defeated { get; set; }
-	private bool FinishedPlacing
-		= false;
+	private bool FinishedPlacing = false;
 
 	private void Awake() {
 		Defeated = false;
 		currentFood = startingFood;
 		faith = startingFaith;
+		currentCP = startingCommandPoints;
 	}
 
 	public void SpawnUnit(UnitType type, Tile tile, int dir) {
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour {
 		tile.OccupyingUnit = unit;
 		army.Add(unit);
 		temp.transform.parent = this.transform;
-		Logic.Inst.SetUnitMaterial(unit,this);
+		unit.SetUnitMaterial();
 	}
 
 	public void SpawnHero(Tile tile, int dir) {
@@ -76,6 +78,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void StartTurn() {
+		currentCP = startingCommandPoints;
+
 		for (int i = 0; i < army.Count; i++) {
 			army[i].CanMove = true;
 			army[i].ClearHighlightedTiles();
@@ -106,6 +110,11 @@ public class Player : MonoBehaviour {
 	public int Faith {
 		get { return faith; }
 		set { faith = value; }
+	}
+
+	public int CommandPoints {
+		get {return currentCP;}
+		set {currentCP = value;}
 	}
 	#endregion
 }
