@@ -637,5 +637,9 @@ public class Logic : MonoBehaviour {
 	public TerrainList Terrains {
 		get {return terrainList;}
 	}
+
+	public int FaithPerTurn {
+		get{ return faithPtsPerAltar * CurrentPlayer.capturedAltars.Count;}
+	}
 	#endregion
 }

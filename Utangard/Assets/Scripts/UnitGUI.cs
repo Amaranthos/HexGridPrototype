@@ -23,7 +23,7 @@ public class UnitGUI : MonoBehaviour {
 	void UpdateStats(){
 		if(unit != null){
 			if(player == Logic.Inst.CurrentPlayerNum){
-				stats.turninfo.text = "Player " + (Logic.Inst.CurrentPlayerNum + 1) + "'s turn" + "\n" + Logic.Inst.gamePhase.ToString();
+				TurnInfo();
 				stats.hp.text = unit.CurrentHitpoints.ToString() + "/"+ unit.maxHitpoints.ToString();
 				stats.moves.text = unit.CurrentMovePoints.ToString();
 				stats.atk.text = unit.attack.ToString();
@@ -56,5 +56,27 @@ public class UnitGUI : MonoBehaviour {
 		stats.dodge.text = "";
 		stats.hit.text = "";
 	}
+
+	void HealthStat(){
+		if(unit.CurrentHitpoints < (unit.maxHitpoints / 4)){
+			stats.hp.text = "<b><color=red>" + unit.CurrentHitpoints.ToString() + "</color></b>/"+ unit.maxHitpoints.ToString();
+		}
+		else{
+			stats.hp.text = unit.CurrentHitpoints.ToString() + "/"+ unit.maxHitpoints.ToString();
+		}
+	}
+
+	void TurnInfo(){
+		if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
+			stats.turninfo.text = "Deployment Phase";
+		}
+		else if(Logic.Inst.gamePhase == GamePhase.CombatPhase){
+			stats.turninfo.text = "Player " + (Logic.Inst.CurrentPlayerNum + 1) + "'s turn";
+			stats.turninfo.text += "\n" + "Faith: " + Logic.Inst.CurrentPlayer.Faith.ToString();
+			stats.turninfo.text += " (<color=lime>+" + Logic.Inst.FaithPerTurn + "</color>)";
+		}
+
+	}
+
 	
 }
