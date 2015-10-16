@@ -213,13 +213,15 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnTurnStart(){
+		GameObject tempText;
+
 		currentMP = movePoints;
 
 		foreach (Buff bff in currentBuffs){
 			bff.duration--;
 			if(bff.duration == 0){				//If the effect is done
 				bff.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
-//				currentBuffs.Remove(eft);		//Removing the effect at this point will mess with the list and break things. For now, the effects will be permanent but the stats will still be removed correctly.
+				SpawnBuffText(bff,this,false);
 			}
 		}
 
@@ -233,6 +235,7 @@ public class Unit : MonoBehaviour {
 	public void AddBuff(Buff bff){
 		Buff nEft;
 		bool newBuff = true;
+		GameObject tempText;
 
 		foreach(Buff buff in currentBuffs){
 			if(buff.ID == bff.ID){
@@ -249,6 +252,11 @@ public class Unit : MonoBehaviour {
 		if(bff.buffType == BuffType.Stat && newBuff){
 			bff.ChangeValue(this,true);
 		}
+
+//		if(newBuff && bff.effectType != EffectType.Health && bff.effectType != EffectType.Damage){
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = "+ " + (bff.strength);
+//		}
 	}
 
 	public void AdjacencyCheck(){
@@ -370,6 +378,26 @@ public class Unit : MonoBehaviour {
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
+		}
+	}
+
+	private void SpawnBuffText(Buff bff, Unit unit, bool add){
+		GameObject tempText = null;
+		int multiplier = 1;
+		string operatorString;
+
+		if(add){
+			multiplier = 1;
+			operatorString = "+ ";
+		}
+		else{
+			multiplier = -1;
+			operatorString = "";
+		}
+
+		if(bff.effectType != EffectType.Damage && bff.effectType != EffectType.Health){
+			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unit.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+			tempText.GetComponent<TextMesh>().text = operatorString + (bff.strength * multiplier);
 		}
 	}
 		

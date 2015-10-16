@@ -141,15 +141,15 @@ public class Buff{
 		case EffectType.Attack:
 			unt.AttackModifier += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Defense:
 			unt.DefenseModifier += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Health:
@@ -166,22 +166,22 @@ public class Buff{
 		case EffectType.Move:
 			unt.CurrentMovePoints += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
-			break;
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			break;
 
 		case EffectType.MaxMove:
 			unt.movePoints += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Range:
 			unt.attackRange += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Damage:
@@ -198,15 +198,15 @@ public class Buff{
 		case EffectType.Hit:
 			unt.HitModifier += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		case EffectType.Dodge:
 			unt.DodgeModifier += strength * multiplier;
 
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
+//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
+//			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
 			break;
 			
 		default:
