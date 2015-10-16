@@ -245,7 +245,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(!bff.oneShot && newBuff){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.oneShot,bff.adjType,bff.adjUnits,bff.isBio,bff.terType,bff.bioType);
+			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.oneShot,bff.adjType,bff.adjUnits,bff.isBio,bff.terType,bff.bioType);
 			currentBuffs.Add(nEft);
 		}
 
@@ -253,10 +253,9 @@ public class Unit : MonoBehaviour {
 			bff.ChangeValue(this,true);
 		}
 
-//		if(newBuff && bff.effectType != EffectType.Health && bff.effectType != EffectType.Damage){
-//			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-//			tempText.GetComponent<TextMesh>().text = "+ " + (bff.strength);
-//		}
+		if (newBuff) {
+			SpawnBuffText (bff, this, true);
+		}
 	}
 
 	public void AdjacencyCheck(){
@@ -291,6 +290,7 @@ public class Unit : MonoBehaviour {
 		foreach (Buff bff in currentBuffs){
 			if((bff.duration > 0 || bff.permanent) && bff.buffType == BuffType.Stat){
 				bff.ChangeValue(this,true);
+				SpawnBuffText(bff,this,true);
 			}
 		}
 	}
@@ -302,7 +302,6 @@ public class Unit : MonoBehaviour {
 		foreach(Buff buff in currentBuffs){
 			proced = false;
 			if(buff.buffType == BuffType.Adjacent){
-//				inRange = Logic.Inst.Grid.AbilityRange(index,1);
 				inRange = Logic.Inst.Grid.TilesInRange(index,1);
 				foreach(Tile tile in inRange){
 					if(tile.OccupyingUnit){
@@ -310,6 +309,7 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Friends:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner == owner){
 								buff.ChangeValue(this,true);
+								SpawnBuffText(buff,this,true);
 								proced = true;
 							}
 							break;
@@ -317,6 +317,7 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Enemies:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner != owner){
 								buff.ChangeValue(this,true);
+								SpawnBuffText(buff,this,true);
 								proced = true;
 							}
 							break;
@@ -324,13 +325,13 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Both:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type)){
 								buff.ChangeValue(this,true);
+								SpawnBuffText(buff,this,true);
 								proced = true;
 							}
 							break;
 
 						default:
 							break;
-
 						}
 					}
 				}
@@ -376,6 +377,7 @@ public class Unit : MonoBehaviour {
 		}
 		if(buffToRemove > -1){
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
+			SpawnBuffText(unit.currentBuffs[buffToRemove],this,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
 		}
@@ -386,18 +388,21 @@ public class Unit : MonoBehaviour {
 		int multiplier = 1;
 		string operatorString;
 
-		if(add){
-			multiplier = 1;
-			operatorString = "+ ";
-		}
-		else{
-			multiplier = -1;
-			operatorString = "";
-		}
+		if (!bff.procced) {
+			if (add) {
+				multiplier = 1;
+				operatorString = "+ ";
+			} else {
+				multiplier = -1;
+				operatorString = "";
+			}
 
-		if(bff.effectType != EffectType.Damage && bff.effectType != EffectType.Health){
-			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unit.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
-			tempText.GetComponent<TextMesh>().text = operatorString + (bff.strength * multiplier);
+			if (bff.effectType != EffectType.Damage && bff.effectType != EffectType.Health) {
+				tempText = MonoBehaviour.Instantiate (Logic.Inst.buffText, (unit.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist), Quaternion.identity) as GameObject;
+				tempText.GetComponent<TextMesh> ().text = operatorString + (bff.strength * multiplier);
+			}
+
+			bff.procced = true;
 		}
 	}
 		

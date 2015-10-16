@@ -93,6 +93,7 @@ public class Buff{
 	public bool wrath;
 	public TargetType targetType;
 	public bool permanent;
+	public bool procced;
 	
 	//For Stat Buffs
 	public bool oneShot;
@@ -106,7 +107,7 @@ public class Buff{
 	public TerrainType terType;
 	public BiomeType bioType;
 
-	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool os, AdjacencyType at, List<UnitType> ut, bool ib, TerrainType tt, BiomeType bi){
+	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool proc, bool os, AdjacencyType at, List<UnitType> ut, bool ib, TerrainType tt, BiomeType bi){
 		ID = id;
 		buffType = bt;
 		duration = dur;
@@ -115,6 +116,7 @@ public class Buff{
 		wrath = wrt;
 		targetType = targ;
 		permanent = perm;
+		procced = proc;
 		oneShot = os;
 		adjType = at;
 		adjUnits = ut;
@@ -168,7 +170,7 @@ public class Buff{
 
 //			tempText = MonoBehaviour.Instantiate(Logic.Inst.buffText,(unt.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist),Quaternion.identity) as GameObject;
 //			tempText.GetComponent<TextMesh>().text = operatorString + (strength * multiplier);
-//			break;
+			break;
 
 		case EffectType.MaxMove:
 			unt.movePoints += strength * multiplier;
