@@ -64,7 +64,6 @@ public class Player : MonoBehaviour {
 				tiles.Add(tile);
 			}
 		}
-
 		return tiles;
 	}
 

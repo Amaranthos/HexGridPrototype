@@ -8,6 +8,7 @@ public class Logic : MonoBehaviour {
 
 	private static Logic inst;
 	private Grid grid;
+	private MapGen mapGen;
 	private UnitList unitList;
 	private HeroList heroList;
 	private TerrainList terrainList;
@@ -58,9 +59,12 @@ public class Logic : MonoBehaviour {
 			inst = this;
 
 		grid = GetComponentInChildren<Grid>();
-
 		if (!grid)
 			Debug.LogError("Grid does not exist!");
+
+		mapGen = GetComponentInChildren<MapGen>();
+		if(!mapGen)
+			Debug.LogError("Map Generator does not exist!");
 
 		unitList = GetComponent<UnitList>();
 		if(!unitList)
@@ -310,12 +314,11 @@ public class Logic : MonoBehaviour {
 		for(int i = 0; i < players.Length; i++){
 			players[i].playerColour = players[i].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
 		}
-		// playerColours[0].color = players[0].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
-		// playerColours[1].color = players[1].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
+		
+		mapGen.GenerateMap(grid.TilesList);
 
-		foreach (Tile tile in grid.TilesList) {
-			tile.SetTileModifiers((BiomeType)Random.Range(0, System.Enum.GetNames(typeof(BiomeType)).Length), TerrainType.Plains);
-		}
+		players[0].placementBoundaries.x = grid.LeastX;
+		players[1].placementBoundaries.x = grid.GreatestX - players[1].placementBoundaries.w + 1;
 
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();
@@ -328,12 +331,12 @@ public class Logic : MonoBehaviour {
 		}
 
 		for (int i = 0; i < numAltars; i++) {
-			var tiles = Grid.TilesList;
-			Tile rand = tiles[Random.Range(0, tiles.Count)];
-			Altar altar = ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
-			altar.Index = rand.Index;
-			altars.Add(altar);
-			altar.PlayerCaptureAltar(players[i % players.Length]);
+			// var tiles = Grid.TilesList;
+			// Tile rand = tiles[Random.Range(0, tiles.Count)];
+			// Altar altar = ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
+			// altar.Index = rand.Index;
+			// altars.Add(altar);
+			// altar.PlayerCaptureAltar(players[i % players.Length]);
 		}
 
 		for(int i = 0; i < players.Length; i++){

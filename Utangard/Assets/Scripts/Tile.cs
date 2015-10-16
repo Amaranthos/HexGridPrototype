@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	private BiomeType biome = BiomeType.Grass;
 	private TerrainType terrain = TerrainType.Plains;
 
+	private GameObject terrainPiece; 
+
 	public static Vector3 Corner(Vector3 origin, float radius, int corner, HexOrientation orientation){
 		float angle = 60 * corner;
 		if(orientation == HexOrientation.Pointy)
@@ -62,9 +64,12 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		mesh.RecalculateNormals();
 	}
 
-	public void SetTileModifiers(BiomeType biome, TerrainType terrain){
+	public void SetTileType(BiomeType biome, TerrainType terrain){
 		this.biome = biome;
 		this.terrain = terrain;
+
+		if(terrainPiece)
+				GameObject.Destroy(terrainPiece);
 
 		switch(this.biome){
 		case BiomeType.Grass:
@@ -87,11 +92,23 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 		case TerrainType.Hills:
 			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.hills.moveCost);
+			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetHill(), transform.position, Quaternion.Euler(Vector3.right * 270f));
+			terrainPiece.GetComponentInChildren<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
 			break;
 
 		case TerrainType.Mountains:
 			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.mountains.moveCost);
+			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetMountain(), transform.position, Quaternion.Euler(Vector3.right * 270f));
+
 			break;
+		}
+
+		if(terrainPiece){
+			// Vector3 pos = transform.position;
+			// pos.z = 0;
+
+			terrainPiece.transform.parent = transform;
+			// terrainPiece.transform.localPosition = pos;
 		}
 
 		GetComponent<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
