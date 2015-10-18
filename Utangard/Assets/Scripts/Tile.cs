@@ -11,7 +11,9 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	private BiomeType biome = BiomeType.Grass;
 	private TerrainType terrain = TerrainType.Plains;
 
-	private GameObject terrainPiece; 
+	private GameObject terrainPiece;
+
+	public bool hasAltar = false;
 
 	public static Vector3 Corner(Vector3 origin, float radius, int corner, HexOrientation orientation){
 		float angle = 60 * corner;
@@ -65,11 +67,16 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	}
 
 	public void SetTileType(BiomeType biome, TerrainType terrain){
+		if(biome == BiomeType.Forest){
+			terrain = TerrainType.Plains;
+		}
+
 		this.biome = biome;
 		this.terrain = terrain;
 
-		if(terrainPiece)
-				GameObject.Destroy(terrainPiece);
+		if(terrainPiece){
+			GameObject.Destroy(terrainPiece);
+		}
 
 		switch(this.biome){
 		case BiomeType.Grass:
@@ -93,7 +100,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		case TerrainType.Hills:
 			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.hills.moveCost);
 			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetHill(), transform.position, Quaternion.Euler(Vector3.right * 270f));
-			terrainPiece.GetComponentInChildren<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
 			break;
 
 		case TerrainType.Mountains:
@@ -104,11 +110,8 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		}
 
 		if(terrainPiece){
-			// Vector3 pos = transform.position;
-			// pos.z = 0;
-
 			terrainPiece.transform.parent = transform;
-			// terrainPiece.transform.localPosition = pos;
+			terrainPiece.GetComponentInChildren<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
 		}
 
 		GetComponent<MeshRenderer>().material = Logic.Inst.Terrains.GetBiomeMaterial(this.biome);
@@ -253,6 +256,11 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	public TerrainType Terrain {
 		get {return terrain;}
 		set {terrain = value;}
+	}
+
+	public bool HasAltar {
+		get {return hasAltar;}
+		set {hasAltar = value;}
 	}
 
 	public int HeapIndex {get;set;}

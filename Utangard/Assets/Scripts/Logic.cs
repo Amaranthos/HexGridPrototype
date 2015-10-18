@@ -103,6 +103,11 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
+		//Fpr testing random gen
+		if(Input.GetKeyUp(KeyCode.Space)){
+			mapGen.GenerateMap(grid.TilesList);
+		}
+
 		//This currently enables the generic sacrifice button, the button should be included with the player's gui
 		if(gamePhase == GamePhase.CombatPhase){
 			if(selectedUnit && selectedUnit.CanMove){
@@ -311,14 +316,14 @@ public class Logic : MonoBehaviour {
 		GUIManager.inst.AssignTextures();
 		grid.GenerateGrid();
 
+		players[0].placementBoundaries.x = grid.LeastX;
+		players[1].placementBoundaries.x = grid.GreatestX - players[1].placementBoundaries.w + 1;
+
 		for(int i = 0; i < players.Length; i++){
 			players[i].playerColour = players[i].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
 		}
 		
 		mapGen.GenerateMap(grid.TilesList);
-
-		players[0].placementBoundaries.x = grid.LeastX;
-		players[1].placementBoundaries.x = grid.GreatestX - players[1].placementBoundaries.w + 1;
 
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();
@@ -328,15 +333,6 @@ public class Logic : MonoBehaviour {
 			}
 
 			players[i].SpawnHero(tiles[armies[i].Length], i);
-		}
-
-		for (int i = 0; i < numAltars; i++) {
-			// var tiles = Grid.TilesList;
-			// Tile rand = tiles[Random.Range(0, tiles.Count)];
-			// Altar altar = ((GameObject)Instantiate(terrainList.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
-			// altar.Index = rand.Index;
-			// altars.Add(altar);
-			// altar.PlayerCaptureAltar(players[i % players.Length]);
 		}
 
 		for(int i = 0; i < players.Length; i++){
@@ -594,6 +590,11 @@ public class Logic : MonoBehaviour {
 	#region Getters and Setters 	
 	public Altar GetAltar(CubeIndex Index) {
 		return altars.Find(item=>item.Index==Index);
+	}
+
+	public List<Altar> Altars {
+		get {return altars;}
+		set {altars = value;}
 	}
 
 	public static Logic Inst {
