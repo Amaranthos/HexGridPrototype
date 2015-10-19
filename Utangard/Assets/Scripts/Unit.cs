@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class Unit : MonoBehaviour {
 
@@ -36,9 +37,18 @@ public class Unit : MonoBehaviour {
 
 	private List<Tile> highlighted = new List<Tile>();
 
+	private Animator unitAnim;
+
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
+
+		try{	//Not all units have animations right now. Otherwise, not necessary.
+			unitAnim = gameObject.transform.GetChild(0).GetComponent<Animator>();
+		}
+		catch(Exception e){
+			//Nothing to do here...
+		}
 	}
 
 //	private void OnMouseEnter() {
@@ -79,7 +89,15 @@ public class Unit : MonoBehaviour {
 	}
 
 	private IEnumerator Move(){
+		if(unitAnim){
+			unitAnim.SetBool("Moving", true);
+		}
+
 		while(currentPath.Count != 0){
+			if(unitAnim){	//These checks are purely here until we have animation for all the units.
+				unitAnim.SetBool("Moving", true);
+			}
+
 			Tile tile = currentPath.Dequeue();
 			Quaternion dir = Quaternion.LookRotation(tile.transform.position - transform.position);
 			while(transform.rotation != dir){
@@ -101,6 +119,9 @@ public class Unit : MonoBehaviour {
 //					}
 //				}
 //			}
+			if(unitAnim){
+				unitAnim.SetBool("Moving", false);
+			}
 
 			yield return new WaitForSeconds(0.25f);
 		}
@@ -108,6 +129,11 @@ public class Unit : MonoBehaviour {
 			Logic.Inst.UnitSelected(this);
 			Logic.Inst.HighlightMoveRange(this);
 		}
+
+		if(unitAnim){
+			unitAnim.SetBool("Moving", false);
+		}
+
 		yield return null;
 	}
 
@@ -206,7 +232,12 @@ public class Unit : MonoBehaviour {
 			Transform model = gameObject.transform.GetChild(0);
 			foreach(Transform child in model){
 				if(child.name == "body"){
-					child.GetComponent<MeshRenderer>().materials[1].color = Owner.playerColour;
+					try{
+						child.GetComponent<SkinnedMeshRenderer>().materials[1].color = Owner.playerColour;
+					}
+					catch(Exception e){
+						child.GetComponent<MeshRenderer>().materials[1].color = Owner.playerColour;
+					}
 				}
 			}
 		}
