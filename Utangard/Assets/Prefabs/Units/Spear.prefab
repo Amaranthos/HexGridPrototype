@@ -1214,7 +1214,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128552}
-  m_LocalRotation: {x: .640856445, y: -.298836112, z: -.640856385, w: .298836201}
+  m_LocalRotation: {x: .640856504, y: -.298836142, z: -.640856445, w: .298836231}
   m_LocalPosition: {x: .145646229, y: .0996544808, z: -.412399858}
   m_LocalScale: {x: 1.00000012, y: 1.00000036, z: 1.00000012}
   m_Children: []
@@ -1528,13 +1528,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  movePoints: 3
+  movePoints: 4
   maxHitpoints: 75
   attack: 40
-  defense: 0
-  cost: 2
-  hitChance: 70
-  dodgeChance: 20
+  defense: 10
+  cost: 1
+  hitChance: 90
+  dodgeChance: 40
   attackRange: 2
   currentBuffs: []
 --- !u!114 &11474812
@@ -1809,11 +1809,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hitChance
-      value: 16
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dodgeChance
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attackRange
@@ -1821,11 +1821,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movePoints
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cost
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
@@ -1850,6 +1850,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defense
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

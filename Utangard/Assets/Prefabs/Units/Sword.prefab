@@ -538,11 +538,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   movePoints: 2
-  maxHitpoints: 120
-  attack: 60
-  defense: 25
-  cost: 6
-  hitChance: 90
+  maxHitpoints: 110
+  attack: 30
+  defense: 20
+  cost: 1
+  hitChance: 80
   dodgeChance: 5
   attackRange: 1
   currentBuffs: []
@@ -804,19 +804,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHitpoints
-      value: 120
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: defense
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hitChance
-      value: 90
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dodgeChance
@@ -828,7 +828,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cost
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
