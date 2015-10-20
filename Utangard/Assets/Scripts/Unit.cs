@@ -42,6 +42,8 @@ public class Unit : MonoBehaviour {
 	public List<TextSpawn> buffsToSpawn = new List<TextSpawn>();
 	private float buffDelay = 1f;
 
+	private int tempValue;
+
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
@@ -282,7 +284,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(!bff.oneShot && newBuff){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.oneShot,bff.adjType,bff.adjUnits,bff.isBio,bff.terType,bff.bioType);
+			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
 			currentBuffs.Add(nEft);
 		}
 
@@ -330,7 +332,6 @@ public class Unit : MonoBehaviour {
 				bff.ChangeValue(this,true);
 				if(!bff.procced){
 					buffsToSpawn.Add(new TextSpawn(bff,this,true));
-//					SpawnBuffText(bff,this,true);
 				}
 			}
 		}
@@ -341,8 +342,11 @@ public class Unit : MonoBehaviour {
 	public void CalcAdjacency(){
 		List<Tile> inRange = new List<Tile>();
 		int proced = 0;
+		bool makeText = true;
 
 		foreach(Buff buff in currentBuffs){
+			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
+
 			proced = 0;
 			if(buff.buffType == BuffType.Adjacent){
 				inRange = Logic.Inst.Grid.TilesInRange(index,1);
@@ -352,8 +356,6 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Friends:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner == owner){
 								buff.ChangeValue(this,true);
-								buffsToSpawn.Add(new TextSpawn(buff,this,true));
-//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -361,8 +363,6 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Enemies:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner != owner){
 								buff.ChangeValue(this,true);
-								buffsToSpawn.Add(new TextSpawn(buff,this,true));
-//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -370,8 +370,6 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Both:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type)){
 								buff.ChangeValue(this,true);
-								buffsToSpawn.Add(new TextSpawn(buff,this,true));
-//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -384,16 +382,35 @@ public class Unit : MonoBehaviour {
 
 				if(proced > 0){
 					buff.ChangeValue(this,false); //To account for the fact that the unit will count itself.
+					proced--;
 				}
 
-				if(proced <= 1){
-					buffsToSpawn.Add(new TextSpawn(buff,this,false));
-//					SpawnBuffText(buff,this,false);
+				if(proced <= 0){
+					if(buff.timesProcced <= 0){
+						makeText = false;
+					}
+					else{
+						tempBuff.strength = buff.strength * buff.timesProcced;
+						buffsToSpawn.Add(new TextSpawn(tempBuff,this,false));
+					}
 				}
+				else{
+//					if(proced < buff.timesProcced){
+//
+//					}
+//					else{
+						tempBuff.strength = buff.strength * proced;
+						buffsToSpawn.Add(new TextSpawn(tempBuff,this,true));
+//					}
+				}
+
+				buff.timesProcced = proced;
 			}
 		}
 
-		StartCoroutine("SpawnBuffText",buffsToSpawn);
+		if(makeText){
+			StartCoroutine("SpawnBuffText",buffsToSpawn);
+		}
 	}
 
 	public void PersistentAoECheck(){
@@ -470,12 +487,14 @@ public class Unit : MonoBehaviour {
 		int multiplier = 1;
 		string operatorString;
 
+		print("SPAWNING BUFFS");
+
 		if(buffList.Count < 2){
 			buffDelay = 0f;
 		}
 
 		for(int i = 0; i < buffList.Count; i++){
-			if (buffList[i].buff.buffType != BuffType.Adjacent) {
+//			if (buffList[i].buff.buffType != BuffType.Adjacent) {
 				if (buffList[i].add) {
 					multiplier = 1;
 					operatorString = "+ ";
@@ -498,7 +517,7 @@ public class Unit : MonoBehaviour {
 				else {
 					buffList[i].buff.procced = true;
 				}
-			}
+//			}
 
 			yield return new WaitForSeconds(buffDelay);
 		}

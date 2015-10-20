@@ -101,13 +101,14 @@ public class Buff{
 	//For Adjacent Buffs
 	public AdjacencyType adjType;
 	public List<UnitType> adjUnits = new List<UnitType>();
+	public int timesProcced;
 
 	//For Terrain Buffs
 	public bool isBio;
 	public TerrainType terType;
 	public BiomeType bioType;
 
-	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool proc, bool os, AdjacencyType at, List<UnitType> ut, bool ib, TerrainType tt, BiomeType bi){
+	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool proc, bool os, AdjacencyType at, List<UnitType> ut,int tp,bool ib, TerrainType tt, BiomeType bi){
 		ID = id;
 		buffType = bt;
 		duration = dur;
@@ -120,6 +121,7 @@ public class Buff{
 		oneShot = os;
 		adjType = at;
 		adjUnits = ut;
+		timesProcced = tp;
 		isBio = ib;
 		terType = tt;
 		bioType = bi;
