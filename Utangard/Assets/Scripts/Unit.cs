@@ -39,6 +39,9 @@ public class Unit : MonoBehaviour {
 
 	private Animator unitAnim;
 
+	public List<TextSpawn> buffsToSpawn = new List<TextSpawn>();
+	private float buffDelay = 1f;
+
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
@@ -193,7 +196,7 @@ public class Unit : MonoBehaviour {
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
-				RemovePassiveBuff(unit);
+				RemovePassiveBuff(unit, true);
 			}
 		}
 
@@ -245,22 +248,25 @@ public class Unit : MonoBehaviour {
 
 	public void OnTurnStart(){
 		GameObject tempText;
+		List<int> finishedBuffs = new List<int>();
 
 		currentMP = movePoints;
 
 		foreach (Buff bff in currentBuffs){
 			bff.duration--;
-			if(bff.duration == 0){				//If the effect is done
+			if(bff.duration == 0 &&  !bff.permanent){				//If the effect is done
 				bff.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
-				SpawnBuffText(bff,this,false);
+//				buffsToSpawn.Add(new TextSpawn(bff,this,false));
+//				SpawnBuffText(bff,this,false);
+				finishedBuffs.Add(bff.ID);
 			}
 		}
 
-		CalculateModifiers();
+//		SpawnBuffText(buffsToSpawn);
 
-		if(type == UnitType.Hero){
-//			gameObject.GetComponent<Hero>().ApplyPassive();
-		}
+		RemoveBuffs(this,finishedBuffs);
+
+		CalculateModifiers();
 	}
 
 	public void AddBuff(Buff bff){
@@ -285,7 +291,8 @@ public class Unit : MonoBehaviour {
 		}
 
 		if (newBuff) {
-			SpawnBuffText (nEft,this,true);
+//			SpawnBuffText (nEft,this,true);
+			buffsToSpawn.Add(new TextSpawn(nEft,this,true));
 		}
 	}
 
@@ -321,9 +328,14 @@ public class Unit : MonoBehaviour {
 		foreach (Buff bff in currentBuffs){
 			if((bff.duration > 0 || bff.permanent) && bff.buffType == BuffType.Stat){
 				bff.ChangeValue(this,true);
-				SpawnBuffText(bff,this,true);
+				if(!bff.procced){
+					buffsToSpawn.Add(new TextSpawn(bff,this,true));
+//					SpawnBuffText(bff,this,true);
+				}
 			}
 		}
+
+		StartCoroutine("SpawnBuffText",buffsToSpawn);
 	}
 
 	public void CalcAdjacency(){
@@ -340,7 +352,8 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Friends:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner == owner){
 								buff.ChangeValue(this,true);
-								SpawnBuffText(buff,this,true);
+								buffsToSpawn.Add(new TextSpawn(buff,this,true));
+//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -348,7 +361,8 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Enemies:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner != owner){
 								buff.ChangeValue(this,true);
-								SpawnBuffText(buff,this,true);
+								buffsToSpawn.Add(new TextSpawn(buff,this,true));
+//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -356,7 +370,8 @@ public class Unit : MonoBehaviour {
 						case AdjacencyType.Both:
 							if(buff.adjUnits.Contains(tile.OccupyingUnit.type)){
 								buff.ChangeValue(this,true);
-								SpawnBuffText(buff,this,true);
+								buffsToSpawn.Add(new TextSpawn(buff,this,true));
+//								SpawnBuffText(buff,this,true);
 								proced++;
 							}
 							break;
@@ -372,10 +387,13 @@ public class Unit : MonoBehaviour {
 				}
 
 				if(proced <= 1){
-					SpawnBuffText(buff,this,false);
+					buffsToSpawn.Add(new TextSpawn(buff,this,false));
+//					SpawnBuffText(buff,this,false);
 				}
 			}
 		}
+
+		StartCoroutine("SpawnBuffText",buffsToSpawn);
 	}
 
 	public void PersistentAoECheck(){
@@ -385,7 +403,10 @@ public class Unit : MonoBehaviour {
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
-				RemovePassiveBuff(unit);
+				if(!inRange.Contains(Logic.Inst.Grid.TileAt(unit.index))){
+					RemovePassiveBuff(unit,true);
+					buffDelay = 0;
+				}
 			}
 			
 			owner.hero.passive.ApplyBuffAoE(index);
@@ -395,58 +416,95 @@ public class Unit : MonoBehaviour {
 				owner.hero.passive.ApplyBuffSingle(index);
 			}
 			else{
-				RemovePassiveBuff(this);
+				RemovePassiveBuff(this, true);
 			}
 		}
 	}
 
-	private void RemovePassiveBuff(Unit unit){
+	private void RemovePassiveBuff(Unit unit, bool makeText){
 		int buffToRemove = -1;
 
 		foreach(Buff buff in unit.currentBuffs){
-			foreach(Buff passBuff in unit.owner.hero.passive.buffs){
-				if(buff.ID == passBuff.ID && unit.owner.hero.passive.affected.Contains(unit.type)){
-					buffToRemove = unit.currentBuffs.IndexOf(buff);
+			if(buffToRemove < 0){
+				foreach(Buff passBuff in unit.owner.hero.passive.buffs){
+					if(buff.ID == passBuff.ID && unit.owner.hero.passive.affected.Contains(unit.type)){
+						buffToRemove = unit.currentBuffs.IndexOf(buff);
+					}
 				}
 			}
 		}
 		if(buffToRemove > -1){
+//			if(makeText){
+				buffsToSpawn.Add(new TextSpawn(unit.currentBuffs[buffToRemove],unit,false));
+//			}
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
-			SpawnBuffText(unit.currentBuffs[buffToRemove],unit,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
 		}
+
+		StartCoroutine("SpawnBuffText",buffsToSpawn);
 	}
 
-	private void SpawnBuffText(Buff bff, Unit unit, bool add){
+	private void RemoveBuffs(Unit unit, List<int> buffID){
+		int buffToRemove = -1;
+
+		for(int i = 0; i < buffID.Count; i++){
+			foreach(Buff buff in unit.currentBuffs){
+				if(buff.ID == buffID[i]){
+					buffToRemove = unit.currentBuffs.IndexOf(buff);
+				}
+			}
+			if(buffToRemove > -1){
+				buffsToSpawn.Add(new TextSpawn(unit.currentBuffs[buffToRemove],unit,false));
+				unit.currentBuffs.RemoveAt(buffToRemove);
+				buffToRemove = -1;
+				print(buffsToSpawn[i].buff.ID);
+			}
+		}
+
+		StartCoroutine("SpawnBuffText",buffsToSpawn);
+	}
+	
+	public IEnumerator SpawnBuffText(List<TextSpawn> buffList){
 		GameObject tempText = null;
 		int multiplier = 1;
 		string operatorString;
 
-		if (bff.buffType != BuffType.Adjacent) {
-			if (add) {
-				multiplier = 1;
-				operatorString = "+ ";
-			} 
-			else {
-				multiplier = -1;
-				operatorString = "";
-			}
+		if(buffList.Count < 2){
+			buffDelay = 0f;
+		}
 
-			if (bff.effectType != EffectType.Damage && bff.effectType != EffectType.Health) {
-				if((!add && bff.procced) || (add && !bff.procced)){
-					tempText = MonoBehaviour.Instantiate (Logic.Inst.buffText, (unit.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist), Quaternion.identity) as GameObject;
-					tempText.GetComponent<TextMesh> ().text = operatorString + (bff.strength * multiplier);
+		for(int i = 0; i < buffList.Count; i++){
+			if (buffList[i].buff.buffType != BuffType.Adjacent) {
+				if (buffList[i].add) {
+					multiplier = 1;
+					operatorString = "+ ";
+				} 
+				else {
+					multiplier = -1;
+					operatorString = "";
+				}
+
+				if (buffList[i].buff.effectType != EffectType.Damage && buffList[i].buff.effectType != EffectType.Health) {
+					if((!buffList[i].add && buffList[i].buff.procced) || (buffList[i].add && !buffList[i].buff.procced)){
+						tempText = MonoBehaviour.Instantiate (Logic.Inst.buffText, (buffList[i].unit.gameObject.transform.position + Vector3.up * Logic.Inst.offsetDist), Quaternion.identity) as GameObject;
+						tempText.GetComponent<TextMesh> ().text = operatorString + (buffList[i].buff.strength * multiplier) + " " + buffList[i].buff.effectType;
+					}
+				}
+
+				if (!buffList[i].add) {
+					buffList[i].buff.procced = false;
+				} 
+				else {
+					buffList[i].buff.procced = true;
 				}
 			}
 
-			if (!add) {
-				bff.procced = false;
-			} 
-			else {
-				bff.procced = true;
-			}
+			yield return new WaitForSeconds(buffDelay);
 		}
+
+		buffsToSpawn.Clear();
+		buffDelay = 1f;
 	}
 		
 	#region Getters and Setters

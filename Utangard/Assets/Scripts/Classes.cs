@@ -27,3 +27,16 @@ public class Target{
 		needsSpace = ns;
 	}
 }
+
+[System.Serializable]
+public class TextSpawn{
+	public Buff buff;
+	public Unit unit;
+	public bool add;
+
+	public TextSpawn(Buff bff, Unit unt, bool ad){
+		buff = bff;
+		unit = unt;
+		add = ad;
+	}
+}
