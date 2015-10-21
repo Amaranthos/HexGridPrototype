@@ -410,6 +410,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 15888651}
   - 114: {fileID: 15888650}
+  - 114: {fileID: 15888652}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -428,8 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a26b071357fc8845b6908e3b76f7003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapShape: 0
-  mapWidth: 15
+  mapShape: 1
+  mapWidth: 5
   mapHeight: 5
   hexOrientation: 1
   hexRadius: 1
@@ -449,6 +450,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 827309685}
   m_RootOrder: 1
+--- !u!114 &15888652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15888649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4b57676c08be545b21982c73a04ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: girlpren
+  useRandomSeed: 1
+  proceduralFillMethod: 0
+  smoothing: 1
+  voronoiPoints: 10
+  mountainPercent: 0
+  hillPercent: 0
+  biomeChangeChance: 50
+  altarGenMethod: 1
+  altarCircleRadius: 3
 --- !u!1 &28189694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1118,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 056706653d8849642ba1ffcb6f2d6e85, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1167,8 +1188,8 @@ MonoBehaviour:
   startingCommandPoints: 6
   playerColour: {r: 1, g: 0, b: 0, a: 1}
   placementBoundaries:
-    x: 9
-    w: 15
+    x: 0
+    w: 5
   wrathMode: 0
   army: []
   hero: {fileID: 0}
@@ -2214,7 +2235,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a1bb2b9086903bd4fb1adcaa00416c3d, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2665,7 +2685,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2678,7 +2697,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 692991050}
   m_LocalRotation: {x: .382683456, y: 0, z: 0, w: .923879504}
-  m_LocalPosition: {x: 10.5, y: 10, z: -7}
+  m_LocalPosition: {x: 0, y: 10, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 11196497}
@@ -2687,7 +2706,7 @@ Transform:
   - {fileID: 441710762}
   - {fileID: 1510481806}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &692991056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,7 +3313,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 170ab26d0edb9df47a466b4f4bada744, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3403,7 +3421,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 798307311f7403d45abab870934dc8c7, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3464,7 +3481,7 @@ MonoBehaviour:
   endTurn: {fileID: 0}
   sacrifice: {fileID: 1123308655}
   gamePhase: 0
-  numAltars: 8
+  numAltars: 6
   faithPtsPerAltar: 3
   faithPtsPerSacrifice: 10
   turnsForVictory: 5
@@ -3609,11 +3626,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hills:
-  - {fileID: 108436, guid: 6837cb4cbfb01224682eef60450e5279, type: 2}
-  - {fileID: 181392, guid: f2d51d44864566a45a4bba001f51d8f1, type: 2}
-  - {fileID: 185938, guid: 634fe2ddff6855d4f9aad4f8c3bc10d4, type: 2}
+  - {fileID: 192482, guid: f4ca4aed13b65224297eccedee7c9427, type: 2}
+  - {fileID: 152468, guid: 5cb69d339cc7243449a5fa9cad6b3a09, type: 2}
+  - {fileID: 181290, guid: e4ceb7ea59cb12846adf817482c6d948, type: 2}
   mountains:
-  - {fileID: 139800, guid: 5c0bd39511ca9dc4984cb917260c98d9, type: 2}
+  - {fileID: 168814, guid: 7f1f507e2ffa7da44810b79d9e3535e9, type: 2}
   altars:
   - {fileID: 165278, guid: 3b2b374896e95014ba5122a16548ff5d, type: 2}
   biomeMaterials:
@@ -7298,7 +7315,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 47b241b958ceb1b428644a47f805cdf7, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -7416,7 +7432,7 @@ MonoBehaviour:
   playerColour: {r: 0, g: 0, b: 1, a: 1}
   placementBoundaries:
     x: 0
-    w: 6
+    w: 5
   wrathMode: 0
   army: []
   hero: {fileID: 0}

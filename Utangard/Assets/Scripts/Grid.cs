@@ -40,6 +40,9 @@ public class Grid : MonoBehaviour {
 	public List<Tile> TilesList {
 		get {return grid.Values.ToList();}
 	}
+
+	public int LeastX {get; set;}
+	public int GreatestX {get; set;}
 	#endregion
 
 	#region Public Methods
@@ -173,6 +176,9 @@ public class Grid : MonoBehaviour {
 
 		int mapSize = Mathf.Max(mapWidth, mapHeight);
 		
+		LeastX = -mapSize;
+		GreatestX = mapSize;
+
 		for (int q = -mapSize; q <= mapSize; q++){
 			int r1 = Mathf.Max(-mapSize, -q-mapSize);
 			int r2 = Mathf.Min(mapSize, -q+mapSize);
@@ -204,6 +210,8 @@ public class Grid : MonoBehaviour {
 
 		switch(hexOrientation){
 		case HexOrientation.Flat:
+			LeastX = 0;
+			GreatestX = mapWidth;
 			for(int q = 0; q < mapWidth; q++){
 				int qOff = q>>1;
 				for (int r = -qOff; r < mapHeight - qOff; r++){
@@ -218,6 +226,8 @@ public class Grid : MonoBehaviour {
 			break;
 			
 		case HexOrientation.Pointy:
+			LeastX = 0;
+			GreatestX = mapHeight;
 			for(int r = 0; r < mapHeight; r++){
 				int rOff = r>>1;
 				for (int q = -rOff; q < mapWidth - rOff; q++){
@@ -238,7 +248,7 @@ public class Grid : MonoBehaviour {
 
 		Tile tile;
 		Vector3 pos = Vector3.zero;
-		
+
 		for (int q = 0; q <= mapWidth; q++){
 			for(int r = 0; r <= mapHeight; r++){
 				switch(hexOrientation){
