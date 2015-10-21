@@ -143,7 +143,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void UnitSelected(){
-		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
+		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
 
 		foreach(Tile tile in ret){
 			if(tile.OccupyingUnit != null){
@@ -184,17 +184,21 @@ public class Unit : MonoBehaviour {
 		owner.RemoveUnit(this);
 
 		if(owner.army.Count <= 0){
-			if(owner == Logic.Inst.Players[0]){
-				print ("PLAYER 1 DEFEATED");
-				Logic.Inst.winningPlayer = 1;
-				Logic.Inst.PlayerEliminated(0);				
-			}
-			else{
-				print ("PLAYER 2 DEFEATED");
-				Logic.Inst.winningPlayer = 0;
-				Logic.Inst.PlayerEliminated(1);
-			}
+			Logic.Inst.PlayerEliminated(owner);
 		}
+
+		// if(owner.army.Count <= 0){ //This is bad, why do you guys do this???? Also these checks were already being done in logic
+		// 	if(owner == Logic.Inst.Players[0]){
+		// 		print ("PLAYER 1 DEFEATED");
+		// 		Logic.Inst.winningPlayer = 1;
+		// 		Logic.Inst.PlayerEliminated(0);				
+		// 	}
+		// 	else{
+		// 		print ("PLAYER 2 DEFEATED");
+		// 		Logic.Inst.winningPlayer = 0;
+		// 		Logic.Inst.PlayerEliminated(1);
+		// 	}
+		// }
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
@@ -487,7 +491,7 @@ public class Unit : MonoBehaviour {
 		int multiplier = 1;
 		string operatorString;
 
-		print("SPAWNING BUFFS");
+		// print("SPAWNING BUFFS");
 
 		if(buffList.Count < 2){
 			buffDelay = 0f;

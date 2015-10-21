@@ -456,21 +456,25 @@ public class Logic : MonoBehaviour {
 
 	private void CheckIfPlayerWinning() {
 		int winning = -1;
-		for (int i = 0; i < players.Length; i++)
-			if (players[i].capturedAltars.Count == numAltars)
+		for (int i = 0; i < players.Length; i++){
+			if (players[i].capturedAltars.Count == numAltars){
+				Debug.Log("Player: " + players[i].name + " owns all of the altars!");
 				winning = i;
+			}
+		}
 
 		if (winning != -1) {
 			if (winning == winningPlayer) {
 				turnsRemaining -= 1;
 
 				timerText.SetActive(true);
-				timerText.GetComponent<TextMesh>().text = turnsRemaining + " Turns Until P" + (winningPlayer + 1) + " Victory";
+				timerText.GetComponent<TextMesh>().text = turnsRemaining + " Turns Until " + players[winningPlayer].name + "'s Victory";
 
 				if (turnsRemaining <= 0)
 					EndGame();
 			}
 			else {
+				Debug.Log("Player: " + players[winning].name + " has wrestled control of the altars!");
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
 				timerText.SetActive(false);
@@ -479,9 +483,12 @@ public class Logic : MonoBehaviour {
 		}
 		else {
 			SetWrathMode();
-			for (int i = 0; i < players.Length; i++)
-				if (players[i].army.Count <= 0)
-					PlayerEliminated(i);
+			for (int i = 0; i < players.Length; i++){
+				if (players[i].army.Count <= 0){
+					Debug.Log("Player " + players[i].name + " has been eliminated!");
+					PlayerEliminated(players[i]);
+				}
+			}
 		}
 	}
 
@@ -494,20 +501,18 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	public void PlayerEliminated(int player) {
-		players[player].Defeated = true;
+	public void PlayerEliminated(Player player) {
+		player.Defeated = true;
 
 		int countAlive = 0;
 
 		for (int i = 0; i < players.Length; i++)
 			if (!players[i].Defeated){
 				countAlive++;
-//				winningPlayer = i;
+				winningPlayer = i;
 			}
 
 		if (countAlive <= 1){
-//			print ("Wiiner is " + (player + 1) % 2);
-//			winningPlayer = ((player + 1)% 2) + 1;
 			EndGame();
 		}
 	}
@@ -515,7 +520,7 @@ public class Logic : MonoBehaviour {
 	private void EndGame() {
 		gamePhase = GamePhase.FinishedPhase;
 		winText.SetActive(true);
-		winText.GetComponent<TextMesh>().text = "Player " + (winningPlayer + 1) + " Wins!";
+		winText.GetComponent<TextMesh>().text = "Player " + players[winningPlayer].name + " Wins!";
 	}
 
 	private void SwitchGamePhase(GamePhase phase) {
@@ -537,7 +542,7 @@ public class Logic : MonoBehaviour {
 		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
 		yield return new WaitForSeconds(3f);
-		if (def)
+		if (def && def.InAttackRange(att))
 			combatManager.ResolveCombat(def, att);
 	}
 
