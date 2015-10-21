@@ -458,7 +458,7 @@ public class Logic : MonoBehaviour {
 		int winning = -1;
 		for (int i = 0; i < players.Length; i++){
 			if (players[i].capturedAltars.Count == numAltars){
-				Debug.Log("Player: " + players[i].name + " owns all of the altars!");
+				Debug.Log(players[i].name + " owns all of the altars!");
 				winning = i;
 			}
 		}
@@ -474,7 +474,7 @@ public class Logic : MonoBehaviour {
 					EndGame();
 			}
 			else {
-				Debug.Log("Player: " + players[winning].name + " has wrestled control of the altars!");
+				Debug.Log(players[winning].name + " has wrestled control of the altars!");
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
 				timerText.SetActive(false);
@@ -485,7 +485,7 @@ public class Logic : MonoBehaviour {
 			SetWrathMode();
 			for (int i = 0; i < players.Length; i++){
 				if (players[i].army.Count <= 0){
-					Debug.Log("Player " + players[i].name + " has been eliminated!");
+					Debug.Log(players[i].name + " has been eliminated!");
 					PlayerEliminated(players[i]);
 				}
 			}
@@ -520,7 +520,7 @@ public class Logic : MonoBehaviour {
 	private void EndGame() {
 		gamePhase = GamePhase.FinishedPhase;
 		winText.SetActive(true);
-		winText.GetComponent<TextMesh>().text = "Player " + players[winningPlayer].name + " Wins!";
+		winText.GetComponent<TextMesh>().text = players[winningPlayer].name + " Wins!";
 	}
 
 	private void SwitchGamePhase(GamePhase phase) {

@@ -6,7 +6,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 	private Unit occupyingUnit = null;
 	private bool isPassable = true;
-	private int moveCost;
 
 	private BiomeType biome = BiomeType.Grass;
 	private TerrainType terrain = TerrainType.Plains;
@@ -30,8 +29,9 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		List<int> tris = new List<int>();
 		List<Vector2> uvs = new List<Vector2>();
 
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++){
 			verts.Add(Corner(Vector3.zero, radius, i, orientation));
+		}
 
 		tris.Add(0);
 		tris.Add(2);
@@ -49,13 +49,10 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		tris.Add(5);
 		tris.Add(4);
 
-		//UVs are wrong, I need to find an equation for calucalting them
-		uvs.Add(new Vector2(0.5f, 1f));
-		uvs.Add(new Vector2(1, 0.75f));
-		uvs.Add(new Vector2(1, 0.25f));
-		uvs.Add(new Vector2(0.5f, 0));
-		uvs.Add(new Vector2(0, 0.25f));
-		uvs.Add(new Vector2(0, 0.75f));
+		for (int i = 0; i < 6; i++){
+			Vector3 corner = Corner(Vector3.zero, radius, i, orientation);
+			uvs.Add(new Vector2(corner.x, corner.z));
+		}
 
 		mesh.vertices = verts.ToArray();
 		mesh.triangles = tris.ToArray();
@@ -105,7 +102,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		case TerrainType.Mountains:
 			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.mountains.moveCost);
 			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetMountain(), transform.position, Quaternion.Euler(Vector3.right * 270f));
-
 			break;
 		}
 
@@ -121,67 +117,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		GCost = 0;
 		HCost = 0;
 		Parent = null;
-
-	}
-	#region Coordinate Conversion Functions
-	public static OffsetIndex CubeToEvenFlat(CubeIndex c) {
-		OffsetIndex o;
-		o.row = c.x;
-		o.col = c.z + (c.x + (c.x&1)) / 2;
-		return o;
-	}
-
-	public static CubeIndex EvenFlatToCube(OffsetIndex o){
-		CubeIndex c;
-		c.x = o.col;
-		c.z = o.row - (o.col + (o.col&1)) / 2;
-		c.y = -c.x - c.z;
-		return c;
-	}
-
-	public static OffsetIndex CubeToOddFlat(CubeIndex c) {
-		OffsetIndex o;
-		o.col = c.x;
-		o.row = c.z + (c.x - (c.x&1)) / 2;
-		return o;
-	}
-	
-	public static CubeIndex OddFlatToCube(OffsetIndex o){
-		CubeIndex c;
-		c.x = o.col;
-		c.z = o.row - (o.col - (o.col&1)) / 2;
-		c.y = -c.x - c.z;
-		return c;
-	}
-
-	public static OffsetIndex CubeToEvenPointy(CubeIndex c) {
-		OffsetIndex o;
-		o.row = c.z;
-		o.col = c.x + (c.z + (c.z&1)) / 2;
-		return o;
-	}
-	
-	public static CubeIndex EvenPointyToCube(OffsetIndex o){
-		CubeIndex c;
-		c.x = o.col - (o.row + (o.row&1)) / 2;
-		c.z = o.row;
-		c.y = -c.x - c.z;
-		return c;
-	}
-
-	public static OffsetIndex CubeToOddPointy(CubeIndex c) {
-		OffsetIndex o;
-		o.row = c.z;
-		o.col = c.x + (c.z - (c.z&1)) / 2;
-		return o;
-	}
-	
-	public static CubeIndex OddPointyToCube(OffsetIndex o){
-		CubeIndex c;
-		c.x = o.col - (o.row - (o.row&1)) / 2;
-		c.z = o.row;
-		c.y = -c.x - c.z;
-		return c;
 	}
 
 	public static Tile operator+ (Tile one, Tile two){
@@ -213,7 +148,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		if(lines)
 			lines.SetWidth(start, end);
 	}
-	#endregion
 
 	#region A* Herustic Variables
 	public int MoveCost { get; set; }

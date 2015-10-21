@@ -47,25 +47,11 @@ public class Unit : MonoBehaviour {
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
-
-		try{	//Not all units have animations right now. Otherwise, not necessary.
-			unitAnim = gameObject.transform.GetChild(0).GetComponent<Animator>();
-		}
-		catch(Exception e){
-			//Nothing to do here...
-		}
+		unitAnim = GetComponentInChildren<Animator>();
 	}
 
-//	private void OnMouseEnter() {
-//		Logic.Inst.InfoPanel.UpdateToolTip(this);
-//	}
-//
-//	private void OnMouseExit() {
-//		Logic.Inst.InfoPanel.UpdateToolTip(null);
-//	}
-
 	public void MoveTowardsTile(Tile tile) {
-		Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
+		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
 
 		Logic.Inst.Grid.TileAt(index).OccupyingUnit = null;
 
@@ -88,8 +74,12 @@ public class Unit : MonoBehaviour {
 
 		Altar altar = Logic.Inst.GetAltar(tile.Index);
 
-		if (altar)
+		if (altar){
+			if(altar.Owner != Owner){
+				canMove = false;
+			}
 			altar.PlayerCaptureAltar(owner);
+		}
 		ClearHighlightedTiles();
 	}
 
@@ -99,7 +89,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		while(currentPath.Count != 0){
-			if(unitAnim){	//These checks are purely here until we have animation for all the units.
+			if(unitAnim){
 				unitAnim.SetBool("Moving", true);
 			}
 
@@ -143,32 +133,34 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void UnitSelected(){
-		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
+		if(canMove){
+			List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
 
-		foreach(Tile tile in ret){
-			if(tile.OccupyingUnit != null){
-				if(tile.OccupyingUnit.Owner != Owner && canMove)
-					if(InAttackRange(tile.OccupyingUnit)){
-						tile.LineColour(Color.red);
+			foreach(Tile tile in ret){
+				if(tile.OccupyingUnit != null){
+					if(tile.OccupyingUnit.Owner != Owner && canMove)
+						if(InAttackRange(tile.OccupyingUnit)){
+							tile.LineColour(Color.red);
+							tile.LineWidth(0.1f);
+							highlighted.Add(tile);
+						}
+					else if(InMoveRange(tile)){
+						tile.LineColour(Color.grey);
 						tile.LineWidth(0.1f);
 						highlighted.Add(tile);
 					}
+				}
 				else if(InMoveRange(tile)){
-					tile.LineColour(Color.grey);
+					tile.LineColour(Color.green);
 					tile.LineWidth(0.1f);
 					highlighted.Add(tile);
 				}
 			}
-			else if(InMoveRange(tile)){
-				tile.LineColour(Color.green);
-				tile.LineWidth(0.1f);
-				highlighted.Add(tile);
-			}
-		}
 
-		Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);
-		Logic.Inst.Grid.TileAt(index).LineWidth(0.1f);
-		highlighted.Add(Logic.Inst.Grid.TileAt(index));
+			Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);
+			Logic.Inst.Grid.TileAt(index).LineWidth(0.1f);
+			highlighted.Add(Logic.Inst.Grid.TileAt(index));	
+		}
 	}
 
 	public void ClearHighlightedTiles() {
@@ -186,19 +178,6 @@ public class Unit : MonoBehaviour {
 		if(owner.army.Count <= 0){
 			Logic.Inst.PlayerEliminated(owner);
 		}
-
-		// if(owner.army.Count <= 0){ //This is bad, why do you guys do this???? Also these checks were already being done in logic
-		// 	if(owner == Logic.Inst.Players[0]){
-		// 		print ("PLAYER 1 DEFEATED");
-		// 		Logic.Inst.winningPlayer = 1;
-		// 		Logic.Inst.PlayerEliminated(0);				
-		// 	}
-		// 	else{
-		// 		print ("PLAYER 2 DEFEATED");
-		// 		Logic.Inst.winningPlayer = 0;
-		// 		Logic.Inst.PlayerEliminated(1);
-		// 	}
-		// }
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
 			foreach(Unit unit in owner.army){
@@ -224,7 +203,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public bool InMoveRange(Tile tile) {
-		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, currentMP);
+		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
 
 		if(currentMP > 0)
 			ret.RemoveAll(item => {
@@ -241,11 +220,11 @@ public class Unit : MonoBehaviour {
 			Transform model = gameObject.transform.GetChild(0);
 			foreach(Transform child in model){
 				if(child.name == "body"){
-					try{
-						child.GetComponent<SkinnedMeshRenderer>().materials[1].color = Owner.playerColour;
-					}
-					catch(Exception e){
+					if(!child.GetComponent<SkinnedMeshRenderer>()){
 						child.GetComponent<MeshRenderer>().materials[1].color = Owner.playerColour;
+					}
+					else{
+						child.GetComponent<SkinnedMeshRenderer>().materials[1].color = Owner.playerColour;
 					}
 				}
 			}
@@ -253,7 +232,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnTurnStart(){
-		GameObject tempText;
+		// GameObject tempText;
 		List<int> finishedBuffs = new List<int>();
 
 		currentMP = movePoints;
@@ -278,7 +257,7 @@ public class Unit : MonoBehaviour {
 	public void AddBuff(Buff bff){
 		Buff nEft = null;
 		bool newBuff = true;
-		GameObject tempText;
+		// GameObject tempText;
 
 		foreach(Buff buff in currentBuffs){
 			if(buff.ID == bff.ID){

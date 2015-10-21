@@ -13,4 +13,8 @@ public class Altar : MonoBehaviour {
 		owner = player;
 		player.capturedAltars.Add(this);
 	}
+
+	public Player Owner{
+		get {return owner;}
+	}
 }
