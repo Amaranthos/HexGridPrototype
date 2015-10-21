@@ -466,9 +466,11 @@ MonoBehaviour:
   proceduralFillMethod: 0
   smoothing: 1
   voronoiPoints: 10
-  mountainPercent: 10
-  hillPercent: 10
+  mountainPercent: 0
+  hillPercent: 0
   biomeChangeChance: 50
+  altarGenMethod: 1
+  altarCircleRadius: 3
 --- !u!1 &28189694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,7 +3383,7 @@ MonoBehaviour:
   endTurn: {fileID: 0}
   sacrifice: {fileID: 1123308655}
   gamePhase: 0
-  numAltars: 8
+  numAltars: 6
   faithPtsPerAltar: 3
   faithPtsPerSacrifice: 10
   turnsForVictory: 5

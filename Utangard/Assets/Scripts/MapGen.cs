@@ -23,11 +23,17 @@ public class MapGen : MonoBehaviour {
 	[Range(0,100)]
 	public int biomeChangeChance;
 
+	public AltarGenMethod altarGenMethod = AltarGenMethod.Ring;
+
+	public int altarCircleRadius;
+
 	private List<Tile> map;
 
 	private System.Random randGen;
 
 	public void GenerateMap(List<Tile> tiles) {
+		altarCircleRadius = Mathf.Clamp(altarCircleRadius, 0, Mathf.Max(Logic.Inst.Grid.mapHeight, Logic.Inst.Grid.mapHeight));
+
 		if(useRandomSeed){
 			seed = System.DateTime.Now.ToString();
 		}
@@ -149,33 +155,31 @@ public class MapGen : MonoBehaviour {
 	}
 
 	public void Altars() {
-		// Player[]  Logic.Inst.Players = Logic.Inst.Players;
-		int altarRatio = Logic.Inst.numAltars /  Logic.Inst.Players.Length;
 		
-		Debug.Log("Altar ratio: " + altarRatio);
+		switch(altarGenMethod){
+			case AltarGenMethod.Random:
+				AltarRandomSpawn();
+				break;
 
-		if(Logic.Inst.numAltars <= Logic.Inst.Altars.Count){
-			Debug.Log("Num Altars:" + Logic.Inst.numAltars);
-			Debug.Log("Count Altars:" + Logic.Inst.Altars.Count);
-			return;
-		}
+			case AltarGenMethod.Ring:
+				AltarRingSpawn();
+				break;
+		}		
+	}
+
+	private void AltarRandomSpawn() {
+		int altarRatio = Logic.Inst.numAltars /  Logic.Inst.Players.Length;
 
 		for(int i = 0; i <  Logic.Inst.Players.Length; i++) {
-			Debug.Log("Player: " +  Logic.Inst.Players[i]);
 			List<Tile> field =  Logic.Inst.Players[i].PlacementField();
-
-			foreach(Tile tile in field){
-				Debug.Log(tile);				
-			}
 
 			for(int j = 0; j < altarRatio; j++){
 				Tile rand = field[randGen.Next(0, field.Count-1)];
 
 				if(!rand.HasAltar && rand.Terrain == TerrainType.Plains){
-					Debug.Log("Tile: " + rand);
 					Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
 					altar.Index = rand.Index;
-					// altar.transform.parent = rand.transform;
+					altar.transform.parent = rand.transform;
 					Logic.Inst.Altars.Add(altar);
 					altar.PlayerCaptureAltar( Logic.Inst.Players[i]);
 					rand.HasAltar = true;
@@ -184,6 +188,38 @@ public class MapGen : MonoBehaviour {
 					j--;
 				}
 			}
+		}
+	}
+
+	private void AltarRingSpawn() {
+		CubeIndex index = new CubeIndex(altarCircleRadius, -altarCircleRadius, 0);
+		for(int i = 0;  i < 6; i++){
+			Tile corner = Logic.Inst.Grid.TileAt(index);
+
+			if(corner && !corner.HasAltar){
+
+				corner.SetTileType(corner.Biome, TerrainType.Plains);
+
+				Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), corner.transform.position, Quaternion.Euler(Vector3.up * 45))).GetComponent<Altar>();
+				altar.Index = corner.Index;
+				altar.transform.parent = corner.transform;
+				Logic.Inst.Altars.Add(altar);
+				corner.HasAltar = true;
+
+
+				bool altarHasOwner = false;
+				for(int j = 0; j < Logic.Inst.Players.Length; j++){
+					if(Logic.Inst.Players[j].placementBoundaries.CoordsInRange(altar.Index)){
+						altarHasOwner = true;
+						altar.PlayerCaptureAltar(Logic.Inst.Players[j]);
+					}
+				}
+				if(!altarHasOwner){
+					altar.PlayerCaptureAltar(Logic.Inst.Players[i%Logic.Inst.Players.Length]);
+				}
+			}
+
+			index = new CubeIndex(-index.z, -index.x, -index.y);
 		}
 	}
 
@@ -196,4 +232,10 @@ public class MapGen : MonoBehaviour {
 public enum ProdGenMethod {
 	RandomFill,
 	VoronoiFill
+}
+
+[System.Serializable]
+public enum AltarGenMethod {
+	Random,
+	Ring
 }

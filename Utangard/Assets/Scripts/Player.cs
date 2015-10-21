@@ -58,7 +58,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public List<Tile> PlacementField() {
-		Debug.Log("Player: " + playerName);
 		List<Tile> tiles = new List<Tile>();
 		foreach(Tile tile in Logic.Inst.Grid.TilesList){
 			if (placementBoundaries.CoordsInRange(tile.Index)){
