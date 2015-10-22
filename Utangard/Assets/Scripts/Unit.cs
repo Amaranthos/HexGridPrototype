@@ -389,6 +389,7 @@ public class Unit : MonoBehaviour {
 //
 //					}
 //					else{
+						tempBuff.procced = false;
 						tempBuff.strength = buff.strength * proced;
 						buffsToSpawn.Add(new TextSpawn(tempBuff,this,true));
 //					}
