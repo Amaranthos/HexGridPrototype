@@ -4,7 +4,7 @@ using System.Collections;
 public class Combat : MonoBehaviour {
 	public GameObject damageText;
 	public TextMesh rollText;
-	public float offsetDist;
+	public float offsetDist, defNumA, defNumB;
 	public int spinCount;
 	private Unit atk,def;
 
@@ -66,7 +66,7 @@ public class Combat : MonoBehaviour {
 		}
 
 		if (hitRoll >= 100-hitChance) {
-			int damage = atk.TotalAttack - def.TotalDefense;
+			int damage = Mathf.RoundToInt(atk.TotalAttack * (1 - ((defNumA * def.TotalDefense)/(defNumB + def.TotalDefense))));
 			
 			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
 			
