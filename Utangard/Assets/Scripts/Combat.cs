@@ -53,6 +53,9 @@ public class Combat : MonoBehaviour {
 		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
 		int hitRoll = 0;
 
+		atk.ChangeAnim(2);
+		def.ChangeAnim(0);	//Will need to be state 4 when defend animation added.
+
 		int hitChance = atk.TotalHitChance - def.TotalDodgeChance;
 		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));
 
@@ -92,6 +95,10 @@ public class Combat : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds(2f);
+
+//		atk.ChangeAnim(0);
+//		def.ChangeAnim(0);
+
 		rollText.text = "";
 	}
 }

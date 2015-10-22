@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour {
 	private int currentMP;
 
 	private bool canMove = true;
+	public bool dead = false;
 
 	private Player owner;
 
@@ -37,7 +38,7 @@ public class Unit : MonoBehaviour {
 
 	private List<Tile> highlighted = new List<Tile>();
 
-	private Animator unitAnim;
+	public Animator unitAnim;
 
 	public List<TextSpawn> buffsToSpawn = new List<TextSpawn>();
 	private float buffDelay = 1f;
@@ -85,12 +86,12 @@ public class Unit : MonoBehaviour {
 
 	private IEnumerator Move(){
 		if(unitAnim){
-			unitAnim.SetBool("Moving", true);
+			ChangeAnim(1);
 		}
 
 		while(currentPath.Count != 0){
 			if(unitAnim){
-				unitAnim.SetBool("Moving", true);
+				ChangeAnim(1);
 			}
 
 			Tile tile = currentPath.Dequeue();
@@ -115,7 +116,7 @@ public class Unit : MonoBehaviour {
 //				}
 //			}
 			if(unitAnim){
-				unitAnim.SetBool("Moving", false);
+				ChangeAnim(0);
 			}
 
 			yield return new WaitForSeconds(0.25f);
@@ -126,7 +127,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(unitAnim){
-			unitAnim.SetBool("Moving", false);
+			ChangeAnim(0);
 		}
 
 		yield return null;
@@ -173,6 +174,9 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void UnitKilled() {
+		ChangeAnim(3);
+
+		dead = true;
 		owner.RemoveUnit(this);
 
 		if(owner.army.Count <= 0){
@@ -185,9 +189,12 @@ public class Unit : MonoBehaviour {
 			}
 		}
 
-		Debug.Log(type + " was killed");
-		DestroyImmediate(this.gameObject);
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+	}
+
+	public void DestroyUnit(){
+		Debug.Log(type + " was killed");
+		Destroy(this.gameObject);
 	}
 
 	public void UnitSacrificed() {
@@ -507,6 +514,10 @@ public class Unit : MonoBehaviour {
 
 		buffsToSpawn.Clear();
 		buffDelay = 1f;
+	}
+
+	public void ChangeAnim(int animState){
+		unitAnim.SetInteger("State",animState);
 	}
 		
 	#region Getters and Setters

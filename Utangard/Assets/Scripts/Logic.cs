@@ -541,8 +541,8 @@ public class Logic : MonoBehaviour {
 		ClearSelected();
 		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
-		yield return new WaitForSeconds(3f);
-		if (def && def.InAttackRange(att))
+		yield return new WaitForSeconds(3.5f);
+		if (!def.dead && def.InAttackRange(att))
 			combatManager.ResolveCombat(def, att);
 	}
 
