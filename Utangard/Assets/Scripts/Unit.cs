@@ -53,6 +53,7 @@ public class Unit : MonoBehaviour {
 
 	public void MoveTowardsTile(Tile tile) {
 		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
+		CubeIndex tempIndex = index;
 
 		Logic.Inst.Grid.TileAt(index).OccupyingUnit = null;
 
@@ -68,7 +69,7 @@ public class Unit : MonoBehaviour {
 		index = tile.Index;
 		tile.OccupyingUnit = this;
 		//Handles adjacency buffs
-		AdjacencyCheck();
+		AdjacencyCheck(tempIndex);
 
 		//Handles persistent passives
 		PersistentAoECheck();
@@ -258,7 +259,7 @@ public class Unit : MonoBehaviour {
 
 		RemoveBuffs(this,finishedBuffs);
 
-		CalculateModifiers();
+		CalculateModifiers(true);
 	}
 
 	public void AddBuff(Buff bff){
@@ -288,20 +289,32 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	public void AdjacencyCheck(){
+	public void AdjacencyCheck(CubeIndex prevIndex){
 		foreach(Buff buff in currentBuffs){
 			List<Tile> inRange = new List<Tile>();
+			List<Tile> inPrevRange = new List<Tile>();
 			inRange = Logic.Inst.Grid.TilesInRange(index,1);
+			inPrevRange = Logic.Inst.Grid.TilesInRange(prevIndex,1);
 			
 			if(buff.buffType == BuffType.Adjacent){
-				CalculateModifiers();
+				CalculateModifiers(false);
 			}
 			
 			foreach(Tile adjTile in inRange){
 				if(adjTile.OccupyingUnit){
 					foreach(Buff adjBuff in adjTile.OccupyingUnit.currentBuffs){
-						if(adjBuff.buffType == BuffType.Adjacent){
-							adjTile.OccupyingUnit.CalculateModifiers();
+						if(adjBuff.buffType == BuffType.Adjacent && AdjProc(adjTile.OccupyingUnit,adjBuff)){
+							adjTile.OccupyingUnit.CalculateModifiers(false);
+						}
+					}
+				}
+			}
+
+			foreach(Tile prevTile in inPrevRange){
+				if(prevTile.OccupyingUnit){
+					foreach(Buff adjBuff in prevTile.OccupyingUnit.currentBuffs){
+						if(adjBuff.buffType == BuffType.Adjacent && AdjProc(prevTile.OccupyingUnit,adjBuff)){
+							prevTile.OccupyingUnit.CalculateModifiers(false);
 						}
 					}
 				}
@@ -309,13 +322,13 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	public void CalculateModifiers(){
+	public void CalculateModifiers(bool turnStart){
 		attackModifer = 0;
 		defenseModifer = 0;
 		hitModifier = 0;
 		dodgeModifier = 0;
 		
-		CalcAdjacency();
+		CalcAdjacency(turnStart);
 
 		foreach (Buff bff in currentBuffs){
 			if((bff.duration > 0 || bff.permanent) && bff.buffType == BuffType.Stat){
@@ -329,7 +342,7 @@ public class Unit : MonoBehaviour {
 		StartCoroutine("SpawnBuffText",buffsToSpawn);
 	}
 
-	public void CalcAdjacency(){
+	public void CalcAdjacency(bool turnStart){
 		List<Tile> inRange = new List<Tile>();
 		int proced = 0;
 		bool makeText = true;
@@ -341,32 +354,9 @@ public class Unit : MonoBehaviour {
 			if(buff.buffType == BuffType.Adjacent){
 				inRange = Logic.Inst.Grid.TilesInRange(index,1);
 				foreach(Tile tile in inRange){
-					if(tile.OccupyingUnit){
-						switch(buff.adjType){
-						case AdjacencyType.Friends:
-							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner == owner){
-								buff.ChangeValue(this,true);
-								proced++;
-							}
-							break;
-
-						case AdjacencyType.Enemies:
-							if(buff.adjUnits.Contains(tile.OccupyingUnit.type) && tile.OccupyingUnit.owner != owner){
-								buff.ChangeValue(this,true);
-								proced++;
-							}
-							break;
-
-						case AdjacencyType.Both:
-							if(buff.adjUnits.Contains(tile.OccupyingUnit.type)){
-								buff.ChangeValue(this,true);
-								proced++;
-							}
-							break;
-
-						default:
-							break;
-						}
+					if(tile.OccupyingUnit && AdjProc(tile.OccupyingUnit,buff)){
+						buff.ChangeValue(this,true);
+						proced++;
 					}
 				}
 
@@ -381,17 +371,21 @@ public class Unit : MonoBehaviour {
 					}
 					else{
 						tempBuff.strength = buff.strength * buff.timesProcced;
-						buffsToSpawn.Add(new TextSpawn(tempBuff,this,false));
+						if(!turnStart){
+							buffsToSpawn.Add(new TextSpawn(tempBuff,this,false));
+						}
 					}
 				}
 				else{
 //					if(proced < buff.timesProcced){
-//
+//						//I would use this to set the buff text to be relative to the total change, rather than the total strength.
 //					}
 //					else{
 						tempBuff.procced = false;
 						tempBuff.strength = buff.strength * proced;
-						buffsToSpawn.Add(new TextSpawn(tempBuff,this,true));
+						if(!turnStart){
+							buffsToSpawn.Add(new TextSpawn(tempBuff,this,true));
+						}
 //					}
 				}
 
@@ -402,6 +396,34 @@ public class Unit : MonoBehaviour {
 		if(makeText){
 			StartCoroutine("SpawnBuffText",buffsToSpawn);
 		}
+	}
+
+	private bool AdjProc(Unit unit, Buff buff){
+		switch(buff.adjType){
+		case AdjacencyType.Friends:
+			if(buff.adjUnits.Contains(unit.type) && unit.owner == owner){
+				return true;
+			}
+			break;
+			
+		case AdjacencyType.Enemies:
+			if(buff.adjUnits.Contains(unit.type) && unit.owner != owner){
+				return true;
+			}
+			break;
+			
+		case AdjacencyType.Both:
+			if(buff.adjUnits.Contains(unit.type)){
+				return true;
+			}
+			break;
+			
+		default:
+			return false;
+			break;
+		}
+
+		return false;
 	}
 
 	public void PersistentAoECheck(){
