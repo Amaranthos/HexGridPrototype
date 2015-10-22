@@ -24,6 +24,9 @@ public class UnitHealthBar : MonoBehaviour {
 
 	void Update () {
 		UpdateHealthBar();
+		if(unit.CurrentHitpoints < 1){
+			hpBar.fillRect.gameObject.GetComponent<Image>().enabled = false;
+		}
 	}
 
 	void LateUpdate () {
@@ -39,7 +42,7 @@ public class UnitHealthBar : MonoBehaviour {
 		}
 
 		if(updatingHP){
-			if(counter >= 0.000001){
+			if(counter >= 0.000000000000000000000001){
 				counter = 0;
 				if(unit.CurrentHitpoints < tempHp){
 					tempHp--;
@@ -52,10 +55,6 @@ public class UnitHealthBar : MonoBehaviour {
 			else{
 				counter += Time.deltaTime;
 			}
-		}
-
-		if(unit.CurrentHitpoints == hpBar.minValue){
-			hpBar.fillRect.GetComponent<Image>().enabled = false;
 		}
 	}
 
