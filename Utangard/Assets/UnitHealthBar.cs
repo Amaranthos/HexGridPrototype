@@ -53,6 +53,10 @@ public class UnitHealthBar : MonoBehaviour {
 				counter += Time.deltaTime;
 			}
 		}
+
+		if(unit.CurrentHitpoints == hpBar.minValue){
+			hpBar.fillRect.GetComponent<Image>().enabled = false;
+		}
 	}
 
 	void UpdateRotation(){
