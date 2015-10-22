@@ -9,6 +9,8 @@ public class GUIManager : MonoBehaviour {
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
+	public Button EndTurnP1;
+	public Button EndTurnP2;
 	public Tooltip TooltipPanel;
 	public Text CombatLog;
 	public List<RawImage> playerAvatars;
@@ -24,7 +26,6 @@ public class GUIManager : MonoBehaviour {
 		//GUICanvasAnimator = GUICanvas.GetComponent<Animator>();
 	}
 
-
 	public void LogCombatResult(string res)
 	{
 		CombatLog.text += (res + "\n");	
@@ -39,6 +40,25 @@ public class GUIManager : MonoBehaviour {
 		}
 		else{
 			guiAnim.SetP2Turn();
+		}
+	}
+
+	public bool EndTurnButton{
+		get{ 
+			if(Logic.Inst.CurrentPlayerNum == 0){
+			return EndTurnP1.interactable; 
+			}
+			else{
+				return EndTurnP2.interactable;
+			}
+		}
+		set{ 
+			if(Logic.Inst.CurrentPlayerNum == 0){
+			EndTurnP1.interactable = value; 
+			}
+			else{
+				EndTurnP2.interactable = value;
+			}
 		}
 	}
 
