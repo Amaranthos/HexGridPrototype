@@ -177,7 +177,7 @@ public class MapGen : MonoBehaviour {
 				Tile rand = field[randGen.Next(0, field.Count-1)];
 
 				if(!rand.HasAltar && rand.Terrain == TerrainType.Plains){
-					Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 45))).GetComponent<Altar>();
+					Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), rand.transform.position, Quaternion.Euler(Vector3.up * i * 60))).GetComponent<Altar>();
 					altar.Index = rand.Index;
 					altar.transform.parent = rand.transform;
 					Logic.Inst.Altars.Add(altar);
@@ -200,7 +200,7 @@ public class MapGen : MonoBehaviour {
 
 				corner.SetTileType(corner.Biome, TerrainType.Plains);
 
-				Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), corner.transform.position, Quaternion.Euler(Vector3.up * 45))).GetComponent<Altar>();
+				Altar altar = ((GameObject)Instantiate(Logic.Inst.Terrains.GetAltar(), corner.transform.position, Quaternion.Euler(Vector3.up * i * 60))).GetComponent<Altar>();
 				altar.Index = corner.Index;
 				altar.transform.parent = corner.transform;
 				Logic.Inst.Altars.Add(altar);
