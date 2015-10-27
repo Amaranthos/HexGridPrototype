@@ -45,20 +45,41 @@ public class Vision : MonoBehaviour {
 	}
 
 	private IEnumerator Zoom(float input){
-		float targetFOV = cam.fieldOfView - input * zoomSpeed;
+		float targetFOV = cam.fieldOfView - input * 10 * zoomSpeed;
 
-		while(cam.fieldOfView != targetFOV && cam.fieldOfView >= zoomRange.x && cam.fieldOfView <= zoomRange.y){
-			cam.fieldOfView -= input;
-			yield return new WaitForEndOfFrame();
+		if(targetFOV < zoomRange.x || targetFOV > zoomRange.y){
+			yield return null;
 		}
 
+		float diff = Mathf.Sign(targetFOV - cam.fieldOfView);
+
+		if(diff == -1){
+			while(cam.fieldOfView > targetFOV){
+				cam.fieldOfView -= input * zoomSpeed;
+				// ClampFOV();
+				yield return new WaitForEndOfFrame();
+			}
+		}
+
+		if(diff == 1){
+			while(cam.fieldOfView < targetFOV){
+				cam.fieldOfView -= input * zoomSpeed;
+				// ClampFOV();
+				yield return new WaitForEndOfFrame();
+			}
+		}	
+		
+		ClampFOV();	
+
+		yield return null;
+	}
+
+	private void ClampFOV(){
 		if(cam.fieldOfView > zoomRange.y)
 			cam.fieldOfView = zoomRange.y;
 
-		if(cam.fieldOfView < zoomRange.x - 0.01f)
+		if(cam.fieldOfView < zoomRange.x)
 			cam.fieldOfView = zoomRange.x;
-		
-		yield return null;
 	}
 
 	private void LateUpdate() {
