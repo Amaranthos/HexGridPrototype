@@ -24,7 +24,9 @@ public class UnitGUI : MonoBehaviour {
 		if(unit != null){
 			if(player == Logic.Inst.CurrentPlayerNum){
 				TurnInfo();
-				stats.hp.text = unit.CurrentHitpoints.ToString() + "/"+ unit.maxHitpoints.ToString();
+				//stats.hp.text = unit.CurrentHitpoints.ToString() + "/"+ unit.maxHitpoints.ToString();
+				HealthStat();
+				stats.unitName.text = unit.type.ToString();
 				stats.moves.text = unit.CurrentMovePoints.ToString();
 				stats.atk.text = unit.attack.ToString();
 				stats.def.text = unit.defense.ToString();
@@ -50,6 +52,7 @@ public class UnitGUI : MonoBehaviour {
 
 	void WipeText(){
 		stats.hp.text = "";
+		stats.unitName.text = "";
 		stats.moves.text = "";
 		stats.atk.text = "";
 		stats.def.text = "";
@@ -62,7 +65,7 @@ public class UnitGUI : MonoBehaviour {
 			stats.hp.text = "<b><color=red>" + unit.CurrentHitpoints.ToString() + "</color></b>/"+ unit.maxHitpoints.ToString();
 		}
 		else{
-			stats.hp.text = unit.CurrentHitpoints.ToString() + "/"+ unit.maxHitpoints.ToString();
+			stats.hp.text = unit.CurrentHitpoints.ToString() + "|"+ unit.maxHitpoints.ToString();
 		}
 	}
 

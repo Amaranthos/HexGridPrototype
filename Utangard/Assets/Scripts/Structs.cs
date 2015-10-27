@@ -37,6 +37,7 @@ using System.Collections;
 [System.Serializable]
 public struct StatsGUI{
 	public Text turninfo;
+	public Text unitName;
 	public Text hp;
 	public Text moves;
 	public Text atk;
