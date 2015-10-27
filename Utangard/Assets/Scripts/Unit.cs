@@ -417,10 +417,6 @@ public class Unit : MonoBehaviour {
 				return true;
 			}
 			break;
-			
-		default:
-			return false;
-			break;
 		}
 
 		return false;
