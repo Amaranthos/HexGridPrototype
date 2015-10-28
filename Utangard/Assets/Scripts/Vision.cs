@@ -38,10 +38,14 @@ public class Vision : MonoBehaviour {
 		
 		float input = Input.GetAxis("Mouse ScrollWheel");
 
-		if(input != 0.0f){
-			StopCoroutine(Zoom(input));
-			StartCoroutine(Zoom(input));
-		}
+		cam.fieldOfView -= zoomSpeed * 10 * input;
+		cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomRange.x, zoomRange.y);
+		
+
+		// if(input != 0.0f){
+		// 	StopCoroutine(Zoom(input));
+		// 	StartCoroutine(Zoom(input));
+		// }
 	}
 
 	private IEnumerator Zoom(float input){
@@ -69,17 +73,9 @@ public class Vision : MonoBehaviour {
 			}
 		}	
 		
-		ClampFOV();	
+		cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomRange.x, zoomRange.y);	
 
 		yield return null;
-	}
-
-	private void ClampFOV(){
-		if(cam.fieldOfView > zoomRange.y)
-			cam.fieldOfView = zoomRange.y;
-
-		if(cam.fieldOfView < zoomRange.x)
-			cam.fieldOfView = zoomRange.x;
 	}
 
 	private void LateUpdate() {
