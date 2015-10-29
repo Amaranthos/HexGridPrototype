@@ -74,14 +74,6 @@ public class Unit : MonoBehaviour {
 		//Handles persistent passives
 		PersistentAoECheck();
 
-		Altar altar = Logic.Inst.GetAltar(tile.Index);
-
-		if (altar){
-			if(altar.Owner != Owner){
-				canMove = false;
-			}
-			altar.PlayerCaptureAltar(owner);
-		}
 		ClearHighlightedTiles();
 	}
 
@@ -537,6 +529,19 @@ public class Unit : MonoBehaviour {
 
 	public void ChangeAnim(int animState){
 		unitAnim.SetInteger("State",animState);
+	}
+
+	public void CaptureAltar(){
+		Altar altar = Logic.Inst.GetAltar(index);
+		
+		if (altar){
+			if(altar.Owner != Owner){
+				canMove = false;
+			}
+			altar.PlayerCaptureAltar(owner);
+			Logic.Inst.StartCoroutine("ShowAltarText");
+			Logic.Inst.ClearHighlightedTiles();
+		}
 	}
 		
 	#region Getters and Setters

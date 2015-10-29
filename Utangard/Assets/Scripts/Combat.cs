@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Combat : MonoBehaviour {
 	public GameObject damageText;
-	public TextMesh rollText;
+	public Text rollText;
 	public float offsetDist, defNumA, defNumB;
 	public int spinCount;
 	private Unit atk,def;

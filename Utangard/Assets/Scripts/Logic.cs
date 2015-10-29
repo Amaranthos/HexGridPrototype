@@ -468,7 +468,7 @@ public class Logic : MonoBehaviour {
 				turnsRemaining -= 1;
 
 				timerText.SetActive(true);
-				timerText.GetComponent<TextMesh>().text = turnsRemaining + " Turns Until " + players[winningPlayer].name + "'s Victory";
+				timerText.GetComponent<Text>().text = turnsRemaining + " Turns Until " + players[winningPlayer].name + "'s Victory";
 
 				if (turnsRemaining <= 0)
 					EndGame();
@@ -520,7 +520,7 @@ public class Logic : MonoBehaviour {
 	private void EndGame() {
 		gamePhase = GamePhase.FinishedPhase;
 		winText.SetActive(true);
-		winText.GetComponent<TextMesh>().text = players[winningPlayer].name + " Wins!";
+		winText.GetComponent<Text>().text = players[winningPlayer].PlayerName + " Wins!";
 	}
 
 	private void SwitchGamePhase(GamePhase phase) {
@@ -590,6 +590,17 @@ public class Logic : MonoBehaviour {
 
 	public void SacrificeUnit() {
 		selectedUnit.UnitSacrificed();
+	}
+
+	public void CaptureAlar(){
+		selectedUnit.CaptureAltar();
+	}
+
+	IEnumerator ShowAltarText(){
+		Text tempText = winText.GetComponent<Text>();
+		tempText.text = CurrentPlayer.PlayerName + " HAS CAPTURED AN ALTAR";
+		yield return new  WaitForSeconds(3f);
+		tempText.text = "";
 	}
 
 	#region Getters and Setters 	
