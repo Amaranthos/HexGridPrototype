@@ -11,6 +11,7 @@ public class UnitGUI : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		TurnInfo();
 		unit = Logic.Inst.SelectedUnit;
 		if(unit != null){
 			UpdateStats();
