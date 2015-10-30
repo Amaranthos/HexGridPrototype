@@ -100,6 +100,7 @@ public class Logic : MonoBehaviour {
 		if (!path)
 			Debug.LogError("Pathfinder does not exist!");
 
+		Camera.main.GetComponent<Vision>().enabled = false;
 	}
 
 	private void Update() {
@@ -352,7 +353,7 @@ public class Logic : MonoBehaviour {
 
 		ChangeTileOutlines(CurrentPlayer.PlacementField(), CurrentPlayer.playerColour, 0.1f);
 
-//		Camera.main.GetComponent<Vision>().enabled = true;
+		Camera.main.GetComponent<Vision>().enabled = true;
 
 	}
 

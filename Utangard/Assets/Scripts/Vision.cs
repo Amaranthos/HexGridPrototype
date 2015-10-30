@@ -30,7 +30,7 @@ public class Vision : MonoBehaviour {
 
 	private void Update() {
 		
-		Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
 		move.Normalize();
 
 		transform.localPosition += move * moveSpeed;
