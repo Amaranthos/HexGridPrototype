@@ -50,6 +50,11 @@ public class GUIAnimationController : MonoBehaviour {
 		get{ return anim.GetBool("P1Hero"); }
 		set{ anim.SetBool("P1Hero", value); }
 	}
+
+	public bool UnitOnAltar{
+		get { return anim.GetBool("P1Shrine"); }
+		set { anim.SetBool("P1Shrine", value); }
+	}
 	
 	public bool P2HeroSelected{
 		get{ return anim.GetBool("P2Hero"); }
