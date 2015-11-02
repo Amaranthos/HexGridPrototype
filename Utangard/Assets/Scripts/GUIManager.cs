@@ -34,7 +34,7 @@ public class GUIManager : MonoBehaviour {
 	public void UpdatePlayerGUI(int currentPlayer){
 
 		CombatLog.text = "";
-		
+		guiAnim.ResetStates();
 		if(currentPlayer == 0){
 			guiAnim.SetP1Turn();
 		}
