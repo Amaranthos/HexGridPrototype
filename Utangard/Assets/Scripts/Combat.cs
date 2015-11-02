@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Combat : MonoBehaviour {
 	public GameObject damageText;
@@ -62,7 +64,7 @@ public class Combat : MonoBehaviour {
 
 		for(int i = 0; i < spinCount; i++){
 			yield return new WaitForSeconds(0.05f);
-			hitRoll = Random.Range(1, 100);
+			hitRoll = RollTheDice();
 			rollText.text = atk.Owner.hero.type + "'s " + atk.type + " Rolled... " + hitRoll + "\nNeeds " + (100-hitChance) + "+ To Hit";
 		}
 
@@ -101,5 +103,26 @@ public class Combat : MonoBehaviour {
 //		def.ChangeAnim(0);
 
 		rollText.text = "";
+	}
+
+	private int RollTheDice(){
+		int roll1 = Random.Range(1,25);
+		int roll2 = Random.Range(1,25);
+		int roll3 = Random.Range(1,25);
+		int roll4 = Random.Range(1,25);
+		int roll5 = Random.Range(1,25);
+		List<int> rolls = new List<int>();
+		
+		rolls.Add(roll1);
+		rolls.Add(roll2);
+		rolls.Add(roll3);
+		rolls.Add(roll4);
+		rolls.Add(roll5);
+		
+		rolls.Remove(rolls.Min());
+
+		int total = roll1 + roll2 + roll3 + roll4 + roll5 - rolls.Min();
+
+		return total;
 	}
 }

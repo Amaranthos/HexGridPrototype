@@ -1855,7 +1855,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.34681821, y: 2.36665154, z: -3.74664831}
+  m_LocalPosition: {x: 1242.60547, y: 225.767105, z: -193.435776}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 22469714}
@@ -2455,14 +2455,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   movePoints: 2
-  maxHitpoints: 140
+  maxHitpoints: 200
   attack: 30
   defense: 35
   cost: 0
   hitChance: 60
   dodgeChance: 10
   attackRange: 1
+  dead: 0
   currentBuffs: []
+  unitAnim: {fileID: 0}
+  buffsToSpawn: []
 --- !u!114 &11477230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2520,6 +2523,7 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 00000000010000000200000003000000
+      timesProcced: 0
       isBio: 0
       terType: 0
       bioType: 0
@@ -2571,6 +2575,7 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      timesProcced: 0
       isBio: 0
       terType: 0
       bioType: 0
@@ -2598,6 +2603,7 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      timesProcced: 0
       isBio: 0
       terType: 0
       bioType: 0
@@ -2613,6 +2619,7 @@ MonoBehaviour:
       oneShot: 0
       adjType: 0
       adjUnits: 
+      timesProcced: 0
       isBio: 0
       terType: 0
       bioType: 0
