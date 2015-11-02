@@ -221,10 +221,26 @@ public class Unit : MonoBehaviour {
 			foreach(Transform child in model){
 				if(child.name == "body"){
 					if(!child.GetComponent<SkinnedMeshRenderer>()){
-						child.GetComponent<MeshRenderer>().materials[1].color = Owner.playerColour;
+						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
+						for(int i = 0; i < meshRend.sharedMaterials.Length; i++){
+							if(meshRend.sharedMaterials[i].name == "Default Colour"){
+								Material[] mats = meshRend.sharedMaterials;
+								mats[i] = new Material(meshRend.sharedMaterials[i]);
+								mats[i].color = Owner.playerColour;
+								meshRend.sharedMaterials = mats;
+							}
+						}
 					}
 					else{
-						child.GetComponent<SkinnedMeshRenderer>().materials[1].color = Owner.playerColour;
+						SkinnedMeshRenderer meshRend = child.GetComponent<SkinnedMeshRenderer>();
+						for(int i = 0; i < meshRend.sharedMaterials.Length; i++){
+							if(meshRend.sharedMaterials[i].name == "Default Colour"){
+								Material[] mats = meshRend.sharedMaterials;
+								mats[i] = new Material(meshRend.sharedMaterials[i]);
+								mats[i].color = Owner.playerColour;
+								meshRend.sharedMaterials = mats;
+							}
+						}
 					}
 				}
 			}

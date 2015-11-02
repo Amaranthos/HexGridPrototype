@@ -119,7 +119,6 @@ public class Hero : MonoBehaviour {
 			if(active2.target == AimType.Single || active2.target == AimType.TargetAoE){
 				Logic.Inst.HighlightAbilityRange(active2,hero.Index);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
-				Debug.Log("Entering Target Mode!");
 			}
 			else if(active2.target == AimType.All || active2.target == AimType.SelfAoE){
 				CastAbility();
@@ -160,7 +159,6 @@ public class Hero : MonoBehaviour {
 
 				if(currentStage > 0 && currentAbility.targets[currentStage-1].unit){
 					currentAbility.targets[currentStage].origin = currentAbility.targets[currentStage-1].unit.Index;
-					print ("Origin Updated");
 					Logic.Inst.HighlightAbilityRange(currentAbility,currentAbility.targets[currentStage].origin);
 				}
 			}
