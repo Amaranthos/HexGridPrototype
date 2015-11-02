@@ -10,6 +10,8 @@ public class ArmySelect : MonoBehaviour {
 	private int currentPlayer, otherPlayer;
 	public List<GameObject> playerPanels = new List<GameObject>();
 	public List<GameObject> panelBlockers = new List<GameObject>();
+	public int unitsPerTurn;
+	private int currentCount = 0;
 		
 	public void Start() {
 		for (int i = 0; i < Logic.Inst.Players.Length; i++) {
@@ -55,25 +57,31 @@ public class ArmySelect : MonoBehaviour {
 	}
 
 	public void NextTurn(){
-		int temp = currentPlayer;
-		currentPlayer = otherPlayer;
-		otherPlayer = temp;
+		currentCount++;
 
-		Button[] panelButtons1 = playerPanels[currentPlayer].GetComponentsInChildren<Button>();
-		Button[] panelButtons2 = playerPanels[otherPlayer].GetComponentsInChildren<Button>();
+		if(currentCount >= unitsPerTurn){
+			int temp = currentPlayer;
+			currentPlayer = otherPlayer;
+			otherPlayer = temp;
 
-		if(Logic.Inst.Players[0].CurrentFood != 0 || Logic.Inst.Players[1].CurrentFood != 0){
-			foreach(Button button in panelButtons1){
-				button.interactable = true;
+			Button[] panelButtons1 = playerPanels[currentPlayer].GetComponentsInChildren<Button>();
+			Button[] panelButtons2 = playerPanels[otherPlayer].GetComponentsInChildren<Button>();
+
+			if(Logic.Inst.Players[0].CurrentFood != 0 || Logic.Inst.Players[1].CurrentFood != 0){
+				foreach(Button button in panelButtons1){
+					button.interactable = true;
+				}
 			}
-		}
 
-		foreach(Button button in panelButtons2){
-			button.interactable = false;
-		}
+			foreach(Button button in panelButtons2){
+				button.interactable = false;
+			}
 
-		panelBlockers[currentPlayer].SetActive(true);
-		panelBlockers[otherPlayer].SetActive(false);
+			panelBlockers[currentPlayer].SetActive(true);
+			panelBlockers[otherPlayer].SetActive(false);
+
+			currentCount = 0;
+		}
 	}
 }
 
