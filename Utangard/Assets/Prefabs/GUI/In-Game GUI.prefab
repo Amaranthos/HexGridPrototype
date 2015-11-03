@@ -153,6 +153,7 @@ GameObject:
   - 222: {fileID: 22286440}
   - 114: {fileID: 11473476}
   - 225: {fileID: 22546410}
+  - 114: {fileID: 11499304}
   m_Layer: 5
   m_Name: ShrineButton
   m_TagString: Untagged
@@ -796,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &125890
 GameObject:
   m_ObjectHideFlags: 1
@@ -2327,7 +2328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &178262
 GameObject:
   m_ObjectHideFlags: 1
@@ -2424,6 +2425,7 @@ GameObject:
   - 222: {fileID: 22277616}
   - 114: {fileID: 11499774}
   - 225: {fileID: 22597020}
+  - 114: {fileID: 11418660}
   m_Layer: 5
   m_Name: ShrineButton
   m_TagString: Untagged
@@ -3679,6 +3681,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 15
+--- !u!114 &11418660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a22b31439989434ba3ba111c1cf4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+  shrineButton: {fileID: 192934}
+  toolTip: {fileID: 11470670}
 --- !u!114 &11418882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4256,8 +4272,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CaptureAlar
+      - m_Target: {fileID: 11418660}
+        m_MethodName: ShrineButtonFunc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4423,8 +4439,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CaptureAlar
+      - m_Target: {fileID: 11499304}
+        m_MethodName: ShrineButtonFunc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7258,6 +7274,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11499304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a22b31439989434ba3ba111c1cf4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 1
+  shrineButton: {fileID: 119048}
+  toolTip: {fileID: 11490380}
 --- !u!114 &11499590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9066,10 +9096,10 @@ RectTransform:
   - {fileID: 22458978}
   m_Father: {fileID: 22451570}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 81.4000015, y: 71.5}
-  m_SizeDelta: {x: 189.699997, y: 14.5}
+  m_AnchorMin: {x: .5, y: 1}
+  m_AnchorMax: {x: .5, y: 1}
+  m_AnchoredPosition: {x: 81.4000015, y: 46.5}
+  m_SizeDelta: {x: 353.700012, y: 64.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22429906
 RectTransform:
@@ -9325,10 +9355,10 @@ RectTransform:
   - {fileID: 22490384}
   m_Father: {fileID: 22437698}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 81.4000015, y: 71.5}
-  m_SizeDelta: {x: 189.699997, y: 14.5}
+  m_AnchorMin: {x: .5, y: 1}
+  m_AnchorMax: {x: .5, y: 1}
+  m_AnchoredPosition: {x: -81.4000015, y: 46.5}
+  m_SizeDelta: {x: 353.700012, y: 64.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22438922
 RectTransform:
