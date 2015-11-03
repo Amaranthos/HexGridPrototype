@@ -15,5 +15,6 @@ public class TextFade : MonoBehaviour {
 		transform.Translate(transform.up * Time.deltaTime);
 		currentAlpha = Mathf.Lerp(currentAlpha,0,fadeSpeed);
 		damageText.color = new Color(damageText.color.r,damageText.color.g,damageText.color.b,currentAlpha);
+		transform.LookAt(-Camera.main.transform.position);
 	}
 }
