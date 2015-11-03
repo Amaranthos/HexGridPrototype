@@ -7,6 +7,13 @@ public class Vision : MonoBehaviour {
 	public float moveSpeed;
 	public Vector2 zoomRange;
 	public float zoomSpeed;
+	public float horizSpinSpeed;
+	public float vertSpinSpeed;
+	public float vertMin;
+	public float vertMax;
+	private float origVertSpin;
+	private float origHorizSpin;
+	public float spinMultiplier;
 
 	private Camera cam;
 	private float camSize;
@@ -26,15 +33,39 @@ public class Vision : MonoBehaviour {
 		mapY = Logic.Inst.Grid.mapHeight * (Logic.Inst.Grid.hexRadius);
 
 		CalculateCameraBounds();
+
+		origVertSpin = vertSpinSpeed;
+		origHorizSpin = horizSpinSpeed;
 	}
 
 	private void Update() {
 		
-		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-		move.Normalize();
+//		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+//		move.Normalize();
+//
+//		transform.localPosition += move * moveSpeed;
 
-		transform.localPosition += move * moveSpeed;
+		if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)){
+			horizSpinSpeed = origHorizSpin * spinMultiplier;
+			vertSpinSpeed = origVertSpin * spinMultiplier;
+        }
+		else{
+			horizSpinSpeed = origHorizSpin;
+			vertSpinSpeed = origVertSpin;
+		}
 
+		float rotate = Input.GetAxisRaw("Horizontal") * horizSpinSpeed;
+		Quaternion tempRot = transform.parent.rotation;
+		Vector3 tempVect = new Vector3(tempRot.eulerAngles.x, tempRot.eulerAngles.y + rotate, tempRot.eulerAngles.z);
+		transform.parent.eulerAngles = tempVect;
+
+		rotate = Input.GetAxisRaw("Vertical") * vertSpinSpeed;
+		tempRot = transform.parent.rotation;
+		tempVect = new Vector3(tempRot.eulerAngles.x + rotate, tempRot.eulerAngles.y, tempRot.eulerAngles.z);
+
+		tempVect.x = ClampAngle(tempVect.x,vertMin,vertMax);
+
+		transform.parent.eulerAngles = tempVect;
 		
 		float input = Input.GetAxis("Mouse ScrollWheel");
 
@@ -76,6 +107,22 @@ public class Vision : MonoBehaviour {
 		cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomRange.x, zoomRange.y);	
 
 		yield return null;
+	}
+
+	private float ClampAngle(float angle, float min, float max){
+		if (angle<90 || angle>270){       // if angle in the critic region...
+			if (angle>180) 
+				angle -= 360;  // convert all angles to -180..+180
+			if (max>180) 
+				max -= 360;
+			if (min>180) 
+				min -= 360;
+		}    
+		angle = Mathf.Clamp(angle, min, max);
+		if (angle<0) 
+			angle += 360;  // if angle negative, convert to 0..360
+
+        return angle;
 	}
 
 	private void LateUpdate() {
