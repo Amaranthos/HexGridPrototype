@@ -141,14 +141,17 @@ public class MapGen : MonoBehaviour {
 
 	public TerrainType GenerateTerrain(int i) {
 		TerrainType terrain = TerrainType.Plains;
-		int	rand = randGen.Next(0,200);
+		int	rand = randGen.Next(0,100);
 
 		int chance = (int) (mountainPercent * 0.25f * Mathf.Pow(2.0f, Logic.Inst.Grid.Distance(map[i].Index, new CubeIndex(0,0,0))));
 
 		if(rand < chance){
 			terrain = TerrainType.Mountains;
 		}
-		else if(rand > 100 && rand < (hillPercent + 100)){
+
+		rand = randGen.Next(0,100);
+
+		if(rand < hillPercent){
 			terrain = TerrainType.Hills;
 		}
 		return terrain;
