@@ -15,8 +15,9 @@ public class Skill{
 	public Unit hero;
 	public List<UnitType> affected = new List<UnitType>();
 	public List<Buff> buffs = new List<Buff>();
+	public GameObject skillParticle;
 	
-	public Skill(AbilityType at, AimType tt, bool hf, int cst, int crng, int arng, List<Target> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf){
+	public Skill(AbilityType at, AimType tt, bool hf, int cst, int crng, int arng, List<Target> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf, GameObject skp){
 		abilityType = at;
 		target = tt;
 		hitFoe = hf;
@@ -28,6 +29,7 @@ public class Skill{
 		hero = hro;
 		affected = afd;
 		buffs = buf;
+		skillParticle = skp;
 	}
 
 	public void ApplyBuffSingle(CubeIndex index){
@@ -39,12 +41,17 @@ public class Skill{
 		else if (hitFoe && unit.Owner != hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
 		}
+		GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+		Logic.Destroy(tempobj,2f);
 	}
 
 	public void ApplyBuffAll(int playerNo){
 		foreach(Unit unit in Logic.Inst.Players[playerNo].army){
-			if(affected.Contains(unit.type))	//Check if the unit type is affected by this ability
+			if(affected.Contains(unit.type)){	//Check if the unit type is affected by this ability
 				AddBuffs(unit);
+				GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+				Logic.Destroy(tempobj,2f);
+			}
 		}
 	}
 
@@ -57,12 +64,15 @@ public class Skill{
 			if(!hitFoe){
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner == hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
-					Debug.Log("Adding Buff");
+					GameObject tempobj = Logic.Instantiate(skillParticle,tile.OccupyingUnit.transform.position,Quaternion.identity) as GameObject;
+					Logic.Destroy(tempobj,2f);
 				}
 			}
 			else{
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner != hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
+					GameObject tempobj = Logic.Instantiate(skillParticle,tile.OccupyingUnit.transform.position,Quaternion.identity) as GameObject;
+					Logic.Destroy(tempobj,2f);
 				}
 			}
 		}

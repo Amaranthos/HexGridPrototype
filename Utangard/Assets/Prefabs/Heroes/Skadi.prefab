@@ -2532,6 +2532,7 @@ MonoBehaviour:
       isBio: 1
       terType: 2
       bioType: 1
+    skillParticle: {fileID: 142058, guid: 109a28e9f298674458581a1df4c6db3e, type: 2}
   active1:
     abilityType: 0
     target: 0
@@ -2576,6 +2577,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
+    skillParticle: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
   active2:
     abilityType: 0
     target: 0
@@ -2636,6 +2638,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
+    skillParticle: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
   currentAbility:
     abilityType: 0
     target: 0
@@ -2648,6 +2651,7 @@ MonoBehaviour:
     hero: {fileID: 0}
     affected: 
     buffs: []
+    skillParticle: {fileID: 0}
   currentRange: 0
   currentStage: 2
   abilityBonus: .100000001
@@ -3447,6 +3451,18 @@ Prefab:
       propertyPath: passive.buffs.Array.data[0].isBio
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.skillParticle
+      value: 
+      objectReference: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
+    - target: {fileID: 0}
+      propertyPath: passive.skillParticle
+      value: 
+      objectReference: {fileID: 142058, guid: 109a28e9f298674458581a1df4c6db3e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: active1.skillParticle
+      value: 
+      objectReference: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128016}
