@@ -54,6 +54,10 @@ public class Logic : MonoBehaviour {
 	public GameObject winText;
 	public GameObject timerText;
 
+	//For Particles
+	bool lerpingCols;
+	float alpha = 0;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -177,6 +181,11 @@ public class Logic : MonoBehaviour {
 				ClearHighlightedTiles();
 				UnitLClicked(heroList.heroes[currentPlayer].hero);
 			}
+		}
+
+		//For Particle Stuff
+		if(lerpingCols){
+			Mathf.Lerp(alpha,255,0.1f);
 		}
 	}
 
@@ -602,6 +611,26 @@ public class Logic : MonoBehaviour {
 		tempText.text = CurrentPlayer.PlayerName + " HAS CAPTURED AN ALTAR";
 		yield return new  WaitForSeconds(3f);
 		tempText.text = "";
+	}
+
+	public IEnumerator CreateParticle(Unit unit, GameObject skillParticle){
+		GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+//		MeshRenderer[] mats = tempobj.transform.GetComponentsInChildren<MeshRenderer>();
+//		ParticleSystem[] parts = tempobj.transform.GetComponentsInChildren<ParticleSystem>();
+//		
+//		for(int i = 0; i < mats.Length; i++){
+//			mats[i].material.color = new Color(1,1,1,1);
+//		}
+//		
+//		for(int j = 0; j < parts.Length; j ++){
+//			Color tempCol = parts[j].startColor;
+//			alpha = 0;
+//			lerpingCols = true;
+//			parts[j].startColor = new Color(parts[j].startColor.r,parts[j].startColor.g,parts[j].startColor.b,alpha);
+//		}
+//		
+		yield return new WaitForSeconds(1f);
+		Logic.Destroy(tempobj,2f);
 	}
 
 	#region Getters and Setters 	

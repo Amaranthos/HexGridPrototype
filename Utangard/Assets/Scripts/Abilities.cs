@@ -41,22 +41,19 @@ public class Skill{
 		else if (hitFoe && unit.Owner != hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
 		}
-		GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
-		Logic.Destroy(tempobj,2f);
+		Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(unit,skillParticle));
 	}
 
 	public void ApplyBuffAll(int playerNo){
 		foreach(Unit unit in Logic.Inst.Players[playerNo].army){
 			if(affected.Contains(unit.type)){	//Check if the unit type is affected by this ability
 				AddBuffs(unit);
-				GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
-				Logic.Destroy(tempobj,2f);
+				Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(unit,skillParticle));
 			}
 		}
 	}
 
 	public void ApplyBuffAoE(CubeIndex tileIndex){
-		Debug.Log ("Called");
 		List<Tile> inRange = new List<Tile>();
 		
 		inRange = Logic.Inst.Grid.TilesInRange(tileIndex,AoERange);
@@ -64,15 +61,13 @@ public class Skill{
 			if(!hitFoe){
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner == hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
-					GameObject tempobj = Logic.Instantiate(skillParticle,tile.OccupyingUnit.transform.position,Quaternion.identity) as GameObject;
-					Logic.Destroy(tempobj,2f);
+					Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(tile.OccupyingUnit,skillParticle));
 				}
 			}
 			else{
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner != hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
-					GameObject tempobj = Logic.Instantiate(skillParticle,tile.OccupyingUnit.transform.position,Quaternion.identity) as GameObject;
-					Logic.Destroy(tempobj,2f);
+					Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(tile.OccupyingUnit,skillParticle));
 				}
 			}
 		}
