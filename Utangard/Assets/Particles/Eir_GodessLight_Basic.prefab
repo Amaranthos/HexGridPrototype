@@ -44,6 +44,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427478}
+  - 114: {fileID: 11482698}
   m_Layer: 0
   m_Name: Eir_GodessLight_Basic
   m_TagString: Untagged
@@ -113,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.12194538, y: 7.77944279, z: -20.6508141}
+  m_LocalPosition: {x: -12.6500702, y: 42.3814392, z: -60.2236824}
   m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
   m_Children:
   - {fileID: 411584}
@@ -179,6 +180,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11482698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46632ad0b14404f4fbeff239fdc2f594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: .200000003
+  fadeTime: 1.5
+  destroyTime: 5
 --- !u!198 &19802196
 ParticleSystem:
   m_ObjectHideFlags: 1

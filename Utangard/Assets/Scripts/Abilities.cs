@@ -41,15 +41,13 @@ public class Skill{
 		else if (hitFoe && unit.Owner != hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
 		}
-		Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(unit,skillParticle));
-	}
+		SpawnParticle(unit);	}
 
 	public void ApplyBuffAll(int playerNo){
 		foreach(Unit unit in Logic.Inst.Players[playerNo].army){
 			if(affected.Contains(unit.type)){	//Check if the unit type is affected by this ability
 				AddBuffs(unit);
-				Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(unit,skillParticle));
-			}
+				SpawnParticle(unit);			}
 		}
 	}
 
@@ -61,13 +59,12 @@ public class Skill{
 			if(!hitFoe){
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner == hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
-					Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(tile.OccupyingUnit,skillParticle));
-				}
+					SpawnParticle(tile.OccupyingUnit);				}
 			}
 			else{
 				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner != hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
 					AddBuffs(tile.OccupyingUnit);
-					Logic.Inst.StartCoroutine(Logic.Inst.CreateParticle(tile.OccupyingUnit,skillParticle));
+					SpawnParticle(tile.OccupyingUnit);
 				}
 			}
 		}
@@ -84,6 +81,11 @@ public class Skill{
 		}
 
 		unit.StartCoroutine("SpawnBuffText",unit.buffsToSpawn);
+	}
+
+	public void SpawnParticle(Unit unit){
+		GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+		tempobj.GetComponent<AbilityParticles>().FadeParticle(tempobj);
 	}
 }
 
