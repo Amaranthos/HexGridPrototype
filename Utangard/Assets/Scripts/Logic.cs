@@ -660,6 +660,10 @@ public class Logic : MonoBehaviour {
 		get {return terrainList;}
 	}
 
+	public Combat CombatManager{
+		get {return combatManager;}
+	}
+
 	public int FaithPerTurn {
 		get{ return faithPtsPerAltar * CurrentPlayer.capturedAltars.Count;}
 	}

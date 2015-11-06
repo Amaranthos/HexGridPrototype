@@ -9,6 +9,7 @@ public class GUIManager : MonoBehaviour {
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
+	public BattlePredictionUI battlePrediction;
 	public Button EndTurnP1;
 	public Button EndTurnP2;
 	public Tooltip TooltipPanel;
@@ -29,6 +30,15 @@ public class GUIManager : MonoBehaviour {
 	public void LogCombatResult(string res)
 	{
 		CombatLog.text += (res + "\n");	
+	}
+
+	public void DisplayPredictions(Unit unitHovered){
+		if(!battlePrediction.isOpen){
+			battlePrediction.OpenPredictions(unitHovered);
+		}
+	}
+	public void ClosePredictions(){
+		battlePrediction.ClosePredictions();
 	}
 
 	public void UpdatePlayerGUI(int currentPlayer){

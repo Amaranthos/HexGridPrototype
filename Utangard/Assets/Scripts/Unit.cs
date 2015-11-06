@@ -198,6 +198,20 @@ public class Unit : MonoBehaviour {
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 	}
 
+	public void OnMouseOver(){
+		if(Logic.Inst.SelectedUnit != null){
+			if(Logic.Inst.SelectedUnit != this){
+				if(owner != Logic.Inst.CurrentPlayer){
+					GUIManager.inst.DisplayPredictions(this);
+				}
+			}
+		}
+	}
+
+	public void OnMouseExit(){
+		GUIManager.inst.ClosePredictions();
+	}
+
 	public bool InAttackRange(Unit unit) {
 		return Logic.Inst.Grid.TilesInRange(index, attackRange).Contains(Logic.Inst.Grid.TileAt(unit.Index));
 	}
