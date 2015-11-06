@@ -101,13 +101,6 @@ public class Unit : MonoBehaviour {
 			transform.position = tile.transform.position;
 			currentMP -= tile.MoveCost;
 
-//			foreach (Buff bff in currentBuffs){
-//				if(bff.buffType == BuffType.HexTerrain){
-//					if((bff.isBio && bff.bioType == tile.Biome) || (!bff.isBio&& bff.terType == tile.Terrain)){
-//						bff.ChangeValue(this,true);
-//					}
-//				}
-//			}
 			if(unitAnim){
 				ChangeAnim(0);
 			}
@@ -130,24 +123,24 @@ public class Unit : MonoBehaviour {
 		if(canMove){
 			List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
 
-			foreach(Tile tile in ret){
-				if(tile.OccupyingUnit != null){
-					if(tile.OccupyingUnit.Owner != Owner && canMove)
-						if(InAttackRange(tile.OccupyingUnit)){
-							tile.LineColour(Color.red);
-							tile.LineWidth(0.1f);
-							highlighted.Add(tile);
+			for (int i = 0; i < ret.Count; i++){
+				if(ret[i].OccupyingUnit != null){
+					if(ret[i].OccupyingUnit.Owner != Owner && canMove)
+						if(InAttackRange(ret[i].OccupyingUnit)){
+							ret[i].LineColour(Color.red);
+							ret[i].LineWidth(0.1f);
+							highlighted.Add(ret[i]);
 						}
-					else if(InMoveRange(tile)){
-						tile.LineColour(Color.grey);
-						tile.LineWidth(0.1f);
-						highlighted.Add(tile);
+					else if(InMoveRange(ret[i])){
+						ret[i].LineColour(Color.grey);
+						ret[i].LineWidth(0.1f);
+						highlighted.Add(ret[i]);
 					}
 				}
-				else if(InMoveRange(tile)){
-					tile.LineColour(Color.green);
-					tile.LineWidth(0.1f);
-					highlighted.Add(tile);
+				else if(InMoveRange(ret[i])){
+					ret[i].LineColour(Color.green);
+					ret[i].LineWidth(0.1f);
+					highlighted.Add(ret[i]);
 				}
 			}
 
@@ -158,9 +151,9 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void ClearHighlightedTiles() {
-		foreach(Tile tile in highlighted){
-			tile.LineColour(Color.black);
-			tile.LineWidth(0.03f);			
+		for(int i = 0; i < highlighted.Count; i++){
+			highlighted[i].LineColour(Color.black);
+			highlighted[i].LineWidth(0.03f);			
 		}
 
 		highlighted.Clear();
@@ -177,8 +170,8 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
-			foreach(Unit unit in owner.army){
-				RemovePassiveBuff(unit, true);
+			for(int i = 0; i < owner.army.Count; i++){
+				RemovePassiveBuff(owner.army[i], true);
 			}
 		}
 
@@ -232,26 +225,28 @@ public class Unit : MonoBehaviour {
 	public void SetUnitMaterial(){
 		if(gameObject.transform.childCount > 0){
 			Transform model = gameObject.transform.GetChild(0);
-			foreach(Transform child in model){
+			for(int i = 0; i < model.childCount; i++){
+				Transform child = model.GetChild(i);
+
 				if(child.name == "body"){
 					if(!child.GetComponent<SkinnedMeshRenderer>()){
 						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
-						for(int i = 0; i < meshRend.sharedMaterials.Length; i++){
-							if(meshRend.sharedMaterials[i].name == "Default Colour"){
+						for(int j = 0; j < meshRend.sharedMaterials.Length; j++){
+							if(meshRend.sharedMaterials[j].name == "Default Colour"){
 								Material[] mats = meshRend.sharedMaterials;
-								mats[i] = new Material(meshRend.sharedMaterials[i]);
-								mats[i].color = Owner.playerColour;
+								mats[j] = new Material(meshRend.sharedMaterials[j]);
+								mats[j].color = Owner.playerColour;
 								meshRend.sharedMaterials = mats;
 							}
 						}
 					}
 					else{
 						SkinnedMeshRenderer meshRend = child.GetComponent<SkinnedMeshRenderer>();
-						for(int i = 0; i < meshRend.sharedMaterials.Length; i++){
-							if(meshRend.sharedMaterials[i].name == "Default Colour"){
+						for(int k = 0; k < meshRend.sharedMaterials.Length; k++){
+							if(meshRend.sharedMaterials[k].name == "Default Colour"){
 								Material[] mats = meshRend.sharedMaterials;
-								mats[i] = new Material(meshRend.sharedMaterials[i]);
-								mats[i].color = Owner.playerColour;
+								mats[k] = new Material(meshRend.sharedMaterials[k]);
+								mats[k].color = Owner.playerColour;
 								meshRend.sharedMaterials = mats;
 							}
 						}
@@ -267,13 +262,13 @@ public class Unit : MonoBehaviour {
 
 		currentMP = movePoints;
 
-		foreach (Buff bff in currentBuffs){
-			bff.duration--;
-			if(bff.duration == 0 &&  !bff.permanent){				//If the effect is done
-				bff.ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
+		for(int i = 0; i < currentBuffs.Count; i++){
+			currentBuffs[i].duration--;
+			if(currentBuffs[i].duration == 0 &&  !currentBuffs[i].permanent){				//If the effect is done
+				currentBuffs[i].ChangeValue(this,false);	//Alter this units relative stat. False indicates that the effect is being removed.
 //				buffsToSpawn.Add(new TextSpawn(bff,this,false));
 //				SpawnBuffText(bff,this,false);
-				finishedBuffs.Add(bff.ID);
+				finishedBuffs.Add(currentBuffs[i].ID);
 			}
 		}
 
@@ -289,10 +284,10 @@ public class Unit : MonoBehaviour {
 		bool newBuff = true;
 		// GameObject tempText;
 
-		foreach(Buff buff in currentBuffs){
-			if(buff.ID == bff.ID){
+		for(int i = 0; i < currentBuffs.Count; i++){
+			if(currentBuffs[i].ID == bff.ID){
 				newBuff = false;
-				buff.duration = bff.duration;
+				currentBuffs[i].duration = bff.duration;
 			}
 		}
 
@@ -312,31 +307,31 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void AdjacencyCheck(CubeIndex prevIndex){
-		foreach(Buff buff in currentBuffs){
+		for(int i = 0; i < currentBuffs.Count; i++){
 			List<Tile> inRange = new List<Tile>();
 			List<Tile> inPrevRange = new List<Tile>();
 			inRange = Logic.Inst.Grid.TilesInRange(index,1);
 			inPrevRange = Logic.Inst.Grid.TilesInRange(prevIndex,1);
 			
-			if(buff.buffType == BuffType.Adjacent){
+			if(currentBuffs[i].buffType == BuffType.Adjacent){
 				CalculateModifiers(false);
 			}
 			
-			foreach(Tile adjTile in inRange){
-				if(adjTile.OccupyingUnit){
-					foreach(Buff adjBuff in adjTile.OccupyingUnit.currentBuffs){
-						if(adjBuff.buffType == BuffType.Adjacent && AdjProc(adjTile.OccupyingUnit,adjBuff)){
-							adjTile.OccupyingUnit.CalculateModifiers(false);
+			for(int j = 0; j < inRange.Count; j++){
+				if(inRange[j].OccupyingUnit){
+					for(int k = 0; k < inRange[j].OccupyingUnit.currentBuffs.Count; k++){
+						if(inRange[j].OccupyingUnit.currentBuffs[k].buffType == BuffType.Adjacent && AdjProc(inRange[j].OccupyingUnit,inRange[j].OccupyingUnit.currentBuffs[k])){
+							inRange[j].OccupyingUnit.CalculateModifiers(false);
 						}
 					}
 				}
 			}
 
-			foreach(Tile prevTile in inPrevRange){
-				if(prevTile.OccupyingUnit){
-					foreach(Buff adjBuff in prevTile.OccupyingUnit.currentBuffs){
-						if(adjBuff.buffType == BuffType.Adjacent && AdjProc(prevTile.OccupyingUnit,adjBuff)){
-							prevTile.OccupyingUnit.CalculateModifiers(false);
+			for(int x = 0; x < inPrevRange.Count; x++){
+				if(inPrevRange[x].OccupyingUnit){
+					for(int y = 0; y < inPrevRange[x].OccupyingUnit.currentBuffs.Count; y++){
+						if(inPrevRange[x].OccupyingUnit.currentBuffs[y].buffType == BuffType.Adjacent && AdjProc(inPrevRange[x].OccupyingUnit,inPrevRange[x].OccupyingUnit.currentBuffs[y])){
+							inPrevRange[x].OccupyingUnit.CalculateModifiers(false);
 						}
 					}
 				}
@@ -352,11 +347,11 @@ public class Unit : MonoBehaviour {
 		
 		CalcAdjacency(turnStart);
 
-		foreach (Buff bff in currentBuffs){
-			if((bff.duration > 0 || bff.permanent) && bff.buffType == BuffType.Stat){
-				bff.ChangeValue(this,true);
-				if(!bff.procced){
-					buffsToSpawn.Add(new TextSpawn(bff,this,true));
+		for(int i = 0; i < currentBuffs.Count; i++){
+			if((currentBuffs[i].duration > 0 || currentBuffs[i].permanent) && currentBuffs[i].buffType == BuffType.Stat){
+				currentBuffs[i].ChangeValue(this,true);
+				if(!currentBuffs[i].procced){
+					buffsToSpawn.Add(new TextSpawn(currentBuffs[i],this,true));
 				}
 			}
 		}
@@ -369,14 +364,15 @@ public class Unit : MonoBehaviour {
 		int proced = 0;
 		bool makeText = true;
 
-		foreach(Buff buff in currentBuffs){
+		for(int i = 0; i < currentBuffs.Count; i++){
+			Buff buff = currentBuffs[i];
 			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
 
 			proced = 0;
 			if(buff.buffType == BuffType.Adjacent){
 				inRange = Logic.Inst.Grid.TilesInRange(index,1);
-				foreach(Tile tile in inRange){
-					if(tile.OccupyingUnit && AdjProc(tile.OccupyingUnit,buff)){
+				for(int j = 0; j < inRange.Count; j++){
+					if(inRange[j].OccupyingUnit && AdjProc(inRange[j].OccupyingUnit,buff)){
 						buff.ChangeValue(this,true);
 						proced++;
 					}
@@ -450,9 +446,9 @@ public class Unit : MonoBehaviour {
 		inRange = Logic.Inst.Grid.TilesInRange(index,owner.hero.passive.AoERange);
 
 		if(type == UnitType.Hero && owner.hero.passive.passive == PassiveType.PersitentAoE){
-			foreach(Unit unit in owner.army){
-				if(!inRange.Contains(Logic.Inst.Grid.TileAt(unit.index))){
-					RemovePassiveBuff(unit,true);
+			for(int i = 0; i < owner.army.Count; i++){
+				if(!inRange.Contains(Logic.Inst.Grid.TileAt(owner.army[i].index))){
+					RemovePassiveBuff(owner.army[i],true);
 					buffDelay = 0;
 				}
 			}
@@ -472,11 +468,11 @@ public class Unit : MonoBehaviour {
 	private void RemovePassiveBuff(Unit unit, bool makeText){
 		int buffToRemove = -1;
 
-		foreach(Buff buff in unit.currentBuffs){
+		for(int i = 0; i < unit.currentBuffs.Count; i++){
 			if(buffToRemove < 0){
-				foreach(Buff passBuff in unit.owner.hero.passive.buffs){
-					if(buff.ID == passBuff.ID && unit.owner.hero.passive.affected.Contains(unit.type)){
-						buffToRemove = unit.currentBuffs.IndexOf(buff);
+				for(int j = 0; j < unit.owner.hero.passive.buffs.Count; j++){
+					if(unit.currentBuffs[i].ID == unit.owner.hero.passive.buffs[j].ID && unit.owner.hero.passive.affected.Contains(unit.type)){
+						buffToRemove = unit.currentBuffs.IndexOf(unit.currentBuffs[i]);
 					}
 				}
 			}
@@ -497,9 +493,9 @@ public class Unit : MonoBehaviour {
 		int buffToRemove = -1;
 
 		for(int i = 0; i < buffID.Count; i++){
-			foreach(Buff buff in unit.currentBuffs){
-				if(buff.ID == buffID[i]){
-					buffToRemove = unit.currentBuffs.IndexOf(buff);
+			for(int j = 0; j < unit.currentBuffs.Count; j++){
+				if(unit.currentBuffs[j].ID == buffID[i]){
+					buffToRemove = unit.currentBuffs.IndexOf(unit.currentBuffs[j]);
 				}
 			}
 			if(buffToRemove > -1){
