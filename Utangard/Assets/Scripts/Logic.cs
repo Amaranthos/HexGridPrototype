@@ -92,8 +92,9 @@ public class Logic : MonoBehaviour {
 		if (!_audio)
 			Debug.LogError("Audio manager does not exist!");
 
-		foreach (Player player in players)
-			player.StartPlacing();
+		for(int i = 0; i < players.Length; i++){
+			players[i].StartPlacing();
+		}
 
 		path = GetComponent<Path>();
 
@@ -197,9 +198,9 @@ public class Logic : MonoBehaviour {
 
 			case GamePhase.TargetPhase:		//This is horribly ineffecitent. Will likely have to store a record of each hero in logic once selected.
 				Hero hero = null;
-				foreach (Unit unt in players[currentPlayer].army){
-					if(unt.type == UnitType.Hero){
-						hero = unt.GetComponent<Hero>();
+				for(int i = 0; i < players[currentPlayer].army.Count; i++){
+					if(players[currentPlayer].army[i].type == UnitType.Hero){
+						hero = players[currentPlayer].army[i].GetComponent<Hero>();
 					}
 				}
 
@@ -230,9 +231,9 @@ public class Logic : MonoBehaviour {
 
 			case GamePhase.TargetPhase:
 				Hero hero = null;
-				foreach (Unit unit in players[currentPlayer].army){
-					if(unit.type == UnitType.Hero){
-						hero = unit.GetComponent<Hero>();
+				for(int i = 0; i < players[currentPlayer].army.Count; i++){
+					if(players[currentPlayer].army[i].type == UnitType.Hero){
+						hero = players[currentPlayer].army[i].GetComponent<Hero>();
 					}
 				}
 				
@@ -443,12 +444,12 @@ public class Logic : MonoBehaviour {
 				CurrentPlayer.hero.CalcBuffStrength();
 				CurrentPlayer.hero.ApplyPassive();
 				
-				foreach(Tile tile in grid.TilesList){
-					if(CurrentPlayer.hero.type == HeroType.Skadi && tile.Biome == BiomeType.Snow){
-						tile.MoveCost = 1;
+				for(int i = 0; i < grid.TilesList.Count; i++){
+					if(CurrentPlayer.hero.type == HeroType.Skadi && grid.TilesList[i].Biome == BiomeType.Snow){
+						grid.TilesList[i].MoveCost = 1;
 					}
-					else if(tile.Biome == BiomeType.Snow){
-						tile.MoveCost = 2;
+					else if(grid.TilesList[i].Biome == BiomeType.Snow){
+						grid.TilesList[i].MoveCost = 2;
 					}
 				}
 				break;

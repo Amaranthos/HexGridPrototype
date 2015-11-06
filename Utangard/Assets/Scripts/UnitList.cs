@@ -12,8 +12,8 @@ public class UnitList : MonoBehaviour {
 	public int LowestCost() {
 		int lowest = int.MaxValue;
 
-		foreach (Unit unit in units)
-			lowest = Mathf.Min(lowest, unit.cost);
+		for(int i = 0; i < units.Count; i++)
+			lowest = Mathf.Min(lowest, units[i].cost);
 
 		return lowest;
 	}

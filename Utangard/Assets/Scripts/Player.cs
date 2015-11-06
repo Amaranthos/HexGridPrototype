@@ -59,9 +59,9 @@ public class Player : MonoBehaviour {
 
 	public List<Tile> PlacementField() {
 		List<Tile> tiles = new List<Tile>();
-		foreach(Tile tile in Logic.Inst.Grid.TilesList){
-			if (placementBoundaries.CoordsInRange(tile.Index)){
-				tiles.Add(tile);
+		for(int i = 0; i < Logic.Inst.Grid.TilesList.Count; i++){
+			if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.TilesList[i].Index)){
+				tiles.Add(Logic.Inst.Grid.TilesList[i]);
 			}
 		}
 		return tiles;
@@ -84,8 +84,8 @@ public class Player : MonoBehaviour {
 			army[i].ClearHighlightedTiles();
 		}
 
-		foreach(Unit unit in army){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
-			unit.OnTurnStart();
+		for(int j = 0; j < army.Count; j++){		//Just for testing. I tried it in the above loop but it was called on every unit mulitple times.
+			army[j].OnTurnStart();
 			
 			// Debug.Log(unit.type + " Starting Turn");
 		}

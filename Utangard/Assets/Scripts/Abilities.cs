@@ -41,13 +41,15 @@ public class Skill{
 		else if (hitFoe && unit.Owner != hero.Owner && affected.Contains(unit.type)){
 			AddBuffs(unit);
 		}
-		SpawnParticle(unit);	}
+		SpawnParticle(unit);	
+	}
 
 	public void ApplyBuffAll(int playerNo){
-		foreach(Unit unit in Logic.Inst.Players[playerNo].army){
-			if(affected.Contains(unit.type)){	//Check if the unit type is affected by this ability
-				AddBuffs(unit);
-				SpawnParticle(unit);			}
+		for(int i = 0; i < Logic.Inst.Players[playerNo].army.Count; i++){
+			if(affected.Contains(Logic.Inst.Players[playerNo].army[i].type)){	//Check if the unit type is affected by this ability
+				AddBuffs(Logic.Inst.Players[playerNo].army[i]);
+				SpawnParticle(Logic.Inst.Players[playerNo].army[i]);			
+			}
 		}
 	}
 
@@ -55,28 +57,30 @@ public class Skill{
 		List<Tile> inRange = new List<Tile>();
 		
 		inRange = Logic.Inst.Grid.TilesInRange(tileIndex,AoERange);
-		foreach(Tile tile in inRange){
+		for(int i = 0; i < inRange.Count; i++){
+			Unit hitUnit = inRange[i].OccupyingUnit;
+
 			if(!hitFoe){
-				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner == hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
-					AddBuffs(tile.OccupyingUnit);
-					SpawnParticle(tile.OccupyingUnit);				}
+				if(hitUnit && hitUnit.Owner == hero.Owner && affected.Contains(hitUnit.type)){
+					AddBuffs(hitUnit);
+					SpawnParticle(hitUnit);				}
 			}
 			else{
-				if(tile.OccupyingUnit && tile.OccupyingUnit.Owner != hero.Owner && affected.Contains(tile.OccupyingUnit.type)){
-					AddBuffs(tile.OccupyingUnit);
-					SpawnParticle(tile.OccupyingUnit);
+				if(hitUnit && hitUnit.Owner != hero.Owner && affected.Contains(hitUnit.type)){
+					AddBuffs(hitUnit);
+					SpawnParticle(hitUnit);
 				}
 			}
 		}
 	}
 	
 	public void AddBuffs(Unit unit){
-		foreach(Buff buff in buffs){
-			if(buff.wrath && hero.Owner.wrathMode){
-				unit.AddBuff(buff);
+		for(int i = 0; i < buffs.Count; i++){
+			if(buffs[i].wrath && hero.Owner.wrathMode){
+				unit.AddBuff(buffs[i]);
 			}
-			else if(!buff.wrath){
-				unit.AddBuff(buff);
+			else if(!buffs[i].wrath){
+				unit.AddBuff(buffs[i]);
 			}
 		}
 

@@ -24,12 +24,12 @@ public class ArmySelect : MonoBehaviour {
 		Button[] panelButtons1 = playerPanels[currentPlayer].GetComponentsInChildren<Button>();
 		Button[] panelButtons2 = playerPanels[otherPlayer].GetComponentsInChildren<Button>();
 
-		foreach(Button button in panelButtons1){
-			button.interactable = true;
+		for(int i = 0; i < panelButtons1.Length; i++){
+			panelButtons1[i].interactable = true;
 		}
 
-		foreach(Button button in panelButtons2){
-			button.interactable = false;
+		for(int j = 0; j < panelButtons2.Length; j++){
+			panelButtons2[j].interactable = false;
 		}
 
 		panelBlockers[currentPlayer].SetActive(true);
@@ -68,13 +68,13 @@ public class ArmySelect : MonoBehaviour {
 			Button[] panelButtons2 = playerPanels[otherPlayer].GetComponentsInChildren<Button>();
 
 			if(Logic.Inst.Players[0].CurrentFood != 0 || Logic.Inst.Players[1].CurrentFood != 0){
-				foreach(Button button in panelButtons1){
-					button.interactable = true;
+				for(int i = 0; i < panelButtons1.Length; i++){
+					panelButtons1[i].interactable = true;
 				}
 			}
 
-			foreach(Button button in panelButtons2){
-				button.interactable = false;
+			for(int j = 0; j < panelButtons2.Length; j++){
+				panelButtons2[j].interactable = false;
 			}
 
 			panelBlockers[currentPlayer].SetActive(true);

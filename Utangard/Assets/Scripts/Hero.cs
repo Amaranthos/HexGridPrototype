@@ -27,12 +27,12 @@ public class Hero : MonoBehaviour {
 		origActive1Cost = active1.cost;
 		origActive2Cost = active2.cost;
 
-		foreach(Buff buff in active1.buffs){
-			origActive1Strengths.Add(buff.strength);
+		for(int i = 0; i < active1.buffs.Count; i ++){
+			origActive1Strengths.Add(active1.buffs[i].strength);
 		}
 
-		foreach(Buff buff in active2.buffs){
-			origActive2Strengths.Add(buff.strength);
+		for(int j = 0; j < active2.buffs.Count; j++){
+			origActive2Strengths.Add(active2.buffs[j].strength);
 		}
 	}
 
@@ -88,9 +88,9 @@ public class Hero : MonoBehaviour {
 				currentAbility.ApplyBuffAoE(hero.Index);
 			}
 			else{
-				foreach(Target targ in targets){
-					if(targ.type == TargetType.AoE){
-						currentAbility.ApplyBuffAoE(targ.Index);
+				for(int i = 0; i < targets.Count; i++){
+					if(targets[i].type == TargetType.AoE){
+						currentAbility.ApplyBuffAoE(targets[i].Index);
 					}
 				}
 			}
@@ -169,16 +169,16 @@ public class Hero : MonoBehaviour {
 		active1.cost = Mathf.RoundToInt(origActive1Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
 		active2.cost = Mathf.RoundToInt(origActive2Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
 
-		foreach(Buff buff in active1.buffs){
+		for(int i = 0; i < active1.buffs.Count; i++){
 			int index;
-			index = active1.buffs.IndexOf(buff);
-			buff.strength = Mathf.RoundToInt(origActive1Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
+			index = active1.buffs.IndexOf(active1.buffs[i]);
+			active1.buffs[i].strength = Mathf.RoundToInt(origActive1Strengths[index] * (1 + (abilityBonus * ((Logic.Inst.numAltars/2) - hero.Owner.capturedAltars.Count))));
 		}
 
-		foreach(Buff buff in active2.buffs){
+		for(int j = 0; j < active2.buffs.Count; j++){
 			int index;
-			index = active2.buffs.IndexOf(buff);
-			buff.strength = Mathf.RoundToInt(origActive2Strengths[index] * (1 + (abilityBonus * (4 - hero.Owner.capturedAltars.Count))));
+			index = active2.buffs.IndexOf(active2.buffs[j]);
+			active2.buffs[j].strength = Mathf.RoundToInt(origActive2Strengths[index] * (1 + (abilityBonus * ((Logic.Inst.numAltars/2) - hero.Owner.capturedAltars.Count))));
 		}
 	}
 }
