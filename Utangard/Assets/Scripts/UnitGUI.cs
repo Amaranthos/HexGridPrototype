@@ -29,10 +29,10 @@ public class UnitGUI : MonoBehaviour {
 				HealthStat();
 				stats.unitName.text = unit.type.ToString();
 				stats.moves.text = unit.CurrentMovePoints.ToString();
-				stats.atk.text = unit.attack.ToString();
-				stats.def.text = unit.defense.ToString();
-				stats.dodge.text = unit.dodgeChance.ToString();
-				stats.hit.text = unit.hitChance.ToString();
+				stats.atk.text = unit.TotalAttack.ToString();
+				stats.def.text = unit.TotalDefense.ToString();
+				stats.dodge.text = unit.TotalDodgeChance.ToString();
+				stats.hit.text = unit.TotalHitChance.ToString();
 				if(Logic.Inst.gamePhase == GamePhase.CombatPhase){
 					if(unit.CanMove){
 						Altar altar = Logic.Inst.GetAltar(unit.Index);

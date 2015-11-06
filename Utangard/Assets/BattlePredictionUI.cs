@@ -77,19 +77,19 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	int ChanceToHit(int attacker){ // 0 == attacker, 1 == defender
 		if(attacker == 0){
-			return Logic.Inst.SelectedUnit.hitChance - hoverUnit.dodgeChance;
+			return Logic.Inst.SelectedUnit.TotalHitChance - hoverUnit.TotalDodgeChance;
 		}
 		else{
-			return hoverUnit.hitChance - Logic.Inst.SelectedUnit.dodgeChance;
+			return hoverUnit.TotalHitChance - Logic.Inst.SelectedUnit.TotalDodgeChance;
 		}
 	}
 
 	int DamageDealt(int attacker){ // 0 == attacker, 1 == defender
 		if(attacker == 0){
-			return (int)(Logic.Inst.SelectedUnit.attack - (1 -((magicX * hoverUnit.defense)/(magicY + hoverUnit.defense))));
+			return (int)(Logic.Inst.SelectedUnit.TotalAttack - (1 -((magicX * hoverUnit.TotalDefense)/(magicY + hoverUnit.TotalDefense))));
 		}
 		else{
-			return (int)(hoverUnit.attack - (1 -((magicX * Logic.Inst.SelectedUnit.defense)/(magicY + Logic.Inst.SelectedUnit.defense))));
+			return (int)(hoverUnit.TotalAttack - (1 -((magicX * Logic.Inst.SelectedUnit.TotalDefense)/(magicY + Logic.Inst.SelectedUnit.TotalDefense))));
 		}
 	}
 
@@ -97,18 +97,18 @@ public class BattlePredictionUI : MonoBehaviour {
 		// update Attacker stats
 		predictionStats[0].unitName.text = Logic.Inst.SelectedUnit.name;
 		predictionStats[0].hp.text = Logic.Inst.SelectedUnit.CurrentHitpoints.ToString();
-		predictionStats[0].atk.text = Logic.Inst.SelectedUnit.attack.ToString();
-		predictionStats[0].def.text = Logic.Inst.SelectedUnit.defense.ToString();
-		predictionStats[0].hit.text = Logic.Inst.SelectedUnit.hitChance.ToString();
-		predictionStats[0].dodge.text = Logic.Inst.SelectedUnit.dodgeChance.ToString();
+		predictionStats[0].atk.text = Logic.Inst.SelectedUnit.TotalAttack.ToString();
+		predictionStats[0].def.text = Logic.Inst.SelectedUnit.TotalDefense.ToString();
+		predictionStats[0].hit.text = Logic.Inst.SelectedUnit.TotalHitChance.ToString();
+		predictionStats[0].dodge.text = Logic.Inst.SelectedUnit.TotalDodgeChance.ToString();
 		
 		// update Defender Stats
 		predictionStats[1].unitName.text = hoverUnit.name;
 		predictionStats[1].hp.text = hoverUnit.CurrentHitpoints.ToString();
-		predictionStats[1].atk.text = hoverUnit.attack.ToString();
-		predictionStats[1].def.text = hoverUnit.defense.ToString();
-		predictionStats[1].hit.text = hoverUnit.hitChance.ToString();
-		predictionStats[1].dodge.text = hoverUnit.dodgeChance.ToString();
+		predictionStats[1].atk.text = hoverUnit.TotalAttack.ToString();
+		predictionStats[1].def.text = hoverUnit.TotalDefense.ToString();
+		predictionStats[1].hit.text = hoverUnit.TotalHitChance.ToString();
+		predictionStats[1].dodge.text = hoverUnit.TotalDodgeChance.ToString();
 	}
 
 	void ClearStats(){
