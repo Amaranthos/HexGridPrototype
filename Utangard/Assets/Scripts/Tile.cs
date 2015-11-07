@@ -70,6 +70,7 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 		this.biome = biome;
 		this.terrain = terrain;
+		isPassable = true;
 
 		if(terrainPiece){
 			GameObject.Destroy(terrainPiece);
@@ -102,6 +103,7 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		case TerrainType.Mountains:
 			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.mountains.moveCost);
 			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetMountain(), transform.position, Quaternion.Euler(Vector3.right * 270f));
+			isPassable = false;
 			break;
 		}
 
@@ -117,6 +119,7 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		GCost = 0;
 		HCost = 0;
 		Parent = null;
+		PathCost = int.MaxValue;
 	}
 
 	public static Tile operator+ (Tile one, Tile two){
@@ -151,6 +154,7 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 	#region A* Herustic Variables
 	public int MoveCost { get; set; }
+	public int PathCost { get; set;}
 	public int GCost { get; set; }
 	public int HCost { get; set; }
 	public int FCost { get { return GCost + HCost; } }

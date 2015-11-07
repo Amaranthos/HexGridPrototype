@@ -121,27 +121,37 @@ public class Unit : MonoBehaviour {
 
 	public void UnitSelected(){
 		if(canMove){
-			List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
+			// List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
 
-			for (int i = 0; i < ret.Count; i++){
-				if(ret[i].OccupyingUnit != null){
-					if(ret[i].OccupyingUnit.Owner != Owner && canMove)
-						if(InAttackRange(ret[i].OccupyingUnit)){
-							ret[i].LineColour(Color.red);
-							ret[i].LineWidth(0.1f);
-							highlighted.Add(ret[i]);
-						}
-					else if(InMoveRange(ret[i])){
-						ret[i].LineColour(Color.grey);
-						ret[i].LineWidth(0.1f);
-						highlighted.Add(ret[i]);
-					}
-				}
-				else if(InMoveRange(ret[i])){
-					ret[i].LineColour(Color.green);
-					ret[i].LineWidth(0.1f);
-					highlighted.Add(ret[i]);
-				}
+			// for (int i = 0; i < ret.Count; i++){
+			// 	if(ret[i].OccupyingUnit != null){
+			// 		if(ret[i].OccupyingUnit.Owner != Owner && canMove)
+			// 			if(InAttackRange(ret[i].OccupyingUnit)){
+			// 				ret[i].LineColour(Color.red);
+			// 				ret[i].LineWidth(0.1f);
+			// 				highlighted.Add(ret[i]);
+			// 			}
+			// 		else if(InMoveRange(ret[i])){
+			// 			ret[i].LineColour(Color.grey);
+			// 			ret[i].LineWidth(0.1f);
+			// 			highlighted.Add(ret[i]);
+			// 		}
+			// 	}
+			// 	else if(InMoveRange(ret[i])){
+			// 		ret[i].LineColour(Color.green);
+			// 		ret[i].LineWidth(0.1f);
+			// 		highlighted.Add(ret[i]);
+			// 	}
+			// }
+
+			FloodFill flood = new FloodFill();
+
+			List<Tile> ret = flood.Flood(Logic.Inst.Grid.TileAt(index), currentMP);
+
+			for(int i = 0; i < ret.Count; i++){
+				ret[i].LineColour(Color.green);
+		 		ret[i].LineWidth(0.1f);
+				highlighted.Add(ret[i]);
 			}
 
 			Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);

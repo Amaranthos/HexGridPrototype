@@ -88,8 +88,8 @@ public class Skill{
 	}
 
 	public void SpawnParticle(Unit unit){
-		GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
-		tempobj.GetComponent<AbilityParticles>().FadeParticle(tempobj);
+		// GameObject tempobj = Logic.Instantiate(skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+		// tempobj.GetComponent<AbilityParticles>().FadeParticle(tempobj);
 	}
 }
 
