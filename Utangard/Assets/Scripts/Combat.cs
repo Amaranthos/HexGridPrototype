@@ -9,11 +9,22 @@ public class Combat : MonoBehaviour {
 	public Text rollText;
 	public float offsetDist, defNumA, defNumB;
 	public int spinCount;
+	public float turnSpeed;
 	private Unit atk,def;
+	private bool attaking = false;
+
+	private void Update(){
+		if(attaking){
+			StartCoroutine("RotateUnits");
+		}
+	}
 
 	public void ResolveCombat(Unit attacker, Unit defender) {
 		atk = attacker;
 		def = defender;
+
+		attaking = true;
+
 		StartCoroutine("timedCombat");
 
 //		GameObject tempText = null;
@@ -103,6 +114,7 @@ public class Combat : MonoBehaviour {
 //		def.ChangeAnim(0);
 
 		rollText.text = "";
+		attaking = false;
 	}
 
 	private int RollTheDice(){
@@ -125,4 +137,18 @@ public class Combat : MonoBehaviour {
 
 		return total;
 	}
+
+	public IEnumerator RotateUnits(){
+		Quaternion dir = Quaternion.LookRotation(def.transform.position - atk.transform.position);
+		while(atk.transform.rotation != dir){
+			atk.transform.rotation = Quaternion.RotateTowards(atk.transform.rotation, dir, Time.deltaTime * 2f * 360f/Mathf.PI * turnSpeed);
+			yield return new WaitForEndOfFrame();
+        }
+
+		Quaternion dir2 = Quaternion.LookRotation(atk.transform.position - def.transform.position);
+		while(def.transform.rotation != dir2){
+			def.transform.rotation = Quaternion.RotateTowards(def.transform.rotation, dir2, Time.deltaTime * 2f * 360f/Mathf.PI * turnSpeed);
+			yield return new WaitForEndOfFrame();
+        }
+    }
 }
