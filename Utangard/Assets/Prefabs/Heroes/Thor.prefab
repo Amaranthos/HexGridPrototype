@@ -2488,6 +2488,7 @@ MonoBehaviour:
       targetType: 0
       permanent: 1
       procced: 0
+      debuff: 0
       oneShot: 0
       adjType: 0
       adjUnits: 
@@ -2495,6 +2496,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
+    skillParticle: {fileID: 0}
   active1:
     abilityType: 0
     target: 1
@@ -2528,6 +2530,7 @@ MonoBehaviour:
       targetType: 0
       permanent: 0
       procced: 0
+      debuff: 1
       oneShot: 1
       adjType: 0
       adjUnits: 
@@ -2544,6 +2547,7 @@ MonoBehaviour:
       targetType: 1
       permanent: 0
       procced: 0
+      debuff: 1
       oneShot: 1
       adjType: 0
       adjUnits: 
@@ -2551,6 +2555,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
+    skillParticle: {fileID: 0}
   active2:
     abilityType: 0
     target: 0
@@ -2572,6 +2577,7 @@ MonoBehaviour:
       targetType: 0
       permanent: 0
       procced: 0
+      debuff: 0
       oneShot: 0
       adjType: 0
       adjUnits: 
@@ -2588,6 +2594,7 @@ MonoBehaviour:
       targetType: 0
       permanent: 0
       procced: 0
+      debuff: 0
       oneShot: 0
       adjType: 0
       adjUnits: 
@@ -2595,6 +2602,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
+    skillParticle: {fileID: 0}
   currentAbility:
     abilityType: 0
     target: 0
@@ -2607,6 +2615,7 @@ MonoBehaviour:
     hero: {fileID: 0}
     affected: 
     buffs: []
+    skillParticle: {fileID: 0}
   currentRange: 0
   currentStage: 0
   abilityBonus: .100000001
@@ -3418,6 +3427,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: abilityBonus
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[0].debuff
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.buffs.Array.data[1].debuff
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

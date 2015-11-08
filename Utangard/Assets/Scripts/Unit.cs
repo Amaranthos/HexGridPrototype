@@ -326,7 +326,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(!bff.oneShot && newBuff){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
+			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.debuff,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
 			currentBuffs.Add(nEft);
 		}
 
@@ -400,7 +400,7 @@ public class Unit : MonoBehaviour {
 
 		for(int i = 0; i < currentBuffs.Count; i++){
 			Buff buff = currentBuffs[i];
-			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
+			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.debuff,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
 
 			proced = 0;
 			if(buff.buffType == BuffType.Adjacent){
