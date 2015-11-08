@@ -1,3 +1,9 @@
+<size=20><b>Nine Maiden's Blessings</b></size> -
+<size=17>Restore a small amount of <color=lime><i>Health</i></color> to units adjacent to <color=yellow><i>Eir</i></color>.</size>
+	<color=yellow>Target: Friendly</color>
+	<color=yellow>Radius: 1 tiles</color>
+	<color=lime>+10 Health</color>
+$
 <size=20><b>Rejuvenate</b></size> -
 <size=17>Restore a massive amount of <color=lime><i>Health</i></color> to a friendly unit within 3 tiles.</size>
 <color=cyan>Cost: 12 Faith</color>
@@ -24,6 +30,12 @@ $
 	<color=lime>Move a unit up to 2 tiles</color>
 	<color=red>-20 defence</color> to adjacent Enemies (<color=red>Wrath</color>)
 $
+<size=20><b>Innangard</b></size> -
+<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each friendly unit adjacent to them.</size>
+	<color=yellow>Target: Friendly</color>
+	<color=yellow>Radius: 1 tiles</color>
+	<color=lime>+2 Defence</color>
+$
 <size=20><b>Stalwart Defence</b></size> -
 <size=17>Improve the <color=orange><i>Defence</i></color> of friendly units near Heimdall's Hero.</size>
 <color=cyan>Cost: 20 Faith</color>
@@ -32,6 +44,11 @@ $
 	<color=yellow>Duration: 2 turns</color>
 	<color=lime>+25 Defence</color>
 	<color=lime>+25 Hit Chance</color> (<color=red>Wrath</color>);
+<size=20><b>Grace Of The Huntress</b></size> -
+<size=17>Units no longer receive a movement penalty when travseing <color=cyan><i>snow</i></color>.</size>
+	<color=yellow>Target: Friendly</color>
+	<color=yellow>Range: All Tiles</color>
+$
 <size=20><b>Thrill Of The Hunt</b></size> -
 <size=17>All spearmen gain improved <color=orange><i>Attack Range</i></color> for a turn.</size>
 <color=cyan>Cost: 15 Faith</color>
@@ -50,6 +67,12 @@ $
 	<color=lime>+25 Attack</color>
 	<color=red>-1 Range</color>
 	<color=lime>+35 Hit Chance</color> (<color=red>Wrath</color>);
+<size=20><b>Inspire</b></size> -
+<size=17>Units nearby Thor's Hero receive bonus <color=orange><i>Attack</i></color>.</size>
+	<color=yellow>Target: Friendly</color>
+	<color=yellow>Range: 2 tiles</color>
+	<color=lime>+15 Attack</color>
+$
 <size=20><b>Thor's Wrath</b></size> -
 <size=17>Strike an enemy with lightning for massive <color=red><i>Damage</i></color>. (<color=yellow>Ignores <i>Defence</i></color>)</size>
 <color=cyan>Cost: 15 Faith</color>
