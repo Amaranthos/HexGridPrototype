@@ -27,17 +27,10 @@ public class FloodFill {
 							ret.Add(neighbour);
 							fringe.Enqueue(neighbour);
 						}
-						else {
-						}
 					}
-					else{
-					}
-				}
-				else {
 				}
 			}
 		}
-
 		return ret;
 	}	
 }

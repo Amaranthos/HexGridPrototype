@@ -149,9 +149,33 @@ public class Unit : MonoBehaviour {
 			List<Tile> ret = flood.Flood(Logic.Inst.Grid.TileAt(index), currentMP);
 
 			for(int i = 0; i < ret.Count; i++){
-				ret[i].LineColour(Color.green);
-		 		ret[i].LineWidth(0.1f);
-				highlighted.Add(ret[i]);
+				if(ret[i].OccupyingUnit){
+					if(ret[i].OccupyingUnit.Owner == Owner){
+						ret[i].LineColour(Color.grey);
+						ret[i].LineWidth(0.1f);
+						highlighted.Add(ret[i]);
+					}
+					else if(InAttackRange(ret[i].OccupyingUnit)) {
+						ret[i].LineColour(Color.red);
+						ret[i].LineWidth(0.1f);
+						highlighted.Add(ret[i]);
+					}
+				}
+				else {
+					ret[i].LineColour(Color.green);
+			 		ret[i].LineWidth(0.1f);
+					highlighted.Add(ret[i]);
+				}
+			}
+
+			ret = Logic.Inst.Grid.TilesInRange(index, attackRange);
+
+			for(int i = 0; i < ret.Count; i++){
+				if(ret[i].OccupyingUnit && ret[i].OccupyingUnit.Owner != Owner){
+					ret[i].LineColour(Color.red);
+					ret[i].LineWidth(0.1f);
+					highlighted.Add(ret[i]);
+				}
 			}
 
 			Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);
