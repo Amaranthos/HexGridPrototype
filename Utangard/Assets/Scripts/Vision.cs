@@ -40,10 +40,27 @@ public class Vision : MonoBehaviour {
 
 	private void Update() {
 		
-//		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-//		move.Normalize();
-//
-//		transform.localPosition += move * moveSpeed;
+		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+		move.Normalize();
+
+		float rotate = Input.GetAxisRaw("Mouse X") * horizSpinSpeed;
+		Quaternion tempRot = transform.parent.rotation;
+		Vector3 tempVect = new Vector3(tempRot.eulerAngles.x, tempRot.eulerAngles.y + rotate, tempRot.eulerAngles.z);
+
+		if(!Input.GetKey(KeyCode.Mouse2)){
+			transform.localPosition += move * moveSpeed;
+		}
+		else{
+			transform.parent.eulerAngles = tempVect;
+			
+			rotate = Input.GetAxisRaw("Mouse Y") * vertSpinSpeed;
+			tempRot = transform.parent.rotation;
+			tempVect = new Vector3(tempRot.eulerAngles.x + rotate, tempRot.eulerAngles.y, tempRot.eulerAngles.z);
+			
+			tempVect.x = ClampAngle(tempVect.x,vertMin,vertMax);
+			
+			transform.parent.eulerAngles = tempVect;
+		}
 
 		if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)){
 			horizSpinSpeed = origHorizSpin * spinMultiplier;
@@ -54,19 +71,6 @@ public class Vision : MonoBehaviour {
 			vertSpinSpeed = origVertSpin;
 		}
 
-		float rotate = Input.GetAxisRaw("Horizontal") * horizSpinSpeed;
-		Quaternion tempRot = transform.parent.rotation;
-		Vector3 tempVect = new Vector3(tempRot.eulerAngles.x, tempRot.eulerAngles.y + rotate, tempRot.eulerAngles.z);
-		transform.parent.eulerAngles = tempVect;
-
-		rotate = Input.GetAxisRaw("Vertical") * vertSpinSpeed;
-		tempRot = transform.parent.rotation;
-		tempVect = new Vector3(tempRot.eulerAngles.x + rotate, tempRot.eulerAngles.y, tempRot.eulerAngles.z);
-
-		tempVect.x = ClampAngle(tempVect.x,vertMin,vertMax);
-
-		transform.parent.eulerAngles = tempVect;
-		
 		float input = Input.GetAxis("Mouse ScrollWheel");
 
 		cam.fieldOfView -= zoomSpeed * 10 * input;
