@@ -14,8 +14,8 @@ public class GUIManager : MonoBehaviour {
 	public Button EndTurnP2;
 	public Tooltip TooltipPanel;
 	public Text CombatLog;
-	public List<RawImage> playerAvatars;
-	public List<RenderTexture> avatarRenderTextures; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
+	public List<Image> playerAvatars;
+	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
 
 	//private Animator GUICanvasAnimator;
 	private bool p1Turn;
@@ -85,43 +85,43 @@ public class GUIManager : MonoBehaviour {
 		}
 	}
 		
-	public void AssignTextures()
+	public void AssignPortraits()
 	{
 		switch(Logic.Inst.Players[0].hero.type)
 		{
 		case HeroType.Eir:
-			playerAvatars[0].texture = avatarRenderTextures[0];
+			playerAvatars[0].sprite = heroPortraits[0];
 			break;
 		case HeroType.Heimdal:
-			playerAvatars[0].texture = avatarRenderTextures[1];
+			playerAvatars[0].sprite = heroPortraits[1];
 			break;
 		case HeroType.Skadi:
-			playerAvatars[0].texture = avatarRenderTextures[2];
+			playerAvatars[0].sprite = heroPortraits[2];
 			break;
 		case HeroType.Thor:
-			playerAvatars[0].texture = avatarRenderTextures[3];
+			playerAvatars[0].sprite = heroPortraits[3];
 			break;
 		case HeroType.Sam:
-			playerAvatars[0].texture = avatarRenderTextures[4];
+			playerAvatars[0].sprite = heroPortraits[4];
 			break;
 		}
 		
 		switch(Logic.Inst.Players[1].hero.type)
 		{
 		case HeroType.Eir:
-			playerAvatars[1].texture = avatarRenderTextures[0];
+			playerAvatars[1].sprite = heroPortraits[0];
 			break;
 		case HeroType.Heimdal:
-			playerAvatars[1].texture = avatarRenderTextures[1];
+			playerAvatars[1].sprite = heroPortraits[1];
 			break;
 		case HeroType.Skadi:
-			playerAvatars[1].texture = avatarRenderTextures[2];
+			playerAvatars[1].sprite = heroPortraits[2];
 			break;
 		case HeroType.Thor:
-			playerAvatars[1].texture = avatarRenderTextures[3];
+			playerAvatars[1].sprite = heroPortraits[3];
 			break;
 		case HeroType.Sam:
-			playerAvatars[1].texture = avatarRenderTextures[4];
+			playerAvatars[1].sprite = heroPortraits[4];
 			break;
 		}
 	}

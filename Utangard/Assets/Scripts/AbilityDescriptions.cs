@@ -6,7 +6,7 @@ public class AbilityDescriptions : MonoBehaviour {
 
 	public int playerNum;
 	public GameObject toolTip;
-	public string[] descriptions = new string[2];
+	public string[] descriptions = new string[3];
 
 	public Text toolTipText;
 	CSVParser file = new CSVParser();
@@ -52,28 +52,28 @@ public class AbilityDescriptions : MonoBehaviour {
 			switch(Logic.Inst.Players[playerNum].hero.type){
 			case HeroType.Eir:
 				descriptions = strings[0].Split("$"[0]);
-				descriptions[0] = descriptions[0].Trim();
-				descriptions[1] = descriptions[1].Trim();
+				descriptions[1] = descriptions[0].Trim();
+				descriptions[2] = descriptions[1].Trim();
 				break;
 			case HeroType.Heimdal:
 				descriptions = strings[1].Split("$"[0]);
-				descriptions[0] = descriptions[0].Trim();
-				descriptions[1] = descriptions[1].Trim();
+				descriptions[1] = descriptions[0].Trim();
+				descriptions[2] = descriptions[1].Trim();
 				break;
 			case HeroType.Skadi:
 				descriptions = strings[2].Split("$"[0]);
-				descriptions[0] = descriptions[0].Trim();
-				descriptions[1] = descriptions[1].Trim();
+				descriptions[1] = descriptions[0].Trim();
+				descriptions[2] = descriptions[1].Trim();
 				break;
 			case HeroType.Thor:
 				descriptions = strings[3].Split("$"[0]);
-				descriptions[0] = descriptions[0].Trim();
-				descriptions[1] = descriptions[1].Trim();
+				descriptions[1] = descriptions[0].Trim();
+				descriptions[2] = descriptions[1].Trim();
 				break;
 			case HeroType.Sam:
 				descriptions = strings[4].Split("$"[0]);
-				descriptions[0] = descriptions[0].Trim();
-				descriptions[1] = descriptions[1].Trim();
+				descriptions[1] = descriptions[0].Trim();
+				descriptions[2] = descriptions[1].Trim();
 				break;
 			}
 		}

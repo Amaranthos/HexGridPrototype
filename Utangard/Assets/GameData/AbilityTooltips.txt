@@ -22,6 +22,14 @@ $
 	<color=lime>+10 Attack</color> (<color=red>Wrath</color>)
 	<color=lime>+10 Defence</color> (<color=red>Wrath</color>)
 	<color=yellow>Duration: 2 turns</color> (<color=red>Wrath</color>);
+	
+
+<size=20><b>Innangard</b></size> -
+<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each friendly unit adjacent to them.</size>
+	<color=yellow>Target: Friendly</color>
+	<color=yellow>Radius: 1 tiles</color>
+	<color=lime>+2 Defence</color>
+$
 <size=20><b>Bifrost Advance</b></size> -
 <size=17>Move a Friendly unit within 2 tiles of the Heimdall's hero, to an empty tile within 2 tiles of the unit.</size>
 <color=cyan>Cost: 20 Faith</color>
@@ -29,12 +37,6 @@ $
 	<color=yellow>Range: 2 tiles (Heimdall), 2 tiles (Unit)</color>
 	<color=lime>Move a unit up to 2 tiles</color>
 	<color=red>-20 defence</color> to adjacent Enemies (<color=red>Wrath</color>)
-$
-<size=20><b>Innangard</b></size> -
-<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each friendly unit adjacent to them.</size>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Radius: 1 tiles</color>
-	<color=lime>+2 Defence</color>
 $
 <size=20><b>Stalwart Defence</b></size> -
 <size=17>Improve the <color=orange><i>Defence</i></color> of friendly units near Heimdall's Hero.</size>
@@ -44,8 +46,11 @@ $
 	<color=yellow>Duration: 2 turns</color>
 	<color=lime>+25 Defence</color>
 	<color=lime>+25 Hit Chance</color> (<color=red>Wrath</color>);
+	
+	
+	
 <size=20><b>Grace Of The Huntress</b></size> -
-<size=17>Units no longer receive a movement penalty when travseing <color=cyan><i>snow</i></color>.</size>
+<size=17>Units no longer receive a movement penalty when traversing <color=cyan><i>snow</i></color>.</size>
 	<color=yellow>Target: Friendly</color>
 	<color=yellow>Range: All Tiles</color>
 $
@@ -67,6 +72,8 @@ $
 	<color=lime>+25 Attack</color>
 	<color=red>-1 Range</color>
 	<color=lime>+35 Hit Chance</color> (<color=red>Wrath</color>);
+	
+	
 <size=20><b>Inspire</b></size> -
 <size=17>Units nearby Thor's Hero receive bonus <color=orange><i>Attack</i></color>.</size>
 	<color=yellow>Target: Friendly</color>
@@ -89,6 +96,9 @@ $
 	<color=yellow>Duration: 2 turns</color>
 	<color=lime>+15 Defence</color>
 	<color=lime>+2 Movement</color> (<color=red>Wrath</color>);
+
+Sam Passive
+$
 Sam 1
 $
 Sam 2;
