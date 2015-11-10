@@ -43,12 +43,14 @@ public class Unit : MonoBehaviour {
 	public List<TextSpawn> buffsToSpawn = new List<TextSpawn>();
 	private float buffDelay = 1f;
 
-	private int tempValue;
+	private SpriteRenderer ringSprite;
 
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
 		unitAnim = GetComponentInChildren<Animator>();
+		ringSprite = gameObject.transform.FindChild("Unit select ring").GetComponent<SpriteRenderer>();
+		ringSprite.color = new Color(0,0,0,0);
 	}
 
 	public void MoveTowardsTile(Tile tile) {
@@ -75,6 +77,10 @@ public class Unit : MonoBehaviour {
 		PersistentAoECheck();
 
 		ClearHighlightedTiles();
+
+		if(currentMP == 0){
+			ringSprite.color = new Color(1,0,0,0.5f);
+		}
 	}
 
 	private IEnumerator Move(){
@@ -210,6 +216,8 @@ public class Unit : MonoBehaviour {
 		}
 
 		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+
+		ringSprite.color = new Color(0,0,0,0);
 	}
 
 	public void DestroyUnit(){
@@ -311,6 +319,8 @@ public class Unit : MonoBehaviour {
 		RemoveBuffs(this,finishedBuffs);
 
 		CalculateModifiers(true);
+
+		ringSprite.color = new Color(0,1,1,0.5f);
 	}
 
 	public void AddBuff(Buff bff){
@@ -602,6 +612,10 @@ public class Unit : MonoBehaviour {
 			Logic.Inst.StartCoroutine("ShowAltarText");
 			Logic.Inst.ClearHighlightedTiles();
 		}
+	}
+
+	public void OnAttack(){
+		ringSprite.color = new Color(0.5f,0.5f,0.5f,0.5f);
 	}
 		
 	#region Getters and Setters
