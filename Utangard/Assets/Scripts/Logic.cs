@@ -182,6 +182,9 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void UnitLClicked(Unit unit) {
+		if(selectedUnit && gamePhase == GamePhase.CombatPhase){
+			selectedUnit.OnDeselect();
+		}
 		UnitSelected(unit);
 
 		switch (gamePhase) {
@@ -217,8 +220,10 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void TileLClicked(Tile tile) {
-		if(tile.OccupyingUnit)
+		if(tile.OccupyingUnit){
+			selectedUnit.OnDeselect();
 			UnitSelected(tile.OccupyingUnit);
+		}
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
@@ -451,6 +456,10 @@ public class Logic : MonoBehaviour {
 					else if(grid.TilesList[i].Biome == BiomeType.Snow){
 						grid.TilesList[i].MoveCost = 2;
 					}
+				}
+
+				for(int j = 0; j < prevPlayer.army.Count; j++){
+					prevPlayer.army[j].OnTurnEnd();
 				}
 				break;
 		}

@@ -77,10 +77,6 @@ public class Unit : MonoBehaviour {
 		PersistentAoECheck();
 
 		ClearHighlightedTiles();
-
-		if(currentMP == 0){
-			ringSprite.color = new Color(1,0,0,0.5f);
-		}
 	}
 
 	private IEnumerator Move(){
@@ -106,6 +102,10 @@ public class Unit : MonoBehaviour {
 			}
 			transform.position = tile.transform.position;
 			currentMP -= tile.MoveCost;
+
+			if(currentMP == 0){
+				ringSprite.color = new Color(1,0,0,0.5f);
+			}
 
 			if(unitAnim){
 				ChangeAnim(0);
@@ -188,6 +188,8 @@ public class Unit : MonoBehaviour {
 			Logic.Inst.Grid.TileAt(index).LineWidth(0.1f);
 			highlighted.Add(Logic.Inst.Grid.TileAt(index));	
 		}
+
+		ringSprite.color = new Color(1,1,0,0.5f);
 	}
 
 	public void ClearHighlightedTiles() {
@@ -321,6 +323,10 @@ public class Unit : MonoBehaviour {
 		CalculateModifiers(true);
 
 		ringSprite.color = new Color(0,1,1,0.5f);
+	}
+
+	public void OnTurnEnd(){
+		ringSprite.color  = new Color(0,0,0,0);
 	}
 
 	public void AddBuff(Buff bff){
@@ -616,6 +622,23 @@ public class Unit : MonoBehaviour {
 
 	public void OnAttack(){
 		ringSprite.color = new Color(0.5f,0.5f,0.5f,0.5f);
+	}
+
+	public void OnDeselect(){
+		if(owner == Logic.Inst.CurrentPlayer){
+			if(currentMP > 0){
+				ringSprite.color = new Color(0,1,1,0.5f);
+			}
+			else if(canMove){
+				ringSprite.color = new Color(1,0,0,0.5f);
+			}
+			else{
+				ringSprite.color = new Color(0.5f,0.5f,0.5f,0.5f);
+			}
+		}
+		else{
+			ringSprite.color = new Color(0,0,0,0);
+		}
 	}
 		
 	#region Getters and Setters
