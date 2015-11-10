@@ -30,7 +30,8 @@ public class UnitHealthBar : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		UpdatePosition();
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 99);
+		//UpdatePosition();
 	}
 
 	void UpdateHealthBar(){
