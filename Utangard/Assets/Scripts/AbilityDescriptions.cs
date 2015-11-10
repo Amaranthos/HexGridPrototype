@@ -14,20 +14,19 @@ public class AbilityDescriptions : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//toolTipText = toolTip.GetComponentInChildren<Text>();
-		LoadDescriptions();
+		//LoadDescriptions();
+		descriptions[0] = Logic.Inst.Players[playerNum].hero.GetPassiveText();
+		descriptions[1] = Logic.Inst.Players[playerNum].hero.GetAbility1Text();
+		descriptions[2] = Logic.Inst.Players[playerNum].hero.GetAbility2Text();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 	public void DisplayAbility1(){
 		toolTip.SetActive(true);
-		toolTipText.text = descriptions[0];
+		toolTipText.text = descriptions[1];
 	}
 	public void DisplayAbility2(){
 		toolTip.SetActive(true);
-		toolTipText.text = descriptions[1];
+		toolTipText.text = descriptions[2];
 	}
 
 	public void CloseTooltip(){
