@@ -300,12 +300,15 @@ public class Hero : MonoBehaviour {
 	}
 
 	public string GetPassiveText(){
+		SetToolTips();
 		return tooltipText[0];
 	}
 	public string GetAbility1Text(){
+		SetToolTips();
 		return tooltipText[1];
 	}
 	public string GetAbility2Text(){
+		SetToolTips();
 		return tooltipText[2];
 	}
 }

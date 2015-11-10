@@ -21,10 +21,12 @@ public class AbilityDescriptions : MonoBehaviour {
 	}
 
 	public void DisplayAbility1(){
+		descriptions[1] = Logic.Inst.Players[playerNum].hero.GetAbility1Text();
 		toolTip.SetActive(true);
 		toolTipText.text = descriptions[1];
 	}
 	public void DisplayAbility2(){
+		descriptions[2] = Logic.Inst.Players[playerNum].hero.GetAbility2Text();
 		toolTip.SetActive(true);
 		toolTipText.text = descriptions[2];
 	}
