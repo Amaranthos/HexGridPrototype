@@ -2609,7 +2609,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
+    skillParticle: {fileID: 182518, guid: 12921e245b794aa4a892ebf46e19769e, type: 2}
   active2:
     abilityType: 0
     target: 0
@@ -2673,7 +2673,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
+    skillParticle: {fileID: 164664, guid: 14195aac6db384840a159176ef58e319, type: 2}
   currentAbility:
     abilityType: 0
     target: 0
@@ -3515,7 +3515,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: active2.skillParticle
       value: 
-      objectReference: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
+      objectReference: {fileID: 164664, guid: 14195aac6db384840a159176ef58e319, type: 2}
     - target: {fileID: 0}
       propertyPath: passive.skillParticle
       value: 
@@ -3523,7 +3523,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: active1.skillParticle
       value: 
-      objectReference: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
+      objectReference: {fileID: 182518, guid: 12921e245b794aa4a892ebf46e19769e, type: 2}
     - target: {fileID: 0}
       propertyPath: active2.buffs.Array.data[1].debuff
       value: 1

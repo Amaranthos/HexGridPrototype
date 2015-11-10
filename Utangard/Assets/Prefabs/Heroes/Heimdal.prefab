@@ -2611,7 +2611,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 0}
+    skillParticle: {fileID: 135714, guid: 6e8b0234abe7e614c8a2e7551e38c5e0, type: 2}
   active2:
     abilityType: 0
     target: 2
@@ -3570,6 +3570,10 @@ Prefab:
       propertyPath: active1.buffs.Array.data[0].debuff
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.skillParticle
+      value: 
+      objectReference: {fileID: 135714, guid: 6e8b0234abe7e614c8a2e7551e38c5e0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 119650}
