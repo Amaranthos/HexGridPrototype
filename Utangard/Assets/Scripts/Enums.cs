@@ -109,3 +109,9 @@ public enum SFX {
 	Unit_Death,
 	Unit_Move
 }
+
+public enum UnitFormations {
+	Aggressive,
+	Defensive,
+	Skirmish
+}
