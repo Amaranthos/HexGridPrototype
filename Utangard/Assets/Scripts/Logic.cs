@@ -17,6 +17,7 @@ public class Logic : MonoBehaviour {
 	private Path path;
 
 	private Combat combatManager;
+	public bool inCombat = false;
 
 	private Unit selectedUnit;
 	private Tile selectedTile;
@@ -53,6 +54,8 @@ public class Logic : MonoBehaviour {
 	//For Victory
 	public GameObject winText;
 	public GameObject timerText;
+
+	private GameObject islands;
 
 	private void Awake() {
 		if (!inst)
@@ -102,6 +105,9 @@ public class Logic : MonoBehaviour {
 			Debug.LogError("Pathfinder does not exist!");
 
 		Camera.main.GetComponent<Vision>().enabled = false;
+
+		islands = GameObject.Find("Islands");
+		islands.SetActive(false);
 	}
 
 	private void Update() {
@@ -269,7 +275,7 @@ public class Logic : MonoBehaviour {
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0)
 					if (unit.Owner != CurrentPlayer)
-						if (selectedUnit.InAttackRange(unit)){
+						if (selectedUnit.InAttackRange(unit) && !inCombat){
 							StartCoroutine(UnitCombat(selectedUnit, unit));
 							_audio.PlaySFX(SFX.Rune_Roll);
 						}
@@ -300,7 +306,7 @@ public class Logic : MonoBehaviour {
 								selectedUnit.MoveTowardsTile(tile);
 								ClearSelected();
 							}
-						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
+						else if (tile.OccupyingUnit.Owner != CurrentPlayer && !inCombat)
 							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
 					else
@@ -352,6 +358,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
+		islands.SetActive(true);
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
@@ -553,6 +560,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	private IEnumerator UnitCombat(Unit att, Unit def) {
+		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
@@ -560,6 +568,8 @@ public class Logic : MonoBehaviour {
 		att.OnAttack();
 		if (!def.dead && def.InAttackRange(att))
 			combatManager.ResolveCombat(def, att);
+		yield return new WaitForSeconds(3.5f);
+		inCombat = false;
 	}
 
 	private void ChangePlayer() {
