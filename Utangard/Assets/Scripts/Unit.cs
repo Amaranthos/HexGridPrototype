@@ -604,7 +604,9 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void ChangeAnim(int animState){
-		unitAnim.SetInteger("State",animState);
+		if(unitAnim){
+			unitAnim.SetInteger("State",animState);
+		}
 	}
 
 	public void CaptureAltar(){

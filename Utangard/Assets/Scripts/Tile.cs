@@ -14,6 +14,8 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 	public bool hasAltar = false;
 
+	private int moveCost = 0;
+
 	public static Vector3 Corner(Vector3 origin, float radius, int corner, HexOrientation orientation){
 		float angle = 60 * corner;
 		if(orientation == HexOrientation.Pointy)
@@ -70,6 +72,7 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 		this.biome = biome;
 		this.terrain = terrain;
+		moveCost = 0;
 		isPassable = true;
 
 		if(terrainPiece){
@@ -78,30 +81,30 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 
 		switch(this.biome){
 		case BiomeType.Grass:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.grass.moveCost);
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.grass.moveCost);
 			break;
 
 		case BiomeType.Snow:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.snow.moveCost);
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.snow.moveCost);
 			break;
 
 		case BiomeType.Forest:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.forest.moveCost);
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.forest.moveCost);
 			break;
 		}
 
 		switch (this.terrain){
 		case TerrainType.Plains:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.plains.moveCost);	  
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.plains.moveCost);	  
 			break;
 
 		case TerrainType.Hills:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.hills.moveCost);
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.hills.moveCost);
 			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetHill(), transform.position, Quaternion.Euler(Vector3.right * 270f));
 			break;
 
 		case TerrainType.Mountains:
-			MoveCost = Mathf.Max(MoveCost, TerrainModifiers.inst.mountains.moveCost);
+			moveCost = Mathf.Max(moveCost, TerrainModifiers.inst.mountains.moveCost);
 			terrainPiece = (GameObject) Instantiate(Logic.Inst.Terrains.GetMountain(), transform.position, Quaternion.Euler(Vector3.right * 270f));
 			isPassable = false;
 			break;
@@ -153,7 +156,13 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 	}
 
 	#region A* Herustic Variables
-	public int MoveCost { get; set; }
+	public int MoveCost { 
+		get {return moveCost;} 
+		set {
+			moveCost = value;
+			Debug.LogWarning("Tile: " + index + " type " + biome + " " + terrain + " move cost changed to " + value.ToString());
+		}
+	}
 	public int PathCost { get; set;}
 	public int GCost { get; set; }
 	public int HCost { get; set; }
