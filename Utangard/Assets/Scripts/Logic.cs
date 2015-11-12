@@ -335,6 +335,10 @@ public class Logic : MonoBehaviour {
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();
 
+			if(i == 0){
+				tiles.Reverse();
+			}
+
 			for (int j = 0; j < armies[i].Length; j++){
 				players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
 			}
