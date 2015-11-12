@@ -628,7 +628,7 @@ public class Unit : MonoBehaviour {
 
 	public void OnDeselect(){
 		if(owner == Logic.Inst.CurrentPlayer){
-			if(currentMP > 0){
+			if(currentMP > 0 && canMove){
 				ringSprite.color = new Color(0,1,1,0.5f);
 			}
 			else if(canMove){
