@@ -12,6 +12,7 @@ public class Logic : MonoBehaviour {
 	private UnitList unitList;
 	private HeroList heroList;
 	private TerrainList terrainList;
+	private Formations formations;
 	//private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
@@ -100,6 +101,11 @@ public class Logic : MonoBehaviour {
 
 		if (!path)
 			Debug.LogError("Pathfinder does not exist!");
+
+		formations = GetComponent<Formations>();
+
+		if(!formations)
+			Debug.LogError("Formation object does not exist!");
 
 		Camera.main.GetComponent<Vision>().enabled = false;
 	}
@@ -331,6 +337,10 @@ public class Logic : MonoBehaviour {
 		}
 		
 		mapGen.GenerateMap(grid.TilesList);
+		formations.Map = grid.TilesList;		
+
+		//Set formations grid here
+		formations.SpawnTroops(players[0], armies[0], 1);
 
 		for (int i = 0; i < armies.Length; i++){
 			List<Tile> tiles = players[i].PlacementField();

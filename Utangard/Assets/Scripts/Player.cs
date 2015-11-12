@@ -57,6 +57,12 @@ public class Player : MonoBehaviour {
 		hero = h;
 	}
 
+	public void ClearTroops(){
+		for(int i = army.Count; i > 0; i--){
+			GameObject.Destroy(army[i]);
+		}
+	}
+
 	public List<Tile> PlacementField() {
 		List<Tile> tiles = new List<Tile>();
 		for(int i = 0; i < Logic.Inst.Grid.TilesList.Count; i++){
