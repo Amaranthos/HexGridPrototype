@@ -55,7 +55,7 @@ public class Logic : MonoBehaviour {
 	public GameObject winText;
 	public GameObject timerText;
 
-	private GameObject islands;
+	public GameObject enviro;
 
 	private void Awake() {
 		if (!inst)
@@ -105,9 +105,8 @@ public class Logic : MonoBehaviour {
 			Debug.LogError("Pathfinder does not exist!");
 
 		Camera.main.GetComponent<Vision>().enabled = false;
-
-		islands = GameObject.Find("Islands");
-		islands.SetActive(false);
+		
+		enviro.SetActive(false);
 	}
 
 	private void Update() {
@@ -358,7 +357,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
-		islands.SetActive(true);
+		enviro.SetActive(true);
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
