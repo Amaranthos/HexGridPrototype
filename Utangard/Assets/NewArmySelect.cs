@@ -57,6 +57,8 @@ public class NewArmySelect : MonoBehaviour {
 		playerArmies[1].swords = 0;
 		playerArmies[1].spears = 0;
 
+
+		gui.subTitle.text = "Select " + pickPerTurn + " warriors";
 		UpdateMaterials();
 	}
 
@@ -71,19 +73,32 @@ public class NewArmySelect : MonoBehaviour {
 	}
 
 	public void Update(){
+		gui.title.text = "Player 1, Assemble your warriors!";
+		gui.selectedNum.text = pickedThisTurn + "/" + pickPerTurn + " Selected";
+		if(pickedThisTurn == pickPerTurn){
+			gui.continueButton.interactable = true;
+		}
+		else{
+			gui.continueButton.interactable = false;
+		}
+
 		if(whosPicking == SelectionStage.player1){
 			if(altars.transform.rotation.eulerAngles.y != 0){
-				altars.transform.Rotate(0,5,0);
+				if(altars.transform.rotation.eulerAngles.y > 0){
+					altars.transform.Rotate(0,-12,0);
+				}
+				else{
+					altars.transform.rotation = new Quaternion(0,0,0,0);
+				}
 			}
 		}
 		else{
 			if(altars.transform.rotation.eulerAngles.y != 180){
 				if(altars.transform.rotation.eulerAngles.y > 180){
-					Vector3 temp = new Vector3(45,0,0);
-					altars.transform.rotation = Quaternion.Euler(temp);
+
 				}
 				else{
-					altars.transform.Rotate(0,5,0);
+					altars.transform.Rotate(0,12,0);
 				}
 			}
 		}
@@ -92,28 +107,21 @@ public class NewArmySelect : MonoBehaviour {
 	public void Continue(){
 		if(whosPicking == SelectionStage.player1){
 			whosPicking = SelectionStage.player2;
+			timesP1picked += 1;
+			pickedThisTurn = 0;
 		}
 		else{
 			whosPicking = SelectionStage.player1;
+			timesP2picked += 1;
+			pickedThisTurn = 0;
+		}
+		if(timesP1picked == pickPerArmy && timesP2picked == pickPerArmy){
+			print("Start Game");
+			pickPerTurn = -1;
+			//int[][] doubleArray;
+			//Logic.Inst.SetupGameWorld(doubleArray);
 		}
 	}
-
-	private float ClampAngle(float angle, float min, float max){
-		if (angle<90 || angle>270){       // if angle in the critic region...
-			if (angle>180) 
-				angle -= 360;  // convert all angles to -180..+180
-			if (max>180) 
-				max -= 360;
-			if (min>180) 
-				min -= 360;
-		}    
-		angle = Mathf.Clamp(angle, min, max);
-		if (angle<0) 
-			angle += 360;  // if angle negative, convert to 0..360
-		
-		return angle;
-	}
-
 
 	#region Add/Remove Units
 	public void AddSword(){
