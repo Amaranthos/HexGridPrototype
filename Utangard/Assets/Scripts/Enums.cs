@@ -91,7 +91,10 @@ public enum BiomeType{
 }
 
 public enum Music {
-	BloodOath
+	BloodOath,
+	PlacingTheme,
+	BattleTheme,
+	NearWinTeme
 }
 
 public enum SFX {
