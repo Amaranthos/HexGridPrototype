@@ -10,9 +10,11 @@ public class AbilityParticles : MonoBehaviour {
 	private bool lerpingCols;
 	private float alpha;
 	private Color endCol;
+	public int ID;
 	public float lerpSpeed;
 	public float fadeTime;
 	public float destroyTime;
+	public bool fadingOut = false;
 
 	void Start () {
 	
@@ -28,7 +30,9 @@ public class AbilityParticles : MonoBehaviour {
 				parts[j].startColor = Color.Lerp(parts[j].startColor,partCols[j],lerpSpeed);
 			}
 
-			fadeTime -= Time.deltaTime;
+			if(fadingOut){
+				fadeTime -= Time.deltaTime;
+			}
 
 			if(fadeTime <= 0){
 				for(int x = 0; x < matCols.Count; x++){
@@ -60,7 +64,7 @@ public class AbilityParticles : MonoBehaviour {
 		}
 	}
 
-	public void FadeParticle(GameObject skillParticle){
+	public void FadeIn(GameObject skillParticle){
 		mats = skillParticle.transform.GetComponentsInChildren<MeshRenderer>();
 		parts = skillParticle.transform.GetComponentsInChildren<ParticleSystem>();
 
@@ -74,6 +78,10 @@ public class AbilityParticles : MonoBehaviour {
 		}
 
 		lerpingCols = true;
+	}
+
+	public void FadeOut(){
+		fadingOut = true;
 	}
 		
 	public Color SetColClear(Color col){

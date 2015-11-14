@@ -52,6 +52,7 @@ public class ArmySelect : MonoBehaviour {
 			armies[i] = army[i].Finalise().ToArray();
 		}
 
+
 		Logic.Inst.SetupGameWorld(armies);
 		gameObject.SetActive(false);
 	}

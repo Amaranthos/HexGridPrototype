@@ -51,6 +51,10 @@ public class Unit : MonoBehaviour {
 		unitAnim = GetComponentInChildren<Animator>();
 		ringSprite = gameObject.transform.FindChild("Unit select ring").GetComponent<SpriteRenderer>();
 		ringSprite.color = new Color(0,0,0,0);
+
+		if(Logic.Inst.CurrentPlayerNum != -1 && type == UnitType.Hero){
+			unitAnim.SetBool("InGame",true);
+		}
 	}
 
 	public void MoveTowardsTile(Tile tile) {
@@ -217,7 +221,7 @@ public class Unit : MonoBehaviour {
 			}
 		}
 
-		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 
 		ringSprite.color = new Color(0,0,0,0);
 	}
@@ -232,7 +236,7 @@ public class Unit : MonoBehaviour {
 		owner.RemoveUnit(this);
 		Debug.Log(type + " was sacrificed");
 		DestroyImmediate(this.gameObject);
-		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 	}
 
 	public void OnMouseOver(){
@@ -628,7 +632,7 @@ public class Unit : MonoBehaviour {
 
 	public void OnDeselect(){
 		if(owner == Logic.Inst.CurrentPlayer){
-			if(currentMP > 0){
+			if(currentMP > 0 && canMove){
 				ringSprite.color = new Color(0,1,1,0.5f);
 			}
 			else if(canMove){

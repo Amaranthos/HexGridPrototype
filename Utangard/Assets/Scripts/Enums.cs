@@ -91,23 +91,25 @@ public enum BiomeType{
 }
 
 public enum Music {
-	BloodOath
+	BloodOath,
+	PlacingTheme,
+	BattleTheme,
+	NearWinTeme
 }
 
 public enum SFX {
-	Attack_Success,
-	Attack_Fail,
-	Can_Attack,
-	Hero_Laugh,
-	Rune_Roll,
-	Scroll,
-	Scroll_Up,
-	Select,
-	Select_2,
-	Unit_Click,
-	Unit_CantMoveThere,
-	Unit_Death,
-	Unit_Move
+	CrowdCheer,
+	MaleAttack,
+	MaleDeath,
+	MaleKill,
+	MetalHit,
+	Movement,
+	SingleChain,
+	SingleMovement,
+	WomanAttack,
+	WomanDeath,
+	WomanKill,
+	WoodHit
 }
 
 public enum UnitFormations {

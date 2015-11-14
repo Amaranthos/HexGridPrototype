@@ -487,9 +487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46632ad0b14404f4fbeff239fdc2f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 1
   lerpSpeed: .200000003
   fadeTime: 5
   destroyTime: 10
+  fadingOut: 0
 --- !u!198 &19829454
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2676,6 +2678,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: destroyTime
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

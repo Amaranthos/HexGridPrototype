@@ -39,24 +39,23 @@ public class Vision : MonoBehaviour {
 	}
 
 	private void Update() {
-		
-		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+
+		Vector3 moveX = transform.parent.right * Input.GetAxisRaw("Horizontal");
+		moveX = new Vector3(moveX.x,0,moveX.z);
+		Vector3 moveZ = transform.parent.forward * Input.GetAxisRaw("Vertical");
+		moveZ = new Vector3(moveZ.x,0,moveZ.z);
+		Vector3 move = moveX + moveZ;
 		move.Normalize();
 
-		float rotate = Input.GetAxisRaw("Mouse X") * horizSpinSpeed;
-		Quaternion tempRot = transform.parent.rotation;
-		Vector3 tempVect = new Vector3(tempRot.eulerAngles.x, tempRot.eulerAngles.y + rotate, tempRot.eulerAngles.z);
+		transform.parent.localPosition += move * moveSpeed;
 
-		if(!Input.GetKey(KeyCode.Mouse2)){
-			transform.localPosition += move * moveSpeed;
-		}
-		else{
-			transform.parent.eulerAngles = tempVect;
+
+
+		if(Input.GetKey(KeyCode.Mouse2)){
+			transform.parent.RotateAround(transform.position,Vector3.up,horizSpinSpeed*Input.GetAxisRaw("Mouse X")*Time.deltaTime);
+			transform.parent.RotateAround(transform.parent.position,transform.parent.right,vertSpinSpeed*Input.GetAxisRaw("Mouse Y")*Time.deltaTime);
 			
-			rotate = Input.GetAxisRaw("Mouse Y") * vertSpinSpeed;
-			tempRot = transform.parent.rotation;
-			tempVect = new Vector3(tempRot.eulerAngles.x + rotate, tempRot.eulerAngles.y, tempRot.eulerAngles.z);
-			
+			Vector3 tempVect = transform.parent.rotation.eulerAngles;
 			tempVect.x = ClampAngle(tempVect.x,vertMin,vertMax);
 			
 			transform.parent.eulerAngles = tempVect;

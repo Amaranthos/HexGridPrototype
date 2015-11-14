@@ -16,8 +16,10 @@ public class Logic : MonoBehaviour {
 	//private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
+	private MusicPlayer music;
 
 	private Combat combatManager;
+	public bool inCombat = false;
 
 	private Unit selectedUnit;
 	private Tile selectedTile;
@@ -54,6 +56,8 @@ public class Logic : MonoBehaviour {
 	//For Victory
 	public GameObject winText;
 	public GameObject timerText;
+
+	public GameObject enviro;
 
 	private void Awake() {
 		if (!inst)
@@ -107,7 +111,18 @@ public class Logic : MonoBehaviour {
 		if(!formations)
 			Debug.LogError("Formation object does not exist!");
 
+		music = Camera.main.gameObject.GetComponentInChildren<MusicPlayer>();
+
+		if (!music)
+			Debug.LogError("Music Player does not exist!");
+
 		Camera.main.GetComponent<Vision>().enabled = false;
+		
+		// enviro.SetActive(false);
+	}
+
+	private void Start() {
+		music.ChangeBase(MusicBaseState.Title);
 	}
 
 	private void Update() {
@@ -185,6 +200,14 @@ public class Logic : MonoBehaviour {
 				UnitLClicked(heroList.heroes[currentPlayer].hero);
 			}
 		}
+
+		if(Input.GetKeyDown(KeyCode.Return)){
+			music.Mute();
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightShift)){
+			music.Unmute();
+		}
 	}
 
 	private void UnitLClicked(Unit unit) {
@@ -195,13 +218,13 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-			_audio.PlaySFX(SFX.Unit_Click);
+			// _audio.PlaySFX(SFX.Unit_Click);
 				break;
 
 			case GamePhase.CombatPhase:
 				if(unit.CanMove && unit.Owner == CurrentPlayer && unit.Owner.CommandPoints > 0){
 					HighlightMoveRange(unit);
-					_audio.PlaySFX(SFX.Unit_Click);
+					// _audio.PlaySFX(SFX.Unit_Click);
 				}
 				break;
 
@@ -233,11 +256,11 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-			_audio.PlaySFX(SFX.Scroll);
+			// _audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.CombatPhase:
-			_audio.PlaySFX(SFX.Scroll);
+			// _audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.TargetPhase:
@@ -267,7 +290,7 @@ public class Logic : MonoBehaviour {
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
 						if (grid.TileAt(unit.Index).IsPassable){
 							SwapUnits(grid.TileAt(unit.Index));
-							_audio.PlaySFX(SFX.Unit_Move);
+							// _audio.PlaySFX(SFX.Unit_Move);
 						}
 
 				break;
@@ -275,9 +298,9 @@ public class Logic : MonoBehaviour {
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0)
 					if (unit.Owner != CurrentPlayer)
-						if (selectedUnit.InAttackRange(unit)){
+						if (selectedUnit.InAttackRange(unit) && !inCombat){
 							StartCoroutine(UnitCombat(selectedUnit, unit));
-							_audio.PlaySFX(SFX.Rune_Roll);
+							// _audio.PlaySFX(SFX.Rune_Roll);
 						}
 				break;
 		}
@@ -294,8 +317,8 @@ public class Logic : MonoBehaviour {
 							else if (tile.OccupyingUnit.Owner == CurrentPlayer)
 								SwapUnits(tile);
 				}
-				else
-				_audio.PlaySFX(SFX.Unit_CantMoveThere);
+				// else
+				// _audio.PlaySFX(SFX.Unit_CantMoveThere);
 				break;
 
 			case GamePhase.CombatPhase:
@@ -306,18 +329,18 @@ public class Logic : MonoBehaviour {
 								selectedUnit.MoveTowardsTile(tile);
 								ClearSelected();
 							}
-						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
+						else if (tile.OccupyingUnit.Owner != CurrentPlayer && !inCombat)
 							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
-					else
-						_audio.PlaySFX(SFX.Unit_CantMoveThere);
+					// else
+						// _audio.PlaySFX(SFX.Unit_CantMoveThere);
 				}
 				break;
 		}
 	}
 
 	private void SwapUnits(Tile tile) {
-		_audio.PlaySFX(SFX.Unit_Move);
+		// _audio.PlaySFX(SFX.Unit_Move);
 		Tile prevTile = grid.TileAt(selectedUnit.Index);
 		Unit swap = tile.OccupyingUnit;
 		swap.MoveTowardsTile(prevTile);
@@ -362,11 +385,14 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
+		// enviro.SetActive(true);
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
 	public void StartSetupPhase() {
 		GUIManager.inst.GUICanvas.SetActive(true);
+
+		music.ChangeBase(MusicBaseState.Placing);
 
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
@@ -380,6 +406,7 @@ public class Logic : MonoBehaviour {
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
+		music.ChangeBase(MusicBaseState.Battle);
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -563,6 +590,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	private IEnumerator UnitCombat(Unit att, Unit def) {
+		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;
 		combatManager.ResolveCombat(att, def);
@@ -570,6 +598,8 @@ public class Logic : MonoBehaviour {
 		att.OnAttack();
 		if (!def.dead && def.InAttackRange(att))
 			combatManager.ResolveCombat(def, att);
+		yield return new WaitForSeconds(3.5f);
+		inCombat = false;
 	}
 
 	private void ChangePlayer() {
@@ -658,6 +688,10 @@ public class Logic : MonoBehaviour {
 
 	public Grid Grid {
 		get { return grid; }
+	}
+
+	public MusicPlayer Music {
+		get { return music; }
 	}
 
 	public UnitList UnitList {
