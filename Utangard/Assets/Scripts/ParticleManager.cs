@@ -33,10 +33,11 @@ public class ParticleManager : MonoBehaviour {
 
 		if(isOneShot){
 			partScript.FadeOut();
+			print ("IS ONE SHOT");
 		}
 		else{
 			currentParticles.Add(tempobj.GetComponent<AbilityParticles>());
-			currentSkills.Add(skill);
+			currentSkills.Add(new Skill(skill.abilityType,skill.target,skill.hitFoe,skill.cost,skill.castRange,skill.AoERange,skill.targets,skill.passive,skill.hero,skill.affected,skill.buffs,skill.skillParticle));
 			RemoveParticle(skill);
 		}
 	}
@@ -45,26 +46,30 @@ public class ParticleManager : MonoBehaviour {
 		partsToRemove.Clear();
 		skillsToRemove.Clear();
 
+		print ("START REMOVAL");
+
 		for(int i = 0; i < currentSkills.Count; i++){
 			if(currentSkills[i] == skill){
+				print ("SAME SKILL");
 				for(int j = 0; j < currentParticles.Count; j++){
 					if(currentParticles[j].ID == currentSkills[i].skillParticle.GetComponent<AbilityParticles>().ID){
 						currentParticles[j].FadeOut();
 						partsToRemove.Add(j);
+						print ("REMOVE PARTICLE");
 					}
 				}
 				skillsToRemove.Add(i);
 			}
 		}
 
-//		for(int x = skillsToRemove.Count-1; x > 0; x--){
-//			print("REMOVING SKILL");
-//			currentSkills.RemoveAt(skillsToRemove[x]);
-//		}
-//
-//		for(int y = partsToRemove.Count-1; y > 0; y--){
-//			print ("REMOVING PARTICLE");
-//			currentParticles.RemoveAt(partsToRemove[y]);
-//		}
+		for(int x = skillsToRemove.Count-1; x > 0; x--){
+			print("REMOVING SKILL");
+			currentSkills.RemoveAt(skillsToRemove[x]);
+		}
+
+		for(int y = partsToRemove.Count-1; y > 0; y--){
+			print ("REMOVING PARTICLE");
+			currentParticles.RemoveAt(partsToRemove[y]);
+		}
 	}
 }
