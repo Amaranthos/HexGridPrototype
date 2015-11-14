@@ -9,12 +9,21 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300001}
   m_Snapshots:
-  - {fileID: 24500003}
-  - {fileID: 24585696}
-  m_StartSnapshot: {fileID: 24500003}
+  - {fileID: 24555136}
+  m_StartSnapshot: {fileID: 24555136}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 42dba019c82315c4fa56723bc09a1c0b
+    name: Battle
+  - guid: 78d062d4f1c8a5a48921fd690aad65c8
+    name: Title
+  - guid: 4f7acd317bdb05748a3c72c60629f972
+    name: Master
+  - guid: 0c057aa557d7d08479a250607e8242bf
+    name: Placing
+  - guid: c65e4f789342bf9459e428dc306f7034
+    name: Winning
   m_AudioMixerGroupViews:
   - guids:
     - 0e6664677d0e3b14aba0412f18e68487
@@ -24,7 +33,7 @@ AudioMixerController:
     - 3286441f537734f46af2be77f935ba56
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500003}
+  m_TargetSnapshot: {fileID: 24555136}
 --- !u!243 &24300001
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -179,29 +188,18 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!245 &24500003
+--- !u!245 &24555136
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Main
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 07ca1cfec62229843a9ed5692cdbf6bc
+  m_SnapshotID: b13f92de03cbce241a5e8394579e5a17
   m_FloatValues:
-    4f7acd317bdb05748a3c72c60629f972: -.00244187191
-    78d062d4f1c8a5a48921fd690aad65c8: -.00244187191
-    0c057aa557d7d08479a250607e8242bf: -.037667945
-  m_TransitionOverrides: {}
---- !u!245 &24585696
-AudioMixerSnapshotController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Off
-  m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 99864c148876f3c4da0332b6b105a8f4
-  m_FloatValues:
-    4f7acd317bdb05748a3c72c60629f972: -80
-    78d062d4f1c8a5a48921fd690aad65c8: -.00244187191
-    0c057aa557d7d08479a250607e8242bf: -.037667945
+    4f7acd317bdb05748a3c72c60629f972: .0255785119
+    78d062d4f1c8a5a48921fd690aad65c8: 0
+    0c057aa557d7d08479a250607e8242bf: -80
+    c65e4f789342bf9459e428dc306f7034: -80
+    42dba019c82315c4fa56723bc09a1c0b: -80
   m_TransitionOverrides: {}

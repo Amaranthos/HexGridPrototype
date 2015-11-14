@@ -4,57 +4,97 @@ using System.Collections;
 
 public class MusicPlayer : MonoBehaviour {
 
-	public AudioMixerSnapshot title;
-	public AudioMixerSnapshot placing;
-	public AudioMixerSnapshot battle;
-	public AudioMixerSnapshot winning;
-
-	public AudioMixerSnapshot mute;
+	public AudioMixer master;
 
 	private float bpm = 128;
 	private float timeIn = 0;
 	private float timeOut = 0;
-	private float quaterNote = 0;
+	private float quarterNote = 0;
 
-	private AudioMixerSnapshot current;
+	private string current = "";
+	private MusicBaseState theme = MusicBaseState.None;
 
 	void Awake() {
-		quaterNote = 60 / bpm;
-		timeIn = quaterNote;
-		timeOut = quaterNote * 32;
+		quarterNote = 60 / bpm;
+		timeIn = quarterNote * 8;
+		timeOut = quarterNote * 32;
 	}
 
 	public void ChangeBase(MusicBaseState theme){
+		if(this.theme == theme){
+			return;
+		}
+
+		this.theme = theme;
+
 		switch(theme){
 			case MusicBaseState.Title:
-				current = title;
+				StartCoroutine(FadeIn("Title"));
 				break;
 
 			case MusicBaseState.Placing:
-				current = placing;
+				StartCoroutine(FadeIn("Placing"));
 				break;
 
 			case MusicBaseState.Battle:
-				current = battle;
+				StartCoroutine(FadeIn("Battle"));
 				break;
 
 			case MusicBaseState.NearWin:
-				current = winning;
+				StartCoroutine(FadeIn("Winning"));
+				break;
+
+			case MusicBaseState.None:
 				break;
 		}
-
-		current.TransitionTo(timeIn);
 	}
 
 	public void Mute(){
-		mute.TransitionTo(0f);
+		master.SetFloat("Master", -80.0f);
+	}
+
+	public void Unmute() {
+		master.SetFloat("Master", 0.0f);
+	}
+
+	private IEnumerator FadeIn(string inGroup){
+
+		float timer = 0.0f;
+		float vol;
+
+		while(timer < timeIn){
+			timer += Time.deltaTime;
+			vol = Mathf.Lerp(-80.0f, 0.0f, timer/timeIn);
+			master.SetFloat(inGroup, vol);
+			yield return new WaitForEndOfFrame();
+		}
+		if(current != ""){
+			StartCoroutine(FadeOut(current));
+		}
+		current = inGroup;
+		yield return null;
+	}
+
+	private IEnumerator FadeOut(string outGroup) {
+
+		float timer = 0.0f;
+		float vol;
+
+		while(timer < timeOut){
+			timer += Time.deltaTime;
+			vol = Mathf.Lerp(0.0f, -80.0f, timer/timeOut);
+			master.SetFloat(outGroup, vol);
+			yield return new WaitForEndOfFrame();
+		}
+		yield return null;
 	}
 }
 
-[System.Serializable]
 public enum MusicBaseState {
 	Title,
 	Placing,
 	Battle,
-	NearWin
+	NearWin,
+
+	None
 }

@@ -102,7 +102,16 @@ public class Logic : MonoBehaviour {
 		if (!path)
 			Debug.LogError("Pathfinder does not exist!");
 
+		music = Camera.main.gameObject.GetComponentInChildren<MusicPlayer>();
+
+		if (!music)
+			Debug.LogError("Music Player does not exist!");
+
 		Camera.main.GetComponent<Vision>().enabled = false;
+	}
+
+	private void Start() {
+		music.ChangeBase(MusicBaseState.Title);
 	}
 
 	private void Update() {
@@ -179,6 +188,14 @@ public class Logic : MonoBehaviour {
 				ClearHighlightedTiles();
 				UnitLClicked(heroList.heroes[currentPlayer].hero);
 			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.Return)){
+			music.Mute();
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightShift)){
+			music.Unmute();
 		}
 	}
 
@@ -359,6 +376,8 @@ public class Logic : MonoBehaviour {
 	public void StartSetupPhase() {
 		GUIManager.inst.GUICanvas.SetActive(true);
 
+		music.ChangeBase(MusicBaseState.Placing);
+
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
 
@@ -371,6 +390,7 @@ public class Logic : MonoBehaviour {
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
+		music.ChangeBase(MusicBaseState.Battle);
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -649,6 +669,10 @@ public class Logic : MonoBehaviour {
 
 	public Grid Grid {
 		get { return grid; }
+	}
+
+	public MusicPlayer Music {
+		get { return music; }
 	}
 
 	public UnitList UnitList {

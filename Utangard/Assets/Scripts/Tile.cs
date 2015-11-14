@@ -160,7 +160,6 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		get {return moveCost;} 
 		set {
 			moveCost = value;
-			Debug.LogWarning("Tile: " + index + " type " + biome + " " + terrain + " move cost changed to " + value.ToString());
 		}
 	}
 	public int PathCost { get; set;}

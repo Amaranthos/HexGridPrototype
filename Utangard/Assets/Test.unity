@@ -484,10 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2215c7be353fc44b27cd6a4a18fd7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodOath: {fileID: 11196498}
-  placingTheme: {fileID: 0}
-  battleTheme: {fileID: 0}
-  winningTheme: {fileID: 0}
+  master: {fileID: 24100000, guid: 4522c2fb1dcd2e94bae5055dbcfd7931, type: 2}
 --- !u!1 &15888649
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,6 +5946,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22400700, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7132,6 +7133,26 @@ Prefab:
     - target: {fileID: 22426240, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
       propertyPath: m_SizeDelta.y
       value: 26.3367233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c699bda713bfd14f962c0aec20cee33, type: 3}
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420548, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}

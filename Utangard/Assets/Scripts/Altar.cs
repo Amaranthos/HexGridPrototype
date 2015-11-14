@@ -8,10 +8,18 @@ public class Altar : MonoBehaviour {
 	public CubeIndex Index { get; set; }
 
 	public void PlayerCaptureAltar(Player player) {
-		if (owner)
+		if (owner){
 			owner.capturedAltars.Remove(this);
+			if(player.capturedAltars.Count > 3){
+				Logic.Inst.Music.ChangeBase(MusicBaseState.NearWin);
+			}
+			else {
+				Logic.Inst.Music.ChangeBase(MusicBaseState.Battle);	
+			}
+		}
 		owner = player;
 		player.capturedAltars.Add(this);
+
 
 		if(gameObject.transform.childCount > 0){
 			Transform model = gameObject.transform.FindChild("Alter_nobase");
