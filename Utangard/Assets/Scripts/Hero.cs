@@ -30,11 +30,18 @@ public class Hero : MonoBehaviour {
 
 		for(int i = 0; i < active1.buffs.Count; i ++){
 			origActive1Strengths.Add(active1.buffs[i].strength);
+			active1.buffs[i].skillID = active1.ID;
 		}
 
 		for(int j = 0; j < active2.buffs.Count; j++){
 			origActive2Strengths.Add(active2.buffs[j].strength);
+			active2.buffs[j].skillID = active2.ID;
 		}
+
+		for(int k = 0; k < passive.buffs.Count; k++){
+			passive.buffs[k].skillID = passive.ID;
+		}
+
 		SetToolTips();
 	}
 

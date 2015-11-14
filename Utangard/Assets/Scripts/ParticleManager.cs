@@ -13,7 +13,11 @@ public class ParticleManager : MonoBehaviour {
 	}
 
 	void Update () {
-	
+//		if(Input.GetKeyDown(KeyCode.M)){	//For Testing Purposes Only
+//			for(int i = 0; i < currentSkills.Count; i++){
+//				RemoveParticle(currentSkills[i]);
+//			}
+//		}	
 	}
 
 	public void CreateParticle(Skill skill, Unit unit){
@@ -33,43 +37,51 @@ public class ParticleManager : MonoBehaviour {
 
 		if(isOneShot){
 			partScript.FadeOut();
-			print ("IS ONE SHOT");
 		}
 		else{
 			currentParticles.Add(tempobj.GetComponent<AbilityParticles>());
-			currentSkills.Add(new Skill(skill.abilityType,skill.target,skill.hitFoe,skill.cost,skill.castRange,skill.AoERange,skill.targets,skill.passive,skill.hero,skill.affected,skill.buffs,skill.skillParticle));
-			RemoveParticle(skill);
+			currentSkills.Add(skill);
 		}
 	}
 
-	public void RemoveParticle(Skill skill){
-		partsToRemove.Clear();
+	public void RemoveParticle(int skillID){
+		Skill skill = null;
+
+		for(int k = 0; k < Logic.Inst.Players.Length; k++){	//Eurgh, this is ugly. But at the moment, it's the best way I've got.
+			if(Logic.Inst.Players[k].hero.active1.ID == skillID){
+				skill = Logic.Inst.Players[k].hero.active1;
+			}
+			else if(Logic.Inst.Players[k].hero.active2.ID == skillID){
+				skill = Logic.Inst.Players[k].hero.active2;
+			}
+			else if(Logic.Inst.Players[k].hero.passive.ID == skillID){
+				skill = Logic.Inst.Players[k].hero.passive;
+			}
+		}
+
 		skillsToRemove.Clear();
 
-		print ("START REMOVAL");
-
 		for(int i = 0; i < currentSkills.Count; i++){
-			if(currentSkills[i] == skill){
-				print ("SAME SKILL");
+			partsToRemove.Clear();
+			
+			if(currentSkills[i].ID == skill.ID){
 				for(int j = 0; j < currentParticles.Count; j++){
 					if(currentParticles[j].ID == currentSkills[i].skillParticle.GetComponent<AbilityParticles>().ID){
 						currentParticles[j].FadeOut();
 						partsToRemove.Add(j);
-						print ("REMOVE PARTICLE");
 					}
 				}
+
+				for(int y = partsToRemove.Count-1; y > -1; y--){
+					currentParticles.RemoveAt(partsToRemove[y]);
+				}
+
 				skillsToRemove.Add(i);
 			}
 		}
 
-		for(int x = skillsToRemove.Count-1; x > 0; x--){
-			print("REMOVING SKILL");
+		for(int x = skillsToRemove.Count-1; x > -1; x--){
 			currentSkills.RemoveAt(skillsToRemove[x]);
-		}
-
-		for(int y = partsToRemove.Count-1; y > 0; y--){
-			print ("REMOVING PARTICLE");
-			currentParticles.RemoveAt(partsToRemove[y]);
 		}
 	}
 }
