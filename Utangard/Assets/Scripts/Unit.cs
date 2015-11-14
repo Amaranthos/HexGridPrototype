@@ -51,6 +51,10 @@ public class Unit : MonoBehaviour {
 		unitAnim = GetComponentInChildren<Animator>();
 		ringSprite = gameObject.transform.FindChild("Unit select ring").GetComponent<SpriteRenderer>();
 		ringSprite.color = new Color(0,0,0,0);
+
+		if(Logic.Inst.CurrentPlayerNum != -1 && type == UnitType.Hero){
+			unitAnim.SetBool("InGame",true);
+		}
 	}
 
 	public void MoveTowardsTile(Tile tile) {
