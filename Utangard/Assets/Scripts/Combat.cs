@@ -64,7 +64,7 @@ public class Combat : MonoBehaviour {
 
 	public IEnumerator timedCombat(){
 		GameObject tempText = null;
-		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
+		// Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
 		int hitRoll = 0;
 
 		atk.ChangeAnim(2);
@@ -85,7 +85,7 @@ public class Combat : MonoBehaviour {
 			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
 			
 			if (damage > 0) {
-				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
+				// Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
 				def.CurrentHitpoints -= damage;
 				Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
 				GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
@@ -100,7 +100,7 @@ public class Combat : MonoBehaviour {
 			}
 		}
 		else{
-			Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
+			// Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
 			Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " misses");
 			GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " misses");
 			
