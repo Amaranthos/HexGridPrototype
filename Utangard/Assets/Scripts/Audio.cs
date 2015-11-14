@@ -12,18 +12,13 @@ public class Audio : MonoBehaviour {
 	}
 
 	public void PlaySFX(SFX sound) {
-		source.PlayOneShot(sfx.Find(item=>item.sound == sound).clip);
+		AudioClip[] clips = sfx.Find(item=>item.sound == sound).clips; 
+		source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
 	}
-}
-
-[System.Serializable]
-public struct MusicObj{
-	public Music song;
-	public AudioClip clip;
 }
 
 [System.Serializable]
 public struct SFXObj {
 	public SFX sound;
-	public AudioClip clip;
+	public AudioClip[] clips;
 }

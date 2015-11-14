@@ -15,6 +15,7 @@ public class Logic : MonoBehaviour {
 	//private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
+	private MusicPlayer music;
 
 	private Combat combatManager;
 
@@ -189,13 +190,13 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-			_audio.PlaySFX(SFX.Unit_Click);
+			// _audio.PlaySFX(SFX.Unit_Click);
 				break;
 
 			case GamePhase.CombatPhase:
 				if(unit.CanMove && unit.Owner == CurrentPlayer && unit.Owner.CommandPoints > 0){
 					HighlightMoveRange(unit);
-					_audio.PlaySFX(SFX.Unit_Click);
+					// _audio.PlaySFX(SFX.Unit_Click);
 				}
 				break;
 
@@ -227,11 +228,11 @@ public class Logic : MonoBehaviour {
 
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-			_audio.PlaySFX(SFX.Scroll);
+			// _audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.CombatPhase:
-			_audio.PlaySFX(SFX.Scroll);
+			// _audio.PlaySFX(SFX.Scroll);
 				break;
 
 			case GamePhase.TargetPhase:
@@ -261,7 +262,7 @@ public class Logic : MonoBehaviour {
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
 						if (grid.TileAt(unit.Index).IsPassable){
 							SwapUnits(grid.TileAt(unit.Index));
-							_audio.PlaySFX(SFX.Unit_Move);
+							// _audio.PlaySFX(SFX.Unit_Move);
 						}
 
 				break;
@@ -271,7 +272,7 @@ public class Logic : MonoBehaviour {
 					if (unit.Owner != CurrentPlayer)
 						if (selectedUnit.InAttackRange(unit)){
 							StartCoroutine(UnitCombat(selectedUnit, unit));
-							_audio.PlaySFX(SFX.Rune_Roll);
+							// _audio.PlaySFX(SFX.Rune_Roll);
 						}
 				break;
 		}
@@ -288,8 +289,8 @@ public class Logic : MonoBehaviour {
 							else if (tile.OccupyingUnit.Owner == CurrentPlayer)
 								SwapUnits(tile);
 				}
-				else
-				_audio.PlaySFX(SFX.Unit_CantMoveThere);
+				// else
+				// _audio.PlaySFX(SFX.Unit_CantMoveThere);
 				break;
 
 			case GamePhase.CombatPhase:
@@ -303,15 +304,15 @@ public class Logic : MonoBehaviour {
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer)
 							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
-					else
-						_audio.PlaySFX(SFX.Unit_CantMoveThere);
+					// else
+						// _audio.PlaySFX(SFX.Unit_CantMoveThere);
 				}
 				break;
 		}
 	}
 
 	private void SwapUnits(Tile tile) {
-		_audio.PlaySFX(SFX.Unit_Move);
+		// _audio.PlaySFX(SFX.Unit_Move);
 		Tile prevTile = grid.TileAt(selectedUnit.Index);
 		Unit swap = tile.OccupyingUnit;
 		swap.MoveTowardsTile(prevTile);

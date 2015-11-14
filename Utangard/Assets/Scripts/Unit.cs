@@ -217,7 +217,7 @@ public class Unit : MonoBehaviour {
 			}
 		}
 
-		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 
 		ringSprite.color = new Color(0,0,0,0);
 	}
@@ -232,7 +232,7 @@ public class Unit : MonoBehaviour {
 		owner.RemoveUnit(this);
 		Debug.Log(type + " was sacrificed");
 		DestroyImmediate(this.gameObject);
-		Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
+		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Death);
 	}
 
 	public void OnMouseOver(){
