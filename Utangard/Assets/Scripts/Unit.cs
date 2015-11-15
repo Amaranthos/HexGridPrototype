@@ -539,6 +539,7 @@ public class Unit : MonoBehaviour {
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
+			Logic.Inst.gameObject.GetComponent<ParticleManager>().RemoveParticle(unit.owner.hero.passive.ID);
 		}
 
 		StartCoroutine("SpawnBuffText",buffsToSpawn);

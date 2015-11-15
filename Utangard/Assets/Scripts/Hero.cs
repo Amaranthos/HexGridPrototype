@@ -71,7 +71,6 @@ public class Hero : MonoBehaviour {
 			if(active1.target == AimType.Single || active1.target == AimType.TargetAoE){
 				Logic.Inst.HighlightAbilityRange(active1,hero.Index);
 				Logic.Inst.gamePhase = GamePhase.TargetPhase;
-				Debug.Log("Entering Target Mode!");
 			}
 			else if(active1.target == AimType.All || active1.target == AimType.SelfAoE){
 				CastAbility();
