@@ -236,15 +236,16 @@ public class Logic : MonoBehaviour {
 					hero.CastAbility();
 					gamePhase = GamePhase.CombatPhase;
 				}
-
-				print("TARGETING COMPLETE!");
 				break;
 		}
 	}
 
 	private void TileLClicked(Tile tile) {
-		if(tile.OccupyingUnit){
+		if(selectedUnit){
 			selectedUnit.OnDeselect();
+		}
+
+		if(tile.OccupyingUnit){
 			UnitSelected(tile.OccupyingUnit);
 		}
 

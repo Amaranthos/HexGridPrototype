@@ -317,6 +317,7 @@ public class Unit : MonoBehaviour {
 //				buffsToSpawn.Add(new TextSpawn(bff,this,false));
 //				SpawnBuffText(bff,this,false);
 				finishedBuffs.Add(currentBuffs[i].ID);
+				Logic.Inst.gameObject.GetComponent<ParticleManager>().RemoveParticle(currentBuffs[i].skillID);
 			}
 		}
 
@@ -346,7 +347,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(!bff.oneShot && newBuff){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.debuff,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
+			nEft = new Buff(bff.ID,bff.skillID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.debuff,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
 			currentBuffs.Add(nEft);
 		}
 
@@ -420,7 +421,7 @@ public class Unit : MonoBehaviour {
 
 		for(int i = 0; i < currentBuffs.Count; i++){
 			Buff buff = currentBuffs[i];
-			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.debuff,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
+			Buff tempBuff = new Buff(buff.ID,buff.skillID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.debuff,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
 
 			proced = 0;
 			if(buff.buffType == BuffType.Adjacent){
@@ -538,6 +539,7 @@ public class Unit : MonoBehaviour {
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
+			Logic.Inst.gameObject.GetComponent<ParticleManager>().RemoveParticle(unit.owner.hero.passive.ID);
 		}
 
 		StartCoroutine("SpawnBuffText",buffsToSpawn);

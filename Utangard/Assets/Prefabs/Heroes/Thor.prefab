@@ -4050,6 +4050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   passive:
+    ID: 9
     abilityType: 0
     target: 2
     passive: 2
@@ -4062,6 +4063,7 @@ MonoBehaviour:
     affected: 000000000100000002000000
     buffs:
     - ID: 15
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 1
@@ -4078,8 +4080,9 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 0}
+    skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
   active1:
+    ID: 10
     abilityType: 0
     target: 1
     passive: 0
@@ -4104,6 +4107,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 16
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 5
@@ -4121,6 +4125,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 17
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 5
@@ -4139,6 +4144,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
   active2:
+    ID: 11
     abilityType: 0
     target: 0
     passive: 0
@@ -4151,6 +4157,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 18
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 2
@@ -4168,6 +4175,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 19
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 9
@@ -4184,8 +4192,9 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 0}
+    skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -5120,6 +5129,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: active1.skillParticle
+      value: 
+      objectReference: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+    - target: {fileID: 0}
+      propertyPath: passive.ID
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.ID
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.ID
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.skillParticle
+      value: 
+      objectReference: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+    - target: {fileID: 0}
+      propertyPath: active2.skillParticle
       value: 
       objectReference: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
     m_RemovedComponents: []
