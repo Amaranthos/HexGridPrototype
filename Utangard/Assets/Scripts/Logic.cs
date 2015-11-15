@@ -344,7 +344,6 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void SetupGameWorld(int[][] armies) {
-		GUIManager.inst.AssignPortraits();
 		grid.GenerateGrid();
 
 		players[0].placementBoundaries.x = grid.LeastX;

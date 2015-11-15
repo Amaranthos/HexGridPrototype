@@ -6,8 +6,30 @@ public class UnitGUI : MonoBehaviour {
 
 	public StatsGUI stats;
 	public Button sacrifice;
+	public GameObject[] abilities;
 	private Unit unit;
 	[SerializeField]private int player;
+
+	void Start(){
+		switch(Logic.Inst.Players[player].hero.type){
+		case HeroType.Eir:
+			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[0].ability1;
+			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[0].ability2;
+			break;
+		case HeroType.Heimdal:
+			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[1].ability1;
+			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[1].ability2;
+			break;
+		case HeroType.Skadi:
+			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[2].ability1;
+			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[2].ability2;
+			break;
+		case HeroType.Thor:
+			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[3].ability1;
+			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[3].ability2;
+			break;
+		}
+	}
 
 	// Update is called once per frame
 	void Update () {

@@ -14,6 +14,12 @@ public class GUIManager : MonoBehaviour {
 		public Sprite sword;
 	}
 
+	[System.Serializable]public struct AbilityIcons{
+		public string hero;
+		public Sprite ability1;
+		public Sprite ability2;
+	}
+
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
@@ -25,6 +31,8 @@ public class GUIManager : MonoBehaviour {
 	public List<Image> playerAvatars;
 	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
 	public UnitPortraits[] unitPortraits;
+	public AbilityIcons[] abilityIcons;
+
 
 	//private Animator GUICanvasAnimator;
 	private bool p1Turn;
@@ -91,47 +99,6 @@ public class GUIManager : MonoBehaviour {
 		else
 		{
 			panel.IsOpen = true;
-		}
-	}
-		
-	public void AssignPortraits()
-	{
-		switch(Logic.Inst.Players[0].hero.type)
-		{
-		case HeroType.Eir:
-			playerAvatars[0].sprite = heroPortraits[0];
-			break;
-		case HeroType.Heimdal:
-			playerAvatars[0].sprite = heroPortraits[1];
-			break;
-		case HeroType.Skadi:
-			playerAvatars[0].sprite = heroPortraits[2];
-			break;
-		case HeroType.Thor:
-			playerAvatars[0].sprite = heroPortraits[3];
-			break;
-		case HeroType.Sam:
-			playerAvatars[0].sprite = heroPortraits[4];
-			break;
-		}
-		
-		switch(Logic.Inst.Players[1].hero.type)
-		{
-		case HeroType.Eir:
-			playerAvatars[1].sprite = heroPortraits[0];
-			break;
-		case HeroType.Heimdal:
-			playerAvatars[1].sprite = heroPortraits[1];
-			break;
-		case HeroType.Skadi:
-			playerAvatars[1].sprite = heroPortraits[2];
-			break;
-		case HeroType.Thor:
-			playerAvatars[1].sprite = heroPortraits[3];
-			break;
-		case HeroType.Sam:
-			playerAvatars[1].sprite = heroPortraits[4];
-			break;
 		}
 	}
 }

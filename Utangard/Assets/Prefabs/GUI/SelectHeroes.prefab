@@ -11710,7 +11710,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186070}
-  m_LocalRotation: {x: 0, y: .981892705, z: 0, w: .189437985}
+  m_LocalRotation: {x: 0, y: .989399433, z: 0, w: -.145219862}
   m_LocalPosition: {x: -3, y: -122, z: -43}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children:
@@ -18038,7 +18038,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 28f13f92624dd9d4793a1d67c85078d2, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -18618,6 +18618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   passive:
+    ID: 0
     abilityType: 0
     target: 2
     passive: 2
@@ -18630,6 +18631,7 @@ MonoBehaviour:
     affected: 000000000100000002000000
     buffs:
     - ID: 15
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 1
@@ -18648,6 +18650,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 0}
   active1:
+    ID: 0
     abilityType: 0
     target: 1
     passive: 0
@@ -18672,6 +18675,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 16
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 5
@@ -18689,6 +18693,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 17
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 5
@@ -18707,6 +18712,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
   active2:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -18719,6 +18725,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 18
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 2
@@ -18736,6 +18743,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 19
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 9
@@ -18754,6 +18762,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 0}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -18807,7 +18816,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -18892,7 +18901,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -19227,6 +19236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   passive:
+    ID: 0
     abilityType: 0
     target: 2
     passive: 3
@@ -19239,6 +19249,7 @@ MonoBehaviour:
     affected: 000000000100000002000000
     buffs:
     - ID: 0
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 0
@@ -19257,6 +19268,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 132700, guid: 721f372b65eb3e34ba2c1a4c0b015fac, type: 2}
   active1:
+    ID: 0
     abilityType: 0
     target: 1
     passive: 0
@@ -19281,6 +19293,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 1
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 0
@@ -19298,6 +19311,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 2
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 2
@@ -19316,6 +19330,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 171444, guid: 1dceaaab0de53ac4da9ac44bd26eb745, type: 2}
   active2:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -19328,6 +19343,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 3
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 0
@@ -19345,6 +19361,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 4
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 1
@@ -19362,6 +19379,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 5
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 2
@@ -19380,6 +19398,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 133468, guid: 1f05b43afaf6e0949a2349a5c990f10a, type: 2}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 2
     passive: 3
@@ -19392,6 +19411,7 @@ MonoBehaviour:
     affected: 000000000100000002000000
     buffs:
     - ID: 0
+      skillID: 0
       buffType: 0
       duration: 0
       effectType: 0
@@ -19877,7 +19897,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 28f13f92624dd9d4793a1d67c85078d2, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -20028,6 +20048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   passive:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 1
@@ -20040,6 +20061,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 6
+      skillID: 0
       buffType: 1
       duration: 0
       effectType: 2
@@ -20058,6 +20080,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 135714, guid: 6e8b0234abe7e614c8a2e7551e38c5e0, type: 2}
   active1:
+    ID: 0
     abilityType: 1
     target: 1
     passive: 0
@@ -20094,6 +20117,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 6
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 2
@@ -20112,6 +20136,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 135714, guid: 6e8b0234abe7e614c8a2e7551e38c5e0, type: 2}
   active2:
+    ID: 0
     abilityType: 0
     target: 2
     passive: 0
@@ -20124,6 +20149,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 7
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 2
@@ -20141,6 +20167,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 8
+      skillID: 0
       buffType: 0
       duration: 2
       effectType: 6
@@ -20159,6 +20186,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 0}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -20280,7 +20308,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -20546,7 +20574,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 28f13f92624dd9d4793a1d67c85078d2, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -20640,7 +20668,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -20671,7 +20699,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 28f13f92624dd9d4793a1d67c85078d2, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -20797,7 +20825,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 28f13f92624dd9d4793a1d67c85078d2, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -21090,7 +21118,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -21164,7 +21192,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 916f27373e047d04b9814a5ce7a5da51, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -21241,6 +21269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   passive:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 1
@@ -21253,6 +21282,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 9
+      skillID: 0
       buffType: 2
       duration: 0
       effectType: 3
@@ -21271,6 +21301,7 @@ MonoBehaviour:
       bioType: 1
     skillParticle: {fileID: 142058, guid: 109a28e9f298674458581a1df4c6db3e, type: 2}
   active1:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -21283,6 +21314,7 @@ MonoBehaviour:
     affected: 00000000
     buffs:
     - ID: 10
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 4
@@ -21300,6 +21332,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 11
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 6
@@ -21318,6 +21351,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 182518, guid: 12921e245b794aa4a892ebf46e19769e, type: 2}
   active2:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -21330,6 +21364,7 @@ MonoBehaviour:
     affected: 00000000
     buffs:
     - ID: 12
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 1
@@ -21347,6 +21382,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 13
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 4
@@ -21364,6 +21400,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 14
+      skillID: 0
       buffType: 1
       duration: 1
       effectType: 1
@@ -21382,6 +21419,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 164664, guid: 14195aac6db384840a159176ef58e319, type: 2}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
