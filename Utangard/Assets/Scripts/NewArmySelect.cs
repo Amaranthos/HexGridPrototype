@@ -117,9 +117,8 @@ public class NewArmySelect : MonoBehaviour {
 		}
 		if(timesP1picked == pickPerArmy && timesP2picked == pickPerArmy){
 			print("Start Game");
-			pickPerTurn = -1;
-			//int[][] doubleArray;
-			//Logic.Inst.SetupGameWorld(doubleArray);
+			pickPerTurn = 3;
+			//Logic.Inst.SetupGameWorld(playerArmies);
 		}
 	}
 
