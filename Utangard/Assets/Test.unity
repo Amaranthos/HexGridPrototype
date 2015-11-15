@@ -4215,6 +4215,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: feb47a9d5ff24ac4b85ea7306f52f6eb, type: 3}
   - {fileID: 21300000, guid: a261e2e927050474d8136e534c589050, type: 3}
   - {fileID: 21300000, guid: 906140d6383627d488a047e9baa510a4, type: 3}
+  unitPortraits:
+  - hero: Eir
+    none: {fileID: 21300000, guid: 4902a5bc300753a4182145b3144641d7, type: 3}
+    axe: {fileID: 21300000, guid: 8aa908ea09d77f84088a4631a728da04, type: 3}
+    spear: {fileID: 21300000, guid: aee5840d9aed1ed458b564b426506157, type: 3}
+    sword: {fileID: 21300000, guid: 179f4ad9eb7a0ff4283c3d114e2d4009, type: 3}
+  - hero: Heimdall
+    none: {fileID: 21300000, guid: 8c8a7137cdc0c9a429add0d8a4f9f3e7, type: 3}
+    axe: {fileID: 21300000, guid: c7582a8ee807e064aa23bc0c22dc0fbd, type: 3}
+    spear: {fileID: 21300000, guid: e43fe367d9e74544f85d2ba2d29aa867, type: 3}
+    sword: {fileID: 21300000, guid: 5bbd51f4560856c4886f4aaf00e20bea, type: 3}
+  - hero: Skadi
+    none: {fileID: 21300000, guid: 9021284434344074aaf55670143f12a1, type: 3}
+    axe: {fileID: 21300000, guid: e829054b66f73d74fb67ac1bf3439097, type: 3}
+    spear: {fileID: 21300000, guid: 714b824804ab73544aa42d18cf7c05da, type: 3}
+    sword: {fileID: 21300000, guid: 01e383a35027dd04486bc7b99a3864a1, type: 3}
+  - hero: Thor
+    none: {fileID: 21300000, guid: 2e7ae8ac0784c1941a60634f2e649cda, type: 3}
+    axe: {fileID: 21300000, guid: e98ffa93ed2d0e64bb5d2e3da6058c66, type: 3}
+    spear: {fileID: 21300000, guid: 62499138b4e2cd045ac52ecb3857e660, type: 3}
+    sword: {fileID: 21300000, guid: 8472360e8d1df8849bf604a587641631, type: 3}
 --- !u!114 &884955400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,6 +7189,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1311736994 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 119734, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
+  m_PrefabInternal: {fileID: 1311736993}
 --- !u!1 &1313628062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7494,10 +7519,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1474387483}
---- !u!1 &1481102547 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 179202, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
-  m_PrefabInternal: {fileID: 1277729075}
 --- !u!1 &1510481805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8852,7 +8873,7 @@ Prefab:
     - target: {fileID: 11410550, guid: 25202af8db597d640a068724c7796ac9, type: 2}
       propertyPath: armySelect
       value: 
-      objectReference: {fileID: 1481102547}
+      objectReference: {fileID: 1311736994}
     - target: {fileID: 22469398, guid: 25202af8db597d640a068724c7796ac9, type: 2}
       propertyPath: m_AnchorMin.y
       value: 0

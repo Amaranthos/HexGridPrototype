@@ -6,6 +6,14 @@ using System.Collections.Generic;
 
 public class GUIManager : MonoBehaviour {
 
+	[System.Serializable]public struct UnitPortraits{
+		public string hero;
+		public Sprite none;
+		public Sprite axe;
+		public Sprite spear;
+		public Sprite sword;
+	}
+
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
@@ -16,6 +24,7 @@ public class GUIManager : MonoBehaviour {
 	public Text CombatLog;
 	public List<Image> playerAvatars;
 	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
+	public UnitPortraits[] unitPortraits;
 
 	//private Animator GUICanvasAnimator;
 	private bool p1Turn;
