@@ -130,11 +130,11 @@ public class Logic : MonoBehaviour {
 			if(selectedUnit && selectedUnit.CanMove){
 				Altar altar = GetAltar(selectedUnit.Index);
 				if(altar){
-					sacrifice.interactable = true;
+					//sacrifice.interactable = true;
 				}
 			}
 			else {
-				sacrifice.interactable = false;
+				//sacrifice.interactable = false;
 			}
 		}
 

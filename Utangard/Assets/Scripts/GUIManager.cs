@@ -46,7 +46,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void LogCombatResult(string res)
 	{
-		CombatLog.text += (res + "\n");	
+		//CombatLog.text += (res + "\n");	
 	}
 
 	public void DisplayPredictions(Unit unitHovered){
@@ -60,7 +60,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void UpdatePlayerGUI(int currentPlayer){
 
-		CombatLog.text = "";
+		//CombatLog.text = "";
 		guiAnim.ResetStates();
 		if(currentPlayer == 0){
 			guiAnim.SetP1Turn();

@@ -7,6 +7,8 @@ public class AbilityDescriptions : MonoBehaviour {
 	public int playerNum;
 	public GameObject toolTip;
 	public string[] descriptions = new string[3];
+	public Sprite[] icons = new Sprite[2];
+	public Image icon;
 
 	public Text toolTipText;
 	CSVParser file = new CSVParser();
@@ -18,15 +20,36 @@ public class AbilityDescriptions : MonoBehaviour {
 		descriptions[0] = Logic.Inst.Players[playerNum].hero.GetPassiveText();
 		descriptions[1] = Logic.Inst.Players[playerNum].hero.GetAbility1Text();
 		descriptions[2] = Logic.Inst.Players[playerNum].hero.GetAbility2Text();
+		//set Icons
+		switch(Logic.Inst.Players[playerNum].hero.type){
+		case HeroType.Eir:
+			icons[0] = GUIManager.inst.abilityIcons[0].ability1;
+			icons[1] = GUIManager.inst.abilityIcons[0].ability2;
+			break;
+		case HeroType.Heimdal:
+			icons[0] = GUIManager.inst.abilityIcons[1].ability1;
+			icons[1] = GUIManager.inst.abilityIcons[1].ability2;
+			break;
+		case HeroType.Skadi:
+			icons[0] = GUIManager.inst.abilityIcons[2].ability1;
+			icons[1] = GUIManager.inst.abilityIcons[2].ability2;
+			break;
+		case HeroType.Thor:
+			icons[0] = GUIManager.inst.abilityIcons[3].ability1;
+			icons[1] = GUIManager.inst.abilityIcons[3].ability2;
+			break;
+		}
 	}
 
 	public void DisplayAbility1(){
 		descriptions[1] = Logic.Inst.Players[playerNum].hero.GetAbility1Text();
+		icon.sprite = icons[0];
 		toolTip.SetActive(true);
 		toolTipText.text = descriptions[1];
 	}
 	public void DisplayAbility2(){
 		descriptions[2] = Logic.Inst.Players[playerNum].hero.GetAbility2Text();
+		icon.sprite = icons[1];
 		toolTip.SetActive(true);
 		toolTipText.text = descriptions[2];
 	}
