@@ -44,8 +44,6 @@ public class Logic : MonoBehaviour {
 
 	public int turnsForVictory;
 
-	public List<Material> playerColours = new List<Material>();
-
 	//For Damage/Heal Popups
 	public GameObject damageText;
 	public GameObject healText;
@@ -349,10 +347,6 @@ public class Logic : MonoBehaviour {
 		players[0].placementBoundaries.x = grid.LeastX;
 		players[1].placementBoundaries.x = grid.GreatestX - players[1].placementBoundaries.w + 1;
 
-		for(int i = 0; i < players.Length; i++){
-			players[i].playerColour = players[i].hero.gameObject.transform.FindChild("window washer/tunic").GetComponent<SkinnedMeshRenderer>().sharedMaterials[0].color;
-		}
-		
 		mapGen.GenerateMap(grid.TilesList);
 
 		for (int i = 0; i < armies.Length; i++){
@@ -368,6 +362,8 @@ public class Logic : MonoBehaviour {
 
 			players[i].SpawnHero(tiles[armies[i].Length], i);
 		}
+
+		gameObject.GetComponent<ClothingManager>().SetSkins();
 
 		for(int i = 0; i < players.Length; i++){
 			if(players[i].hero.passive.passive == PassiveType.Buff){
