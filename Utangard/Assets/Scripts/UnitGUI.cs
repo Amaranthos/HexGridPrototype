@@ -171,7 +171,7 @@ public class UnitGUI : MonoBehaviour {
 			}
 		}
 		else{
-			print ("Getting Hit");
+			// print ("Getting Hit");
 			switch(Logic.Inst.Players[player].hero.type){
 			case HeroType.Eir:
 				GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.unitPortraits[0].none;

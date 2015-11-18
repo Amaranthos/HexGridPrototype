@@ -208,18 +208,6 @@ public class MapGen : MonoBehaviour {
 				altar.transform.parent = corner.transform;
 				Logic.Inst.Altars.Add(altar);
 				corner.HasAltar = true;
-
-
-				bool altarHasOwner = false;
-				for(int j = 0; j < Logic.Inst.Players.Length; j++){
-					if(Logic.Inst.Players[j].placementBoundaries.CoordsInRange(altar.Index)){
-						altarHasOwner = true;
-						altar.PlayerCaptureAltar(Logic.Inst.Players[j]);
-					}
-				}
-				if(!altarHasOwner){
-					altar.PlayerCaptureAltar(Logic.Inst.Players[i%Logic.Inst.Players.Length]);
-				}
 			}
 
 			index = new CubeIndex(-index.z, -index.x, -index.y);

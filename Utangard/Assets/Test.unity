@@ -550,7 +550,7 @@ MonoBehaviour:
   proceduralFillMethod: 0
   smoothing: 2
   voronoiPoints: 1
-  mountainPercent: 0
+  mountainPercent: 50
   hillPercent: 50
   biomeChangeChance: 60
   altarGenMethod: 1
@@ -714,7 +714,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -793,7 +792,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 056706653d8849642ba1ffcb6f2d6e85, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -911,11 +909,13 @@ MonoBehaviour:
   startingFaith: 0
   startingCommandPoints: 6
   playerColour: {r: 1, g: 0, b: 0, a: 1}
-  placementBoundaries:
-    x: 0
-    w: 5
+  placementField: []
   wrathMode: 0
   army: []
+  units:
+    spears: 0
+    axes: 0
+    swords: 0
   hero: {fileID: 0}
   capturedAltars: []
 --- !u!114 &401091261 stripped
@@ -1151,7 +1151,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a1bb2b9086903bd4fb1adcaa00416c3d, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1333,7 +1332,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1890,7 +1888,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 170ab26d0edb9df47a466b4f4bada744, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1999,7 +1996,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 798307311f7403d45abab870934dc8c7, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2024,6 +2020,7 @@ GameObject:
   - 114: {fileID: 884955403}
   - 114: {fileID: 884955397}
   - 114: {fileID: 884955404}
+  - 114: {fileID: 884955405}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2444,6 +2441,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 56b483f253c01804cbe9fa3dffcf0d97, type: 2}
   - {fileID: 2100000, guid: e4dd75560bcb70f409a32919fc89d7f6, type: 2}
   - {fileID: 2100000, guid: c30821a5cbb1fb8469f5b6609f35324c, type: 2}
+--- !u!114 &884955405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884955392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bb41080cfd65c4a82ef8483ecde4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  form: 0
 --- !u!114 &902147001 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11442020, guid: d30870bd1470afa4ab20b0b8f1136d63,
@@ -2594,7 +2603,7 @@ Prefab:
     - target: {fileID: 11410550, guid: 25202af8db597d640a068724c7796ac9, type: 2}
       propertyPath: armySelect
       value: 
-      objectReference: {fileID: 1311736994}
+      objectReference: {fileID: 1926719575}
     - target: {fileID: 480068, guid: 25202af8db597d640a068724c7796ac9, type: 2}
       propertyPath: m_LocalRotation.x
       value: -.612370253
@@ -3279,6 +3288,14 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 692991054}
+    - target: {fileID: 11430294, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
+      propertyPath: pickPerArmy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430294, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
+      propertyPath: pickPerTurn
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
   m_IsPrefabParent: 0
@@ -3461,10 +3478,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1311736994 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 119734, guid: 60522fc0626fcaa4ea5dae4d993911eb, type: 2}
-  m_PrefabInternal: {fileID: 1311736993}
 --- !u!1 &1356460362 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 138942, guid: d30870bd1470afa4ab20b0b8f1136d63, type: 2}
@@ -4184,12 +4197,15 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 47b241b958ceb1b428644a47f805cdf7, type: 2}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_StereoMirrorMode: 0
+--- !u!1 &1926719575 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179202, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
+  m_PrefabInternal: {fileID: 1277729075}
 --- !u!1 &1945298497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,11 +4250,13 @@ MonoBehaviour:
   startingFaith: 0
   startingCommandPoints: 6
   playerColour: {r: 0, g: 0, b: 1, a: 1}
-  placementBoundaries:
-    x: 0
-    w: 5
+  placementField: []
   wrathMode: 0
   army: []
+  units:
+    spears: 0
+    axes: 0
+    swords: 0
   hero: {fileID: 0}
   capturedAltars: []
 --- !u!114 &1985628453 stripped

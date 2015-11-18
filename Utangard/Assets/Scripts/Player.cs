@@ -10,11 +10,12 @@ public class Player : MonoBehaviour {
 	public int startingCommandPoints;
 	public Color playerColour;
 
-	public Field placementBoundaries;
+	public List<CubeIndex> placementField;
 
 	public bool wrathMode = false;
 
 	public List<Unit> army = new List<Unit>();
+	public Army units;
 	public Hero hero;
 
 	public List<Altar> capturedAltars;
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SpawnUnit(UnitType type, Tile tile, int dir) {
+		tile.SetTileType(tile.Biome, TerrainType.Plains);
+
 		GameObject temp = (GameObject)Instantiate(Logic.Inst.UnitList.GetUnit(type), tile.transform.position, Quaternion.Euler(Vector3.up * (dir * 180 + 90)));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
@@ -64,10 +67,8 @@ public class Player : MonoBehaviour {
 
 	public List<Tile> PlacementField() {
 		List<Tile> tiles = new List<Tile>();
-		for(int i = 0; i < Logic.Inst.Grid.TilesList.Count; i++){
-			if (placementBoundaries.CoordsInRange(Logic.Inst.Grid.TilesList[i].Index)){
-				tiles.Add(Logic.Inst.Grid.TilesList[i]);
-			}
+		for(int i = 0; i < placementField.Count; i++){
+			tiles.Add(Logic.Inst.Grid.TileAt(placementField[i]));
 		}
 		return tiles;
 	}

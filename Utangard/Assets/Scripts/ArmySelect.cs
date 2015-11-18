@@ -53,7 +53,7 @@ public class ArmySelect : MonoBehaviour {
 		}
 
 
-		Logic.Inst.SetupGameWorld(armies);
+		// Logic.Inst.SetupGameWorld(armies);
 		gameObject.SetActive(false);
 	}
 

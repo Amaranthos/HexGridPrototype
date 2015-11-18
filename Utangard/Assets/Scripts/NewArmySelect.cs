@@ -3,33 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class NewArmySelect : MonoBehaviour {
-
-	[System.Serializable]public struct RuneStones{
-		public GameObject[] p1Stones;
-		public GameObject[] p2Stones;
-	}
-
-	[System.Serializable]public struct Materials{
-		public Material[] spearMaterials;
-		public Material[] swordMaterials;
-		public Material[] axeMaterials;
-	}
-
-	[System.Serializable]public struct GUI{
-		public Text title;
-		public Text subTitle;
-		public Text selectedNum;
-		public Button continueButton;
-		public GameObject[] P1descriptions;
-		public GameObject[] P2descriptions;
-	}
-
-	[System.Serializable]public struct Army{
-		public int spears;
-		public int axes;
-		public int swords;
-	}
-
 	public enum SelectionStage{
 		player1,
 		player2,
@@ -116,9 +89,9 @@ public class NewArmySelect : MonoBehaviour {
 			pickedThisTurn = 0;
 		}
 		if(timesP1picked == pickPerArmy && timesP2picked == pickPerArmy){
-			print("Start Game");
 			pickPerTurn = 3;
-			//Logic.Inst.SetupGameWorld(playerArmies);
+			Logic.Inst.SetupGameWorld(playerArmies);
+			gameObject.SetActive(false);
 		}
 	}
 
@@ -209,4 +182,34 @@ public class NewArmySelect : MonoBehaviour {
 		UpdateMaterials();
 	}
 	#endregion
+}
+
+[System.Serializable]
+public struct RuneStones{
+	public GameObject[] p1Stones;
+	public GameObject[] p2Stones;
+}
+
+[System.Serializable]
+public struct Materials{
+	public Material[] spearMaterials;
+	public Material[] swordMaterials;
+	public Material[] axeMaterials;
+}
+
+[System.Serializable]
+public struct GUI{
+	public Text title;
+	public Text subTitle;
+	public Text selectedNum;
+	public Button continueButton;
+	public GameObject[] P1descriptions;
+	public GameObject[] P2descriptions;
+}
+
+[System.Serializable]
+public struct Army{
+	public int spears;
+	public int axes;
+	public int swords;
 }

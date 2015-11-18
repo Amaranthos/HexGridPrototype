@@ -285,7 +285,7 @@ public class Logic : MonoBehaviour {
 	private void UnitRClicked(Unit unit) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-				if (CurrentPlayer.placementBoundaries.CoordsInRange(unit.Index))
+				if (CurrentPlayer.placementField.Contains(unit.Index))
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer)
 						if (grid.TileAt(unit.Index).IsPassable){
 							SwapUnits(grid.TileAt(unit.Index));
@@ -308,7 +308,7 @@ public class Logic : MonoBehaviour {
 	private void TileRClicked(Tile tile) {
 		switch (gamePhase) {
 			case GamePhase.PlacingPhase:
-				if(CurrentPlayer.placementBoundaries.CoordsInRange(tile.Index)){
+				if(CurrentPlayer.placementField.Contains(tile.Index)){
 					if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove)
 						if (tile.IsPassable)
 							if (!tile.OccupyingUnit)
@@ -347,31 +347,33 @@ public class Logic : MonoBehaviour {
 		prevTile.OccupyingUnit = swap;
 	}
 
-	public void SetupGameWorld(int[][] armies) {
+	public void SetupGameWorld(Army[] armies) {
+
+		// Build grid and set tile modifiers
 		grid.GenerateGrid();
-
-		players[0].placementBoundaries.x = grid.LeastX;
-		players[1].placementBoundaries.x = grid.GreatestX - players[1].placementBoundaries.w + 1;
-
 		mapGen.GenerateMap(grid.TilesList);
+
+		// Setup inital formations
 		formations.Map = grid.TilesList;		
+		formations.InitField(armies);
 
-		//Set formations grid here
-		formations.SpawnTroops(players[0], armies[0], 1);
+		AssignAltarsInitial();
 
-		for (int i = 0; i < armies.Length; i++){
-			List<Tile> tiles = players[i].PlacementField();
+		// Old spawning
 
-			if(i == 0){
-				tiles.Reverse();
-			}
+		// for (int i = 0; i < armies.Length; i++){
+		// 	List<Tile> tiles = players[i].PlacementField();
 
-			for (int j = 0; j < armies[i].Length; j++){
-				players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
-			}
+		// 	if(i == 0){
+		// 		tiles.Reverse();
+		// 	}
 
-			players[i].SpawnHero(tiles[armies[i].Length], i);
-		}
+		// 	for (int j = 0; j < armies[i].Length; j++){
+		// 		players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
+		// 	}
+
+		// 	players[i].SpawnHero(tiles[armies[i].Length], i);
+		// }
 
 		gameObject.GetComponent<ClothingManager>().SetSkins();
 
@@ -637,6 +639,21 @@ public class Logic : MonoBehaviour {
 	private void AddFaithPerAltar() {
 		for(int j = 0; j < CurrentPlayer.capturedAltars.Count; j++){
 			CurrentPlayer.Faith += faithPtsPerAltar;
+		}
+	}
+
+	private void AssignAltarsInitial() {
+		for(int i = 0; i < altars.Count; i++){
+			bool altarHasOwner = false;
+			for(int j = 0; j < Logic.Inst.Players.Length; j++){
+				if(Logic.Inst.Players[j].placementField.Contains(altars[i].Index)){
+					altarHasOwner = true;
+					altars[i].PlayerCaptureAltar(Logic.Inst.Players[j]);
+				}
+			}
+			if(!altarHasOwner){
+				altars[i].PlayerCaptureAltar(Logic.Inst.Players[i%Logic.Inst.Players.Length]);
+			}	
 		}
 	}
 
