@@ -10,16 +10,20 @@ public struct HeroStruct {
 	public string desc;
 	public string passive;
 	public string active1;
+	public Sprite active1Icon;
 	public string active2;
+	public Sprite active2Icon;
 	public bool isTaken;
 
-	public HeroStruct(GameObject model, string name, string desc, string passive, string active1, string active2) {
+	public HeroStruct(GameObject model, string name, string desc, string passive, string active1, string active2, Sprite Icon1, Sprite Icon2) {
 		this.model = model;
 		this.name = name;
 		this.desc = desc;
 		this.passive = passive;
 		this.active1 = active1;
+		this.active1Icon = Icon1;
 		this.active2 = active2;
+		this.active2Icon = Icon2;
 		isTaken = false;
 	}
 }
@@ -29,6 +33,7 @@ public class NewHeroSelect : MonoBehaviour {
 	public HeroStruct[] heroes;
 	//public GameObject[] indexArrows;
 	public GameObject[] heroCircles;
+	public Image[] tooltipIcons;
 	public int numHeroes;
 
 	public GameObject armySelect;
@@ -110,6 +115,7 @@ public class NewHeroSelect : MonoBehaviour {
 	void UpdateHeroInfo(){
 		ToggleModels((int)selectedHero);
 		SetInfo((int)selectedHero);
+		SetIcon((int)selectedHero);
 		ToggleCircleColors((int)selectedHero);
 	}
 
@@ -119,6 +125,11 @@ public class NewHeroSelect : MonoBehaviour {
 		textBoxes[2].text = heroes[i].passive; // Set Passive Text
 		textBoxes[3].text = heroes[i].active1; // Set Ability 1 Text
 		textBoxes[4].text = heroes[i].active2; // Set Ability 2 Text
+	}
+
+	void SetIcon(int i){
+		tooltipIcons[0].sprite = heroes[i].active1Icon;
+		tooltipIcons[1].sprite = heroes[i].active2Icon;
 	}
 
 	void ToggleModels(int i){

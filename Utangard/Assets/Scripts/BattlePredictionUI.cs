@@ -6,8 +6,10 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	[System.Serializable]
 	public struct PredictionText{
+		public Text damageText;
 		public Text chanceText;
 		public Text breakdownText;
+
 	};
 
 	public GameObject[] panels = new GameObject[3];
@@ -27,8 +29,10 @@ public class BattlePredictionUI : MonoBehaviour {
 	void Update () {
 		if(Logic.Inst.gamePhase == GamePhase.CombatPhase){
 			if(isOpen){
-				UpdateStats();
-				UpdateBreakdown();
+				if(Logic.Inst.SelectedUnit != null){
+					UpdateStats();
+					UpdateBreakdown();
+				}
 			}
 			else{
 				ClearStats();
@@ -56,8 +60,8 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	void UpdateBreakdown(){
 		// 0 == attacker, 1 == defender
-		predictText[0].chanceText.text = "Hit Rate: " + ChanceToHit(0).ToString() + "%";
-		predictText[1].chanceText.text = "Hit Rate: " + ChanceToHit(1).ToString() + "%";
+		predictText[0].chanceText.text = ChanceToHit(0).ToString() + "%";
+		predictText[1].chanceText.text = ChanceToHit(1).ToString() + "%";
 
 		//wipe text
 		predictText[0].breakdownText.text = "";
@@ -105,102 +109,67 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	int DamageDealt(int attacker){ // 0 == attacker, 1 == defender
 		if(attacker == 0){
-			return (int)(Logic.Inst.SelectedUnit.TotalAttack - (1 -((magicX * hoverUnit.TotalDefense)/(magicY + hoverUnit.TotalDefense))));
+			//          Mathf.RoundToInt(atk.TotalAttack * (1 - ((defNumA * def.TotalDefense)/(defNumB + def.TotalDefense))));
+			return (int)Mathf.RoundToInt((Logic.Inst.SelectedUnit.TotalAttack * (1 -((magicX * hoverUnit.TotalDefense)/(magicY + hoverUnit.TotalDefense)))));
 		}
 		else{
-			return (int)(hoverUnit.TotalAttack - (1 -((magicX * Logic.Inst.SelectedUnit.TotalDefense)/(magicY + Logic.Inst.SelectedUnit.TotalDefense))));
+			return (int)Mathf.RoundToInt((hoverUnit.TotalAttack * (1 -((magicX * Logic.Inst.SelectedUnit.TotalDefense)/(magicY + Logic.Inst.SelectedUnit.TotalDefense)))));
 		}
 	}
 
 	void UpdateStats(){
 		// update Attacker stats
-		predictionStats[0].unitName.text = Logic.Inst.SelectedUnit.name;
-		predictionStats[0].hp.text = Logic.Inst.SelectedUnit.CurrentHitpoints.ToString() + " > " +
-			(Logic.Inst.SelectedUnit.CurrentHitpoints - DamageDealt(1)) + " (<color=red>-" + DamageDealt(1) + "</color>)";
+		if(Logic.Inst.SelectedUnit != null){
+			predictionStats[0].unitName.text = Logic.Inst.SelectedUnit.name;
+			predictionStats[0].hp.text = Logic.Inst.SelectedUnit.CurrentHitpoints.ToString();
+			predictText[0].damageText.text = DamageDealt(0).ToString();
 
-		if(Logic.Inst.SelectedUnit.TotalAttack > Logic.Inst.SelectedUnit.attack){
-			predictionStats[0].atk.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalAttack.ToString() + "</color>";
-		}
-		else if(Logic.Inst.SelectedUnit.TotalAttack < Logic.Inst.SelectedUnit.attack){
-			predictionStats[0].atk.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalAttack.ToString() + "</color>";
-		}
-		else{
-			predictionStats[0].atk.text = Logic.Inst.SelectedUnit.TotalAttack.ToString();
-		}
-		
-		if(Logic.Inst.SelectedUnit.TotalDefense > Logic.Inst.SelectedUnit.defense){
-			predictionStats[0].def.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalDefense.ToString() + "</color>";
-		}
-		else if(Logic.Inst.SelectedUnit.TotalDefense < Logic.Inst.SelectedUnit.defense){
-			predictionStats[0].def.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalDefense.ToString() + "</color>";
-		}
-		else{
-			predictionStats[0].def.text = Logic.Inst.SelectedUnit.TotalDefense.ToString();
-		}
-		
-		if(Logic.Inst.SelectedUnit.TotalHitChance > Logic.Inst.SelectedUnit.hitChance){
-			predictionStats[0].hit.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalHitChance.ToString() + "%</color>";
-		}
-		else if(Logic.Inst.SelectedUnit.TotalHitChance < Logic.Inst.SelectedUnit.hitChance){
-			predictionStats[0].hit.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalHitChance.ToString() + "%</color>";
-		}
-		else{
-			predictionStats[0].hit.text = Logic.Inst.SelectedUnit.TotalHitChance.ToString();
-		}
-		
-		if(Logic.Inst.SelectedUnit.TotalDodgeChance > Logic.Inst.SelectedUnit.TotalDodgeChance){
-			predictionStats[0].dodge.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalDodgeChance.ToString() + "%</color>";
-		}
-		else if(Logic.Inst.SelectedUnit.TotalDodgeChance < Logic.Inst.SelectedUnit.dodgeChance){
-			predictionStats[0].dodge.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalDodgeChance.ToString() + "%</color>";
-		}
-		else{
-			predictionStats[0].dodge.text = Logic.Inst.SelectedUnit.TotalDodgeChance.ToString();
+			if(Logic.Inst.SelectedUnit.TotalAttack > Logic.Inst.SelectedUnit.attack){
+				predictionStats[0].atk.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalAttack.ToString() + "</color>";
+			}
+			else if(Logic.Inst.SelectedUnit.TotalAttack < Logic.Inst.SelectedUnit.attack){
+				predictionStats[0].atk.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalAttack.ToString() + "</color>";
+			}
+			else{
+				predictionStats[0].atk.text = Logic.Inst.SelectedUnit.TotalAttack.ToString();
+			}
+			
+			if(Logic.Inst.SelectedUnit.TotalDefense > Logic.Inst.SelectedUnit.defense){
+				predictionStats[0].def.text = "<color=green>" + Logic.Inst.SelectedUnit.TotalDefense.ToString() + "</color>";
+			}
+			else if(Logic.Inst.SelectedUnit.TotalDefense < Logic.Inst.SelectedUnit.defense){
+				predictionStats[0].def.text = "<color=red>" + Logic.Inst.SelectedUnit.TotalDefense.ToString() + "</color>";
+			}
+			else{
+				predictionStats[0].def.text = Logic.Inst.SelectedUnit.TotalDefense.ToString();
+			}
 		}
 				
 		// update Defender Stats
-		predictionStats[1].unitName.text = hoverUnit.name;
-		predictionStats[1].hp.text = hoverUnit.CurrentHitpoints.ToString() + " > " +
-			(hoverUnit.CurrentHitpoints - DamageDealt(0)) + " (<color=red>-" + DamageDealt(0) + "</color>)";
+		if(hoverUnit != null){
+			predictionStats[1].unitName.text = hoverUnit.name;
+			predictionStats[1].hp.text = hoverUnit.CurrentHitpoints.ToString();
+			predictText[1].damageText.text = DamageDealt(1).ToString();
 
-		if(hoverUnit.TotalAttack > hoverUnit.attack){
-			predictionStats[1].atk.text = "<color=green>" + hoverUnit.TotalAttack.ToString() + "</color>";
-		}
-		else if(hoverUnit.TotalAttack < hoverUnit.attack){
-			predictionStats[1].atk.text = "<color=red>" + hoverUnit.TotalAttack.ToString() + "</color>";
-		}
-		else{
-			predictionStats[1].atk.text = hoverUnit.TotalAttack.ToString();
-		}
-		
-		if(hoverUnit.TotalDefense > hoverUnit.defense){
-			predictionStats[1].def.text = "<color=green>" + hoverUnit.TotalDefense.ToString() + "</color>";
-		}
-		else if(hoverUnit.TotalDefense < hoverUnit.defense){
-			predictionStats[1].def.text = "<color=red>" + hoverUnit.ToString() + "</color>";
-		}
-		else{
-			predictionStats[1].def.text = hoverUnit.TotalDefense.ToString();
-		}
-		
-		if(hoverUnit.TotalHitChance > hoverUnit.hitChance){
-			predictionStats[1].hit.text = "<color=green>" + hoverUnit.TotalHitChance.ToString() + "%</color>";
-		}
-		else if(hoverUnit.TotalHitChance < hoverUnit.hitChance){
-			predictionStats[1].hit.text = "<color=red>" + hoverUnit.TotalHitChance.ToString() + "%</color>";
-		}
-		else{
-			predictionStats[1].hit.text = hoverUnit.TotalHitChance.ToString();
-		}
-		
-		if(hoverUnit.TotalDodgeChance > hoverUnit.TotalDodgeChance){
-			predictionStats[1].dodge.text = "<color=green>" + hoverUnit.TotalDodgeChance.ToString() + "%</color>";
-		}
-		else if(hoverUnit.TotalDodgeChance < hoverUnit.dodgeChance){
-			predictionStats[1].dodge.text = "<color=red>" + hoverUnit.ToString() + "%</color>";
-		}
-		else{
-			predictionStats[1].dodge.text = hoverUnit.TotalDodgeChance.ToString();
+			if(hoverUnit.TotalAttack > hoverUnit.attack){
+				predictionStats[1].atk.text = "<color=green>" + hoverUnit.TotalAttack.ToString() + "</color>";
+			}
+			else if(hoverUnit.TotalAttack < hoverUnit.attack){
+				predictionStats[1].atk.text = "<color=red>" + hoverUnit.TotalAttack.ToString() + "</color>";
+			}
+			else{
+				predictionStats[1].atk.text = hoverUnit.TotalAttack.ToString();
+			}
+			
+			if(hoverUnit.TotalDefense > hoverUnit.defense){
+				predictionStats[1].def.text = "<color=green>" + hoverUnit.TotalDefense.ToString() + "</color>";
+			}
+			else if(hoverUnit.TotalDefense < hoverUnit.defense){
+				predictionStats[1].def.text = "<color=red>" + hoverUnit.ToString() + "</color>";
+			}
+			else{
+				predictionStats[1].def.text = hoverUnit.TotalDefense.ToString();
+			}
 		}
 	}
 
@@ -209,14 +178,12 @@ public class BattlePredictionUI : MonoBehaviour {
 		predictionStats[0].hp.text = "";
 		predictionStats[0].atk.text = "";
 		predictionStats[0].def.text = "";
-		predictionStats[0].hit.text = "";
-		predictionStats[0].dodge.text = "";
+
 
 		predictionStats[1].unitName.text = "";
 		predictionStats[1].hp.text = "";
 		predictionStats[1].atk.text = "";
 		predictionStats[1].def.text = "";
-		predictionStats[1].hit.text = "";
-		predictionStats[1].dodge.text = "";
+
 	}
 }

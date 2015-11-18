@@ -37,7 +37,6 @@ public class Altar : MonoBehaviour {
 			for(int i = 0; i < transform.childCount; i++){
 				GameObject child = transform.GetChild(i).gameObject;
 				if(child.name == "Motes" || child.name == "Glow"){
-					print ("GOT ONE");
 					child.GetComponent<ParticleSystem>().startColor = owner.playerColour;
 				}
 			}

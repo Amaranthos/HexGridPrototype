@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class Skill{
+	public int ID;
 	public AbilityType abilityType;
 	public AimType target;	//When in wrath mode, some abilities have an added AoE effect. May need to apply AoE to effects, rather than to abilites.
 	public PassiveType passive;
@@ -17,7 +18,8 @@ public class Skill{
 	public List<Buff> buffs = new List<Buff>();
 	public GameObject skillParticle;
 	
-	public Skill(AbilityType at, AimType tt, bool hf, int cst, int crng, int arng, List<Target> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf, GameObject skp){
+	public Skill(int id, AbilityType at, AimType tt, bool hf, int cst, int crng, int arng, List<Target> targs, PassiveType pass, Unit hro, List<UnitType> afd, List<Buff> buf, GameObject skp){
+		ID = id;
 		abilityType = at;
 		target = tt;
 		hitFoe = hf;
@@ -96,6 +98,7 @@ public class Skill{
 public class Buff{
 	//For All Buffs
 	public int ID;
+	public int skillID;
 	public BuffType buffType;
 	public int duration;
 	public EffectType effectType;
@@ -119,8 +122,9 @@ public class Buff{
 	public TerrainType terType;
 	public BiomeType bioType;
 
-	public Buff(int id, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool proc, bool db, bool os, AdjacencyType at, List<UnitType> ut,int tp,bool ib, TerrainType tt, BiomeType bi){
+	public Buff(int id, int skl, BuffType bt, int dur, EffectType et, int str, bool wrt, TargetType targ, bool perm, bool proc, bool db, bool os, AdjacencyType at, List<UnitType> ut,int tp,bool ib, TerrainType tt, BiomeType bi){
 		ID = id;
+		skillID = skl;
 		buffType = bt;
 		duration = dur;
 		effectType = et;

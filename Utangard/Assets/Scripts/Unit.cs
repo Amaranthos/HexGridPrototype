@@ -270,39 +270,39 @@ public class Unit : MonoBehaviour {
 		return ret.Contains(tile);
 	}
 
-	public void SetUnitMaterial(){
-		if(gameObject.transform.childCount > 0){
-			Transform model = gameObject.transform.GetChild(0);
-			for(int i = 0; i < model.childCount; i++){
-				Transform child = model.GetChild(i);
-
-				if(child.name == "body"){
-					if(!child.GetComponent<SkinnedMeshRenderer>()){
-						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
-						for(int j = 0; j < meshRend.sharedMaterials.Length; j++){
-							if(meshRend.sharedMaterials[j].name == "Default Colour"){
-								Material[] mats = meshRend.sharedMaterials;
-								mats[j] = new Material(meshRend.sharedMaterials[j]);
-								mats[j].color = Owner.playerColour;
-								meshRend.sharedMaterials = mats;
-							}
-						}
-					}
-					else{
-						SkinnedMeshRenderer meshRend = child.GetComponent<SkinnedMeshRenderer>();
-						for(int k = 0; k < meshRend.sharedMaterials.Length; k++){
-							if(meshRend.sharedMaterials[k].name == "Default Colour"){
-								Material[] mats = meshRend.sharedMaterials;
-								mats[k] = new Material(meshRend.sharedMaterials[k]);
-								mats[k].color = Owner.playerColour;
-								meshRend.sharedMaterials = mats;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+//	public void SetUnitMaterial(){
+//		if(gameObject.transform.childCount > 0){
+//			Transform model = gameObject.transform.GetChild(0);
+//			for(int i = 0; i < model.childCount; i++){
+//				Transform child = model.GetChild(i);
+//
+//				if(child.name == "body"){
+//					if(!child.GetComponent<SkinnedMeshRenderer>()){
+//						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
+//						for(int j = 0; j < meshRend.sharedMaterials.Length; j++){
+//							if(meshRend.sharedMaterials[j].name == "Default Colour"){
+//								Material[] mats = meshRend.sharedMaterials;
+//								mats[j] = new Material(meshRend.sharedMaterials[j]);
+//								mats[j].color = Owner.playerColour;
+//								meshRend.sharedMaterials = mats;
+//							}
+//						}
+//					}
+//					else{
+//						SkinnedMeshRenderer meshRend = child.GetComponent<SkinnedMeshRenderer>();
+//						for(int k = 0; k < meshRend.sharedMaterials.Length; k++){
+//							if(meshRend.sharedMaterials[k].name == "Default Colour"){
+//								Material[] mats = meshRend.sharedMaterials;
+//								mats[k] = new Material(meshRend.sharedMaterials[k]);
+//								mats[k].color = Owner.playerColour;
+//								meshRend.sharedMaterials = mats;
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
 
 	public void OnTurnStart(){
 		// GameObject tempText;
@@ -317,6 +317,7 @@ public class Unit : MonoBehaviour {
 //				buffsToSpawn.Add(new TextSpawn(bff,this,false));
 //				SpawnBuffText(bff,this,false);
 				finishedBuffs.Add(currentBuffs[i].ID);
+				Logic.Inst.gameObject.GetComponent<ParticleManager>().RemoveParticle(currentBuffs[i].skillID);
 			}
 		}
 
@@ -346,7 +347,7 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(!bff.oneShot && newBuff){
-			nEft = new Buff(bff.ID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.debuff,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
+			nEft = new Buff(bff.ID,bff.skillID,bff.buffType,bff.duration,bff.effectType,bff.strength,bff.wrath,bff.targetType,bff.permanent,bff.procced,bff.debuff,bff.oneShot,bff.adjType,bff.adjUnits,bff.timesProcced,bff.isBio,bff.terType,bff.bioType);
 			currentBuffs.Add(nEft);
 		}
 
@@ -420,7 +421,7 @@ public class Unit : MonoBehaviour {
 
 		for(int i = 0; i < currentBuffs.Count; i++){
 			Buff buff = currentBuffs[i];
-			Buff tempBuff = new Buff(buff.ID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.debuff,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
+			Buff tempBuff = new Buff(buff.ID,buff.skillID,buff.buffType,buff.duration,buff.effectType,0,buff.wrath,buff.targetType,buff.permanent,buff.procced,buff.debuff,buff.oneShot,buff.adjType,buff.adjUnits,buff.timesProcced,buff.isBio,buff.terType,buff.bioType);
 
 			proced = 0;
 			if(buff.buffType == BuffType.Adjacent){
@@ -538,6 +539,7 @@ public class Unit : MonoBehaviour {
 			unit.currentBuffs[buffToRemove].ChangeValue(unit,false);
 			unit.currentBuffs.RemoveAt(buffToRemove);
 			buffToRemove = -1;
+			Logic.Inst.gameObject.GetComponent<ParticleManager>().RemoveParticle(unit.owner.hero.passive.ID);
 		}
 
 		StartCoroutine("SpawnBuffText",buffsToSpawn);

@@ -4711,6 +4711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   passive:
+    ID: 6
     abilityType: 0
     target: 0
     passive: 1
@@ -4723,6 +4724,7 @@ MonoBehaviour:
     affected: 00000000010000000200000003000000
     buffs:
     - ID: 9
+      skillID: 0
       buffType: 2
       duration: 0
       effectType: 3
@@ -4741,6 +4743,7 @@ MonoBehaviour:
       bioType: 1
     skillParticle: {fileID: 142058, guid: 109a28e9f298674458581a1df4c6db3e, type: 2}
   active1:
+    ID: 7
     abilityType: 0
     target: 0
     passive: 0
@@ -4753,6 +4756,7 @@ MonoBehaviour:
     affected: 00000000
     buffs:
     - ID: 10
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 4
@@ -4770,6 +4774,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 11
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 6
@@ -4788,6 +4793,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 182518, guid: 12921e245b794aa4a892ebf46e19769e, type: 2}
   active2:
+    ID: 8
     abilityType: 0
     target: 0
     passive: 0
@@ -4800,6 +4806,7 @@ MonoBehaviour:
     affected: 00000000
     buffs:
     - ID: 12
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 1
@@ -4817,6 +4824,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 13
+      skillID: 0
       buffType: 0
       duration: 1
       effectType: 4
@@ -4834,6 +4842,7 @@ MonoBehaviour:
       terType: 0
       bioType: 0
     - ID: 14
+      skillID: 0
       buffType: 1
       duration: 1
       effectType: 1
@@ -4852,6 +4861,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 164664, guid: 14195aac6db384840a159176ef58e319, type: 2}
   currentAbility:
+    ID: 0
     abilityType: 0
     target: 0
     passive: 0
@@ -5820,6 +5830,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: active2.buffs.Array.data[1].debuff
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: passive.ID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active1.ID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: active2.ID
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
