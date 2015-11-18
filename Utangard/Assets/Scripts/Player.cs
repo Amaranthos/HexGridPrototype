@@ -47,6 +47,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SpawnHero(Tile tile, int dir) {
+		tile.SetTileType(tile.Biome, TerrainType.Plains);
+		
 		GameObject temp = (GameObject)Instantiate(Logic.Inst.HeroList.GetHero(hero.type), tile.transform.position, Quaternion.Euler(Vector3.up * (dir * 180 + 90)));
 		Unit unit = temp.GetComponent<Unit>();
 		unit.Index = tile.Index;
