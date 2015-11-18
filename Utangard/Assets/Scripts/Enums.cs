@@ -115,5 +115,7 @@ public enum SFX {
 public enum UnitFormations {
 	Aggressive,
 	Defensive,
-	Skirmish
+	SkirmishAgg,
+	SkirmishDef,
+	Glorious
 }
