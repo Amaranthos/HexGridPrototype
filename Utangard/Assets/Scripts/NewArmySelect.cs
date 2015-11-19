@@ -33,6 +33,7 @@ public class NewArmySelect : MonoBehaviour {
 
 		gui.subTitle.text = "Select " + pickPerTurn + " warriors";
 		UpdateMaterials();
+		AssignHeroBanners();
 
 		// Turn P1 stuff off, turn on P2 stuff
 		for(int i = 0; i < gui.P1descriptions.Length; i++)
@@ -45,15 +46,7 @@ public class NewArmySelect : MonoBehaviour {
 		}
 	}
 
-	public void UpdateMaterials(){
-		unitStones.p1Stones[0].GetComponent<MeshRenderer>().material = materials.swordMaterials[playerArmies[0].swords];
-		unitStones.p1Stones[1].GetComponent<MeshRenderer>().material = materials.axeMaterials[playerArmies[0].axes];
-		unitStones.p1Stones[2].GetComponent<MeshRenderer>().material = materials.spearMaterials[playerArmies[0].spears];
 
-		unitStones.p2Stones[0].GetComponent<MeshRenderer>().material = materials.swordMaterials[playerArmies[1].swords];
-		unitStones.p2Stones[1].GetComponent<MeshRenderer>().material = materials.axeMaterials[playerArmies[1].axes];
-		unitStones.p2Stones[2].GetComponent<MeshRenderer>().material = materials.spearMaterials[playerArmies[1].spears];
-	}
 
 	public void Update(){
 		gui.selectedNum.text = pickedThisTurn + "/" + pickPerTurn + " Selected";
@@ -141,6 +134,63 @@ public class NewArmySelect : MonoBehaviour {
 		}
 	}
 
+	public void AssignHeroBanners(){
+		switch(Logic.Inst.Players[0].hero.type){
+		case HeroType.Eir:
+			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			break;
+		case HeroType.Heimdal:
+			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			break;
+		case HeroType.Skadi:
+			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			break;
+		case HeroType.Thor:
+			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			break;
+		}
+		switch(Logic.Inst.Players[1].hero.type){
+		case HeroType.Eir:
+			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+			break;
+		case HeroType.Heimdal:
+			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+			break;
+		case HeroType.Skadi:
+			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+			break;
+		case HeroType.Thor:
+			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+			break;
+		}
+	}
+
+	public void UpdateMaterials(){
+		unitStones.p1Stones[0].GetComponent<MeshRenderer>().material = materials.swordMaterials[playerArmies[0].swords];
+		unitStones.p1Stones[1].GetComponent<MeshRenderer>().material = materials.axeMaterials[playerArmies[0].axes];
+		unitStones.p1Stones[2].GetComponent<MeshRenderer>().material = materials.spearMaterials[playerArmies[0].spears];
+		
+		unitStones.p2Stones[0].GetComponent<MeshRenderer>().material = materials.swordMaterials[playerArmies[1].swords];
+		unitStones.p2Stones[1].GetComponent<MeshRenderer>().material = materials.axeMaterials[playerArmies[1].axes];
+		unitStones.p2Stones[2].GetComponent<MeshRenderer>().material = materials.spearMaterials[playerArmies[1].spears];
+	}
+	
 	#region Add/Remove Units
 	public void AddSword(){
 		if(pickedThisTurn < pickPerTurn){
@@ -234,6 +284,8 @@ public class NewArmySelect : MonoBehaviour {
 public struct RuneStones{
 	public GameObject[] p1Stones;
 	public GameObject[] p2Stones;
+	public GameObject[] p1Banners;
+	public GameObject[] p2Banners;
 }
 
 [System.Serializable]
@@ -241,6 +293,7 @@ public struct Materials{
 	public Material[] spearMaterials;
 	public Material[] swordMaterials;
 	public Material[] axeMaterials;
+	public Material[] heroMaterials;
 }
 
 [System.Serializable]

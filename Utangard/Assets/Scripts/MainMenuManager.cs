@@ -16,4 +16,8 @@ public class MainMenuManager : MonoBehaviour {
 	public void LoadGame(){
 		Application.LoadLevel("Test");
 	}
+
+	public void QuitGame(){
+		Application.Quit();
+	}
 }
