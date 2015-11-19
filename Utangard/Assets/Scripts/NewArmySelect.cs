@@ -33,6 +33,16 @@ public class NewArmySelect : MonoBehaviour {
 
 		gui.subTitle.text = "Select " + pickPerTurn + " warriors";
 		UpdateMaterials();
+
+		// Turn P1 stuff off, turn on P2 stuff
+		for(int i = 0; i < gui.P1descriptions.Length; i++)
+		{
+			gui.P1descriptions[i].SetActive(true);
+		}
+		for(int i = 0; i < gui.P2descriptions.Length; i++)
+		{
+			gui.P2descriptions[i].SetActive(false);
+		}
 	}
 
 	public void UpdateMaterials(){
@@ -46,7 +56,6 @@ public class NewArmySelect : MonoBehaviour {
 	}
 
 	public void Update(){
-		gui.title.text = "Player 1, Assemble your warriors!";
 		gui.selectedNum.text = pickedThisTurn + "/" + pickPerTurn + " Selected";
 		if(pickedThisTurn == pickPerTurn){
 			gui.continueButton.interactable = true;
@@ -75,6 +84,13 @@ public class NewArmySelect : MonoBehaviour {
 				}
 			}
 		}
+
+		gui.playerArmyCounts[0].text = "Player 1:   " + 
+			(playerArmies[0].axes + playerArmies[0].spears + playerArmies[0].swords + 1) + "/10 units total";
+
+		gui.playerArmyCounts[1].text = "Player 2:   " + 
+			(playerArmies[1].axes + playerArmies[1].spears + playerArmies[1].swords + 1) + "/10 units total";
+
 	}
 
 	public void Continue(){
@@ -82,11 +98,41 @@ public class NewArmySelect : MonoBehaviour {
 			whosPicking = SelectionStage.player2;
 			timesP1picked += 1;
 			pickedThisTurn = 0;
+			if(timesP2picked == pickPerArmy-1){
+				gui.title.text = "Player 2, Assemble your final warriors!";
+			}
+			else{
+				gui.title.text = "Player 2, Assemble your warriors!";
+			}
+			// Turn P1 stuff off, turn on P2 stuff
+			for(int i = 0; i < gui.P1descriptions.Length; i++)
+			{
+				gui.P1descriptions[i].SetActive(false);
+			}
+			for(int i = 0; i < gui.P2descriptions.Length; i++)
+			{
+				gui.P2descriptions[i].SetActive(true);
+			}
 		}
 		else{
 			whosPicking = SelectionStage.player1;
 			timesP2picked += 1;
 			pickedThisTurn = 0;
+			if(timesP1picked == pickPerArmy-1){
+				gui.title.text = "Player 1, Assemble your final warriors!";
+			}
+			else{
+				gui.title.text = "Player 1, Assemble your warriors!";
+			}
+			// Turn P1 stuff on, turn off P2 stuff
+			for(int i = 0; i < gui.P1descriptions.Length; i++)
+			{
+				gui.P1descriptions[i].SetActive(true);
+			}
+			for(int i = 0; i < gui.P2descriptions.Length; i++)
+			{
+				gui.P2descriptions[i].SetActive(false);
+			}
 		}
 		if(timesP1picked == pickPerArmy && timesP2picked == pickPerArmy){
 			pickPerTurn = 3;
@@ -205,6 +251,7 @@ public struct GUI{
 	public Button continueButton;
 	public GameObject[] P1descriptions;
 	public GameObject[] P2descriptions;
+	public Text[] playerArmyCounts;
 }
 
 [System.Serializable]
