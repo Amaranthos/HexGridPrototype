@@ -1186,13 +1186,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: .25
-  zoomRange: {x: 25, y: 60}
+  zoomRange: {x: 25, y: 55}
   zoomSpeed: 5
   horizSpinSpeed: 25
   vertSpinSpeed: 20
   vertMin: -25
   vertMax: 0
   spinMultiplier: 1.5
+  minX: -15
+  maxX: 15
+  minY: -15
+  maxY: 15
 --- !u!1 &721296349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2172,11 @@ MonoBehaviour:
   - {fileID: 11480754, guid: b6b1190d518a00c4f96bd41dc1360433, type: 2}
   - {fileID: 11462428, guid: 7e82a21bc7f160e45add8107949b39f2, type: 2}
   - {fileID: 11432278, guid: ae7baa54cb309754e9a8360de3d498ff, type: 2}
+  heroColors:
+  - {r: 0, g: .677999973, b: 0, a: 1}
+  - {r: .944999993, g: .514999986, b: 0, a: 1}
+  - {r: 0, g: .61232233, b: .772058845, a: 1}
+  - {r: .735294104, g: 0, b: 0, a: 1}
 --- !u!114 &884955402
 MonoBehaviour:
   m_ObjectHideFlags: 0

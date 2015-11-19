@@ -381,7 +381,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
-		 enviro.SetActive(true);
+		enviro.SetActive(true);
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
@@ -644,6 +644,7 @@ public class Logic : MonoBehaviour {
 		for(int i = 0; i < altars.Count; i++){
 			bool altarHasOwner = false;
 			for(int j = 0; j < Logic.Inst.Players.Length; j++){
+				players[j].SetPlayerColor();
 				if(Logic.Inst.Players[j].placementField.Contains(altars[i].Index)){
 					altarHasOwner = true;
 					altars[i].PlayerCaptureAltar(Logic.Inst.Players[j]);

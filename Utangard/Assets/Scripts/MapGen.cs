@@ -174,6 +174,8 @@ public class MapGen : MonoBehaviour {
 		int altarRatio = Logic.Inst.numAltars /  Logic.Inst.Players.Length;
 
 		for(int i = 0; i <  Logic.Inst.Players.Length; i++) {
+			Logic.Inst.Players[i].SetPlayerColor();
+
 			List<Tile> field =  Logic.Inst.Players[i].PlacementField();
 
 			for(int j = 0; j < altarRatio; j++){

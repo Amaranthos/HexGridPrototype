@@ -99,6 +99,27 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void SetPlayerColor(){
+		List<Color> cols = GameObject.Find("Manager").GetComponent<HeroList>().heroColors;
+		switch(hero.type){
+		case HeroType.Eir:
+			playerColour = cols[0];
+			break;
+		case HeroType.Heimdal:
+			playerColour = cols[1];
+			break;
+		case HeroType.Skadi:
+			playerColour = cols[2];
+			break;
+		case HeroType.Thor:
+			playerColour = cols[3];
+			break;
+		default:
+			print("Is this even a hero?");
+			break;
+		}
+	}
+
 	#region Getters and Setters
 	public string PlayerName {
 		get { return playerName; }

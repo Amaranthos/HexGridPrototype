@@ -18,10 +18,10 @@ public class Vision : MonoBehaviour {
 	private Camera cam;
 	private float camSize;
 
-	private float minX;
-	private float maxX;
-	private float minY;
-	private float maxY;
+	public float minX;
+	public float maxX;
+	public float minY;
+	public float maxY;
 
 	private float mapX;
 	private float mapY;
@@ -32,7 +32,7 @@ public class Vision : MonoBehaviour {
 		mapX = Logic.Inst.Grid.mapWidth * (Logic.Inst.Grid.hexRadius);
 		mapY = Logic.Inst.Grid.mapHeight * (Logic.Inst.Grid.hexRadius);
 
-		CalculateCameraBounds();
+//		CalculateCameraBounds();
 
 		origVertSpin = vertSpinSpeed;
 		origHorizSpin = horizSpinSpeed;
@@ -74,12 +74,11 @@ public class Vision : MonoBehaviour {
 
 		cam.fieldOfView -= zoomSpeed * 10 * input;
 		cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomRange.x, zoomRange.y);
-		
 
-		// if(input != 0.0f){
-		// 	StopCoroutine(Zoom(input));
-		// 	StartCoroutine(Zoom(input));
-		// }
+//		 if(input != 0.0f){
+//		 	StopCoroutine(Zoom(input));
+//		 	StartCoroutine(Zoom(input));
+//		 }
 	}
 
 	private IEnumerator Zoom(float input){
@@ -130,14 +129,14 @@ public class Vision : MonoBehaviour {
 
 	private void LateUpdate() {
 
-		Vector3 pos = transform.localPosition;
+		Vector3 pos = transform.parent.position;
 
 		pos.x = Mathf.Clamp(pos.x, minX, maxX);
 		pos.z = Mathf.Clamp(pos.z, minY, maxY);
 
-		transform.localPosition = pos;
+		transform.parent.position = pos;
 
-		CalculateCameraBounds();
+//		CalculateCameraBounds();
 	}
 
 	private void CalculateCameraBounds() {
