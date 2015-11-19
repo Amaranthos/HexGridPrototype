@@ -15,6 +15,40 @@ public class Audio : MonoBehaviour {
 		AudioClip[] clips = sfx.Find(item=>item.sound == sound).clips; 
 		source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
 	}
+
+	public void OnUnitDeath(Unit unit, Unit killer){
+		if(killer.type == UnitType.Swordsmen){
+			PlaySFX(SFX.WomanKill);
+		}
+		else if(killer.type == UnitType.Hero && (killer.Owner.hero.type == HeroType.Eir || killer.Owner.hero.type == HeroType.Skadi)){
+			PlaySFX(SFX.WomanKill);
+		}
+		else{
+			PlaySFX(SFX.MaleKill);
+		}
+
+		if(unit.type == UnitType.Swordsmen){
+			PlaySFX(SFX.WomanDeath);
+		}
+		else if(unit.type == UnitType.Hero && (unit.Owner.hero.type == HeroType.Eir || unit.Owner.hero.type == HeroType.Skadi)){
+			PlaySFX(SFX.WomanDeath);
+		}
+		else{
+			PlaySFX(SFX.MaleDeath);
+		}
+	}
+
+	public void OnUnitAttack(Unit Attacker, Unit Defender){
+
+	}
+
+	public void OnUnitMove(){
+
+	}
+
+	public void OnGameEnd(){
+
+	}
 }
 
 [System.Serializable]

@@ -26,40 +26,6 @@ public class Combat : MonoBehaviour {
 		attaking = true;
 
 		StartCoroutine("timedCombat");
-
-//		GameObject tempText = null;
-//		Logic.Inst.Audio.PlaySFX(SFX.Rune_Roll);
-
-//		int hitRoll = Random.Range(1, 100);
-//		int hitChance = attacker.TotalHitChance - defender.TotalDodgeChance;
-//		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));
-
-		// Debug.Log("Attacker Hit Chance: " + attacker.TotalHitChance + " Defender Dodge Chance: " + defender.TotalDodgeChance + " Total Hit Chance: " + hitChance + " Roll: " + hitRoll);
-
-//		if (hitRoll >= 100-hitChance) {
-//			int damage = attacker.TotalAttack - defender.TotalDefense;
-//
-//			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
-//			tempText.GetComponent<TextMesh>().text = "- " + damage;
-//
-//			if (damage > 0) {
-//				Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
-//				defender.CurrentHitpoints -= damage;
-//				Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
-//				GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " does " + damage + " to " + defender.Owner.PlayerName + "'s " + defender.type);
-//				
-//				if (defender.CurrentHitpoints <= 0)
-//					defender.UnitKilled();
-//			}
-//		}
-//		else{
-//			Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
-//			Debug.Log(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
-//			GUIManager.inst.LogCombatResult(attacker.Owner.PlayerName + "'s " + attacker.type + " misses");
-//
-//			tempText = Instantiate(damageText,(defender.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
-//			tempText.GetComponent<TextMesh>().text = "MISS!";
-//		}
 	}
 
 	public IEnumerator timedCombat(){
@@ -92,8 +58,10 @@ public class Combat : MonoBehaviour {
 
 				tempText.GetComponent<TextMesh>().text = "- " + damage;
 				
-				if (def.CurrentHitpoints <= 0)
+				if (def.CurrentHitpoints <= 0){
 					def.UnitKilled();
+//					Logic.Inst.Audio.OnUnitDeath(def,atk);
+				}
 			}
 			else{
 				tempText.GetComponent<TextMesh>().text = "- 0";
