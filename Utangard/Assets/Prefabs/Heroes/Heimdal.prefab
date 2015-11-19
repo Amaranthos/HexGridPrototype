@@ -1004,6 +1004,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 445200}
   - 95: {fileID: 9532748}
+  - 114: {fileID: 11431480}
   m_Layer: 0
   m_Name: Anim_Heimdall
   m_TagString: Untagged
@@ -2955,7 +2956,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.3000002, y: 53, z: -68}
+  m_LocalPosition: {x: -18.3452454, y: 11.1491203, z: -64.7888412}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 445200}
@@ -3589,7 +3590,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178268}
-  m_LocalRotation: {x: -.612370253, y: .353552401, z: .612373769, w: -.353555828}
+  m_LocalRotation: {x: -.612370312, y: .353552431, z: .612373829, w: -.353555858}
   m_LocalPosition: {x: -.155046985, y: .0337300003, z: -.430152416}
   m_LocalScale: {x: 1.00000024, y: 1.00000048, z: 1.00000024}
   m_Children: []
@@ -4292,7 +4293,7 @@ Animator:
   m_GameObject: {fileID: 143296}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3f916268880a4f6479694b8012f12859, type: 3}
-  m_Controller: {fileID: 9100000, guid: 70a00d223a66f8045bbb61f19494df67, type: 2}
+  m_Controller: {fileID: 9100000, guid: a11a62c36c589d94ab2be1bf9a941bf6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4365,6 +4366,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11431480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0085c919db859dc40bea9f5366f0f087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11434450
 MonoBehaviour:
   m_ObjectHideFlags: 1

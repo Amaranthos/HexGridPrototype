@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 412840}
   - 95: {fileID: 9551464}
+  - 114: {fileID: 11471656}
   m_Layer: 0
   m_Name: Anim_Thor
   m_TagString: Untagged
@@ -2450,7 +2451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.618, y: 53, z: -68}
+  m_LocalPosition: {x: -18.5843964, y: 10.5201263, z: -60.2059326}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 412840}
@@ -3898,7 +3899,7 @@ Animator:
   m_GameObject: {fileID: 113708}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 42a3bdb2fd0759c4b9dcd46f42c3466c, type: 3}
-  m_Controller: {fileID: 9100000, guid: d5354a200f7698f40b3f88a1d117b52b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 37f4b70805504f848b977c6d46cddf15, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4213,6 +4214,17 @@ MonoBehaviour:
   costIncrease: .100000001
   hero: {fileID: 0}
   targets: []
+--- !u!114 &11471656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0085c919db859dc40bea9f5366f0f087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11480296
 MonoBehaviour:
   m_ObjectHideFlags: 1

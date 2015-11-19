@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 484184}
   - 95: {fileID: 9582084}
+  - 114: {fileID: 11434924}
   m_Layer: 0
   m_Name: Anim_Skadi
   m_TagString: Untagged
@@ -3935,7 +3936,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.9610004, y: 53, z: -68}
+  m_LocalPosition: {x: -18.5348511, y: 10.5668001, z: -62.6863289}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 484184}
@@ -4522,7 +4523,7 @@ Animator:
   m_GameObject: {fileID: 116456}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5b33bd94b2b92c64b893d80bb035a063, type: 3}
-  m_Controller: {fileID: 9100000, guid: 95822683695c5fa4c820f7be41a0b08e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15d998acbcdd96343b315d324869f3b6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4674,6 +4675,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11434924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0085c919db859dc40bea9f5366f0f087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11473060
 MonoBehaviour:
   m_ObjectHideFlags: 1

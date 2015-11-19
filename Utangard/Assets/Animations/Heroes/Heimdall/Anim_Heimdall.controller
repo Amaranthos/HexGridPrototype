@@ -13,13 +13,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: InGame
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -868,10 +868,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 110712988}
+      first: {fileID: 110780758}
       second: []
     data:
-      first: {fileID: 110780758}
+      first: {fileID: 110712988}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -168, y: 24, z: 0}
