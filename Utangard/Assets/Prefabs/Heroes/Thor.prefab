@@ -2205,7 +2205,7 @@ Transform:
   m_GameObject: {fileID: 113708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 453382}
   - {fileID: 449484}
@@ -2450,7 +2450,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.7989426, y: 17.4950008, z: -33.7949982}
+  m_LocalPosition: {x: -15.618, y: 53, z: -68}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 412840}
@@ -4080,7 +4080,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+    skillParticle: {fileID: 136388, guid: 20f98bc8f278ba34a92d5c0133d5ba9d, type: 2}
   active1:
     ID: 10
     abilityType: 0
@@ -4192,7 +4192,7 @@ MonoBehaviour:
       isBio: 0
       terType: 0
       bioType: 0
-    skillParticle: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+    skillParticle: {fileID: 116940, guid: 543f3720e4b888d46b03def17c2c65d1, type: 2}
   currentAbility:
     ID: 0
     abilityType: 0
@@ -5146,11 +5146,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: passive.skillParticle
       value: 
-      objectReference: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+      objectReference: {fileID: 136388, guid: 20f98bc8f278ba34a92d5c0133d5ba9d, type: 2}
     - target: {fileID: 0}
       propertyPath: active2.skillParticle
       value: 
-      objectReference: {fileID: 177622, guid: 6afa4825f58bc454f931ccf04d17a040, type: 2}
+      objectReference: {fileID: 116940, guid: 543f3720e4b888d46b03def17c2c65d1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185972}

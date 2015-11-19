@@ -115,8 +115,6 @@ public class Logic : MonoBehaviour {
 			Debug.LogError("Music Player does not exist!");
 
 		Camera.main.GetComponent<Vision>().enabled = false;
-		
-		// enviro.SetActive(false);
 	}
 
 	private void Start() {
@@ -383,7 +381,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
-		// enviro.SetActive(true);
+		 enviro.SetActive(true);
 		SwitchGamePhase(GamePhase.PlacingPhase);
 	}
 
