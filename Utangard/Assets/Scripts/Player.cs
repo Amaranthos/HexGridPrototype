@@ -120,6 +120,14 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void ClearFormation() {
+		foreach(Unit unit in army){
+			Destroy(unit.gameObject);
+		}
+
+		army.Clear ();
+	}
+
 	#region Getters and Setters
 	public string PlayerName {
 		get { return playerName; }

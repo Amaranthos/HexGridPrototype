@@ -43,6 +43,23 @@ public class Formations : MonoBehaviour {
 		}
 	}
 
+	public void Reform(int player, Army army){
+		Logic.Inst.Players[player].ClearFormation();
+
+		var formation = GetFormation(player, army);
+
+		for(int j = 0; j < formation.Count; j++){
+			if(formation[j].First != UnitType.Hero){
+				Logic.Inst.Players[player].SpawnUnit(formation[j].First, Logic.Inst.Grid.TileAt(formation[j].Second), player);
+			}
+			else {
+				Logic.Inst.Players[player].SpawnHero(Logic.Inst.Grid.TileAt(formation[j].Second), player);
+			}
+		}
+
+		gameObject.GetComponent<ClothingManager>().SetSkins();
+	}
+
 	public List<Pair<UnitType, CubeIndex>> GetFormation(int player, Army troops){
 		var formation = FormPositions(troops);
 

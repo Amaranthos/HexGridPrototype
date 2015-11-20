@@ -45,6 +45,8 @@ public class Logic : MonoBehaviour {
 
 	public int turnsForVictory;
 
+	public GameObject water;
+
 	//For Damage/Heal Popups
 	public GameObject damageText;
 	public GameObject healText;
@@ -204,6 +206,24 @@ public class Logic : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.RightShift)){
 			music.Unmute();
 		}
+
+
+		if(gamePhase == GamePhase.PlacingPhase){
+			if(Input.GetKeyDown(KeyCode.Alpha1)){
+				formations.form = UnitFormations.Aggressive;
+				formations.Reform(currentPlayer, CurrentPlayer.units);
+			}
+
+			if(Input.GetKeyDown(KeyCode.Alpha2)){
+				formations.form = UnitFormations.Defensive;
+				formations.Reform(currentPlayer, CurrentPlayer.units);
+			}
+
+			if(Input.GetKeyDown(KeyCode.Alpha3)){
+				formations.form = UnitFormations.SkirmishAgg;
+				formations.Reform(currentPlayer, CurrentPlayer.units);
+			}
+		}
 	}
 
 	private void UnitLClicked(Unit unit) {
@@ -350,6 +370,8 @@ public class Logic : MonoBehaviour {
 		// Build grid and set tile modifiers
 		grid.GenerateGrid();
 		mapGen.GenerateMap(grid.TilesList);
+
+		water.SetActive(true);
 
 		// Setup inital formations
 		formations.Map = grid.TilesList;		
