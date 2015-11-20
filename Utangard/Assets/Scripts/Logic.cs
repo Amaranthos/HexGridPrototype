@@ -45,8 +45,6 @@ public class Logic : MonoBehaviour {
 
 	public int turnsForVictory;
 
-	public GameObject water;
-
 	//For Damage/Heal Popups
 	public GameObject damageText;
 	public GameObject healText;
@@ -226,6 +224,11 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
+	public void ReformUnits(int formation){
+		formations.form = (UnitFormations) formation;
+		formations.Reform(currentPlayer, CurrentPlayer.units);
+	}
+
 	private void UnitLClicked(Unit unit) {
 		if(selectedUnit && gamePhase == GamePhase.CombatPhase){
 			selectedUnit.OnDeselect();
@@ -370,8 +373,6 @@ public class Logic : MonoBehaviour {
 		// Build grid and set tile modifiers
 		grid.GenerateGrid();
 		mapGen.GenerateMap(grid.TilesList);
-
-		water.SetActive(true);
 
 		// Setup inital formations
 		formations.Map = grid.TilesList;		
