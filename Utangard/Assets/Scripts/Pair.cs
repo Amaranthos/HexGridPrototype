@@ -1,3 +1,4 @@
+
 [System.Serializable]
 public class Pair<T1, T2> {
 	public Pair() {

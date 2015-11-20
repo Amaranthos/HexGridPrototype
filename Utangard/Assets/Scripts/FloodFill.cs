@@ -14,6 +14,10 @@ public class FloodFill {
 		while(fringe.Count > 0){
 			Tile current = fringe.Dequeue();
 
+			if(current != start && current.OccupyingUnit){
+				continue;
+			}
+
 			List<Tile> neighbours = Logic.Inst.Grid.Neighbours(current);
 			for (int i = 0; i < neighbours.Count; i++){
 

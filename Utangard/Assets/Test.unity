@@ -550,8 +550,8 @@ MonoBehaviour:
   proceduralFillMethod: 0
   smoothing: 2
   voronoiPoints: 1
-  mountainPercent: 50
-  hillPercent: 50
+  mountainPercent: 25
+  hillPercent: 25
   biomeChangeChance: 60
   altarGenMethod: 1
   altarCircleRadius: 3
@@ -1054,7 +1054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11430294, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}
       propertyPath: pickPerTurn
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11413468, guid: 15ba3d6d126ea2b4db572e76bf07fc2b, type: 2}

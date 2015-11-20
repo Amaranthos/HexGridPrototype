@@ -52,7 +52,8 @@ public class Tile : MonoBehaviour, IBinaryHeapItem<Tile> {
 		tris.Add(4);
 
 		for (int i = 0; i < 6; i++){
-			Vector3 corner = Corner(Vector3.zero, radius, i, orientation);
+			Vector3 corner = Corner(new Vector3(0.5f, 0.5f, 0.5f), 0.5f, i, orientation);
+
 			uvs.Add(new Vector2(corner.x, corner.z));
 		}
 

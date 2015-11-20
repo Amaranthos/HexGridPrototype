@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Altar : MonoBehaviour {
 	[SerializeField]
 	private Player owner = null;
+
+	public List<BannerMat> banners = new List<BannerMat> ();
 
 	public CubeIndex Index { get; set; }
 
@@ -22,14 +24,18 @@ public class Altar : MonoBehaviour {
 
 
 		if(gameObject.transform.childCount > 0){
-			Transform model = gameObject.transform.FindChild("Alter_nobase");
+			Transform model = gameObject.transform.FindChild("Altar");
 			for(int j = 0; j < model.transform.childCount; j++){
 				GameObject child = model.GetChild(j).gameObject;
-				if(child.name == "Plane001" || child.name == "Plane002" || child.name == "Plane003"){
+				if(child.name == "LeftBanner001" || child.name == "MainBanner001" || child.name == "RightBanner001"){
 					if(!child.GetComponent<SkinnedMeshRenderer>()){
 						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
-						meshRend.material = new Material(meshRend.material);
-						meshRend.material.color = owner.playerColour;
+
+//						BannerMat mat = banners.Find(item => item.hero == player.hero.type).mat;
+
+						meshRend.material = banners.Find(item => item.hero == player.hero.type).mat;
+//						meshRend.material = new Material(meshRend.material);
+//						meshRend.material.color = owner.playerColour;
 					}
 				}
 			}
@@ -46,4 +52,10 @@ public class Altar : MonoBehaviour {
 	public Player Owner{
 		get {return owner;}
 	}
+}
+
+[System.Serializable]
+public struct BannerMat{
+	public HeroType hero;
+	public Material mat;
 }

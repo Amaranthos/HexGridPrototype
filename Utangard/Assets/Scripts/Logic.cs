@@ -122,11 +122,6 @@ public class Logic : MonoBehaviour {
 	}
 
 	private void Update() {
-		//Fpr testing random gen
-		if(Input.GetKeyUp(KeyCode.Space)){
-			mapGen.GenerateMap(grid.TilesList);
-		}
-
 		//This currently enables the generic sacrifice button, the button should be included with the player's gui
 		if(gamePhase == GamePhase.CombatPhase){
 			if(selectedUnit && selectedUnit.CanMove){
@@ -186,7 +181,6 @@ public class Logic : MonoBehaviour {
 							TileRClicked(grid.TileAt(altar.Index));
 					}
 				}
-
 			}
 
 			if(gamePhase == GamePhase.TargetPhase){	//So players can back out of an ability cast;
@@ -443,6 +437,7 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void ClearHighlightedTiles() {
+		Debug.Log("Clearing tiles...");
 		if(highlightedTiles.Count > 0){
 			ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
 		}
@@ -612,6 +607,7 @@ public class Logic : MonoBehaviour {
 		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;
+		att.CurrentMovePoints = 0;
 		combatManager.ResolveCombat(att, def);
 		yield return new WaitForSeconds(3.5f);
 		att.OnAttack();
