@@ -26,8 +26,9 @@ public class GUIManager : MonoBehaviour {
 	public BattlePredictionUI battlePrediction;
 	public Button EndTurnP1;
 	public Button EndTurnP2;
-	public Tooltip TooltipPanel;
-	public Text CombatLog;
+//	public Tooltip TooltipPanel;
+//	public Text CombatLog;
+	public GameObject[] formationButtonPanels;
 	public List<Image> playerAvatars;
 	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
 	public UnitPortraits[] unitPortraits;
@@ -63,9 +64,23 @@ public class GUIManager : MonoBehaviour {
 		//CombatLog.text = "";
 		guiAnim.ResetStates();
 		if(currentPlayer == 0){
+			if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
+				formationButtonPanels[0].SetActive(true);
+			}
+			else{
+				formationButtonPanels[0].SetActive(false);
+			}
+			formationButtonPanels[1].SetActive(false);
 			guiAnim.SetP1Turn();
 		}
 		else{
+			if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
+				formationButtonPanels[1].SetActive(true);
+			}
+			else{
+				formationButtonPanels[1].SetActive(false);
+			}
+			formationButtonPanels[0].SetActive(false);
 			guiAnim.SetP2Turn();
 		}
 	}
