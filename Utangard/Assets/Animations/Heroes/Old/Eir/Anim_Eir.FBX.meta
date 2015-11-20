@@ -1,0 +1,896 @@
+fileFormatVersion: 2
+guid: 42f1bfe77bd56b949b6021b7f7ff9eb9
+timeCreated: 1447315608
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Dummy001
+    100004: Dummy002
+    100006: Female
+    100008: Femalehead
+    100010: FemaleheadBone001
+    100012: FemaleheadBone002
+    100014: FemaleheadBone003
+    100016: FemaleheadBone004
+    100018: Femalehip
+    100020: FemaleLArm1
+    100022: FemaleLArm2
+    100024: FemaleLArmCollarbone
+    100026: FemaleLArmPalm
+    100028: FemaleLLeg1
+    100030: FemaleLLeg2
+    100032: FemaleLLegAnkle
+    100034: FemaleLLegCollarbone
+    100036: FemaleLLegDigit11
+    100038: FemaleLLegDigit12
+    100040: FemaleLLegPlatform
+    100042: Femaleneck1
+    100044: Femaleneck2
+    100046: Femaleneck3
+    100048: FemaleRArm1
+    100050: FemaleRArm2
+    100052: FemaleRArmCollarbone
+    100054: FemaleRArmPalm
+    100056: FemaleRLeg1
+    100058: FemaleRLeg2
+    100060: FemaleRLegAnkle
+    100062: FemaleRLegCollarbone
+    100064: FemaleRLegDigit11
+    100066: FemaleRLegDigit12
+    100068: FemaleRLegPlatform
+    100070: Femaleshoulder
+    100072: FemaleSpine1
+    100074: FemaleSpine2
+    100076: FemaleSpine3
+    100078: FemaleSpine4
+    100080: FemaleSpine5
+    100082: Mesh_Accesories001
+    100084: Mesh_Body
+    100086: Mesh_Shield
+    100088: Mesh_Spear
+    400000: //RootNode
+    400002: Dummy001
+    400004: Dummy002
+    400006: Female
+    400008: Femalehead
+    400010: FemaleheadBone001
+    400012: FemaleheadBone002
+    400014: FemaleheadBone003
+    400016: FemaleheadBone004
+    400018: Femalehip
+    400020: FemaleLArm1
+    400022: FemaleLArm2
+    400024: FemaleLArmCollarbone
+    400026: FemaleLArmPalm
+    400028: FemaleLLeg1
+    400030: FemaleLLeg2
+    400032: FemaleLLegAnkle
+    400034: FemaleLLegCollarbone
+    400036: FemaleLLegDigit11
+    400038: FemaleLLegDigit12
+    400040: FemaleLLegPlatform
+    400042: Femaleneck1
+    400044: Femaleneck2
+    400046: Femaleneck3
+    400048: FemaleRArm1
+    400050: FemaleRArm2
+    400052: FemaleRArmCollarbone
+    400054: FemaleRArmPalm
+    400056: FemaleRLeg1
+    400058: FemaleRLeg2
+    400060: FemaleRLegAnkle
+    400062: FemaleRLegCollarbone
+    400064: FemaleRLegDigit11
+    400066: FemaleRLegDigit12
+    400068: FemaleRLegPlatform
+    400070: Femaleshoulder
+    400072: FemaleSpine1
+    400074: FemaleSpine2
+    400076: FemaleSpine3
+    400078: FemaleSpine4
+    400080: FemaleSpine5
+    400082: Mesh_Accesories001
+    400084: Mesh_Body
+    400086: Mesh_Shield
+    400088: Mesh_Spear
+    2300000: FemaleheadBone001
+    2300002: FemaleheadBone002
+    2300004: FemaleheadBone003
+    2300006: FemaleheadBone004
+    2300008: FemaleLLegDigit11
+    2300010: FemaleLLegDigit12
+    2300012: FemaleRLegDigit11
+    2300014: FemaleRLegDigit12
+    2300016: Mesh_Shield
+    2300018: Mesh_Spear
+    3300000: FemaleheadBone001
+    3300002: FemaleheadBone002
+    3300004: FemaleheadBone003
+    3300006: FemaleheadBone004
+    3300008: FemaleLLegDigit11
+    3300010: FemaleLLegDigit12
+    3300012: FemaleRLegDigit11
+    3300014: FemaleRLegDigit12
+    3300016: Mesh_Shield
+    3300018: Mesh_Spear
+    4300000: Mesh_Body
+    4300002: Mesh_Accesories001
+    4300004: FemaleLLegDigit11
+    4300006: FemaleLLegDigit12
+    4300008: FemaleRLegDigit11
+    4300010: FemaleRLegDigit12
+    4300012: Mesh_Spear
+    4300014: Mesh_Shield
+    4300016: FemaleheadBone001
+    4300018: FemaleheadBone002
+    4300020: FemaleheadBone003
+    4300022: FemaleheadBone004
+    7400000: Walk
+    7400002: Idle
+    7400004: Attack
+    7400006: Death
+    7400008: Corpse
+    7400010: All
+    9500000: //RootNode
+    13700000: Mesh_Accesories001
+    13700002: Mesh_Body
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 45
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 155
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Corpse
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 205
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: All
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1428,10 +1428,10 @@ MonoBehaviour:
   movePoints: 2
   maxHitpoints: 110
   attack: 30
-  defense: 20
+  defense: 25
   cost: 1
   hitChance: 80
-  dodgeChance: 5
+  dodgeChance: 15
   attackRange: 1
   dead: 0
   currentBuffs: []
@@ -1837,7 +1837,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: dodgeChance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defense
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182112}

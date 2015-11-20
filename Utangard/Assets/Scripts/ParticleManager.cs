@@ -22,7 +22,7 @@ public class ParticleManager : MonoBehaviour {
 
 	public void CreateParticle(Skill skill, Unit unit){
 		bool isOneShot = true;
-		GameObject tempobj = Instantiate(skill.skillParticle,unit.transform.position,Quaternion.identity) as GameObject;
+		GameObject tempobj = Instantiate(skill.skillParticle,unit.transform.position,skill.skillParticle.transform.rotation) as GameObject;
 		tempobj.transform.parent = unit.transform;
 
 		AbilityParticles partScript;
