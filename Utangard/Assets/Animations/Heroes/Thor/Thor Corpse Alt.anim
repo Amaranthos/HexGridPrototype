@@ -1,0 +1,3192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Thor Corpse Alt
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.707106829, y: 0, z: 0, w: .707106829}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.707106829, y: 0, z: 0, w: .707106829}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: body
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .500000119, y: -.50000006, z: -.499999911, w: .49999994}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .500000119, y: -.50000006, z: -.499999911, w: .49999994}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .696363211, y: 6.79211644e-06, z: -.707106829, w: -.122794405}
+        inSlope: {x: -6.13076918e-06, y: 3.49338552e-05, z: 2.55448725e-07, w: -3.43897846e-05}
+        outSlope: {x: -6.13076918e-06, y: 3.49338552e-05, z: 2.55448725e-07, w: -3.43897846e-05}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .696364284, y: 4.27997747e-07, z: -.707106769, w: -.122788139}
+        inSlope: {x: 2.05633278e-05, y: -.000118636206, z: 0, w: .000116786294}
+        outSlope: {x: 2.05633278e-05, y: -.000118636206, z: 0, w: .000116786294}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .696365654, y: -7.48118828e-06, z: -.707106769, w: -.122780353}
+        inSlope: {x: -2.32039833, y: -8.12528515, z: 3.78889966, w: 8.65977859}
+        outSlope: {x: -2.32039833, y: -8.12528515, z: 3.78889966, w: 8.65977859}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .118887953, y: .859604597, z: .23082763, w: .440072924}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .118887953, y: .859604597, z: .23082763, w: .440072954}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.104512498, y: .347873002, z: -.522564054, w: .771443963}
+        inSlope: {x: -.0490839221, y: .0484546572, z: -.0107363099, w: -.0347825475}
+        outSlope: {x: -.0490839221, y: .0484546572, z: -.0107363099, w: -.0347825475}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.104164809, y: .348206639, z: -.521362245, w: .772064269}
+        inSlope: {x: 2.5815918e-05, y: -4.91731771e-06, z: 4.20207143e-05, w: 3.39741928e-05}
+        outSlope: {x: 2.5815918e-05, y: -4.91731771e-06, z: 4.20207143e-05, w: 3.39741928e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.104163088, y: .348206311, z: -.521359444, w: .772066534}
+        inSlope: {x: 1.96640253, y: .44641313, z: 3.48038602, w: 1.60454869}
+        outSlope: {x: 1.96640253, y: .44641313, z: 3.48038602, w: 1.60454869}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .00271870662, y: -.0444253311, z: .375274837, w: .925876498}
+        inSlope: {x: 6.48883797e-05, y: .00617588637, z: -.0521683283, w: .0220398474}
+        outSlope: {x: 6.48883797e-05, y: .00617588637, z: -.0521683283, w: .0220398474}
+        tangentMode: 0
+      - time: .13333416
+        value: {x: .00271437713, y: -.0448370427, z: .378752589, w: .924407244}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .00271437713, y: -.0448370427, z: .378752589, w: .924407244}
+        inSlope: {x: -7.68330892e-08, y: -7.82300503e-07, z: 5.8113751e-06, w: -1.78811547e-06}
+        outSlope: {x: -7.68330892e-08, y: -7.82300503e-07, z: 5.8113751e-06, w: -1.78811547e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .00271437201, y: -.0448370948, z: .378752977, w: .924407125}
+        inSlope: {x: -.000629102869, y: -.0580930077, z: .490729243, w: -.214341268}
+        outSlope: {x: -.000629102869, y: -.0580930077, z: .490729243, w: -.214341268}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .195833072, y: -.469258249, z: .254767805, w: .822565675}
+        inSlope: {x: .0178647581, y: -.00719503267, z: .03109622, w: -.0174348224}
+        outSlope: {x: .0178647581, y: -.00719503267, z: .03109622, w: -.0174348224}
+        tangentMode: 0
+      - time: .100000381
+        value: {x: .194046661, y: -.468538791, z: .251658291, w: .824309051}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .194046661, y: -.468538791, z: .251658291, w: .824309051}
+        inSlope: {x: -7.89005935e-05, y: 9.52171467e-05, z: -9.52171467e-05, w: .000102816637}
+        outSlope: {x: -7.89005935e-05, y: 9.52171467e-05, z: -9.52171467e-05, w: .000102816637}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .194041401, y: -.468532443, z: .251651943, w: .824315906}
+        inSlope: {x: .075201571, y: 9.39557171, z: -10.3303051, w: .577880025}
+        outSlope: {x: .075201571, y: 9.39557171, z: -10.3303051, w: .577880025}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .000891939329, y: -.00150137581, z: -.511385381, w: .859349847}
+        inSlope: {x: .00239106989, y: -.0040208674, z: -.000152385255, w: -9.54151255e-05}
+        outSlope: {x: .00239106989, y: -.0040208674, z: -.000152385255, w: -9.54151255e-05}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .00160162931, y: -.00269464939, z: -.511424541, w: .85932529}
+        inSlope: {x: .00210164138, y: -.00353326532, z: -8.94069744e-05, w: -5.72919889e-05}
+        outSlope: {x: .00210164138, y: -.00353326532, z: -8.94069744e-05, w: -5.72919889e-05}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -9.3146344e-09, y: 1.56672058e-07, z: -1.9135318e-07, w: 1}
+        inSlope: {x: -6.01866024e-09, y: 1.22888029e-08, z: -1.75730168e-08, w: 0}
+        outSlope: {x: -6.01866024e-09, y: 1.22888029e-08, z: -1.75730168e-08, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -1.12895506e-08, y: 1.19136331e-07, z: -1.60747774e-07, w: 1}
+        inSlope: {x: -6.8396373e-09, y: -2.3236413e-07, z: 1.95565605e-07, w: 0}
+        outSlope: {x: -6.8396373e-09, y: -2.3236413e-07, z: 1.95565605e-07, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11/CATRig_Thor_LLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.209655553, y: .789712012, z: .410556376, w: -.404775381}
+        inSlope: {x: -1.87024796e-07, y: -9.12316054e-08, z: -3.64926436e-08, w: -8.21084427e-08}
+        outSlope: {x: -1.87024796e-07, y: -9.12316054e-08, z: -3.64926436e-08, w: -8.21084427e-08}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.209655657, y: .789711952, z: .410556316, w: -.404775411}
+        inSlope: {x: -5.29143335e-07, y: -3.28433771e-07, z: -1.27724249e-07, w: -2.00709536e-07}
+        outSlope: {x: -5.29143335e-07, y: -3.28433771e-07, z: -1.27724249e-07, w: -2.00709536e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .553991556, y: -.0555811971, z: .200514793, w: .806313992}
+        inSlope: {x: -.012322735, y: -.0321089812, z: .0573966205, w: -.0173438583}
+        outSlope: {x: -.012322735, y: -.0321089812, z: .0573966205, w: -.0173438583}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: .553514421, y: -.0566016734, z: .202350497, w: .805898428}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .553514421, y: -.0566016734, z: .202350497, w: .805898428}
+        inSlope: {x: 1.69870964e-05, y: -8.99645602e-06, z: -3.06214788e-05, w: -4.47028879e-06}
+        outSlope: {x: 1.69870964e-05, y: -8.99645602e-06, z: -3.06214788e-05, w: -4.47028879e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .553515553, y: -.0566022731, z: .202348456, w: .80589813}
+        inSlope: {x: 1.3595922, y: -1.02693605, z: -2.35311389, w: -.790007532}
+        outSlope: {x: 1.3595922, y: -1.02693605, z: -2.35311389, w: -.790007532}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.00286622858, y: .02356866, z: .199260414, w: .979671419}
+        inSlope: {x: -.000102741767, y: -.00933045242, z: -.0852428749, w: .0169135109}
+        outSlope: {x: -.000102741767, y: -.00933045242, z: -.0852428749, w: .0169135109}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.00286836876, y: .0233651213, z: .197414905, w: .980037332}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.00286836876, y: .0233651213, z: .197414905, w: .980037332}
+        inSlope: {x: 1.27473072e-06, y: 4.74968192e-06, z: 4.44793732e-05, w: -8.04651972e-06}
+        outSlope: {x: 1.27473072e-06, y: 4.74968192e-06, z: 4.44793732e-05, w: -8.04651972e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.00286828377, y: .023365438, z: .19741787, w: .980036795}
+        inSlope: {x: .0033501056, y: .407610685, z: 3.44103479, w: -1.15674174}
+        outSlope: {x: .0033501056, y: .407610685, z: 3.44103479, w: -1.15674174}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.111864857, y: -.0678288043, z: -.0509964563, w: .990136802}
+        inSlope: {x: -2.98022087e-07, y: 4.47033131e-07, z: 2.68219878e-06, w: 0}
+        outSlope: {x: -2.98022087e-07, y: 4.47033131e-07, z: 2.68219878e-06, w: 0}
+        tangentMode: 0
+      - time: .0666675568
+        value: {x: -.111193642, y: -.0682810694, z: -.0548611023, w: .989931285}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.111193642, y: -.0682810694, z: -.0548611023, w: .989931285}
+        inSlope: {x: 0, y: -3.46447382e-06, z: -5.42581292e-05, w: -3.57623094e-06}
+        outSlope: {x: 0, y: -3.46447382e-06, z: -5.42581292e-05, w: -3.57623094e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.111193642, y: -.0682813004, z: -.0548647195, w: .989931047}
+        inSlope: {x: -.171379894, y: -.306046724, z: -4.2470603, w: -.91544652}
+        outSlope: {x: -.171379894, y: -.306046724, z: -4.2470603, w: -.91544652}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0897015408, y: -.0501757674, z: -.242922768, w: .96458596}
+        inSlope: {x: .000668055902, y: -.00109669368, z: .0139985885, w: .0035524345}
+        outSlope: {x: .000668055902, y: -.00109669368, z: .0139985885, w: .0035524345}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0897312984, y: -.0501271002, z: -.243544653, w: .964428127}
+        inSlope: {x: 1.35226228e-05, y: 1.41372875e-05, z: -5.14083185e-05, w: -1.07286933e-05}
+        outSlope: {x: 1.35226228e-05, y: 1.41372875e-05, z: -5.14083185e-05, w: -1.07286933e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0897303969, y: -.0501261577, z: -.24354808, w: .964427412}
+        inSlope: {x: 1.34288323, y: .757161915, z: -4.0124383, w: -1.57306182}
+        outSlope: {x: 1.34288323, y: .757161915, z: -4.0124383, w: -1.57306182}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -1.4901115e-08, y: -5.96050853e-08, z: -1.49013477e-08, w: 1}
+        inSlope: {x: -2.23820985e-14, y: -3.41060561e-14, z: 5.32907094e-15, w: 0}
+        outSlope: {x: -2.23820985e-14, y: -3.41060561e-14, z: 5.32907094e-15, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -1.49011168e-08, y: -5.96050924e-08, z: -1.49013459e-08, w: 1}
+        inSlope: {x: 2.34479133e-14, y: 0, z: -3.19744265e-15, w: 0}
+        outSlope: {x: 2.34479133e-14, y: 0, z: -3.19744265e-15, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11/CATRig_Thor_RLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.00250137504, y: -.00107004633, z: .0242646672, w: .999724865}
+        inSlope: {x: .000905648631, y: .00154328602, z: .016120363, w: -.000527947675}
+        outSlope: {x: .000905648631, y: .00154328602, z: .016120363, w: -.000527947675}
+        tangentMode: 0
+      - time: .233334541
+        value: {x: -.00229210104, y: -.000742981443, z: .0277663134, w: .999611557}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.00231981114, y: -.000827212876, z: .0264411829, w: .999643803}
+        inSlope: {x: -.000733515539, y: -.00222969451, z: -.0350775942, w: .000853200501}
+        outSlope: {x: -.000733515539, y: -.00222969451, z: -.0350775942, w: .000853200501}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0153555041, y: -.00380618428, z: .0515561998, w: .998546124}
+        inSlope: {x: .00192342512, y: .00137743086, z: .0203681346, w: -.00109367177}
+        outSlope: {x: .00192342512, y: .00137743086, z: .0203681346, w: -.00109367177}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.0153209809, y: -.00378146092, z: .0519217886, w: .998526514}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0153209809, y: -.00378146092, z: .0519217886, w: .998526514}
+        inSlope: {x: -5.58786084e-08, y: -8.83580469e-07, z: -1.0169907e-05, w: 0}
+        outSlope: {x: -5.58786084e-08, y: -8.83580469e-07, z: -1.0169907e-05, w: 0}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0153209846, y: -.00378151983, z: .0519211106, w: .998526514}
+        inSlope: {x: -.0120836478, y: -.0710693747, z: -.820255995, w: .0195509195}
+        outSlope: {x: -.0120836478, y: -.0710693747, z: -.820255995, w: .0195509195}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0232119318, y: -.00487762457, z: .0373727754, w: .99901998}
+        inSlope: {x: 2.03197583e-08, y: 4.59734537e-07, z: 5.15105876e-06, w: 0}
+        outSlope: {x: 2.03197583e-08, y: 4.59734537e-07, z: 5.15105876e-06, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0232119337, y: -.00487765297, z: .0373724587, w: .999019921}
+        inSlope: {x: -5.58786084e-08, y: -1.42490455e-06, z: -1.59812826e-05, w: 0}
+        outSlope: {x: -5.58786084e-08, y: -1.42490455e-06, z: -1.59812826e-05, w: 0}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0232119374, y: -.00487774797, z: .0373713933, w: .999019921}
+        inSlope: {x: -.0195100717, y: -.114605889, z: -1.28357339, w: -.00842137076}
+        outSlope: {x: -.0195100717, y: -.114605889, z: -1.28357339, w: -.00842137076}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0234328266, y: -.00270427158, z: .0142840836, w: .999619782}
+        inSlope: {x: 1.06678733e-07, y: 4.90214177e-07, z: 5.23233757e-06, w: 0}
+        outSlope: {x: 1.06678733e-07, y: 4.90214177e-07, z: 5.23233757e-06, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0234328303, y: -.00270429766, z: .0142837614, w: .999619722}
+        inSlope: {x: -3.07332357e-07, y: -1.48427557e-06, z: -1.6232736e-05, w: 0}
+        outSlope: {x: -3.07332357e-07, y: -1.48427557e-06, z: -1.6232736e-05, w: 0}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0234328508, y: -.00270439661, z: .0142826792, w: .999619722}
+        inSlope: {x: -.0348495767, y: -.117249362, z: -1.30836868, w: -.0400728136}
+        outSlope: {x: -.0348495767, y: -.117249362, z: -1.30836868, w: -.0400728136}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0158942528, y: .00273702061, z: -.0177030079, w: .999714553}
+        inSlope: {x: .00287995487, y: .000581185159, z: .0203036927, w: .000327006303}
+        outSlope: {x: .00287995487, y: .000581185159, z: .0203036927, w: .000327006303}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.0158425607, y: .00274745235, z: -.0173385777, w: .999720395}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0158425607, y: .00274745235, z: -.0173385777, w: .999720395}
+        inSlope: {x: -7.26421888e-07, y: -1.07566325e-06, z: -1.10919036e-05, w: 0}
+        outSlope: {x: -7.26421888e-07, y: -1.07566325e-06, z: -1.10919036e-05, w: 0}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0158426091, y: .00274738064, z: -.0173393171, w: .999720395}
+        inSlope: {x: -.0651730821, y: -.0828870535, z: -.894915044, w: -.0434622839}
+        outSlope: {x: -.0651730821, y: -.0828870535, z: -.894915044, w: -.0434622839}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.00348789012, y: .0042828368, z: -.0251367055, w: .999688148}
+        inSlope: {x: .00534861675, y: -.0017937934, z: .017186217, w: .000308990479}
+        outSlope: {x: .00534861675, y: -.0017937934, z: .017186217, w: .000308990479}
+        tangentMode: 0
+      - time: .200000763
+        value: {x: -.00259125233, y: .00398079259, z: -.0222868491, w: .999740362}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.00259128911, y: .00398077862, z: -.0222869758, w: .999740362}
+        inSlope: {x: -.0443592444, y: -.0170518644, z: -.154414192, w: -.00436044438}
+        outSlope: {x: -.0443592444, y: -.0170518644, z: -.154414192, w: -.00436044438}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0830382779, y: .671435356, z: -.0681765601, w: .733233392}
+        inSlope: {x: 5.16402281e-07, y: 0, z: -8.47824637e-08, w: 0}
+        outSlope: {x: 5.16402281e-07, y: 0, z: -8.47824637e-08, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.0830376223, y: .671435356, z: -.0681769848, w: .733233392}
+        inSlope: {x: 4.26224597e-06, y: 0, z: -3.10804808e-06, w: 0}
+        outSlope: {x: 4.26224597e-06, y: 0, z: -3.10804808e-06, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.583793938, y: .0644173175, z: -.00637418404, w: .808881462}
+        inSlope: {x: -.0323856175, y: .305798382, z: -.424663544, w: -.0305941999}
+        outSlope: {x: -.0323856175, y: .305798382, z: -.424663544, w: -.0305941999}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.584459484, y: .0711222216, z: -.0157722402, w: .808146}
+        inSlope: {x: -.00522502279, y: .0765684023, z: -.11190737, w: -.0119360127}
+        outSlope: {x: -.00522502279, y: .0765684023, z: -.11190737, w: -.0119360127}
+        tangentMode: 0
+      - time: .233334541
+        value: {x: -.584459484, y: .0711222142, z: -.0157722291, w: .808146}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.584459484, y: .0711222142, z: -.0157722291, w: .808146}
+        inSlope: {x: 3.30801377e-05, y: 5.62138812e-05, z: 6.52662129e-05, w: 2.14573865e-05}
+        outSlope: {x: 3.30801377e-05, y: 5.62138812e-05, z: 6.52662129e-05, w: 2.14573865e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.584457278, y: .0711259618, z: -.0157678779, w: .80814743}
+        inSlope: {x: 2.78430748, y: 5.21448946, z: 4.07526445, w: -.502422988}
+        outSlope: {x: 2.78430748, y: 5.21448946, z: 4.07526445, w: -.502422988}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.118706591, y: -.170751959, z: -.546037734, w: .811277747}
+        inSlope: {x: -.328785092, y: .42394042, z: -.07507734, w: .00184536155}
+        outSlope: {x: -.328785092, y: .42394042, z: -.07507734, w: .00184536155}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.125938162, y: -.161430418, z: -.547622085, w: .811289012}
+        inSlope: {x: -.0831888616, y: .107088827, z: -.0152906133, w: -.00116052013}
+        outSlope: {x: -.0831888616, y: .107088827, z: -.0152906133, w: -.00116052013}
+        tangentMode: 0
+      - time: .233334541
+        value: {x: -.125938147, y: -.161430418, z: -.547622085, w: .811289012}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.125938147, y: -.161430418, z: -.547622085, w: .811289012}
+        inSlope: {x: 2.01162984e-05, y: .000124050508, z: -1.34108659e-05, w: 1.87752121e-05}
+        outSlope: {x: 2.01162984e-05, y: .000124050508, z: -1.34108659e-05, w: 1.87752121e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.125936806, y: -.161422148, z: -.547622979, w: .811290264}
+        inSlope: {x: 1.35060537, y: 9.6187048, z: 3.10359359, w: -.0535761565}
+        outSlope: {x: 1.35060537, y: 9.6187048, z: 3.10359359, w: -.0535761565}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 9.53674316e-07
+        value: {x: .342760772, y: -.739676178, z: .363094687, w: .451172292}
+        inSlope: {x: -.0769216865, y: .246082574, z: .253040463, w: .264405072}
+        outSlope: {x: -.0769216865, y: .246082574, z: .253040463, w: .264405072}
+        tangentMode: 0
+      - time: .13333416
+        value: {x: .341508567, y: -.734697759, z: .36777997, w: .456430644}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .341508567, y: -.734697759, z: .36777997, w: .456430644}
+        inSlope: {x: -2.81628181e-05, y: 6.16899852e-05, z: -1.47519522e-05, w: .000135449751}
+        outSlope: {x: -2.81628181e-05, y: 6.16899852e-05, z: -1.47519522e-05, w: .000135449751}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .34150669, y: -.734693646, z: .367778987, w: .456439674}
+        inSlope: {x: .698913872, y: 6.63274765, z: -6.97054243, w: 6.18219757}
+        outSlope: {x: .698913872, y: 6.63274765, z: -6.97054243, w: 6.18219757}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .987655699, y: -.108331479, z: .0692764595, w: .0894498825}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .987655699, y: -.108331472, z: .0692764595, w: .08944989}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .663424134, y: .091702044, z: .00917453039, w: .74254632}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .663424134, y: .091702044, z: .00917452946, w: .74254632}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002/Mesh_Axe
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .0730319619, y: -.650405169, z: .0936496705, w: .750246108}
+        inSlope: {x: 2.48352734e-08, y: 0, z: -1.05549908e-07, w: 0}
+        outSlope: {x: 2.48352734e-08, y: 0, z: -1.05549908e-07, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .0730319917, y: -.650405169, z: .0936495438, w: .750246108}
+        inSlope: {x: 1.99458285e-07, y: 0, z: -7.97057055e-07, w: 0}
+        outSlope: {x: 1.99458285e-07, y: 0, z: -7.97057055e-07, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 9.53674316e-07
+        value: {x: .423985481, y: -.20817773, z: .195686698, w: -.859421372}
+        inSlope: {x: -.189732015, y: .206779689, z: .791417837, w: .00916140992}
+        outSlope: {x: -.189732015, y: .206779689, z: .791417837, w: .00916140992}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: .423985451, y: -.20817785, z: .195686251, w: -.859421432}
+        inSlope: {x: -4.47041657e-07, y: -1.78816663e-06, z: -6.70562486e-06, w: -8.94083314e-07}
+        outSlope: {x: -4.47041657e-07, y: -1.78816663e-06, z: -6.70562486e-06, w: -8.94083314e-07}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .423985451, y: -.20817785, z: .195686251, w: -.859421432}
+        inSlope: {x: -.000158695242, y: .000129414853, z: .000148637104, w: -7.68889659e-05}
+        outSlope: {x: -.000158695242, y: .000129414853, z: .000148637104, w: -7.68889659e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .423974872, y: -.208169222, z: .19569616, w: -.859426558}
+        inSlope: {x: -9.70444202, y: 12.796711, z: -2.65074611, w: 1.93005943}
+        outSlope: {x: -9.70444202, y: 12.796711, z: -2.65074611, w: 1.93005943}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 9.53674316e-07
+        value: {x: -.0725616589, y: -.474701107, z: -.344326884, w: .806742013}
+        inSlope: {x: -.23973, y: .572187543, z: -.366756797, w: .181407884}
+        outSlope: {x: -.23973, y: .572187543, z: -.366756797, w: .181407884}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.0725614578, y: -.474701494, z: -.344326675, w: .806741953}
+        inSlope: {x: 3.0175313e-06, y: -5.81154154e-06, z: 3.1292916e-06, w: -8.94083314e-07}
+        outSlope: {x: 3.0175313e-06, y: -5.81154154e-06, z: 3.1292916e-06, w: -8.94083314e-07}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0725614578, y: -.474701494, z: -.344326675, w: .806741953}
+        inSlope: {x: -1.19580218e-05, y: 4.6938032e-05, z: -1.83281827e-05, w: 1.78811551e-05}
+        outSlope: {x: -1.19580218e-05, y: 4.6938032e-05, z: -1.83281827e-05, w: 1.78811551e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.072562255, y: -.474698365, z: -.344327897, w: .806743145}
+        inSlope: {x: -1.79013944, y: 4.06121922, z: -.284746319, w: 1.22764528}
+        outSlope: {x: -1.79013944, y: 4.06121922, z: -.284746319, w: 1.22764528}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 9.53674316e-07
+        value: {x: -.343357742, y: .0572384708, z: .0799950436, w: .934039652}
+        inSlope: {x: -.40593484, y: .538992941, z: -.0110581527, w: -.164092675}
+        outSlope: {x: -.40593484, y: .538992941, z: -.0110581527, w: -.164092675}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.343357444, y: .0572381206, z: .0799950361, w: .934039772}
+        inSlope: {x: 4.47041657e-06, y: -5.25273936e-06, z: -1.11760414e-07, w: 1.78816663e-06}
+        outSlope: {x: 4.47041657e-06, y: -5.25273936e-06, z: -1.11760414e-07, w: 1.78816663e-06}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.343357444, y: .0572381206, z: .0799950361, w: .934039772}
+        inSlope: {x: 3.75504242e-05, y: -5.24700117e-05, z: -1.63165532e-05, w: 1.78811551e-05}
+        outSlope: {x: 3.75504242e-05, y: -5.24700117e-05, z: -1.63165532e-05, w: 1.78811551e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.34335494, y: .0572346225, z: .0799939483, w: .934040964}
+        inSlope: {x: 3.42268801, y: -4.36870146, z: -.435549647, w: .450051129}
+        outSlope: {x: 3.42268801, y: -4.36870146, z: -.435549647, w: .450051129}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0132914195, y: .0289411433, z: -.99871254, w: -.0394855328}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.0132914195, y: .0289411433, z: -.99871254, w: -.0394855328}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.684903383, y: -.00463985465, z: -.00436812919, w: .728605986}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.684903383, y: -.00463985465, z: -.00436812919, w: .728606045}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001/Box001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .114116967, y: -.0560151115, z: -.0473961011, w: .990753889}
+        inSlope: {x: 6.43042313e-06, y: -3.35276081e-06, z: 4.98615691e-07, w: -8.25294933e-07}
+        outSlope: {x: 6.43042313e-06, y: -3.35276081e-06, z: 4.98615691e-07, w: -8.25294933e-07}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .114116184, y: -.0560147017, z: -.0473961681, w: .990754008}
+        inSlope: {x: -1.97810277e-05, y: 1.03375423e-05, z: -1.50872245e-06, w: 2.68217332e-06}
+        outSlope: {x: -1.97810277e-05, y: 1.03375423e-05, z: -1.50872245e-06, w: 2.68217332e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .114114866, y: -.0560140125, z: -.0473962687, w: .990754187}
+        inSlope: {x: -1.60466027, y: .840302765, z: -.0394315347, w: .119529106}
+        outSlope: {x: -1.60466027, y: .840302765, z: -.0394315347, w: .119529106}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .489179999, y: -.198706031, z: .0692098588, w: .846421242}
+        inSlope: {x: 2.18408659e-05, y: -1.3091747e-05, z: 6.37025232e-06, w: -1.60932686e-05}
+        outSlope: {x: 2.18408659e-05, y: -1.3091747e-05, z: 6.37025232e-06, w: -1.60932686e-05}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .489176959, y: -.198704854, z: .0692086592, w: .846423328}
+        inSlope: {x: -6.88424479e-05, y: 3.73269104e-05, z: -2.19044141e-05, w: 5.00672322e-05}
+        outSlope: {x: -6.88424479e-05, y: 3.73269104e-05, z: -2.19044141e-05, w: 5.00672322e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .489172369, y: -.198702365, z: .0692071989, w: .846426666}
+        inSlope: {x: -6.8738246, y: 3.13923383, z: -.0602242239, w: 2.26374197}
+        outSlope: {x: -6.8738246, y: 3.13923383, z: -.0602242239, w: 2.26374197}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .145834818, y: .00679204427, z: .0130295027, w: .989199817}
+        inSlope: {x: 8.36594518e-06, y: -9.4795422e-07, z: -3.66808399e-06, w: -1.0217949e-06}
+        outSlope: {x: 8.36594518e-06, y: -9.4795422e-07, z: -3.66808399e-06, w: -1.0217949e-06}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .145833716, y: .00679199351, z: .0130298082, w: .989199996}
+        inSlope: {x: -2.59276749e-05, y: 1.91384242e-06, z: 1.03375423e-05, w: 3.57623094e-06}
+        outSlope: {x: -2.59276749e-05, y: 1.91384242e-06, z: 1.03375423e-05, w: 3.57623094e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .145831987, y: .0067921211, z: .0130304974, w: .989200234}
+        inSlope: {x: -2.09720254, y: .038006708, z: .847839236, w: .124751441}
+        outSlope: {x: -2.09720254, y: .038006708, z: .847839236, w: .124751441}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0392155088, y: -.001535911, z: .751751661, w: .65827769}
+        inSlope: {x: -1.70925102e-06, y: 6.06455387e-07, z: -1.1780684e-05, w: 1.25169772e-05}
+        outSlope: {x: -1.70925102e-06, y: 6.06455387e-07, z: -1.1780684e-05, w: 1.25169772e-05}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0392149761, y: -.00153612741, z: .751755536, w: .658273101}
+        inSlope: {x: 7.48773346e-06, y: -2.89171794e-06, z: 5.27494049e-05, w: -5.99018676e-05}
+        outSlope: {x: 7.48773346e-06, y: -2.89171794e-06, z: 5.27494049e-05, w: -5.99018676e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.0392144769, y: -.0015363202, z: .751759052, w: .658269107}
+        inSlope: {x: .58823657, y: .0230436679, z: 3.12066817, w: -5.66375256}
+        outSlope: {x: .58823657, y: .0230436679, z: 3.12066817, w: -5.66375256}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 2.04890984e-08, y: -3.72528941e-09, z: 4.47034836e-08, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 2.04890984e-08, y: -3.72528941e-09, z: 4.47034836e-08, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01/CATRig_Thor_HairBack_02
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .0597295836, y: -.183781683, z: .942221105, w: -.273634732}
+        inSlope: {x: 1.53832593e-06, y: 1.57777023e-07, z: -1.68295492e-06, w: -5.20664162e-06}
+        outSlope: {x: 1.53832593e-06, y: 1.57777023e-07, z: -1.68295492e-06, w: -5.20664162e-06}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .0597291403, y: -.183781728, z: .942221642, w: -.273633152}
+        inSlope: {x: -6.37016137e-06, y: -6.70543329e-07, z: 7.15246188e-06, w: 2.19044141e-05}
+        outSlope: {x: -6.37016137e-06, y: -6.70543329e-07, z: 7.15246188e-06, w: 2.19044141e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: .0597287156, y: -.183781773, z: .942222118, w: -.273631692}
+        inSlope: {x: -.520034373, y: -.00297617982, z: .431177944, w: 1.84217918}
+        outSlope: {x: -.520034373, y: -.00297617982, z: .431177944, w: 1.84217918}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.236508012, y: .963365674, z: -.123510882, w: .027124811}
+        inSlope: {x: -3.89183333e-06, y: -1.05184677e-06, z: 5.25923411e-08, w: 4.9962722e-07}
+        outSlope: {x: -3.89183333e-06, y: -1.05184677e-06, z: 5.25923411e-08, w: 4.9962722e-07}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.23650682, y: .963365912, z: -.123511031, w: .0271246955}
+        inSlope: {x: 1.63165532e-05, y: 3.57623094e-06, z: -1.1175722e-06, w: -1.87193336e-06}
+        outSlope: {x: 1.63165532e-05, y: 3.57623094e-06, z: -1.1175722e-06, w: -1.87193336e-06}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.236505732, y: .963366151, z: -.123511106, w: .0271245707}
+        inSlope: {x: 1.28127277, y: .24603653, z: -.0845266357, w: -.0558492206}
+        outSlope: {x: 1.28127277, y: .24603653, z: -.0845266357, w: -.0558492206}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0714032203, y: -.242393523, z: .816039026, w: .51983434}
+        inSlope: {x: -4.97167057e-05, y: 6.76939089e-05, z: 3.26974368e-05, w: -2.60557699e-05}
+        outSlope: {x: -4.97167057e-05, y: 6.76939089e-05, z: 3.26974368e-05, w: -2.60557699e-05}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0713937357, y: -.24240385, z: .816034913, w: .519836962}
+        inSlope: {x: .000171323816, y: -.000218150089, z: -.000100134464, w: 7.59949107e-05}
+        outSlope: {x: .000171323816, y: -.000218150089, z: -.000100134464, w: 7.59949107e-05}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.071382314, y: -.242418393, z: .816028237, w: .519842029}
+        inSlope: {x: -6.42921734, y: 11.1361637, z: -4.7405138, w: -15.2977448}
+        outSlope: {x: -6.42921734, y: 11.1361637, z: -4.7405138, w: -15.2977448}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_LLegPlatform
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.709977269, y: -.368807137, z: .464628279, w: .379518151}
+        inSlope: {x: 1.04733972e-05, y: -4.22767625e-05, z: -5.2239262e-05, w: 4.15104187e-05}
+        outSlope: {x: 1.04733972e-05, y: -4.22767625e-05, z: -5.2239262e-05, w: 4.15104187e-05}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.70997864, y: -.36880067, z: .464636654, w: .379511803}
+        inSlope: {x: -3.21860789e-05, y: .000136343806, z: .000170765023, w: -.000134108661}
+        outSlope: {x: -3.21860789e-05, y: .000136343806, z: .000170765023, w: -.000134108661}
+        tangentMode: 0
+      - time: .300001144
+        value: {x: -.709980786, y: -.36879158, z: .464648038, w: .379502863}
+        inSlope: {x: 3.14976168, y: 13.0322542, z: .530396163, w: -13.1929293}
+        outSlope: {x: 3.14976168, y: 13.0322542, z: .530396163, w: -13.1929293}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_RLegPlatform
+  m_CompressedRotationCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 1.23937607, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: 1.23937607, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: body
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.65312908e-09, y: .17699407, z: -1.8791486}
+        inSlope: {x: 4.50229503e-24, y: 7.78158119e-06, z: 2.76797855e-05}
+        outSlope: {x: 1.0505054e-23, y: 2.81992896e-15, z: -2.25594317e-14}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: 1.65312908e-09, y: .17699407, z: -1.8791486}
+        inSlope: {x: 4.50216605e-24, y: 1.208541e-15, z: -9.66832798e-15}
+        outSlope: {x: 1.05053538e-23, y: -.000528265373, z: -.0013349069}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.65312908e-09, y: .17699407, z: -1.8791486}
+        inSlope: {x: 4.50229503e-24, y: 11.0833454, z: 28.7545166}
+        outSlope: {x: 1.0505054e-23, y: 11.0835943, z: 28.7551556}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0, y: -.0192054287, z: .0542392023}
+        inSlope: {x: -0, y: -2.26607916e-16, z: 4.53215831e-16}
+        outSlope: {x: -0, y: -5.28736653e-16, z: 1.05747331e-15}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: -.0192054287, z: .0542392321}
+        inSlope: {x: 0, y: -5.23868993e-09, z: 1.53668239e-07}
+        outSlope: {x: 0, y: -5.23868993e-09, z: 1.53668239e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102315456, y: 1.21116637e-08, z: 9.68933094e-08}
+        inSlope: {x: -6.0428781e-16, y: 7.20367205e-23, z: -6.05981654e-11}
+        outSlope: {x: -1.40996448e-15, y: 1.68080864e-22, z: 1.34464691e-21}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.102315456, y: 1.21116637e-08, z: 9.68933094e-08}
+        inSlope: {x: -6.04270499e-16, y: 7.20346569e-23, z: 5.76277255e-22}
+        outSlope: {x: -1.41000471e-15, y: 1.08220681e-11, z: 3.3805566e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102315456, y: 1.21116637e-08, z: 9.68933094e-08}
+        inSlope: {x: -6.0428781e-16, y: -2.27093608e-07, z: -7.26700307e-07}
+        outSlope: {x: -1.40996448e-15, y: -2.27098852e-07, z: -7.26716564e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.36830911, y: 3.00369265e-06, z: 9.93156391e-07}
+        inSlope: {x: -0, y: 4.61597219e-11, z: -2.30798609e-11}
+        outSlope: {x: -0, y: 6.45430485e-20, z: 2.15143506e-20}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.36830911, y: 3.00369265e-06, z: 9.93156391e-07}
+        inSlope: {x: -0, y: 2.76613107e-20, z: 9.22043608e-21}
+        outSlope: {x: -0, y: -5.93822422e-11, z: 2.15149645e-20}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.36830911, y: 3.00369265e-06, z: 9.93156391e-07}
+        inSlope: {x: -0, y: 7.2670116e-07, z: 9.22070023e-21}
+        outSlope: {x: -0, y: 7.26706219e-07, z: 2.15143506e-20}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.467019349, y: -2.42233273e-08, z: -4.84466547e-08}
+        inSlope: {x: -1.2488614e-14, y: 7.72946897e-12, z: 6.12169621e-11}
+        outSlope: {x: -7.65409295e-15, y: -3.36161728e-22, z: -6.72323456e-22}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.467019349, y: -2.42233273e-08, z: -4.84466547e-08}
+        inSlope: {x: -1.24882557e-14, y: -1.44069314e-22, z: -2.88138627e-22}
+        outSlope: {x: -7.65431233e-15, y: -2.57694083e-12, z: -1.6902783e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.467019349, y: -2.45020431e-08, z: -4.44987123e-08}
+        inSlope: {x: 3.5762821e-07, y: -1.41769929e-08, z: 2.24542845e-07}
+        outSlope: {x: 3.5762821e-07, y: -1.41769929e-08, z: 2.24542845e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.115506463, y: 9.68933094e-08, z: 0}
+        inSlope: {x: -3.02143905e-16, y: 6.12169621e-11, z: 1.22021393e-10}
+        outSlope: {x: -7.0498224e-16, y: 1.34464691e-21, z: -0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.115506463, y: 9.68933094e-08, z: 0}
+        inSlope: {x: -3.02135249e-16, y: 5.76277255e-22, z: -0}
+        outSlope: {x: -7.05002357e-16, y: 7.9156473e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.115506463, y: 9.68933094e-08, z: 0}
+        inSlope: {x: -3.02143905e-16, y: -1.63507252e-06, z: -0}
+        outSlope: {x: 1.86863201e-06, y: -1.63511095e-06, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.123725496, y: -9.34992439e-09, z: 0}
+        inSlope: {x: -2.70455553e-06, y: -1.91846766e-07, z: 0}
+        outSlope: {x: -2.70455553e-06, y: -1.91846766e-07, z: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.123725392, y: -3.02791605e-08, z: 0}
+        inSlope: {x: -6.04270499e-16, y: -2.88138627e-22, z: -0}
+        outSlope: {x: -1.41000471e-15, y: -2.16441361e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.123725392, y: -3.02440029e-08, z: 0}
+        inSlope: {x: -3.07336556e-08, y: 2.11652851e-09, z: 0}
+        outSlope: {x: -3.07336556e-08, y: 2.11652851e-09, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11/CATRig_Thor_LLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -4.30635865e-08, y: -.0192054287, z: -.0542391837}
+        inSlope: {x: -1.83654862e-11, y: 0, z: 0}
+        outSlope: {x: -1.83654862e-11, y: 0, z: 0}
+        tangentMode: 0
+      - time: .0666666031
+        value: {x: -0, y: -.0192054287, z: -.0542391837}
+        inSlope: {x: -0, y: -2.26607916e-16, z: -1.51071953e-16}
+        outSlope: {x: -0, y: -5.28736653e-16, z: -3.5249112e-16}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: -.0192054193, z: -.0542391837}
+        inSlope: {x: 0, y: 7.18448803e-08, z: 3.99138234e-09}
+        outSlope: {x: 0, y: 7.18448803e-08, z: 3.99138234e-09}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102315456, y: 4.48579263e-09, z: -9.68933094e-08}
+        inSlope: {x: 0, y: -2.01860519e-08, z: 0}
+        outSlope: {x: 0, y: -2.01860519e-08, z: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.102315456, y: 0, z: -9.68933094e-08}
+        inSlope: {x: -6.04270499e-16, y: -0, z: -5.76277255e-22}
+        outSlope: {x: 1.29769819e-06, y: 2.16280227e-12, z: -6.7611132e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102315456, y: 0, z: -9.68933094e-08}
+        inSlope: {x: 3.02796207e-06, y: -4.54187372e-08, z: 1.45340061e-06}
+        outSlope: {x: 5.88272712e-07, y: -4.54197426e-08, z: 1.45343256e-06}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.368308723, y: 3.05213916e-06, z: -1.06582638e-06}
+        inSlope: {x: -3.62572665e-15, y: 1.84414005e-20, z: 5.93605859e-11}
+        outSlope: {x: -8.45978645e-15, y: 4.30287012e-20, z: -1.07571753e-20}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.368308872, y: 3.05213916e-06, z: -1.06582638e-06}
+        inSlope: {x: -1.70685973e-06, y: 0, z: 0}
+        outSlope: {x: -1.70685973e-06, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.467019558, y: -1.21116637e-08, z: -9.68933094e-08}
+        inSlope: {x: -3.62572665e-15, y: 1.53042405e-11, z: -6.12169621e-11}
+        outSlope: {x: -8.45978645e-15, y: -1.68080864e-22, z: -1.34464691e-21}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.467019558, y: -1.21116637e-08, z: -9.68933094e-08}
+        inSlope: {x: -3.62562331e-15, y: -7.20346569e-23, z: -5.76277255e-22}
+        outSlope: {x: -8.4600287e-15, y: -8.4513915e-12, z: -6.7611132e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.467019558, y: -1.21116637e-08, z: -9.68933094e-08}
+        inSlope: {x: -3.62572665e-15, y: 1.81675077e-07, z: 1.45340061e-06}
+        outSlope: {x: -3.73726402e-06, y: 1.8167907e-07, z: 1.45343256e-06}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.115506589, y: 0, z: 4.84466511e-08}
+        inSlope: {x: -1.78813821e-06, y: 0, z: 0}
+        outSlope: {x: -1.78813821e-06, y: 0, z: 0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.115506515, y: 0, z: 4.84466547e-08}
+        inSlope: {x: -9.06405828e-16, y: -0, z: 2.88138627e-22}
+        outSlope: {x: -2.11500718e-15, y: -0, z: 3.3805566e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.115506515, y: 0, z: 4.84466547e-08}
+        inSlope: {x: -9.06431662e-16, y: -0, z: -7.26700307e-07}
+        outSlope: {x: -9.34316006e-07, y: -0, z: -7.2671628e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.123725392, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -6.0428781e-16, y: 6.05981654e-11, z: -0}
+        outSlope: {x: -1.40996448e-15, y: -1.34464691e-21, z: -0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.123725392, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -6.04270499e-16, y: -5.76277255e-22, z: -0}
+        outSlope: {x: 1.29769819e-06, y: -6.7611132e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.123725392, y: -9.68933094e-08, z: 0}
+        inSlope: {x: 3.02796207e-06, y: 1.45340061e-06, z: -0}
+        outSlope: {x: 5.88272712e-07, y: 1.45343256e-06, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11/CATRig_Thor_RLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102033801, y: -6.70693427e-13, z: -8.16896151e-09}
+        inSlope: {x: 5.93385266e-07, y: -3.97121658e-12, z: -3.19417701e-08}
+        outSlope: {x: 5.93385266e-07, y: -3.97121658e-12, z: -3.19417701e-08}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102033645, y: -1.26951173e-12, z: -1.38236018e-08}
+        inSlope: {x: 4.25747288e-07, y: -3.03067142e-13, z: -6.99729874e-09}
+        outSlope: {x: 4.25747288e-07, y: -3.03067142e-13, z: -6.99729874e-09}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102033705, y: -1.55273838e-09, z: 1.43021539e-09}
+        inSlope: {x: 2.07551878e-07, y: 2.37536966e-07, z: -2.62203859e-08}
+        outSlope: {x: 2.07551878e-07, y: 2.37536966e-07, z: -2.62203859e-08}
+        tangentMode: 0
+      - time: .100000381
+        value: {x: -.10203369, y: 1.21116637e-08, z: 0}
+        inSlope: {x: 1.61138796e-15, y: 7.20346569e-23, z: -0}
+        outSlope: {x: -1.61143391e-15, y: 1.6808566e-22, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.10203366, y: 6.43457554e-09, z: 1.03261968e-10}
+        inSlope: {x: 2.37938011e-07, y: -4.99584303e-08, z: 8.74677664e-10}
+        outSlope: {x: 2.37938011e-07, y: -4.99584303e-08, z: 8.74677664e-10}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102033988, y: 2.05595931e-08, z: 5.39946665e-09}
+        inSlope: {x: -6.62273436e-08, y: 2.55686928e-07, z: 7.13975581e-08}
+        outSlope: {x: -6.62273436e-08, y: 2.55686928e-07, z: 7.13975581e-08}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102034017, y: 4.27640003e-08, z: 1.5716525e-08}
+        inSlope: {x: -6.62273436e-08, y: -6.22395504e-08, z: 2.42937559e-09}
+        outSlope: {x: -6.62273436e-08, y: -6.22395504e-08, z: 2.42937559e-09}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102033854, y: 4.49525395e-08, z: 7.6882376e-09}
+        inSlope: {x: 5.02914645e-07, y: -1.84524964e-07, z: -3.9031729e-08}
+        outSlope: {x: 5.02914645e-07, y: -1.84524964e-07, z: -3.9031729e-08}
+        tangentMode: 0
+      - time: .166666985
+        value: {x: -.102033786, y: 0, z: 0}
+        inSlope: {x: -2.81992896e-15, y: -0, z: -0}
+        outSlope: {x: -1.208541e-15, y: -0, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102033831, y: 4.90706975e-10, z: -1.29003308e-09}
+        inSlope: {x: -6.36685741e-07, y: 7.03707004e-09, z: -1.80159994e-08}
+        outSlope: {x: -6.36685741e-07, y: 7.03707004e-09, z: -1.80159994e-08}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.102033786, y: -3.33224399e-08, z: 1.22597852e-08}
+        inSlope: {x: 0, y: 1.33753204e-07, z: 6.97778688e-08}
+        outSlope: {x: 0, y: 1.33753204e-07, z: 6.97778688e-08}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.102033786, y: 3.81775855e-08, z: 8.33355784e-09}
+        inSlope: {x: 0, y: -8.43316741e-08, z: -3.92542674e-08}
+        outSlope: {x: 0, y: -8.43316741e-08, z: -3.92542674e-08}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 9.68933094e-08, y: -1.21116637e-08, z: .0846436471}
+        inSlope: {x: 6.12169621e-11, y: -7.20367205e-23, z: 2.82000943e-15}
+        outSlope: {x: 1.34464691e-21, y: -1.68080864e-22, z: 1.208541e-15}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: 9.68933094e-08, y: -1.21116637e-08, z: .0846436471}
+        inSlope: {x: 5.76277255e-22, y: -7.20346569e-23, z: 2.81992896e-15}
+        outSlope: {x: 6.7611132e-11, y: -8.4513915e-12, z: 1.20857562e-15}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 9.68933094e-08, y: -1.21116637e-08, z: .0846436471}
+        inSlope: {x: -1.45340061e-06, y: 1.81675077e-07, z: 2.82000943e-15}
+        outSlope: {x: -1.45343256e-06, y: 1.8167907e-07, z: 4.67158003e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.156503707, y: 1.6317081e-08, z: 3.36432997e-08}
+        inSlope: {x: 0, y: 7.56995178e-08, z: 6.0559546e-07}
+        outSlope: {x: 0, y: 7.56995178e-08, z: 6.0559546e-07}
+        tangentMode: 0
+      - time: .166666985
+        value: {x: -.156503722, y: 1.21116637e-08, z: 0}
+        inSlope: {x: -1.81281166e-15, y: 7.20346569e-23, z: -0}
+        outSlope: {x: -4.22989323e-15, y: 1.68080864e-22, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.156503722, y: 1.21116637e-08, z: 0}
+        inSlope: {x: -1.81286332e-15, y: -1.81675077e-07, z: -1.45339959e-06}
+        outSlope: {x: -9.34316006e-07, y: -1.8167907e-07, z: -1.45343176e-06}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.304499924, y: 9.68933094e-08, z: -2.42233273e-08}
+        inSlope: {x: -4.18723903e-06, y: 6.04275907e-10, z: -7.27009365e-07}
+        outSlope: {x: 3.73726402e-06, y: 2.91586408e-11, z: -7.26686437e-07}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.304499954, y: 0, z: -2.42233273e-08}
+        inSlope: {x: 3.73726402e-06, y: -1.45344575e-06, z: 6.68171681e-12}
+        outSlope: {x: -5.64001885e-15, y: -1.45339948e-06, z: -3.3617132e-22}
+        tangentMode: 0
+      - time: .233333588
+        value: {x: -.304499954, y: 0, z: -2.42233273e-08}
+        inSlope: {x: -2.41715124e-15, y: -0, z: -1.44073441e-22}
+        outSlope: {x: -5.63985792e-15, y: -0, z: -3.36161728e-22}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.304499894, y: -3.60349861e-09, z: -2.2112209e-08}
+        inSlope: {x: 2.03197578e-06, y: -9.60933946e-08, z: 5.89657958e-08}
+        outSlope: {x: 2.03197578e-06, y: -9.60933946e-08, z: 5.89657958e-08}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.415104836, y: 0, z: -2.42233273e-08}
+        inSlope: {x: -3.73737089e-06, y: -1.45347508e-06, z: -1.43416862e-10}
+        outSlope: {x: 6.02114778e-06, y: -1.45334263e-06, z: -7.28966019e-12}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.415104985, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -8.99710642e-07, y: -1.45343256e-06, z: 3.63361437e-07}
+        outSlope: {x: -0, y: -1.45340061e-06, z: 3.63349869e-07}
+        tangentMode: 0
+      - time: .0666666031
+        value: {x: -.415104985, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -0, y: 6.7611132e-11, z: -1.73443152e-11}
+        outSlope: {x: -0, y: -1.34464691e-21, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.415104926, y: -9.68933094e-08, z: -3.90770261e-08}
+        inSlope: {x: 2.98023025e-07, y: 0, z: -7.84966403e-08}
+        outSlope: {x: 2.98023025e-07, y: 0, z: -7.84966403e-08}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0485275611, y: .00380265061, z: -.00140437158}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.0485275574, y: .00380265061, z: -.00140437158}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 9.68933094e-08, y: 0, z: -9.68933094e-08}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 9.68933094e-08, y: 0, z: -9.68933094e-08}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002/Mesh_Axe
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -9.68933094e-08, y: 1.21116637e-08, z: -.0846436322}
+        inSlope: {x: 1.22433924e-10, y: 7.20367205e-23, z: -0}
+        outSlope: {x: -1.34464691e-21, y: 1.68080864e-22, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -9.68933094e-08, y: 3.27139986e-08, z: -.0846436694}
+        inSlope: {x: 0, y: 4.02212976e-07, z: 5.69968336e-07}
+        outSlope: {x: 0, y: 4.02212976e-07, z: 5.69968336e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.156503707, y: 1.81755837e-08, z: 3.63353756e-08}
+        inSlope: {x: -3.72529399e-07, y: -1.81753393e-07, z: -3.63348875e-07}
+        outSlope: {x: -3.72529399e-07, y: -1.81753393e-07, z: -3.63348875e-07}
+        tangentMode: 0
+      - time: .100000381
+        value: {x: -.156503737, y: 0, z: 0}
+        inSlope: {x: -1.81281166e-15, y: -0, z: -0}
+        outSlope: {x: -4.23001435e-15, y: -0, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.156503692, y: 0, z: 0}
+        inSlope: {x: -4.15103329e-07, y: 0, z: 0}
+        outSlope: {x: -4.15103329e-07, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.304500043, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -1.17657908e-06, y: 1.22433924e-10, z: -0}
+        outSlope: {x: -2.81992896e-15, y: -1.34464691e-21, z: -0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.304500043, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -1.208541e-15, y: -5.76277255e-22, z: -0}
+        outSlope: {x: -2.82000943e-15, y: -6.7611132e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.304500043, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -1.20857562e-15, y: 1.45340061e-06, z: -0}
+        outSlope: {x: -1.86863201e-06, y: 1.45343256e-06, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.415104806, y: 4.84466547e-08, z: -4.84466547e-08}
+        inSlope: {x: 6.99026532e-06, y: 7.27039946e-07, z: -7.27046825e-07}
+        outSlope: {x: -5.63985792e-15, y: 7.26686721e-07, z: -7.26686721e-07}
+        tangentMode: 0
+      - time: .0333337784
+        value: {x: -.415104806, y: 4.84466547e-08, z: -4.84466547e-08}
+        inSlope: {x: -2.417082e-15, y: -5.95981511e-12, z: 5.95981511e-12}
+        outSlope: {x: -5.64001885e-15, y: 6.72342641e-22, z: -6.72342641e-22}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.415104806, y: 4.84466547e-08, z: -4.84466547e-08}
+        inSlope: {x: -2.417082e-15, y: 2.88138627e-22, z: -2.88138627e-22}
+        outSlope: {x: -5.64001885e-15, y: 3.3805566e-11, z: -3.3805566e-11}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.415104806, y: 4.84466547e-08, z: -4.84466547e-08}
+        inSlope: {x: -2.41715124e-15, y: -7.26700307e-07, z: 7.26700307e-07}
+        outSlope: {x: 7.47452805e-06, y: -7.2671628e-07, z: 7.2671628e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0492815822, y: .00385835813, z: .00142597873}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.0492815822, y: .00385835813, z: .00142597884}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 5.21598444e-08, y: .00224705273, z: -.00178836216}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 5.2159848e-08, y: .00224705273, z: -.00178836228}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001/Box001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.134949133, y: 1.44369716e-08, z: -4.65062211e-09}
+        inSlope: {x: 0, y: 7.55760112e-08, z: -1.51152079e-07}
+        outSlope: {x: 0, y: 7.55760112e-08, z: -1.51152079e-07}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.134949133, y: 1.21116637e-08, z: 0}
+        inSlope: {x: -1.208541e-15, y: 7.20346569e-23, z: -0}
+        outSlope: {x: -2.82000943e-15, y: 4.29788809e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.134949133, y: -1.0597109e-08, z: 0}
+        inSlope: {x: 0, y: -1.13548299e-06, z: 0}
+        outSlope: {x: 0, y: -1.13548299e-06, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.146309853, y: 4.24771329e-10, z: -9.88658133e-09}
+        inSlope: {x: 2.87379237e-07, y: 9.11125468e-08, z: -1.18640038e-07}
+        outSlope: {x: 2.87379237e-07, y: 9.11125468e-08, z: -1.18640038e-07}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.146309763, y: 2.7755048e-08, z: -1.04429239e-08}
+        inSlope: {x: 8.78103208e-08, y: 5.20106994e-07, z: 2.65085504e-07}
+        outSlope: {x: 8.78103208e-08, y: 5.20106994e-07, z: 2.65085504e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .0635004714, y: -.0862677097, z: -3.4754347e-08}
+        inSlope: {x: -4.07120581e-07, y: -7.50379058e-07, z: -3.32095681e-07}
+        outSlope: {x: -4.07120581e-07, y: -7.50379058e-07, z: -3.32095681e-07}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .0635003746, y: -.0862677395, z: 1.11680887e-09}
+        inSlope: {x: 5.10896371e-07, y: 7.50379058e-07, z: 2.44106701e-07}
+        outSlope: {x: 5.10896371e-07, y: 7.50379058e-07, z: 2.44106701e-07}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.0900643691, y: -9.68933094e-08, z: 0}
+        inSlope: {x: -6.48849095e-07, y: 6.05981654e-11, z: -0}
+        outSlope: {x: -1.61138796e-15, y: -1.34464691e-21, z: -0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.0900643691, y: -9.68933094e-08, z: 0}
+        inSlope: {x: 1.61138796e-15, y: -5.76277255e-22, z: -0}
+        outSlope: {x: 6.48849095e-07, y: -6.7611132e-11, z: -0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.0900643691, y: -9.68933094e-08, z: 0}
+        inSlope: {x: 1.51398103e-06, y: 1.45340061e-06, z: -0}
+        outSlope: {x: 2.69048314e-06, y: 1.45343256e-06, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01/CATRig_Thor_HairBack_02
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .131778866, y: .0516419522, z: .0830635428}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .131778866, y: .0516419485, z: .0830635428}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .131778777, y: .0516419522, z: -.077480033}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .131778777, y: .0516419485, z: -.077480033}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.631179571, y: .126534745, z: -2.61035395}
+        inSlope: {x: -7.2514533e-15, y: 1.59938081e-05, z: 2.76797855e-05}
+        outSlope: {x: -1.69195729e-14, y: 1.40996448e-15, z: -0}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: -.631179571, y: .126534745, z: -2.61035395}
+        inSlope: {x: -7.25124662e-15, y: 6.04270499e-16, z: -0}
+        outSlope: {x: -.000243813774, y: 9.1647431e-05, z: -.00188828539}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: -.631179571, y: .126534745, z: -2.61035395}
+        inSlope: {x: 5.14890432, y: -1.89801848, z: 39.0234299}
+        outSlope: {x: 5.14902544, y: -1.89806402, z: 39.0243149}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_LLegPlatform
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .533134103, y: .0911228135, z: -2.84189105}
+        inSlope: {x: -1.5308623e-14, y: 2.63683596e-05, z: 2.76797855e-05}
+        outSlope: {x: 7.25124493e-15, y: 7.0498224e-16, z: -6.76782916e-14}
+        tangentMode: 0
+      - time: .266667366
+        value: {x: .533134103, y: .0911228135, z: -2.84189105}
+        inSlope: {x: -1.53081859e-14, y: 3.02135249e-16, z: -2.90049865e-14}
+        outSlope: {x: .00024208767, y: 6.46278859e-05, z: -.00230328483}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .533134103, y: .0911228135, z: -2.84189105}
+        inSlope: {x: -5.00977182, y: -1.36684132, z: 47.8830719}
+        outSlope: {x: -5.00989771, y: -1.36687255, z: 47.8841667}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_RLegPlatform
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: body
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999881, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999881, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999998093, y: 1.00000179, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999998152, y: 1.00000179, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00001335, y: .999987006, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00001335, y: .999987006, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00001323, y: .999984264, z: 1.0000025}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00001323, y: .999984264, z: 1.0000025}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00001967, y: .99998045, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00001967, y: .99998045, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000656, y: .999993682, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000656, y: .999993801, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_LLegCollarbone/CATRig_Thor_LLeg1/CATRig_Thor_LLeg2/CATRig_Thor_LLegAnkle/CATRig_Thor_LLegDigit11/CATRig_Thor_LLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999881, y: 1.00000024, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999881, y: 1.00000024, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000215, y: .999998093, z: .999999821}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000215, y: .999998152, z: .999999821}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000572, y: .999994636, z: .999999642}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000572, y: .999994636, z: .999999642}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000775, y: .999992251, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000775, y: .999992251, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000966, y: .999990106, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000966, y: .999990106, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000012, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000012, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_RLegCollarbone/CATRig_Thor_RLeg1/CATRig_Thor_RLeg2/CATRig_Thor_RLegAnkle/CATRig_Thor_RLegDigit11/CATRig_Thor_RLegDigit12
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999881, y: .999999821, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999881, y: .999999821, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000012, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000012, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999881, y: 1.00000012, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999881, y: 1.00000012, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999881, y: 1, z: 1.00000036}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999881, y: 1, z: 1.00000036}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999702, y: 1, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999702, y: 1, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: .999999881, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: .999999881, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: .999999881, z: .999999821}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: .999999881, z: .999999821}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999046, y: 1.00000095, z: 1.0000006}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999106, y: 1.00000095, z: 1.0000006}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999344, y: .999999881, z: 1.00000107}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999285, y: .999999881, z: 1.00000107}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.0000025, y: .99999702, z: 1.00000119}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.0000025, y: .99999696, z: 1.00000119}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.0000037, y: .999996066, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.0000037, y: .999996066, z: 1.00000024}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999992609, y: .999999583, z: 1.00000799}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999992609, y: .999999523, z: 1.00000799}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_LArmCollarbone/CATRig_Thor_LArm1/CATRig_Thor_LArm2/CATRig_Thor_LArmPalm/Dummy002/Mesh_Axe
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999046, y: 1.00000107, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999106, y: 1.00000107, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999998093, y: 1.00000155, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999998093, y: 1.00000155, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999996543, y: 1.00000322, z: .999999404}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999996543, y: 1.00000322, z: .999999404}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999988973, y: 1.00001192, z: .999999344}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999989033, y: 1.00001192, z: .999999404}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .220669627, y: .220662862, z: .220666572}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .220669627, y: .220662862, z: .220666587}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_RArmCollarbone/CATRig_Thor_RArm1/CATRig_Thor_RArm2/CATRig_Thor_RArmPalm/Dummy001/Box001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000036, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000036, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.0000006, y: 1.00000012, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.0000006, y: 1.00000012, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: .999999285, y: .999999702, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: .999999285, y: .999999702, z: .999999881}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1.00000012, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairBack_01/CATRig_Thor_HairBack_02
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1.00000024, z: 1.00000012}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.00000024, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1.00000024, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_Hip/CATRig_Thor_Spine1/CATRig_Thor_Spine2/CATRig_Thor_Spine3/CATRig_Thor_Spine4/CATRig_Thor_Spine5/CATRig_Thor_Shoulder/CATRig_Thor_Spine1
+      1/CATRig_Thor_Spine2 1/CATRig_Thor_Head/CATRig_Thor_HairFrontR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_LLegPlatform
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: .300000191
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: CATRig_Thor_RLegPlatform
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 30
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - path: 1719744451
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4145690616
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2035327389
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1441025363
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1686580145
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2414305160
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3876596335
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3221848113
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1937317786
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1490243415
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2243956651
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1972822196
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3436683695
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2103002266
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 17750511
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1195507048
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2966007705
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1440780667
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1719744451
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1026959666
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764446133
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1396284899
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4145690616
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1441025363
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1686580145
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2414305160
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3876596335
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764140046
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2821901527
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 564025891
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3125333873
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 875400692
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 592036284
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1937317786
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1490243415
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2243956651
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1972822196
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 805382966
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3436683695
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2103002266
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103868664
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 17750511
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 992494652
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1241477382
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1179855256
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3160151291
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2966007705
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1440780667
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3685223346
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764359856
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2259043481
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1026959666
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764446133
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1396284899
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 730803573
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764140046
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2821901527
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 564025891
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3125333873
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 875400692
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 592036284
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 426558286
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1176362472
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3729815158
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 805382966
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 844582844
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 819542086
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103868664
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 992494652
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1241477382
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1179855256
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3160151291
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3685223346
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764359856
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2259043481
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2035327389
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 730803573
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3221848113
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 426558286
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1176362472
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3729815158
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 844582844
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 819542086
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1195507048
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3685223346
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764359856
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1719744451
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2259043481
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1026959666
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764446133
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1396284899
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4145690616
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2035327389
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 730803573
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1441025363
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1686580145
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2414305160
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3876596335
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3221848113
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 764140046
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2821901527
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 564025891
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3125333873
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 875400692
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 592036284
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1937317786
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1490243415
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2243956651
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1972822196
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 426558286
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1176362472
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3729815158
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 805382966
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3436683695
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2103002266
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 844582844
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 819542086
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103868664
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 17750511
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 992494652
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1241477382
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1195507048
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1179855256
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3160151291
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2966007705
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1440780667
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: .300001144
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []
