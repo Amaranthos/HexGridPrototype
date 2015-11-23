@@ -113,6 +113,13 @@ public class Hero : MonoBehaviour {
 
 		hero.Owner.Faith -= currentAbility.cost;
 		Logic.Inst.ClearHighlightedTiles();
+
+		if(currentAbility.ID == active1.ID){
+			gameObject.GetComponent<Unit>().ChangeAnim(5);
+		}
+		else if(currentAbility.ID == active2.ID){
+			gameObject.GetComponent<Unit>().ChangeAnim(6);
+		}
 	}
 
 	public void ActivateAbility2(){

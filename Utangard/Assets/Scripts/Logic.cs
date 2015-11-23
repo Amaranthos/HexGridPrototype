@@ -396,6 +396,7 @@ public class Logic : MonoBehaviour {
 			if(players[i].hero.passive.passive == PassiveType.Buff){
 				players[i].hero.passive.ApplyBuffAll(i);
 			}
+			players[i].hero.gameObject.GetComponent<Unit>().ChangeAnim(0);
 		}
 
 		enviro.SetActive(true);
