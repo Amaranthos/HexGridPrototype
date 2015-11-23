@@ -116,6 +116,7 @@ ModelImporter:
     7400008: Shield Death
     7400010: Shield Block
     7400012: Shield Idle
+    7400014: Shield Corpse
     9500000: //RootNode
     13700000: Mesh_ShieldMaiden
   materials:
@@ -791,6 +792,114 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 75
       lastFrame: 138
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cloth
+        weight: 1
+      - path: Mesh_ShieldMaiden
+        weight: 1
+      - path: ShieldMaiden_
+        weight: 1
+      - path: ShieldMaiden_Hip
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone/ShieldMaiden_LLeg1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone/ShieldMaiden_LLeg1/ShieldMaiden_LLeg2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone/ShieldMaiden_LLeg1/ShieldMaiden_LLeg2/ShieldMaiden_LLegAnkle
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone/ShieldMaiden_LLeg1/ShieldMaiden_LLeg2/ShieldMaiden_LLegAnkle/ShieldMaiden_LLegDigit11
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_LLegCollarbone/ShieldMaiden_LLeg1/ShieldMaiden_LLeg2/ShieldMaiden_LLegAnkle/ShieldMaiden_LLegDigit11/ShieldMaiden_LLegDigit12
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone/ShieldMaiden_RLeg1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone/ShieldMaiden_RLeg1/ShieldMaiden_RLeg2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone/ShieldMaiden_RLeg1/ShieldMaiden_RLeg2/ShieldMaiden_RLegAnkle
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone/ShieldMaiden_RLeg1/ShieldMaiden_RLeg2/ShieldMaiden_RLegAnkle/ShieldMaiden_RLegDigit11
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_RLegCollarbone/ShieldMaiden_RLeg1/ShieldMaiden_RLeg2/ShieldMaiden_RLegAnkle/ShieldMaiden_RLegDigit11/ShieldMaiden_RLegDigit12
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone/ShieldMaiden_LArm1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone/ShieldMaiden_LArm1/ShieldMaiden_LArm2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone/ShieldMaiden_LArm1/ShieldMaiden_LArm2/ShieldMaiden_LArmPalm
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone/ShieldMaiden_LArm1/ShieldMaiden_LArm2/ShieldMaiden_LArmPalm/Dummy002
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_LArmCollarbone/ShieldMaiden_LArm1/ShieldMaiden_LArm2/ShieldMaiden_LArmPalm/Dummy002/Mesh_Sword
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_Neck1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_Neck1/ShieldMaiden_Neck2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_Neck1/ShieldMaiden_Neck2/ShieldMaiden_Neck3
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_Neck1/ShieldMaiden_Neck2/ShieldMaiden_Neck3/ShieldMaiden_Head
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone/ShieldMaiden_RArm1
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone/ShieldMaiden_RArm1/ShieldMaiden_RArm2
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone/ShieldMaiden_RArm1/ShieldMaiden_RArm2/ShieldMaiden_RArmPalm
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone/ShieldMaiden_RArm1/ShieldMaiden_RArm2/ShieldMaiden_RArmPalm/Dummy001
+        weight: 1
+      - path: ShieldMaiden_Hip/ShieldMaiden_Spine1/ShieldMaiden_Spine2/ShieldMaiden_Spine3/ShieldMaiden_Spine4/ShieldMaiden_Spine5/ShieldMaiden_Shoulder/ShieldMaiden_RArmCollarbone/ShieldMaiden_RArm1/ShieldMaiden_RArm2/ShieldMaiden_RArmPalm/Dummy001/Mesh_Shield
+        weight: 1
+      - path: ShieldMaiden_LLegPlatform
+        weight: 1
+      - path: ShieldMaiden_RLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shield Corpse
+      takeName: Take 001
+      firstFrame: 240
+      lastFrame: 244
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
