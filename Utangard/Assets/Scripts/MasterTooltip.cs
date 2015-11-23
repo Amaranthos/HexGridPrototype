@@ -2,13 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Tooltip : MonoBehaviour {
+public class MasterTooltip : MonoBehaviour {
 
-	public Text textObj;
+	//public Text textObj;
 	public Vector2 tipOffset = new Vector2();
 	RectTransform rect;
 	Vector2 rectSize = new Vector2();
-	Vector3 cursorPos = new Vector3(0,0,5);
+	Vector3 cursorPos = new Vector3(0,0,100);
 
 	void Start () 
 	{
@@ -22,10 +22,10 @@ public class Tooltip : MonoBehaviour {
 	{
 		cursorPos.x = Input.mousePosition.x + tipOffset.x;
 		cursorPos.y = Input.mousePosition.y + tipOffset.y;
-		if(textObj.text == "")
-		{
-			rect.sizeDelta = rectSize;
-		}
+//		if(textObj.text == "")
+//		{
+//			rect.sizeDelta = rectSize;
+//		}
 		transform.position = Camera.main.ScreenToWorldPoint(cursorPos);
 	}
 }

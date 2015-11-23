@@ -46,6 +46,11 @@ public enum TargetType {
 	AoE
 }
 
+public enum TooltipType{
+	unit,
+	terrain
+}
+
 public enum GamePhase {
 	HeroSelectPhase,
 	ArmySelectPhase,
