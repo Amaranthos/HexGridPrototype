@@ -1694,6 +1694,7 @@ GameObject:
   - 65: {fileID: 6598624}
   - 114: {fileID: 11409366}
   - 114: {fileID: 11462428}
+  - 114: {fileID: 11497368}
   m_Layer: 0
   m_Name: Thor
   m_TagString: Untagged
@@ -4282,6 +4283,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11497368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!137 &13712034
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

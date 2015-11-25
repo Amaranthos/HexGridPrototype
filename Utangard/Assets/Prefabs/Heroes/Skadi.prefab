@@ -563,6 +563,7 @@ GameObject:
   - 65: {fileID: 6577982}
   - 114: {fileID: 11473060}
   - 114: {fileID: 11480754}
+  - 114: {fileID: 11495974}
   m_Layer: 0
   m_Name: Skadi
   m_TagString: Untagged
@@ -4903,6 +4904,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1705694838509464eaa3fb00dd0aad0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11495974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11496886
 MonoBehaviour:
   m_ObjectHideFlags: 1

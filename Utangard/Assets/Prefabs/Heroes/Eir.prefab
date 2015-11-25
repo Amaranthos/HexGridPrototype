@@ -1608,6 +1608,7 @@ GameObject:
   - 65: {fileID: 6591958}
   - 114: {fileID: 11405034}
   - 114: {fileID: 11406314}
+  - 114: {fileID: 11456936}
   m_Layer: 0
   m_Name: Eir
   m_TagString: Untagged
@@ -4339,6 +4340,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11456936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11478204
 MonoBehaviour:
   m_ObjectHideFlags: 1

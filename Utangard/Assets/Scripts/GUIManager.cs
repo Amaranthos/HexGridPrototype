@@ -23,6 +23,7 @@ public class GUIManager : MonoBehaviour {
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
+	public MasterTooltip tooltips;
 	public BattlePredictionUI battlePrediction;
 	public Button EndTurnP1;
 	public Button EndTurnP2;
@@ -43,6 +44,19 @@ public class GUIManager : MonoBehaviour {
 	{
 		inst = this;
 		//GUICanvasAnimator = GUICanvas.GetComponent<Animator>();
+	}
+
+	public void ExpandTooltip(TooltipType type)
+	{
+		tooltips.ExpandTooltip(type);
+	}
+	public void OpenToolip(TooltipType type, Unit hoverUnit)
+	{
+		tooltips.ActivateTooltip(type, hoverUnit);
+	}
+	public void CloseTooltip()
+	{
+		tooltips.DeactivateTooltips();
 	}
 
 	public void LogCombatResult(string res)

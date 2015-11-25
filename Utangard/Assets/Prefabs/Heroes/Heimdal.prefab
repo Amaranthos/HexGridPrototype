@@ -448,6 +448,7 @@ GameObject:
   - 65: {fileID: 6575392}
   - 114: {fileID: 11468216}
   - 114: {fileID: 11486430}
+  - 114: {fileID: 11422122}
   m_Layer: 0
   m_Name: Heimdal
   m_TagString: Untagged
@@ -3590,7 +3591,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178268}
-  m_LocalRotation: {x: -.612370312, y: .353552431, z: .612373829, w: -.353555858}
+  m_LocalRotation: {x: -.612370253, y: .353552401, z: .612373769, w: -.353555828}
   m_LocalPosition: {x: -.155046985, y: .0337300003, z: -.430152416}
   m_LocalScale: {x: 1.00000024, y: 1.00000048, z: 1.00000024}
   m_Children: []
@@ -4366,6 +4367,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11422122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11431480
 MonoBehaviour:
   m_ObjectHideFlags: 1
