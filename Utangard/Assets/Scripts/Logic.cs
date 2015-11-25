@@ -374,22 +374,6 @@ public class Logic : MonoBehaviour {
 
 		AssignAltarsInitial();
 
-		// Old spawning
-
-		// for (int i = 0; i < armies.Length; i++){
-		// 	List<Tile> tiles = players[i].PlacementField();
-
-		// 	if(i == 0){
-		// 		tiles.Reverse();
-		// 	}
-
-		// 	for (int j = 0; j < armies[i].Length; j++){
-		// 		players[i].SpawnUnit((UnitType)armies[i][j], tiles[j], i);
-		// 	}
-
-		// 	players[i].SpawnHero(tiles[armies[i].Length], i);
-		// }
-
 		gameObject.GetComponent<ClothingManager>().SetSkins();
 
 		for(int i = 0; i < players.Length; i++){
@@ -603,19 +587,49 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
+	public GameObject spear;
+
 	private IEnumerator UnitCombat(Unit att, Unit def) {
 		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;
 		att.CurrentMovePoints = 0;
 		combatManager.ResolveCombat(att, def);
-		yield return new WaitForSeconds(3.5f);
+
+		yield return new WaitForSeconds(2.5f);
+
+		if(att.type == UnitType.Spearman){
+			Vector3 pos = att.transform.position;
+			pos.y += 1.3f;
+			pos.x += 0.53f;
+			pos.z += 0.5f;
+
+			GameObject spearClone = (GameObject)Instantiate(spear, pos, Quaternion.identity);
+			spearClone.GetComponent<Spear>().CalcArc(def.transform.position, 1.0f);
+		}
+
 		att.OnAttack();
-		if (!def.dead && def.InAttackRange(att))
+
+		if (!def.dead && def.InAttackRange(att)){
 			combatManager.ResolveCombat(def, att);
-		yield return new WaitForSeconds(3.5f);
+
+			yield return new WaitForSeconds(2.5f);
+
+			if(def.type == UnitType.Spearman){
+				Vector3 pos = def.transform.position;
+				pos.y += 1.3f;
+				pos.x += 0.53f;
+				pos.z += 0.5f;
+
+				GameObject spearClone = (GameObject)Instantiate(spear, pos, Quaternion.identity);
+				spearClone.GetComponent<Spear>().CalcArc(att.transform.position, 1.0f);
+			}
+		}
+
 		inCombat = false;
 	}
+
+	// public ThrowSpear()
 
 	private void ChangePlayer() {
 		if (currentPlayer + 1 < players.Length)

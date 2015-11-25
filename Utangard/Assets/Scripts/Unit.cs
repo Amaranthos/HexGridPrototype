@@ -247,40 +247,6 @@ public class Unit : MonoBehaviour {
 		return ret.Contains(tile);
 	}
 
-//	public void SetUnitMaterial(){
-//		if(gameObject.transform.childCount > 0){
-//			Transform model = gameObject.transform.GetChild(0);
-//			for(int i = 0; i < model.childCount; i++){
-//				Transform child = model.GetChild(i);
-//
-//				if(child.name == "body"){
-//					if(!child.GetComponent<SkinnedMeshRenderer>()){
-//						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
-//						for(int j = 0; j < meshRend.sharedMaterials.Length; j++){
-//							if(meshRend.sharedMaterials[j].name == "Default Colour"){
-//								Material[] mats = meshRend.sharedMaterials;
-//								mats[j] = new Material(meshRend.sharedMaterials[j]);
-//								mats[j].color = Owner.playerColour;
-//								meshRend.sharedMaterials = mats;
-//							}
-//						}
-//					}
-//					else{
-//						SkinnedMeshRenderer meshRend = child.GetComponent<SkinnedMeshRenderer>();
-//						for(int k = 0; k < meshRend.sharedMaterials.Length; k++){
-//							if(meshRend.sharedMaterials[k].name == "Default Colour"){
-//								Material[] mats = meshRend.sharedMaterials;
-//								mats[k] = new Material(meshRend.sharedMaterials[k]);
-//								mats[k].color = Owner.playerColour;
-//								meshRend.sharedMaterials = mats;
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-//	}
-
 	public void OnTurnStart(){
 		// GameObject tempText;
 		List<int> finishedBuffs = new List<int>();
