@@ -136,6 +136,7 @@ ModelImporter:
     7400012: Eir Spec 1
     7400014: Eir Spec 2
     7400016: Eir Select
+    7400018: Eir Idle Blend
     9500000: //RootNode
     13700000: Mesh_Accesories001
     13700002: Mesh_Body
@@ -163,7 +164,7 @@ ModelImporter:
       name: Eir Walk
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -278,8 +279,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Idle
       takeName: Take 001
-      firstFrame: 45
-      lastFrame: 95
+      firstFrame: 70
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -394,8 +395,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Attack
       takeName: Take 001
-      firstFrame: 100
-      lastFrame: 155
+      firstFrame: 125
+      lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -510,8 +511,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Death
       takeName: Take 001
-      firstFrame: 160
-      lastFrame: 205
+      firstFrame: 180
+      lastFrame: 249
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -626,8 +627,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Corpse
       takeName: Take 001
-      firstFrame: 200
-      lastFrame: 205
+      firstFrame: 248
+      lastFrame: 249
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -742,8 +743,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Block
       takeName: Take 001
-      firstFrame: 210
-      lastFrame: 270
+      firstFrame: 215
+      lastFrame: 311
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -858,8 +859,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Spec 1
       takeName: Take 001
-      firstFrame: 275
-      lastFrame: 360
+      firstFrame: 316
+      lastFrame: 385
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -974,8 +975,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Spec 2
       takeName: Take 001
-      firstFrame: 365
-      lastFrame: 968
+      firstFrame: 406
+      lastFrame: 533
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1090,15 +1091,131 @@ ModelImporter:
     - serializedVersion: 16
       name: Eir Select
       takeName: Take 001
-      firstFrame: 986
-      lastFrame: 1030
+      firstFrame: 562
+      lastFrame: 606
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Female
+        weight: 1
+      - path: Femalehip
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleLLegCollarbone/FemaleLLeg1/FemaleLLeg2/FemaleLLegAnkle/FemaleLLegDigit11/FemaleLLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11
+        weight: 1
+      - path: Femalehip/FemaleRLegCollarbone/FemaleRLeg1/FemaleRLeg2/FemaleRLegAnkle/FemaleRLegDigit11/FemaleRLegDigit12
+        weight: 1
+      - path: Femalehip/FemaleSpine1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleLArmCollarbone/FemaleLArm1/FemaleLArm2/FemaleLArmPalm/Dummy001/Mesh_Spear
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/Femaleneck1/Femaleneck2/Femaleneck3/Femalehead/FemaleheadBone001/FemaleheadBone002/FemaleheadBone003/FemaleheadBone004
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002
+        weight: 1
+      - path: Femalehip/FemaleSpine1/FemaleSpine2/FemaleSpine3/FemaleSpine4/FemaleSpine5/Femaleshoulder/FemaleRArmCollarbone/FemaleRArm1/FemaleRArm2/FemaleRArmPalm/Dummy002/Mesh_Shield
+        weight: 1
+      - path: FemaleLLegPlatform
+        weight: 1
+      - path: FemaleRLegPlatform
+        weight: 1
+      - path: Mesh_Accesories001
+        weight: 1
+      - path: Mesh_Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Eir Idle Blend
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
