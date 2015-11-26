@@ -15,7 +15,13 @@ public class AnimAttackEnd: StateMachineBehaviour {
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		animator.gameObject.transform.parent.GetComponent<Unit>().ChangeAnim(0);
+		Unit unit =	animator.gameObject.transform.parent.GetComponent<Unit>();
+		if(unit.CurrentHitpoints > 0){	
+			unit.ChangeAnim(0);
+		}
+		else{
+			unit.ChangeAnim(3);
+		}
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
