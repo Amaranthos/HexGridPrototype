@@ -370,28 +370,28 @@ public class Logic : MonoBehaviour {
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer && !inCombat)
 							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
-					else {
-						if(tile.OccupyingUnit && tile.OccupyingUnit != selectedUnit.Owner){
-							List<Tile> tiles = selectedUnit.TilesReachable();
+					// else {
+					// 	if(tile.OccupyingUnit && tile.OccupyingUnit != selectedUnit.Owner){
+					// 		List<Tile> tiles = selectedUnit.TilesReachable();
 
-							Tile closest = null;
+					// 		Tile closest = null;
 
-							for (int i = 0; i < tiles.Count; i++){
-								if(Logic.Inst.Grid.TilesInRange(tiles[i].Index, selectedUnit.attackRange).Contains(Logic.Inst.Grid.TileAt(tile.Index))){
-									if(!closest){
-										closest = tiles[i];
-									}
-									else if(Grid.Distance(selectedUnit.Index, tiles[i].Index) <  Grid.Distance(selectedUnit.Index, closest.Index)) {
-										closest = tiles[i];	
-									}
-								}
-							}
+					// 		for (int i = 0; i < tiles.Count; i++){
+					// 			if(Logic.Inst.Grid.TilesInRange(tiles[i].Index, selectedUnit.attackRange).Contains(Logic.Inst.Grid.TileAt(tile.Index))){
+					// 				if(!closest){
+					// 					closest = tiles[i];
+					// 				}
+					// 				else if(Grid.Distance(selectedUnit.Index, tiles[i].Index) <  Grid.Distance(selectedUnit.Index, closest.Index)) {
+					// 					closest = tiles[i];	
+					// 				}
+					// 			}
+					// 		}
 							
-							if(closest){
-								selectedUnit.MoveTowardsTile(closest, tile.OccupyingUnit);
-							}
-						}						
-					}
+					// 		if(closest){
+					// 			selectedUnit.MoveTowardsTile(closest, tile.OccupyingUnit);
+					// 		}
+					// 	}						
+					// }
 				}
 				break;
 		}
