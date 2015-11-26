@@ -25,6 +25,7 @@ public class GUIManager : MonoBehaviour {
 	public GUIAnimationController guiAnim;
 	public MasterTooltip tooltips;
 	public BattlePredictionUI battlePrediction;
+	public GameObject deploymentText;
 	public Button EndTurnP1;
 	public Button EndTurnP2;
 //	public Tooltip TooltipPanel;
@@ -85,9 +86,11 @@ public class GUIManager : MonoBehaviour {
 		if(currentPlayer == 0){
 			if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
 				formationButtonPanels[0].SetActive(true);
+				deploymentText.SetActive(true);
 			}
 			else{
 				formationButtonPanels[0].SetActive(false);
+				deploymentText.SetActive(false);
 			}
 			formationButtonPanels[1].SetActive(false);
 			guiAnim.SetP1Turn();
@@ -95,9 +98,11 @@ public class GUIManager : MonoBehaviour {
 		else{
 			if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
 				formationButtonPanels[1].SetActive(true);
+				deploymentText.SetActive(true);
 			}
 			else{
 				formationButtonPanels[1].SetActive(false);
+				deploymentText.SetActive(false);
 			}
 			formationButtonPanels[0].SetActive(false);
 			guiAnim.SetP2Turn();
