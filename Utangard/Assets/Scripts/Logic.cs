@@ -52,6 +52,7 @@ public class Logic : MonoBehaviour {
 	public float offsetDist;
 
 	//For Victory
+	public GameObject returnButton;
 	public GameObject winText;
 	public GameObject timerText;
 
@@ -614,6 +615,7 @@ public class Logic : MonoBehaviour {
 
 	private void EndGame() {
 		gamePhase = GamePhase.FinishedPhase;
+		returnButton.SetActive(true);
 		winText.SetActive(true);
 		winText.GetComponent<Text>().text = players[winningPlayer].PlayerName + " Wins!";
 	}

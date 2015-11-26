@@ -59,6 +59,11 @@ public class GUIManager : MonoBehaviour {
 		tooltips.DeactivateTooltips();
 	}
 
+	public void ReturnToMain()
+	{
+		Application.LoadLevel("Main Menu");
+	}
+
 	public void LogCombatResult(string res)
 	{
 		//CombatLog.text += (res + "\n");	
