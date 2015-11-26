@@ -181,6 +181,7 @@ ModelImporter:
     7400012: Skadi Spec 1
     7400014: Skadi Spec 2
     7400016: Skadi Select
+    7400018: Idle Blend
     9500000: //RootNode
     13700000: Mesh_Bow
     13700002: Mesh_Skadi
@@ -208,7 +209,7 @@ ModelImporter:
       name: Skadi Walk
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -347,8 +348,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Idle
       takeName: Take 001
-      firstFrame: 45
-      lastFrame: 95
+      firstFrame: 75
+      lastFrame: 125
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -487,8 +488,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Attack
       takeName: Take 001
-      firstFrame: 100
-      lastFrame: 155
+      firstFrame: 130
+      lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -627,8 +628,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Death
       takeName: Take 001
-      firstFrame: 160
-      lastFrame: 198
+      firstFrame: 190
+      lastFrame: 248
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -767,8 +768,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Corpse
       takeName: Take 001
-      firstFrame: 196
-      lastFrame: 198
+      firstFrame: 247
+      lastFrame: 249
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -907,8 +908,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Dodge
       takeName: Take 001
-      firstFrame: 200
-      lastFrame: 260
+      firstFrame: 250
+      lastFrame: 310
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1047,8 +1048,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Spec 1
       takeName: Take 001
-      firstFrame: 265
-      lastFrame: 315
+      firstFrame: 315
+      lastFrame: 365
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1187,8 +1188,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Spec 2
       takeName: Take 001
-      firstFrame: 320
-      lastFrame: 410
+      firstFrame: 375
+      lastFrame: 464
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1327,15 +1328,155 @@ ModelImporter:
     - serializedVersion: 16
       name: Skadi Select
       takeName: Take 001
-      firstFrame: 415
-      lastFrame: 470
+      firstFrame: 465
+      lastFrame: 520
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh_Skadi
+        weight: 1
+      - path: Mesh_SkadiCloak
+        weight: 1
+      - path: Skadi_
+        weight: 1
+      - path: Skadi_hip
+        weight: 1
+      - path: Skadi_hip/Mesh_Arrow001
+        weight: 1
+      - path: Skadi_hip/Mesh_Arrow002
+        weight: 1
+      - path: Skadi_hip/Mesh_Arrow003
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone/Skadi_LLeg1
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone/Skadi_LLeg1/Skadi_LLeg2
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone/Skadi_LLeg1/Skadi_LLeg2/Skadi_LLegAnkle
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone/Skadi_LLeg1/Skadi_LLeg2/Skadi_LLegAnkle/Skadi_LLegDigit11
+        weight: 1
+      - path: Skadi_hip/Skadi_LLegCollarbone/Skadi_LLeg1/Skadi_LLeg2/Skadi_LLegAnkle/Skadi_LLegDigit11/Skadi_LLegDigit12
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone/Skadi_RLeg1
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone/Skadi_RLeg1/Skadi_RLeg2
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone/Skadi_RLeg1/Skadi_RLeg2/Skadi_RLegAnkle
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone/Skadi_RLeg1/Skadi_RLeg2/Skadi_RLegAnkle/Skadi_RLegDigit11
+        weight: 1
+      - path: Skadi_hip/Skadi_RLegCollarbone/Skadi_RLeg1/Skadi_RLeg2/Skadi_RLegAnkle/Skadi_RLegDigit11/Skadi_RLegDigit12
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/CTRL_Bottom
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/CTRL_Handle
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/CTRL_String
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/CTRL_String/Mesh_Arrow
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/CTRL_Top
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_LArmCollarbone/Skadi_LArm1/Skadi_LArm2/Skadi_LArmPalm/CTRL_Skadi_LHand/CTRL_World_Bow/Mesh_Bow
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_L_Hair_1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_L_Hair_1/Skadi_L_Hair_2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_L_Hair_1/Skadi_L_Hair_2/Skadi_L_Hair_3
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_L_Hair_1/Skadi_L_Hair_2/Skadi_L_Hair_3/Skadi_L_Hair_4
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_R_Hair_1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_R_Hair_1/Skadi_R_Hair_2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_R_Hair_1/Skadi_R_Hair_2/Skadi_R_Hair_3
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_neck1/Skadi_neck2/Skadi_neck3/Skadi_head/Skadi_R_Hair_1/Skadi_R_Hair_2/Skadi_R_Hair_3/Skadi_R_Hair_4
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_RArmCollarbone
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_RArmCollarbone/Skadi_RArm1
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_RArmCollarbone/Skadi_RArm1/Skadi_RArm2
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_RArmCollarbone/Skadi_RArm1/Skadi_RArm2/Skadi_RArmPalm
+        weight: 1
+      - path: Skadi_hip/Skadi_Spine1/Skadi_Spine2/Skadi_Spine3/Skadi_Spine4/Skadi_Spine5/Skadi_shoulder/Skadi_RArmCollarbone/Skadi_RArm1/Skadi_RArm2/Skadi_RArmPalm/CTRL_Skadi_RHand
+        weight: 1
+      - path: Skadi_LLegPlatform
+        weight: 1
+      - path: Skadi_RLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle Blend
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
