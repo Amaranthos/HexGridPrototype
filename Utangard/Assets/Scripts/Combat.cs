@@ -34,7 +34,7 @@ public class Combat : MonoBehaviour {
 		int hitRoll = 0;
 
 		atk.ChangeAnim(2);
-		def.ChangeAnim(0);	//Will need to be state 4 when defend animation added.
+		def.ChangeAnim(4);
 
 		int hitChance = atk.TotalHitChance - def.TotalDodgeChance;
 		hitChance = Mathf.FloorToInt((hitChance / 100f * 100f));

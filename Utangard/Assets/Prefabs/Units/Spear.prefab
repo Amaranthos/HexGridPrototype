@@ -70,6 +70,7 @@ GameObject:
   - 4: {fileID: 445060}
   - 65: {fileID: 6586200}
   - 114: {fileID: 11470730}
+  - 114: {fileID: 11412452}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
@@ -894,7 +895,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.6049995, y: 53, z: -66}
+  m_LocalPosition: {x: -7.96019745, y: -11.0584326, z: -1.83850551}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 426632}
@@ -1183,7 +1184,7 @@ Animator:
   m_GameObject: {fileID: 168470}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c4ce09d0945c651439794f1e716079cb, type: 3}
-  m_Controller: {fileID: 9100000, guid: edf23c69d16cd8147bba6328e866c798, type: 2}
+  m_Controller: {fileID: 9100000, guid: a220210ed7cffac4eb5948cf0b1d60ed, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1260,6 +1261,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11412452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11445370
 MonoBehaviour:
   m_ObjectHideFlags: 1

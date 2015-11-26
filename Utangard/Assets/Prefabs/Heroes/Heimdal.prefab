@@ -448,6 +448,7 @@ GameObject:
   - 65: {fileID: 6575392}
   - 114: {fileID: 11468216}
   - 114: {fileID: 11486430}
+  - 114: {fileID: 11422122}
   m_Layer: 0
   m_Name: Heimdal
   m_TagString: Untagged
@@ -2956,7 +2957,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.3452454, y: 11.1491203, z: -64.7888412}
+  m_LocalPosition: {x: -25, y: 0, z: -60}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 445200}
@@ -3011,7 +3012,7 @@ Transform:
   m_GameObject: {fileID: 143296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 448388}
   - {fileID: 449226}
@@ -3590,7 +3591,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178268}
-  m_LocalRotation: {x: -.612370312, y: .353552431, z: .612373829, w: -.353555858}
+  m_LocalRotation: {x: -.612370253, y: .353552401, z: .612373769, w: -.353555828}
   m_LocalPosition: {x: -.155046985, y: .0337300003, z: -.430152416}
   m_LocalScale: {x: 1.00000024, y: 1.00000048, z: 1.00000024}
   m_Children: []
@@ -4293,7 +4294,7 @@ Animator:
   m_GameObject: {fileID: 143296}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3f916268880a4f6479694b8012f12859, type: 3}
-  m_Controller: {fileID: 9100000, guid: a11a62c36c589d94ab2be1bf9a941bf6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1d1ae5d6f5759e84987ba2ff0a84196d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4366,6 +4367,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11422122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11431480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4488,7 +4501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   passive:
-    ID: 4
+    ID: 3
     abilityType: 0
     target: 0
     passive: 1
@@ -4520,7 +4533,7 @@ MonoBehaviour:
       bioType: 0
     skillParticle: {fileID: 175956, guid: 325a436f941ddf14fa22a8a8a02d0c8f, type: 2}
   active1:
-    ID: 5
+    ID: 4
     abilityType: 1
     target: 1
     passive: 0

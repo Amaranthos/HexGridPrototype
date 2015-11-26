@@ -566,6 +566,7 @@ GameObject:
   - 4: {fileID: 466602}
   - 65: {fileID: 6582396}
   - 114: {fileID: 11450942}
+  - 114: {fileID: 11447770}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -1026,7 +1027,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.0830002, y: 53, z: -66}
+  m_LocalPosition: {x: -2.12382984, y: -5.69137287, z: -1.50180221}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 416106}
@@ -1245,7 +1246,7 @@ Animator:
   m_GameObject: {fileID: 118690}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a98cfe72037f515439e3cf5262f1b49d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 527be61c61d8b4842b24812c7b057192, type: 2}
+  m_Controller: {fileID: 9100000, guid: c0e7e02c3fee90f48a620a11d22a27c9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1312,6 +1313,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1705694838509464eaa3fb00dd0aad0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11447770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d954fd423724d0f40872672652fc5c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &11450942
 MonoBehaviour:
   m_ObjectHideFlags: 1

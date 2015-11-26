@@ -555,8 +555,15 @@ public class Unit : MonoBehaviour {
 	public void ChangeAnim(int animState){
 		if(unitAnim){
 			unitAnim.SetInteger("State",animState);
+			print ("STATE SET TO " + animState);
 		}
 	}
+
+//	public void StartHeroIdle(){
+//		if(unitAnim){
+//			unitAnim.SetBool("Selecting",false);
+//		}
+//	}
 
 	public void CaptureAltar(){
 		Altar altar = Logic.Inst.GetAltar(index);
