@@ -310,12 +310,36 @@ public class Logic : MonoBehaviour {
 				break;
 
 			case GamePhase.CombatPhase:
-				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0)
-					if (unit.Owner != CurrentPlayer)
-						if (selectedUnit.InAttackRange(unit) && !inCombat){
-							StartCoroutine(UnitCombat(selectedUnit, unit));
-							// _audio.PlaySFX(SFX.Rune_Roll);
+				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0){
+					if (unit.Owner != CurrentPlayer){
+						if(!inCombat){
+							if (selectedUnit.InAttackRange(unit)){
+								StartCoroutine(UnitCombat(selectedUnit, unit));
+								// _audio.PlaySFX(SFX.Rune_Roll);
+							}
+							else {
+								List<Tile> tiles = selectedUnit.TilesReachable();
+
+								Tile closest = null;
+
+								for (int i = 0; i < tiles.Count; i++){
+									if(Logic.Inst.Grid.TilesInRange(tiles[i].Index, selectedUnit.attackRange).Contains(Logic.Inst.Grid.TileAt(unit.Index))){
+										if(!closest){
+											closest = tiles[i];
+										}
+										else if(Grid.Distance(selectedUnit.Index, tiles[i].Index) <  Grid.Distance(selectedUnit.Index, closest.Index)) {
+											closest = tiles[i];	
+										}
+									}
+								}
+								
+								if(closest){
+									selectedUnit.MoveTowardsTile(closest, unit);
+								}
+							}
 						}
+					}
+				}
 				break;
 		}
 	}
@@ -346,8 +370,28 @@ public class Logic : MonoBehaviour {
 						else if (tile.OccupyingUnit.Owner != CurrentPlayer && !inCombat)
 							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
 					}
-					// else
-						// _audio.PlaySFX(SFX.Unit_CantMoveThere);
+					else {
+						if(tile.OccupyingUnit && tile.OccupyingUnit != selectedUnit.Owner){
+							List<Tile> tiles = selectedUnit.TilesReachable();
+
+							Tile closest = null;
+
+							for (int i = 0; i < tiles.Count; i++){
+								if(Logic.Inst.Grid.TilesInRange(tiles[i].Index, selectedUnit.attackRange).Contains(Logic.Inst.Grid.TileAt(tile.Index))){
+									if(!closest){
+										closest = tiles[i];
+									}
+									else if(Grid.Distance(selectedUnit.Index, tiles[i].Index) <  Grid.Distance(selectedUnit.Index, closest.Index)) {
+										closest = tiles[i];	
+									}
+								}
+							}
+							
+							if(closest){
+								selectedUnit.MoveTowardsTile(closest, tile.OccupyingUnit);
+							}
+						}						
+					}
 				}
 				break;
 		}
@@ -590,7 +634,7 @@ public class Logic : MonoBehaviour {
 
 	public GameObject spear;
 
-	private IEnumerator UnitCombat(Unit att, Unit def) {
+	public IEnumerator UnitCombat(Unit att, Unit def) {
 		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;

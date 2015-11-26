@@ -57,7 +57,7 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	public void MoveTowardsTile(Tile tile) {
+	public void MoveTowardsTile(Tile tile, Unit target = null) {
 		// Logic.Inst.Audio.PlaySFX(SFX.Unit_Move);
 		CubeIndex tempIndex = index;
 
@@ -66,7 +66,7 @@ public class Unit : MonoBehaviour {
 		if (Logic.Inst.gamePhase == GamePhase.CombatPhase){
 			currentPath = new Queue<Tile>(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), tile));
 			currentPath = new Queue<Tile>(currentPath.Reverse());
-			StartCoroutine(Move());
+			StartCoroutine(Move(target));
 		}		
 		else {
 			transform.position = tile.transform.position;
@@ -83,7 +83,7 @@ public class Unit : MonoBehaviour {
 		ClearHighlightedTiles();
 	}
 
-	private IEnumerator Move(){
+	private IEnumerator Move(Unit target = null){
 		if(unitAnim){
 			ChangeAnim(1);
 		}
@@ -126,6 +126,10 @@ public class Unit : MonoBehaviour {
 			ChangeAnim(0);
 		}
 
+		if(target){
+			StartCoroutine(Logic.Inst.UnitCombat(this, target));
+		}
+
 		yield return null;
 	}
 
@@ -138,20 +142,29 @@ public class Unit : MonoBehaviour {
 			for(int i = 0; i < ret.Count; i++){
 				if(ret[i].OccupyingUnit){
 					if(ret[i].OccupyingUnit.Owner == Owner){
-						ret[i].LineColour(Color.grey);
-						ret[i].LineWidth(0.1f);
-						highlighted.Add(ret[i]);
+						TileColour(ret[i], Color.grey);
 					}
-					else if(InAttackRange(ret[i].OccupyingUnit)) {
-						ret[i].LineColour(Color.red);
-						ret[i].LineWidth(0.1f);
-						highlighted.Add(ret[i]);
+					else {
+						TileColour(ret[i], Color.red);
 					}
 				}
-				else {
-					ret[i].LineColour(Color.green);
-			 		ret[i].LineWidth(0.1f);
-					highlighted.Add(ret[i]);
+				else {//if(InMoveRange(ret[i])){
+					TileColour(ret[i], Color.green);
+				}
+
+				List<Tile> range = Logic.Inst.Grid.TilesInRange(ret[i], attackRange);
+
+				for(int j = 0; j < range.Count; j++){
+					if(!ret.Contains(range[j])){
+						if(range[j].OccupyingUnit){
+							if(range[j].OccupyingUnit.Owner == Owner){
+								TileColour(range[j], Color.grey);
+							}
+							else {
+								TileColour(range[j], Color.red);
+							}
+						}
+					}
 				}
 			}
 
@@ -159,18 +172,19 @@ public class Unit : MonoBehaviour {
 
 			for(int i = 0; i < ret.Count; i++){
 				if(ret[i].OccupyingUnit && ret[i].OccupyingUnit.Owner != Owner){
-					ret[i].LineColour(Color.red);
-					ret[i].LineWidth(0.1f);
-					highlighted.Add(ret[i]);
+					TileColour(ret[i], Color.red);
 				}
 			}
 
-			Logic.Inst.Grid.TileAt(index).LineColour(Color.cyan);
-			Logic.Inst.Grid.TileAt(index).LineWidth(0.1f);
-			highlighted.Add(Logic.Inst.Grid.TileAt(index));	
+			TileColour(Logic.Inst.Grid.TileAt(index), Color.cyan);
 		}
-
 		ringSprite.color = new Color(1,1,0,0.5f);
+	}
+
+	private void TileColour(Tile tile, Color colour){
+		tile.LineColour(colour);
+		tile.LineWidth(0.1f);
+		highlighted.Add(tile);
 	}
 
 	public void ClearHighlightedTiles() {
@@ -245,6 +259,20 @@ public class Unit : MonoBehaviour {
 		else
 			ret.Clear();
 		return ret.Contains(tile);
+	}
+
+	// Returns tiles in move range
+	public List<Tile> TilesReachable() {
+		List<Tile> ret = Logic.Inst.Grid.TilesInRange(index, movePoints);
+
+		if(currentMP > 0)
+			ret.RemoveAll(item => {
+				int pathCost = Logic.Inst.Path.PathCost(Logic.Inst.Path.GetPath(Logic.Inst.Grid.TileAt(index), item));
+				return (pathCost > currentMP || pathCost <= 0);
+			});
+		else
+			ret.Clear();
+		return ret;
 	}
 
 	public void OnTurnStart(){

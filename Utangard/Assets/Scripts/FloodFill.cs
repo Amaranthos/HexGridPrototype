@@ -14,10 +14,6 @@ public class FloodFill {
 		while(fringe.Count > 0){
 			Tile current = fringe.Dequeue();
 
-			if(current != start && current.OccupyingUnit){
-				continue;
-			}
-
 			List<Tile> neighbours = Logic.Inst.Grid.Neighbours(current);
 			for (int i = 0; i < neighbours.Count; i++){
 
@@ -25,7 +21,7 @@ public class FloodFill {
 
 				int cost = neighbour.MoveCost + current.PathCost;
 				if(neighbour.PathCost == int.MaxValue){
-					if(neighbour.IsPassable){
+					if(neighbour.IsPassable && !neighbour.OccupyingUnit){
 						if(cost <= range){
 							neighbour.PathCost = cost;
 							ret.Add(neighbour);

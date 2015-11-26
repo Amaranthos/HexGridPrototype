@@ -68,8 +68,8 @@ public class Path : MonoBehaviour{
 	public int PathCost(List<Tile> path){
 		int cost = 0;
 
-		foreach(Tile tile in path)
-			cost += tile.MoveCost;
+		for(int i = 0; i < path.Count; i++)
+			cost += path[i].MoveCost;
 
 		return cost;
 	}
