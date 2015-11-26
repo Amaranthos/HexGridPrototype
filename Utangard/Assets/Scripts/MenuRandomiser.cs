@@ -21,7 +21,7 @@ public class MenuRandomiser : MonoBehaviour {
 
 		for(int i = 0; i < mats.Length; i++){
 			if(i == h){
-				banner.GetComponent<MeshRenderer>().material = mats[i];
+				banner.GetComponent<SkinnedMeshRenderer>().material = mats[i];
 			}
 		}
 	}
