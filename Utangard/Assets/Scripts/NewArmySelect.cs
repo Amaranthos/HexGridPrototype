@@ -141,7 +141,7 @@ public class NewArmySelect : MonoBehaviour {
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
@@ -163,7 +163,7 @@ public class NewArmySelect : MonoBehaviour {
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];

@@ -27,7 +27,7 @@ public class AbilityDescriptions : MonoBehaviour {
 			icons[0] = GUIManager.inst.abilityIcons[0].ability1;
 			icons[1] = GUIManager.inst.abilityIcons[0].ability2;
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			icons[0] = GUIManager.inst.abilityIcons[1].ability1;
 			icons[1] = GUIManager.inst.abilityIcons[1].ability2;
 			break;
@@ -96,7 +96,7 @@ public class AbilityDescriptions : MonoBehaviour {
 				descriptions[1] = descriptions[0].Trim();
 				descriptions[2] = descriptions[1].Trim();
 				break;
-			case HeroType.Heimdal:
+			case HeroType.Heimdall:
 				descriptions = strings[1].Split("$"[0]);
 				descriptions[1] = descriptions[0].Trim();
 				descriptions[2] = descriptions[1].Trim();

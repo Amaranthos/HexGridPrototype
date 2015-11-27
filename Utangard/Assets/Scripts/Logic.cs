@@ -467,7 +467,6 @@ public class Logic : MonoBehaviour {
 	}
 
 	public void ClearHighlightedTiles() {
-		Debug.Log("Clearing tiles...");
 		if(highlightedTiles.Count > 0){
 			ChangeTileOutlines(highlightedTiles, Color.black, 0.03f);
 		}
@@ -767,6 +766,10 @@ public class Logic : MonoBehaviour {
 
 	public Player CurrentPlayer {
 		get { return players[currentPlayer]; }
+	}
+
+	public Player CurrentWinner {
+		get {return players[winningPlayer];}
 	}
 
 	// I added this because I wanted to know the number of the current player - Callan

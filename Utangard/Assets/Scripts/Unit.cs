@@ -585,7 +585,6 @@ public class Unit : MonoBehaviour {
 	public void ChangeAnim(int animState){
 		if(unitAnim){
 			unitAnim.SetInteger("State",animState);
-			print ("STATE SET TO " + animState);
 		}
 	}
 

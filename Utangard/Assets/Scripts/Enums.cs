@@ -8,7 +8,7 @@
 
 public enum HeroType {
 	Eir,
-	Heimdal,
+	Heimdall,
 	Skadi,
 	Thor,
 	Sam

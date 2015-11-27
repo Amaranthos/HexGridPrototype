@@ -29,7 +29,6 @@ public class MasterTooltip : MonoBehaviour {
 		switch(type)
 		{
 		case TooltipType.unit:
-			print ("Unit Tooltip Open");
 			tooltipPanels[0].hoverUnit = hoverUnit;
 			tooltipPanels[0].TurnOn();
 			break;

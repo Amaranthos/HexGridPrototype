@@ -12,6 +12,8 @@ public class MusicPlayer : MonoBehaviour {
 	private float quarterNote = 0;
 
 	private string current = "";
+	public string currentWinner = "";
+	private string oldWinner = "";
 	private MusicBaseState theme = MusicBaseState.None;
 
 	void Awake() {
@@ -25,23 +27,43 @@ public class MusicPlayer : MonoBehaviour {
 			return;
 		}
 
+		Debug.Log("Theme: " + theme);
+
 		this.theme = theme;
 
 		switch(theme){
 			case MusicBaseState.Title:
 				StartCoroutine(FadeIn("Title"));
+
+				if(oldWinner != ""){
+					StartCoroutine(FadeOut(oldWinner));
+				}
 				break;
 
 			case MusicBaseState.Placing:
 				StartCoroutine(FadeIn("Placing"));
+
+				if(oldWinner != ""){
+					StartCoroutine(FadeOut(oldWinner));
+				}
 				break;
 
 			case MusicBaseState.Battle:
 				StartCoroutine(FadeIn("Battle"));
+				
+				if(oldWinner != ""){
+					StartCoroutine(FadeOut(oldWinner));
+				}
 				break;
 
 			case MusicBaseState.NearWin:
 				StartCoroutine(FadeIn("Winning"));
+				if(currentWinner != oldWinner){
+					if(oldWinner != ""){
+						StartCoroutine(FadeOut(oldWinner));
+					}
+					StartCoroutine(FadeIn(currentWinner, false));
+				}
 				break;
 
 			case MusicBaseState.None:
@@ -57,7 +79,8 @@ public class MusicPlayer : MonoBehaviour {
 		master.SetFloat("Master", 0.0f);
 	}
 
-	private IEnumerator FadeIn(string inGroup){
+	private IEnumerator FadeIn(string inGroup, bool stopCurrent = true){
+		Debug.Log("FadeIn: " + inGroup);
 
 		float timer = 0.0f;
 		float vol;
@@ -68,15 +91,21 @@ public class MusicPlayer : MonoBehaviour {
 			master.SetFloat(inGroup, vol);
 			yield return new WaitForEndOfFrame();
 		}
-		if(current != ""){
-			StartCoroutine(FadeOut(current));
+
+		if(stopCurrent){
+			if(current != ""){
+				StartCoroutine(FadeOut(current));
+			}
+			current = inGroup;
 		}
-		current = inGroup;
+		else {
+			oldWinner = currentWinner;
+		}
 		yield return null;
 	}
 
 	private IEnumerator FadeOut(string outGroup) {
-
+		Debug.Log("FadeOut: " + outGroup);
 		float timer = 0.0f;
 		float vol;
 

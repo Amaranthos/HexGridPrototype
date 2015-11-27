@@ -16,7 +16,7 @@ public class UnitGUI : MonoBehaviour {
 			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[0].ability1;
 			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[0].ability2;
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			abilities[0].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[1].ability1;
 			abilities[1].GetComponent<Image>().sprite = GUIManager.inst.abilityIcons[1].ability2;
 			break;
@@ -97,7 +97,7 @@ public class UnitGUI : MonoBehaviour {
 						GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.heroPortraits[0];
 					}				
 					break;
-				case HeroType.Heimdal:
+				case HeroType.Heimdall:
 					if(unit.type != UnitType.Hero){
 					switch(unit.type){
 						case UnitType.Axemen:
@@ -158,7 +158,7 @@ public class UnitGUI : MonoBehaviour {
 				case HeroType.Eir:
 					GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.unitPortraits[0].none;
 					break;
-				case HeroType.Heimdal:
+				case HeroType.Heimdall:
 					GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.unitPortraits[1].none;
 					break;
 				case HeroType.Skadi:
@@ -176,7 +176,7 @@ public class UnitGUI : MonoBehaviour {
 			case HeroType.Eir:
 				GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.unitPortraits[0].none;
 				break;
-			case HeroType.Heimdal:
+			case HeroType.Heimdall:
 				GUIManager.inst.playerAvatars[player].sprite = GUIManager.inst.unitPortraits[1].none;
 				break;
 			case HeroType.Skadi:

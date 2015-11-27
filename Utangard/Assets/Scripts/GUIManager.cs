@@ -32,7 +32,7 @@ public class GUIManager : MonoBehaviour {
 //	public Text CombatLog;
 	public GameObject[] formationButtonPanels;
 	public List<Image> playerAvatars;
-	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdal, 2 - Skadi, 3 -  Thor, 4 - Sam
+	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdall, 2 - Skadi, 3 -  Thor, 4 - Sam
 	public UnitPortraits[] unitPortraits;
 	public AbilityIcons[] abilityIcons;
 

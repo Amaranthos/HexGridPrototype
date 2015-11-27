@@ -105,7 +105,7 @@ public class Player : MonoBehaviour {
 		case HeroType.Eir:
 			playerColour = cols[0];
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			playerColour = cols[1];
 			break;
 		case HeroType.Skadi:

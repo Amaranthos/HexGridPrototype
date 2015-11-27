@@ -92,7 +92,6 @@ public class Hero : MonoBehaviour {
 				}
 			}
 			else if(currentAbility.target == AimType.SelfAoE){
-				print (gameObject.name);
 				currentAbility.ApplyBuffAoE(hero.Index);
 			}
 			else{
@@ -226,7 +225,7 @@ public class Hero : MonoBehaviour {
 					"<color=lime>+" + active2.buffs[2].strength + " Defence</color> (<color=red>Wrath</color>)" +"\n"+
 					"<color=yellow>Duration: 2 turns</color> (<color=red>Wrath</color>)";
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			tooltipText[0] =
 				"<size=20><b>Innangard</b></size> -" + "\n"+
 					"<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each friendly unit adjacent to them.</size>" +"\n"+

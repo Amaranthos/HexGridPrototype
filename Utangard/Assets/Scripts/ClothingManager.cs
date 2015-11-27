@@ -32,7 +32,7 @@ public class ClothingManager : MonoBehaviour {
 						ChangeSkin(unit,0,skin);
 						break;
 
-					case HeroType.Heimdal:
+					case HeroType.Heimdall:
 						ChangeSkin(unit,1,skin);
 						break;
 

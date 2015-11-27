@@ -30,7 +30,7 @@ public class BalanceBar : MonoBehaviour {
 		case HeroType.Eir:
 			heroImages[0].sprite = heroPortraits[0];
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			heroImages[0].sprite = heroPortraits[1];
 			break;
 		case HeroType.Skadi:
@@ -45,7 +45,7 @@ public class BalanceBar : MonoBehaviour {
 		case HeroType.Eir:
 			heroImages[1].sprite = heroPortraits[0];
 			break;
-		case HeroType.Heimdal:
+		case HeroType.Heimdall:
 			heroImages[1].sprite = heroPortraits[1];
 			break;
 		case HeroType.Skadi:
