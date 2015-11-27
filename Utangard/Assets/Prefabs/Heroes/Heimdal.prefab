@@ -2656,7 +2656,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185216}
-  m_LocalRotation: {x: -.612370253, y: .353552401, z: .612373769, w: -.353555828}
+  m_LocalRotation: {x: -.612370312, y: .353552431, z: .612373829, w: -.353555858}
   m_LocalPosition: {x: -.155046985, y: .0337300003, z: -.430152416}
   m_LocalScale: {x: 1.00000024, y: 1.00000048, z: 1.00000024}
   m_Children: []
@@ -2961,7 +2961,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.44366598, y: 19.5023384, z: -46.0811882}
+  m_LocalPosition: {x: -15.0074463, y: -12.5020313, z: 5.73638916}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 423546}
@@ -4443,6 +4443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  name: Heimdall
   movePoints: 2
   maxHitpoints: 200
   attack: 30

@@ -733,7 +733,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161620}
-  m_LocalRotation: {x: .640856445, y: -.298836112, z: -.640856385, w: .298836201}
+  m_LocalRotation: {x: .640856504, y: -.298836142, z: -.640856445, w: .298836231}
   m_LocalPosition: {x: .145646229, y: .0996544808, z: -.412399858}
   m_LocalScale: {x: 1.00000012, y: 1.00000036, z: 1.00000012}
   m_Children: []
@@ -998,7 +998,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.51662827, y: 16.8859291, z: -48.3024979}
+  m_LocalPosition: {x: -17.0751038, y: -12.5020304, z: 2.58433533}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 420780}
@@ -1281,6 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  name: Axeman
   movePoints: 3
   maxHitpoints: 90
   attack: 60

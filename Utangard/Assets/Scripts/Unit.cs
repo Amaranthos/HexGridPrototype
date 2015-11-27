@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour {
 	public UnitType type;
 	private CubeIndex index;
 
+	public string name;
+
 	public int movePoints;
 	public int maxHitpoints;
 	public int attack;
