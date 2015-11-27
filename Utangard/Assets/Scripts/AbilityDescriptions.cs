@@ -6,6 +6,7 @@ public class AbilityDescriptions : MonoBehaviour {
 
 	public int playerNum;
 	public GameObject toolTip;
+	public Button[] buttons;
 	public string[] descriptions = new string[3];
 	public Sprite[] icons = new Sprite[2];
 	public Image icon;
@@ -38,6 +39,22 @@ public class AbilityDescriptions : MonoBehaviour {
 			icons[0] = GUIManager.inst.abilityIcons[3].ability1;
 			icons[1] = GUIManager.inst.abilityIcons[3].ability2;
 			break;
+		}
+	}
+
+	public void Update(){
+		if(Logic.Inst.Players[playerNum].Faith > Logic.Inst.Players[playerNum].hero.active1.cost){
+			buttons[0].interactable = true;
+		}
+		else{
+			buttons[0].interactable = false;
+		}
+
+		if(Logic.Inst.Players[playerNum].Faith > Logic.Inst.Players[playerNum].hero.active2.cost){
+			buttons[1].interactable = true;
+		}
+		else{
+			buttons[1].interactable = false;
 		}
 	}
 
