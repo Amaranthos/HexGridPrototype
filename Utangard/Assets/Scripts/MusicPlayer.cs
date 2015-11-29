@@ -33,6 +33,8 @@ public class MusicPlayer : MonoBehaviour {
 			case MusicBaseState.Title:
 				StartCoroutine(FadeIn("Title"));
 
+				Debug.Log("Title");
+
 				if(oldWinner != ""){
 					StartCoroutine(FadeOut(oldWinner));
 				}

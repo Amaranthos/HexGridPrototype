@@ -62,6 +62,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void ReturnToMain()
 	{
+		Logic.Inst.Music.ChangeBase(MusicBaseState.Title);
 		Application.LoadLevel("Main Menu");
 	}
 
