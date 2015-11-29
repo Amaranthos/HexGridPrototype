@@ -23,6 +23,14 @@ public class Combat : MonoBehaviour {
 		atk = attacker;
 		def = defender;
 
+		if(atk.type == UnitType.Spearman){
+			atk.currentTarget = def;
+		}
+
+		// if(def.type == UnitType.Spearman){
+		// 	def.currentTarget = atk;
+		// }
+
 		attaking = true;
 
 		StartCoroutine("timedCombat");

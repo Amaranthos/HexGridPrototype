@@ -8,8 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454286}
-  - 33: {fileID: 3309036}
-  - 23: {fileID: 2373396}
   - 114: {fileID: 11499000}
   m_Layer: 0
   m_Name: Spear
@@ -18,6 +16,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &150472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 408370}
+  - 23: {fileID: 2323810}
+  - 33: {fileID: 3387358}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408370
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.58000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 454286}
+  m_RootOrder: 0
 --- !u!4 &454286
 Transform:
   m_ObjectHideFlags: 1
@@ -26,16 +53,17 @@ Transform:
   m_GameObject: {fileID: 121840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .749997258, y: .750002921, z: .749999881}
-  m_Children: []
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 408370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2373396
+--- !u!23 &2323810
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121840}
+  m_GameObject: {fileID: 150472}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -54,13 +82,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3309036
+--- !u!33 &3387358
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121840}
-  m_Mesh: {fileID: 4300002, guid: c4ce09d0945c651439794f1e716079cb, type: 3}
+  m_GameObject: {fileID: 150472}
+  m_Mesh: {fileID: 4300004, guid: 17a18dbe2f57f8e498e5a4f9520ca13b, type: 3}
 --- !u!114 &11499000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91a61de8ce63bd47b6d094ee93ac32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
+  velocity: 2
+  endPoint: {x: 0, y: 0, z: 0}
+  startPoint: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -82,6 +112,22 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: velocity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300004, guid: 17a18dbe2f57f8e498e5a4f9520ca13b, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

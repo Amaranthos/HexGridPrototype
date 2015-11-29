@@ -609,6 +609,26 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
+	public GameObject spear;
+	public Transform throwNode;
+	public Unit currentTarget = null;
+
+	public void ThrowSpear() {
+		if(throwNode == null){
+			return;
+		}
+
+		Vector3 targetPos = currentTarget.transform.position;
+		targetPos.y += 1.0f;
+
+		GameObject spearClone = (GameObject)Instantiate(spear, throwNode.position, Quaternion.identity);
+		spearClone.GetComponent<Spear>().endPoint = targetPos;
+		spearClone.transform.LookAt(targetPos);
+		spearClone.GetComponent<Spear>().startPoint = throwNode.position;
+
+		currentTarget = null;
+	}
+
 	public void OnAttack(){
 		ringSprite.color = new Color(0.5f,0.5f,0.5f,0.5f);
 	}

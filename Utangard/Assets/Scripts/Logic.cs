@@ -633,7 +633,7 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	public GameObject spear;
+	// public GameObject spear;
 
 	public IEnumerator UnitCombat(Unit att, Unit def) {
 		inCombat = true;
@@ -644,32 +644,12 @@ public class Logic : MonoBehaviour {
 
 		yield return new WaitForSeconds(2.5f);
 
-		if(att.type == UnitType.Spearman){
-			Vector3 pos = att.transform.position;
-			pos.y += 1.3f;
-			pos.x += 0.53f;
-			pos.z += 0.5f;
-
-			GameObject spearClone = (GameObject)Instantiate(spear, pos, Quaternion.identity);
-			spearClone.GetComponent<Spear>().CalcArc(def.transform.position, 1.0f);
-		}
-
 		att.OnAttack();
 
 		if (!def.dead && def.InAttackRange(att)){
 			combatManager.ResolveCombat(def, att);
 
 			yield return new WaitForSeconds(2.5f);
-
-			if(def.type == UnitType.Spearman){
-				Vector3 pos = def.transform.position;
-				pos.y += 1.3f;
-				pos.x += 0.53f;
-				pos.z += 0.5f;
-
-				GameObject spearClone = (GameObject)Instantiate(spear, pos, Quaternion.identity);
-				spearClone.GetComponent<Spear>().CalcArc(att.transform.position, 1.0f);
-			}
 		}
 
 		inCombat = false;

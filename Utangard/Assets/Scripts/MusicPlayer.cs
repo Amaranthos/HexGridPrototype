@@ -27,8 +27,6 @@ public class MusicPlayer : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log("Theme: " + theme);
-
 		this.theme = theme;
 
 		switch(theme){
@@ -80,8 +78,6 @@ public class MusicPlayer : MonoBehaviour {
 	}
 
 	private IEnumerator FadeIn(string inGroup, bool stopCurrent = true){
-		Debug.Log("FadeIn: " + inGroup);
-
 		float timer = 0.0f;
 		float vol;
 
@@ -104,9 +100,7 @@ public class MusicPlayer : MonoBehaviour {
 		yield return null;
 	}
 
-	private IEnumerator FadeOut(string outGroup) {
-		Debug.Log("FadeOut: " + outGroup);
-		float timer = 0.0f;
+	private IEnumerator FadeOut(string outGroup) {		float timer = 0.0f;
 		float vol;
 
 		while(timer < timeOut){
