@@ -562,8 +562,9 @@ public class Logic : MonoBehaviour {
 			if (winning == winningPlayer) {
 				turnsRemaining -= 1;
 
-				timerText.SetActive(true);
-				timerText.GetComponent<Text>().text = turnsRemaining + " Turns Until " + players[winningPlayer].name + "'s Victory";
+				//timerText.SetActive(true);
+				GUIManager.inst.SetPlayerWinning(turnsRemaining);
+				//timerText.GetComponent<Text>().text = turnsRemaining + " Turns Until " + players[winningPlayer].name + "'s Victory";
 
 				if (turnsRemaining <= 0)
 					EndGame();
@@ -573,6 +574,7 @@ public class Logic : MonoBehaviour {
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
 				timerText.SetActive(false);
+				GUIManager.inst.DisablePlayerWinning();
 				SetWrathMode();
 			}
 		}

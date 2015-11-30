@@ -6,6 +6,7 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	[System.Serializable]
 	public struct PredictionText{
+		public Image icon;
 		public Text damageText;
 		public Text chanceText;
 		public Text breakdownText;
@@ -60,8 +61,8 @@ public class BattlePredictionUI : MonoBehaviour {
 
 	void UpdateBreakdown(){
 		// 0 == attacker, 1 == defender
-		predictText[0].chanceText.text = ChanceToHit(0).ToString() + "%";
-		predictText[1].chanceText.text = ChanceToHit(1).ToString() + "%";
+		predictText[0].chanceText.text = ChanceToHit(1).ToString() + "%";
+		predictText[1].chanceText.text = ChanceToHit(0).ToString() + "%";
 
 		//wipe text
 		predictText[0].breakdownText.text = "";

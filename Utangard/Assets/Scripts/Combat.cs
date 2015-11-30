@@ -62,7 +62,7 @@ public class Combat : MonoBehaviour {
 				// Logic.Inst.Audio.PlaySFX(SFX.Attack_Success);
 				def.CurrentHitpoints -= damage;
 				Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
-				GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
+				//GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " does " + damage + " to " + def.Owner.PlayerName + "'s " + def.type);
 
 				tempText.GetComponent<TextMesh>().text = "- " + damage;
 				
@@ -78,7 +78,7 @@ public class Combat : MonoBehaviour {
 		else{
 			// Logic.Inst.Audio.PlaySFX(SFX.Attack_Fail);
 			Debug.Log(atk.Owner.PlayerName + "'s " + atk.type + " misses");
-			GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " misses");
+			//GUIManager.inst.LogCombatResult(atk.Owner.PlayerName + "'s " + atk.type + " misses");
 			
 			tempText = Instantiate(damageText,(def.gameObject.transform.position + Vector3.up * offsetDist),Quaternion.identity) as GameObject;
 			tempText.GetComponent<TextMesh>().text = "MISS!";

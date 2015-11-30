@@ -6,6 +6,11 @@ using System.Collections.Generic;
 
 public class GUIManager : MonoBehaviour {
 
+	[System.Serializable]public struct VictoryTexts{
+		public Text whoWinning;
+		public Text timeLeft;
+	}
+
 	[System.Serializable]public struct UnitPortraits{
 		public string hero;
 		public Sprite none;
@@ -23,6 +28,8 @@ public class GUIManager : MonoBehaviour {
 	public static GUIManager inst;
 	public GameObject GUICanvas;
 	public GUIAnimationController guiAnim;
+
+	[Header("GUI Elements")]
 	public MasterTooltip tooltips;
 	public BattlePredictionUI battlePrediction;
 	public GameObject deploymentText;
@@ -30,8 +37,11 @@ public class GUIManager : MonoBehaviour {
 	public Button EndTurnP2;
 //	public Tooltip TooltipPanel;
 //	public Text CombatLog;
+	public VictoryTexts winText;
 	public GameObject[] formationButtonPanels;
 	public List<Image> playerAvatars;
+
+	[Header("Sprites")]
 	public List<Sprite> heroPortraits; // 0 - Eir, 1 - Heimdall, 2 - Skadi, 3 -  Thor, 4 - Sam
 	public UnitPortraits[] unitPortraits;
 	public AbilityIcons[] abilityIcons;
@@ -66,9 +76,16 @@ public class GUIManager : MonoBehaviour {
 		Application.LoadLevel("Main Menu");
 	}
 
-	public void LogCombatResult(string res)
+	public void SetPlayerWinning(int turnsRemain)
 	{
-		//CombatLog.text += (res + "\n");	
+		winText.whoWinning.text = Logic.Inst.CurrentWinner.hero.hero.name + " Controls all the Altars!";
+		winText.timeLeft.text = turnsRemain + " turns until " + Logic.Inst.CurrentWinner.hero.hero.name + " Victory";
+	}
+
+	public void DisablePlayerWinning()
+	{
+		winText.whoWinning.text = "";
+		winText.timeLeft.text = "";
 	}
 
 	public void DisplayPredictions(Unit unitHovered){
