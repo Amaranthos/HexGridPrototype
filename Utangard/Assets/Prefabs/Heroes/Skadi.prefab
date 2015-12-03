@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &101424
 GameObject:
   m_ObjectHideFlags: 1
@@ -350,6 +350,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454738}
   - 95: {fileID: 9595894}
+  - 114: {fileID: 11483186}
   m_Layer: 0
   m_Name: Anim_Skadi_02
   m_TagString: Untagged
@@ -3941,7 +3942,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.975708, y: -12.5020304, z: 2.81117249}
+  m_LocalPosition: {x: 159.389709, y: 44.0876617, z: -87.8618011}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 454738}
@@ -4009,7 +4010,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4033,7 +4034,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4057,7 +4058,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4105,7 +4106,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4153,7 +4154,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4177,7 +4178,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4201,7 +4202,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4225,7 +4226,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4273,7 +4274,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4321,7 +4322,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4345,7 +4346,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4369,7 +4370,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 44679b7cfaf01eb4e8ac8f4d037dd056, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4700,6 +4701,9 @@ MonoBehaviour:
   currentBuffs: []
   unitAnim: {fileID: 0}
   buffsToSpawn: []
+  spear: {fileID: 0}
+  throwNode: {fileID: 0}
+  currentTarget: {fileID: 0}
 --- !u!114 &11480754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4882,6 +4886,17 @@ MonoBehaviour:
   costIncrease: .100000001
   hero: {fileID: 0}
   targets: []
+--- !u!114 &11483186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0085c919db859dc40bea9f5366f0f087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483728
 MonoBehaviour:
   m_ObjectHideFlags: 1
