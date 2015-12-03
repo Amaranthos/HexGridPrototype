@@ -39,6 +39,7 @@ public class GUIManager : MonoBehaviour {
 //	public Text CombatLog;
 	public VictoryTexts winText;
 	public GameObject[] formationButtonPanels;
+	public WrathModeTextAnim[] wrathText;
 	public List<Image> playerAvatars;
 
 	[Header("Sprites")]
@@ -68,6 +69,15 @@ public class GUIManager : MonoBehaviour {
 	public void CloseTooltip()
 	{
 		tooltips.DeactivateTooltips();
+	}
+
+	public void SetWrathTextOn(int player){
+		wrathText[player].On = true;
+	}
+
+	public void SetWrathTextOff(int player){
+		wrathText[1].On = false;
+		wrathText[0].On = false;
 	}
 
 	public void ReturnToMain()
