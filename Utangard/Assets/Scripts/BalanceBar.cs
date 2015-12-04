@@ -9,12 +9,14 @@ public class BalanceBar : MonoBehaviour {
 	public Image fill;
 	public Image[] heroImages = new Image[2];
 	public Sprite[] heroPortraits = new Sprite[4];
+	public float unitVal, altarVal;
 
 
 	// Use this for initialization
 	void Start () {
 		bar = GetComponentInChildren<Slider>();
-		bar.value = Logic.Inst.Players[0].capturedAltars.Count;
+		bar.value = (Logic.Inst.Players[0].capturedAltars.Count * altarVal) + (Logic.Inst.Players[0].army.Count * unitVal);
+		bar.maxValue = ((Logic.Inst.Players [0].capturedAltars.Count * altarVal) + (Logic.Inst.Players [0].army.Count * unitVal)) * 2;
 		background.color = Logic.Inst.Players[1].playerColour;
 		fill.color = Logic.Inst.Players[0].playerColour;
 		AssignPortraits();
@@ -22,7 +24,7 @@ public class BalanceBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		bar.value = Logic.Inst.Players[0].capturedAltars.Count;
+		bar.value = (Logic.Inst.Players[0].capturedAltars.Count * altarVal) + (Logic.Inst.Players[0].army.Count * unitVal);
 	}
 
 	void AssignPortraits(){
