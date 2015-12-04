@@ -55,6 +55,7 @@ public class Logic : MonoBehaviour {
 	public GameObject returnButton;
 	public GameObject winText;
 	public GameObject timerText;
+	public List<GameObject> gameGui = new List<GameObject>();
 
 	public GameObject enviro;
 
@@ -623,6 +624,9 @@ public class Logic : MonoBehaviour {
 		returnButton.SetActive(true);
 		winText.SetActive(true);
 		winText.GetComponent<Text>().text = players[winningPlayer].PlayerName + " Wins!";
+		for(int i = 0; i < gameGui.Count; i++){
+			gameGui[i].SetActive(false);
+		}
 	}
 
 	private void SwitchGamePhase(GamePhase phase) {
