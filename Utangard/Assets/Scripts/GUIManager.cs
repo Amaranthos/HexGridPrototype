@@ -75,7 +75,7 @@ public class GUIManager : MonoBehaviour {
 		wrathText[player].On = true;
 	}
 
-	public void SetWrathTextOff(int player){
+	public void SetWrathTextOff(){
 		wrathText[1].On = false;
 		wrathText[0].On = false;
 	}

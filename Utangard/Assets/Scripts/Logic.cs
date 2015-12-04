@@ -591,6 +591,7 @@ public class Logic : MonoBehaviour {
 
 	private void SetWrathMode() {
 		if(winningPlayer != -1){
+			GUIManager.inst.SetWrathTextOff();
 			players[winningPlayer].wrathMode = false;
 			for(int i = 0; i < players.Length; i++){
 				if(i != winningPlayer){
