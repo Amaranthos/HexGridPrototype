@@ -17,6 +17,7 @@ public class NewArmySelect : MonoBehaviour {
 	public int pickPerArmy;
 	public RuneStones unitStones;
 	public SelectionStage whosPicking;
+    public AudioClip[] audioClips;
 	bool rotating;
 	int timesP1picked;
 	int timesP2picked;
@@ -106,6 +107,7 @@ public class NewArmySelect : MonoBehaviour {
 			{
 				gui.P2descriptions[i].SetActive(true);
 			}
+            Logic.Inst.Audio.Source().PlayOneShot(audioClips[0]);
 		}
 		else{
 			whosPicking = SelectionStage.player1;
@@ -126,10 +128,12 @@ public class NewArmySelect : MonoBehaviour {
 			{
 				gui.P2descriptions[i].SetActive(false);
 			}
+            Logic.Inst.Audio.Source().PlayOneShot(audioClips[0]);
 		}
 		if(timesP1picked == pickPerArmy && timesP2picked == pickPerArmy){
 			pickPerTurn = 3;
-			Logic.Inst.SetupGameWorld(playerArmies);
+            Logic.Inst.Audio.Source().PlayOneShot(audioClips[1]);
+            Logic.Inst.SetupGameWorld(playerArmies);
 			gameObject.SetActive(false);
 		}
 	}

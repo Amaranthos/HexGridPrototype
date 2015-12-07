@@ -49,6 +49,11 @@ public class Audio : MonoBehaviour {
 	public void OnGameEnd(){
 
 	}
+
+    public AudioSource Source()
+    {
+        return source;
+    }
 }
 
 [System.Serializable]
