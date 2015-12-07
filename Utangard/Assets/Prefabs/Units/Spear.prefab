@@ -1326,11 +1326,11 @@ MonoBehaviour:
   name: Spearman
   movePoints: 4
   maxHitpoints: 75
-  attack: 20
+  attack: 25
   defense: 10
   cost: 1
   hitChance: 90
-  dodgeChance: 35
+  dodgeChance: 40
   attackRange: 2
   dead: 0
   currentBuffs: []
@@ -1644,11 +1644,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: dodgeChance
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spear

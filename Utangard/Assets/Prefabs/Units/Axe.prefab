@@ -734,7 +734,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161620}
-  m_LocalRotation: {x: .640856445, y: -.298836112, z: -.640856385, w: .298836201}
+  m_LocalRotation: {x: .640856504, y: -.298836142, z: -.640856445, w: .298836231}
   m_LocalPosition: {x: .145646229, y: .0996544808, z: -.412399858}
   m_LocalScale: {x: 1.00000012, y: 1.00000036, z: 1.00000012}
   m_Children: []
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   name: Axeman
   movePoints: 3
   maxHitpoints: 90
-  attack: 60
+  attack: 55
   defense: 0
   cost: 1
   hitChance: 75
@@ -1703,7 +1703,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: attack
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182958}

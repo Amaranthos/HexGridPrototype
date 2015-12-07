@@ -4690,12 +4690,12 @@ MonoBehaviour:
   type: 3
   name: Skadi
   movePoints: 3
-  maxHitpoints: 120
-  attack: 70
-  defense: 15
+  maxHitpoints: 110
+  attack: 55
+  defense: 0
   cost: 0
-  hitChance: 100
-  dodgeChance: 30
+  hitChance: 85
+  dodgeChance: 15
   attackRange: 2
   dead: 0
   currentBuffs: []
@@ -5678,15 +5678,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHitpoints
-      value: 70
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack
-      value: 70
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: defense
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cost
@@ -5694,11 +5694,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hitChance
-      value: 100
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dodgeChance
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attackRange

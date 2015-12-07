@@ -1628,7 +1628,7 @@ MonoBehaviour:
   defense: 25
   cost: 1
   hitChance: 80
-  dodgeChance: 15
+  dodgeChance: 5
   attackRange: 1
   dead: 0
   currentBuffs: []
@@ -2063,7 +2063,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: dodgeChance
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: defense

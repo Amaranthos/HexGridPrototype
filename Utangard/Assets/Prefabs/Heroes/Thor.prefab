@@ -3939,12 +3939,12 @@ MonoBehaviour:
   type: 3
   name: Thor
   movePoints: 3
-  maxHitpoints: 150
-  attack: 60
-  defense: 20
+  maxHitpoints: 140
+  attack: 45
+  defense: 5
   cost: 0
   hitChance: 80
-  dodgeChance: 30
+  dodgeChance: 25
   attackRange: 1
   dead: 0
   currentBuffs: []
@@ -5175,6 +5175,22 @@ Prefab:
       propertyPath: active2.skillParticle
       value: 
       objectReference: {fileID: 116940, guid: 543f3720e4b888d46b03def17c2c65d1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: maxHitpoints
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defense
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeChance
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185972}
