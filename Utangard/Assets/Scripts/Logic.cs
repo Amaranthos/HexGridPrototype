@@ -121,6 +121,8 @@ public class Logic : MonoBehaviour {
 
 	private void Start() {
 		music.ChangeBase(MusicBaseState.Title);
+
+		turnsRemaining = turnsForVictory;
 	}
 
 	private void Update() {
@@ -571,7 +573,7 @@ public class Logic : MonoBehaviour {
 					EndGame();
 			}
 			else {
-				Debug.Log(players[winning].name + " has wrestled control of the altars!");
+				Debug.Log(players[winning].name + " has taken control of the altars!");
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
 				timerText.SetActive(false);
@@ -580,6 +582,7 @@ public class Logic : MonoBehaviour {
 			}
 		}
 		else {
+			winningPlayer = -1;
 			SetWrathMode();
 			for (int i = 0; i < players.Length; i++){
 				if (players[i].army.Count <= 0){
@@ -600,6 +603,12 @@ public class Logic : MonoBehaviour {
 					GUIManager.inst.SetWrathTextOn(i);
 				}
 			}
+		}
+		else{
+			GUIManager.inst.SetWrathTextOff();
+			players[0].wrathMode = false;
+			players[1].wrathMode = false;
+			turnsRemaining = turnsForVictory;
 		}
 	}
 
