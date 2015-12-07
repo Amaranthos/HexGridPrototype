@@ -60,6 +60,8 @@ public class BattlePredictionUI : MonoBehaviour {
 	}
 
 	void UpdateBreakdown(){
+
+        ChangeIcons();
 		// 0 == attacker, 1 == defender
 		predictText[0].chanceText.text = ChanceToHit(1).ToString() + "%";
 		predictText[1].chanceText.text = ChanceToHit(0).ToString() + "%";
@@ -173,6 +175,156 @@ public class BattlePredictionUI : MonoBehaviour {
 			}
 		}
 	}
+
+    void ChangeIcons()
+    {
+        switch (Logic.Inst.SelectedUnit.Owner.hero.type)
+        {       
+            case HeroType.Eir:
+                switch (Logic.Inst.SelectedUnit.type) 
+                {
+                    case UnitType.Axemen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[0].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[0].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[0].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[0].icon.sprite = GUIManager.inst.heroPortraits[0];
+                        break;
+                }
+                break;
+            case HeroType.Heimdall:
+                switch (Logic.Inst.SelectedUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[1].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[1].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[1].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[0].icon.sprite = GUIManager.inst.heroPortraits[1];
+                        break;
+                }
+                break;
+            case HeroType.Skadi:
+                switch (Logic.Inst.SelectedUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[2].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[2].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[2].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[0].icon.sprite = GUIManager.inst.heroPortraits[2];
+                        break;
+                }
+                break;
+            case HeroType.Thor:
+                switch (Logic.Inst.SelectedUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[3].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[3].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[0].icon.sprite = GUIManager.inst.unitPortraits[3].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[0].icon.sprite = GUIManager.inst.heroPortraits[3];
+                        break;
+                }
+                break;      
+        }
+
+
+        switch (hoverUnit.Owner.hero.type)
+        {
+            case HeroType.Eir:
+                switch (hoverUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[0].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[0].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[0].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[1].icon.sprite = GUIManager.inst.heroPortraits[0];
+                        break;
+                }
+                break;
+            case HeroType.Heimdall:
+                switch (hoverUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[1].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[1].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[1].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[1].icon.sprite = GUIManager.inst.heroPortraits[1];
+                        break;
+                }
+                break;
+            case HeroType.Skadi:
+                switch (hoverUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[2].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[2].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[2].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[1].icon.sprite = GUIManager.inst.heroPortraits[2];
+                        break;
+                }
+                break;
+            case HeroType.Thor:
+                switch (hoverUnit.type)
+                {
+                    case UnitType.Axemen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[3].axe;
+                        break;
+                    case UnitType.Spearman:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[3].spear;
+                        break;
+                    case UnitType.Swordsmen:
+                        predictText[1].icon.sprite = GUIManager.inst.unitPortraits[3].sword;
+                        break;
+                    case UnitType.Hero:
+                        predictText[1].icon.sprite = GUIManager.inst.heroPortraits[3];
+                        break;
+                }
+                break;
+        }
+
+
+    }
 
 	void ClearStats(){
 		predictionStats[0].unitName.text = "";
