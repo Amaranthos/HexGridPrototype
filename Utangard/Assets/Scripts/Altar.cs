@@ -22,8 +22,7 @@ public class Altar : MonoBehaviour {
 		}
 		owner = player;
 		player.capturedAltars.Add(this);
-
-
+		
 		if(gameObject.transform.childCount > 0){
 			Transform model = gameObject.transform.FindChild("Altar");
 			for(int j = 0; j < model.transform.childCount; j++){
@@ -31,12 +30,7 @@ public class Altar : MonoBehaviour {
 				if(child.name == "LeftBanner001" || child.name == "MainBanner001" || child.name == "RightBanner001"){
 					if(!child.GetComponent<SkinnedMeshRenderer>()){
 						MeshRenderer meshRend = child.GetComponent<MeshRenderer>();
-
-//						BannerMat mat = banners.Find(item => item.hero == player.hero.type).mat;
-
 						meshRend.material = banners.Find(item => item.hero == player.hero.type).mat;
-//						meshRend.material = new Material(meshRend.material);
-//						meshRend.material.color = owner.playerColour;
 					}
 				}
 			}
@@ -47,6 +41,12 @@ public class Altar : MonoBehaviour {
 					child.GetComponent<ParticleSystem>().startColor = owner.playerColour;
 				}
 			}
+		}
+
+		if(Logic.Inst.gamePhase == GamePhase.CombatPhase){
+			Logic.Inst.CheckIfPlayerWinning();
+			Logic.Inst.Players[0].hero.CalcBuffStrength();
+			Logic.Inst.Players[1].hero.CalcBuffStrength();
 		}
 	}
 

@@ -27,7 +27,7 @@ public class Logic : MonoBehaviour {
 	public int currentPlayer = -1;
 	private int startingPlayer = -1;
 	public int winningPlayer = -1;
-	private int turnsRemaining;
+	public int turnsRemaining;
 
 	private List<Tile> highlightedTiles = new List<Tile>();
 
@@ -524,6 +524,7 @@ public class Logic : MonoBehaviour {
 
 				if (PlayesPositionedUnits()) {
 					SwitchGamePhase(GamePhase.CombatPhase);
+					TurnStart();
 					return;
 				}
 
@@ -533,11 +534,7 @@ public class Logic : MonoBehaviour {
 			case GamePhase.CombatPhase:
 				CheckIfPlayerWinning();
 
-				CurrentPlayer.StartTurn();
-				AddFaithPerAltar();
-
-				CurrentPlayer.hero.CalcBuffStrength();
-				CurrentPlayer.hero.ApplyPassive();
+				TurnStart();
 				
 				for(int i = 0; i < grid.TilesList.Count; i++){
 					if(CurrentPlayer.hero.type == HeroType.Skadi && grid.TilesList[i].Biome == BiomeType.Snow){
@@ -555,7 +552,14 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	private void CheckIfPlayerWinning() {
+	public void TurnStart(){
+		AddFaithPerAltar();
+		CurrentPlayer.StartTurn();
+		players[currentPlayer].hero.CalcBuffStrength();
+		CurrentPlayer.hero.ApplyPassive();
+	}
+
+	public void CheckIfPlayerWinning() {
 		int winning = -1;
 		for (int i = 0; i < players.Length; i++){
 			if (players[i].capturedAltars.Count == numAltars){
@@ -580,13 +584,14 @@ public class Logic : MonoBehaviour {
 				winningPlayer = winning;
 				turnsRemaining = turnsForVictory;
 				timerText.SetActive(false);
-				GUIManager.inst.DisablePlayerWinning();
+				GUIManager.inst.SetPlayerWinning(turnsRemaining);
 				SetWrathMode();
 			}
 		}
 		else {
 			winningPlayer = -1;
 			SetWrathMode();
+			GUIManager.inst.DisablePlayerWinning();
 			for (int i = 0; i < players.Length; i++){
 				if (players[i].army.Count <= 0){
 					Debug.Log(players[i].name + " has been eliminated!");
