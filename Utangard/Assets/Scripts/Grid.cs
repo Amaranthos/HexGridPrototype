@@ -17,6 +17,7 @@ public class Grid : MonoBehaviour {
 	//Generation Options
 	public bool addColliders = true;
 	public bool drawOutlines = true;
+    public bool addTooltips = true;
 	public Material lineMaterial;
 
 	//Internal variables
@@ -308,12 +309,16 @@ public class Grid : MonoBehaviour {
 		if(drawOutlines)
 			go.AddComponent<LineRenderer>();
 
+        if(addTooltips)
+            go.AddComponent<TooltipComponnent>();
+   
 		go.transform.position = postion;
 		go.transform.parent = this.transform;
 
 		Tile tile = go.GetComponent<Tile>();
 		MeshFilter fil = go.GetComponent<MeshFilter>();
 		MeshRenderer ren = go.GetComponent<MeshRenderer>();
+        TooltipComponnent tip = go.GetComponent<TooltipComponnent>();
 
 		fil.sharedMesh = hexMesh;
 
@@ -338,6 +343,9 @@ public class Grid : MonoBehaviour {
 			for(int vert = 0; vert <= 6; vert++)
 				lines.SetPosition(vert, Tile.Corner(tile.transform.position, hexRadius - 0.02f, vert, hexOrientation));
 		}
+        if (addTooltips) {
+            tip.type = TooltipType.terrain;
+        }
 
 		return tile;
 	}

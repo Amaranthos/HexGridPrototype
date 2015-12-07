@@ -62,10 +62,17 @@ public class GUIManager : MonoBehaviour {
 	{
 		tooltips.ExpandTooltip(type);
 	}
+
 	public void OpenToolip(TooltipType type, Unit hoverUnit)
 	{
 		tooltips.ActivateTooltip(type, hoverUnit);
 	}
+
+    public void OpenToolip(TooltipType type, Tile hoverTile)
+    {
+        tooltips.ActivateTooltip(type, hoverTile);
+    }
+
 	public void CloseTooltip()
 	{
 		tooltips.DeactivateTooltips();

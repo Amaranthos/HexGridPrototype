@@ -26,20 +26,30 @@ public class MasterTooltip : MonoBehaviour {
 
 	public void ActivateTooltip(TooltipType type, Unit hoverUnit)
 	{
-		switch(type)
-		{
-		case TooltipType.unit:
-			tooltipPanels[0].hoverUnit = hoverUnit;
-			tooltipPanels[0].TurnOn();
-			break;
-		}
+        if (type == TooltipType.unit)
+        {
+            tooltipPanels[0].hoverUnit = hoverUnit;
+            tooltipPanels[0].TurnOn();
+        }
 	}
+
+    public void ActivateTooltip(TooltipType type, Tile hoverTile)
+    {
+        if (type == TooltipType.terrain)
+        {
+            tooltipPanels[1].hoverTile = hoverTile;
+            tooltipPanels[1].TurnOn();
+        }
+    }
 
 	public void ExpandTooltip(TooltipType type){
 		switch(type){
 		case TooltipType.unit:
 			tooltipPanels[0].ExpandTip();
 			break;
+        case TooltipType.terrain:
+            tooltipPanels[1].ExpandTip();
+            break;
 		}
 
 	}
@@ -49,6 +59,10 @@ public class MasterTooltip : MonoBehaviour {
 		tooltipPanels[0].TurnOff();
 		tooltipPanels[0].CloseTip();
 		tooltipPanels[0].hoverUnit = null;
+
+        tooltipPanels[1].TurnOff();
+        tooltipPanels[1].CloseTip();
+        tooltipPanels[1].hoverTile = null;
 	}
 
 }

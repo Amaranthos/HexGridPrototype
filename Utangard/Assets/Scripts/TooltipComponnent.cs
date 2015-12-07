@@ -19,7 +19,10 @@ public class TooltipComponnent : MonoBehaviour {
 	}
 
 	public void OnMouseEnter(){
-		GUIManager.inst.OpenToolip(type, GetComponent<Unit>());
+        if (type == TooltipType.unit)
+            GUIManager.inst.OpenToolip(type, GetComponent<Unit>());
+        else
+            GUIManager.inst.OpenToolip(type, GetComponent<Tile>());
 	}
 
 	public void OnMouseExit(){
