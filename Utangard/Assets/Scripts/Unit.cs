@@ -47,6 +47,9 @@ public class Unit : MonoBehaviour {
 
 	private SpriteRenderer ringSprite;
 
+	public bool isAttacking = false;
+	public bool hasRetaliated = false;
+
 	private void Start() {
 		currentHP = maxHitpoints;
 		currentMP = movePoints;
@@ -305,6 +308,7 @@ public class Unit : MonoBehaviour {
 
 	public void OnTurnEnd(){
 		ringSprite.color  = new Color(0,0,0,0);
+		hasRetaliated = false;
 	}
 
 	public void AddBuff(Buff bff){

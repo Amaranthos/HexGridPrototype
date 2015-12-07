@@ -19,7 +19,6 @@ public class Logic : MonoBehaviour {
 	private MusicPlayer music;
 
 	private Combat combatManager;
-	public bool inCombat = false;
 
 	private Unit selectedUnit;
 	private Tile selectedTile;
@@ -316,10 +315,11 @@ public class Logic : MonoBehaviour {
 			case GamePhase.CombatPhase:
 				if (selectedUnit && selectedUnit.Owner == CurrentPlayer && selectedUnit.CanMove && selectedUnit.Owner.CommandPoints > 0){
 					if (unit.Owner != CurrentPlayer){
-						if(!inCombat){
 							if (selectedUnit.InAttackRange(unit)){
-								StartCoroutine(UnitCombat(selectedUnit, unit));
-								// _audio.PlaySFX(SFX.Rune_Roll);
+								if(!selectedUnit.isAttacking && !unit.isAttacking){
+									StartCoroutine(UnitCombat(selectedUnit, unit));
+									// _audio.PlaySFX(SFX.Rune_Roll);
+								}
 							}
 							else {
 								List<Tile> tiles = selectedUnit.TilesReachable();
@@ -341,7 +341,7 @@ public class Logic : MonoBehaviour {
 									selectedUnit.MoveTowardsTile(closest, unit);
 								}
 							}
-						}
+
 					}
 				}
 				break;
@@ -371,8 +371,11 @@ public class Logic : MonoBehaviour {
 								selectedUnit.MoveTowardsTile(tile);
 								ClearSelected();
 							}
-						else if (tile.OccupyingUnit.Owner != CurrentPlayer && !inCombat)
-							StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
+						else if (tile.OccupyingUnit.Owner != CurrentPlayer){
+							if (!selectedUnit.isAttacking && !tile.OccupyingUnit.isAttacking){
+								StartCoroutine(UnitCombat(selectedUnit, tile.OccupyingUnit));
+							}
+						}
 					}
 					// else {
 					// 	if(tile.OccupyingUnit && tile.OccupyingUnit != selectedUnit.Owner){
@@ -652,29 +655,31 @@ public class Logic : MonoBehaviour {
 		}
 	}
 
-	// public GameObject spear;
-
 	public IEnumerator UnitCombat(Unit att, Unit def) {
-		inCombat = true;
 		ClearSelected();
 		att.CanMove = false;
 		att.CurrentMovePoints = 0;
+		att.isAttacking = true;
+		def.isAttacking = true;
 		combatManager.ResolveCombat(att, def);
 
 		yield return new WaitForSeconds(2.5f);
 
 		att.OnAttack();
 
-		if (!def.dead && def.InAttackRange(att)){
+		if (!def.dead && def.InAttackRange(att) && !def.hasRetaliated){
 			combatManager.ResolveCombat(def, att);
+			def.hasRetaliated = true;
 
 			yield return new WaitForSeconds(2.5f);
 		}
 
-		inCombat = false;
-	}
+		att.isAttacking = false;
 
-	// public ThrowSpear()
+		if(def){
+			def.isAttacking = false;
+		}
+	}
 
 	private void ChangePlayer() {
 		if (currentPlayer + 1 < players.Length)
