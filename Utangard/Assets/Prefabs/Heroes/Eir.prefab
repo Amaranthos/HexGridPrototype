@@ -2862,7 +2862,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181458}
   m_LocalRotation: {x: .0379255936, y: -.961963296, z: -.183694765, w: -.198606849}
-  m_LocalPosition: {x: 160.729523, y: 43.7232552, z: -89.7359009}
+  m_LocalPosition: {x: 1.28077507, y: 7.30648804, z: -67.329277}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 481942}
@@ -4007,6 +4007,8 @@ MonoBehaviour:
   currentBuffs: []
   unitAnim: {fileID: 0}
   buffsToSpawn: []
+  isAttacking: 0
+  hasRetaliated: 0
   spear: {fileID: 0}
   throwNode: {fileID: 0}
   currentTarget: {fileID: 0}
