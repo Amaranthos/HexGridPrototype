@@ -57,6 +57,10 @@ public class Formations : MonoBehaviour {
 			}
 		}
 
+		if(Logic.Inst.Players[player].hero.passive.passive == PassiveType.Buff){
+			Logic.Inst.Players[player].hero.passive.ApplyBuffAll(player);
+		}
+
 		gameObject.GetComponent<ClothingManager>().SetSkins();
 	}
 
