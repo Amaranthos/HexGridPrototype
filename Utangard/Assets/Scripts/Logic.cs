@@ -58,6 +58,9 @@ public class Logic : MonoBehaviour {
 
 	public GameObject enviro;
 
+	public int firstPlayerFaith;
+	public int secondPlayerFaith;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -450,6 +453,13 @@ public class Logic : MonoBehaviour {
 
 		Camera.main.GetComponent<Vision>().enabled = true;
 
+		players[currentPlayer].Faith = firstPlayerFaith;
+		if(currentPlayer == 0){
+			players[1].Faith = secondPlayerFaith;
+		}
+		else{
+			players[0].Faith = secondPlayerFaith;
+		}
 	}
 
 	public void StartCombatPhase() {
