@@ -236,15 +236,22 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void OnMouseOver(){
-		if(Logic.Inst.SelectedUnit != null){
-			if(Logic.Inst.SelectedUnit != this){
-				if(owner != Logic.Inst.CurrentPlayer){
-                    if (Logic.Inst.SelectedUnit.InAttackRange(this)){
-                        GUIManager.inst.DisplayPredictions(this);
+        if (Logic.Inst.gamePhase == GamePhase.CombatPhase)
+        {
+            if (Logic.Inst.SelectedUnit != null)
+            {
+                if (Logic.Inst.SelectedUnit != this)
+                {
+                    if (owner != Logic.Inst.CurrentPlayer)
+                    {
+                        if (Logic.Inst.SelectedUnit.InAttackRange(this))
+                        {
+                            GUIManager.inst.DisplayPredictions(this);
+                        }
                     }
-				}
-			}
-		}
+                }
+            }
+        }
 	}
 
 	public void OnMouseExit(){
