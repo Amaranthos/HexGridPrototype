@@ -239,7 +239,9 @@ public class Unit : MonoBehaviour {
 		if(Logic.Inst.SelectedUnit != null){
 			if(Logic.Inst.SelectedUnit != this){
 				if(owner != Logic.Inst.CurrentPlayer){
-					GUIManager.inst.DisplayPredictions(this);
+                    if (Logic.Inst.SelectedUnit.InAttackRange(this)){
+                        GUIManager.inst.DisplayPredictions(this);
+                    }
 				}
 			}
 		}
