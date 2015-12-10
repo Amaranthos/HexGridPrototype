@@ -4,9 +4,20 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
+public struct StatValues{
+    public int hp;
+    public int mov;
+    public int atk;
+    public int def;
+    public int acc;
+    public int dod;
+}
+
+[System.Serializable]
 public struct HeroStruct {
 	public GameObject model;
 	public string name;
+    public StatValues stats;
 	public string desc;
 	public string passive;
 	public string active1;
@@ -15,7 +26,7 @@ public struct HeroStruct {
 	public Sprite active2Icon;
 	public bool isTaken;
 
-	public HeroStruct(GameObject model, string name, string desc, string passive, string active1, string active2, Sprite Icon1, Sprite Icon2) {
+	public HeroStruct(GameObject model, string name, string desc, string passive, string active1, string active2, Sprite Icon1, Sprite Icon2, StatValues st) {
 		this.model = model;
 		this.name = name;
 		this.desc = desc;
@@ -24,6 +35,7 @@ public struct HeroStruct {
 		this.active1Icon = Icon1;
 		this.active2 = active2;
 		this.active2Icon = Icon2;
+        this.stats = st;
 		isTaken = false;
 	}
 }
@@ -38,6 +50,7 @@ public class NewHeroSelect : MonoBehaviour {
 
 	public GameObject armySelect;
 	public Text[] textBoxes = new Text[5]; // 1 = Hero Name 2 = Hero Desc 3 = Passive Skill 4 = Ability1 5 = Ability2
+    public Text[] statFields = new Text[6];
 	public Text selectionText;
 
 	public HeroType selectedHero = HeroType.Skadi;
@@ -117,7 +130,7 @@ public class NewHeroSelect : MonoBehaviour {
 		SetInfo((int)selectedHero);
 		SetIcon((int)selectedHero);
 		ToggleCircleColors((int)selectedHero);
-	}
+  	}
 
 	void SetInfo(int i){
 		textBoxes[0].text = heroes[i].name; // Set Name
@@ -125,6 +138,13 @@ public class NewHeroSelect : MonoBehaviour {
 		textBoxes[2].text = heroes[i].passive; // Set Passive Text
 		textBoxes[3].text = heroes[i].active1; // Set Ability 1 Text
 		textBoxes[4].text = heroes[i].active2; // Set Ability 2 Text
+
+        statFields[0].text = heroes[i].stats.hp.ToString();
+        statFields[1].text = heroes[i].stats.mov.ToString();
+        statFields[2].text = heroes[i].stats.atk.ToString();
+        statFields[3].text = heroes[i].stats.def.ToString();
+        statFields[4].text = heroes[i].stats.acc.ToString();
+        statFields[5].text = heroes[i].stats.dod.ToString();
 	}
 
 	void SetIcon(int i){
