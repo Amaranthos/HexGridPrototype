@@ -16,6 +16,8 @@ public class NewArmySelect : MonoBehaviour {
 	public int pickPerTurn;
 	public int pickPerArmy;
 	public RuneStones unitStones;
+    public Image[] p1Icons = new Image[3];
+    public Image[] p2Icons = new Image[3];
 	public SelectionStage whosPicking;
     public AudioClip[] audioClips;
 	bool rotating;
@@ -31,12 +33,11 @@ public class NewArmySelect : MonoBehaviour {
 		playerArmies[1].swords = 0;
 		playerArmies[1].spears = 0;
 
-
-		gui.subTitle.text = "Select " + pickPerTurn + " warriors";
+        gui.subTitle.text = "Select " + pickPerTurn + " warriors";
 		UpdateMaterials();
 		AssignHeroBanners();
 
-		// Turn P1 stuff off, turn on P2 stuff
+       	// Turn P1 stuff off, turn on P2 stuff
 		for(int i = 0; i < gui.P1descriptions.Length; i++)
 		{
 			gui.P1descriptions[i].SetActive(true);
@@ -144,21 +145,38 @@ public class NewArmySelect : MonoBehaviour {
 			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+
+            p1Icons[0].sprite = GUIManager.inst.unitPortraits[0].axe;
+            p1Icons[1].sprite = GUIManager.inst.unitPortraits[0].spear;
+            p1Icons[2].sprite = GUIManager.inst.unitPortraits[0].sword;
+
 			break;
 		case HeroType.Heimdall:
 			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+
+            p1Icons[0].sprite = GUIManager.inst.unitPortraits[1].axe;
+            p1Icons[1].sprite = GUIManager.inst.unitPortraits[1].spear;
+            p1Icons[2].sprite = GUIManager.inst.unitPortraits[1].sword;
 			break;
 		case HeroType.Skadi:
 			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+            
+            p1Icons[0].sprite = GUIManager.inst.unitPortraits[2].axe;
+            p1Icons[1].sprite = GUIManager.inst.unitPortraits[2].spear;
+            p1Icons[2].sprite = GUIManager.inst.unitPortraits[2].sword;
 			break;
 		case HeroType.Thor:
 			unitStones.p1Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
 			unitStones.p1Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
 			unitStones.p1Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+            
+            p1Icons[0].sprite = GUIManager.inst.unitPortraits[3].axe;
+            p1Icons[1].sprite = GUIManager.inst.unitPortraits[3].spear;
+            p1Icons[2].sprite = GUIManager.inst.unitPortraits[3].sword;
 			break;
 		}
 		switch(Logic.Inst.Players[1].hero.type){
@@ -166,21 +184,38 @@ public class NewArmySelect : MonoBehaviour {
 			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[0];
+
+            p2Icons[0].sprite = GUIManager.inst.unitPortraits[0].axe;
+            p2Icons[1].sprite = GUIManager.inst.unitPortraits[0].spear;
+            p2Icons[2].sprite = GUIManager.inst.unitPortraits[0].sword;
+
 			break;
 		case HeroType.Heimdall:
 			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[1];
+
+            p2Icons[0].sprite = GUIManager.inst.unitPortraits[1].axe;
+            p2Icons[1].sprite = GUIManager.inst.unitPortraits[1].spear;
+            p2Icons[2].sprite = GUIManager.inst.unitPortraits[1].sword;
 			break;
 		case HeroType.Skadi:
 			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[2];
+            
+            p2Icons[0].sprite = GUIManager.inst.unitPortraits[2].axe;
+            p2Icons[1].sprite = GUIManager.inst.unitPortraits[2].spear;
+            p2Icons[2].sprite = GUIManager.inst.unitPortraits[2].sword;
 			break;
 		case HeroType.Thor:
 			unitStones.p2Banners[0].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
 			unitStones.p2Banners[1].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
 			unitStones.p2Banners[2].GetComponent<MeshRenderer>().material = materials.heroMaterials[3];
+            
+            p2Icons[0].sprite = GUIManager.inst.unitPortraits[3].axe;
+            p2Icons[1].sprite = GUIManager.inst.unitPortraits[3].spear;
+            p2Icons[2].sprite = GUIManager.inst.unitPortraits[3].sword;
 			break;
 		}
 	}
