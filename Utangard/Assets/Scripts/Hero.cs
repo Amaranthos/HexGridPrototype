@@ -54,9 +54,9 @@ public class Hero : MonoBehaviour {
 			ActivateAbility2();
 		}
 
-		if (Input.GetKeyDown (KeyCode.F)) {
-			hero.Owner.Faith += 1000000;
-		}
+//		if (Input.GetKeyDown (KeyCode.F)) {
+//			hero.Owner.Faith += 1000000;
+//		}
 	}
 
 	public void ActivateAbility1(){
@@ -220,8 +220,8 @@ public class Hero : MonoBehaviour {
 	}
 	
 	public void CalcBuffStrength(){
-		active1.cost = Mathf.RoundToInt(origActive1Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
-		active2.cost = Mathf.RoundToInt(origActive2Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
+		//active1.cost = Mathf.RoundToInt(origActive1Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
+		//active2.cost = Mathf.RoundToInt(origActive2Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
 
 		for(int i = 0; i < active1.buffs.Count; i++){
 			int index;
