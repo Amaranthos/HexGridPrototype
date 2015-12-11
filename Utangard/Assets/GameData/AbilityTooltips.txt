@@ -1,101 +1,97 @@
-<size=20><b>Nine Maiden's Blessings</b></size> -
-<size=17>Restore a small amount of <color=lime><i>Health</i></color> to units adjacent to <color=yellow><i>Eir</i></color>.</size>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Radius: 1 tiles</color>
+<size=20><b>Nine Maidens' Blessings</b></size> -
+<size=17>Restore a small amount of <color=lime><i>Health</i></color> to units adjacent to <color=yellow><i>Eir's Maiden</i></color> at the start of her turn.</size>
+	<color=yellow>Target: Allies</color>
+	<color=yellow>Radius: 1x tiles</color>
 	<color=lime>+10 Health</color>
 $
 <size=20><b>Rejuvenate</b></size> -
-<size=17>Restore a massive amount of <color=lime><i>Health</i></color> to a friendly unit within 3 tiles.</size>
+<size=17>Restore a massive amount of <color=lime><i>Health</i></color> to an allied unit within <color=yellow>3 tiles</color> of <color=yellow><i>Eir's Maiden</i></color>.</size>
 <color=cyan>Cost: 12 Faith</color>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Range: 3 tiles</color>
+	<color=yellow>Target: Ally</color>
+	<color=yellow>Range: 3x tiles</color>
 	<color=lime>+50 Health</color>
-	<color=lime>+20 Defence</color> (<color=red>Wrath</color>)
-	<color=yellow>Duration: 1 turns</color> (<color=red>Wrath</color>)
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+20 Defence</color> for <color=yellow>1 turn</color>.
 $
 <size=20><b>Goddess' Light</b></size> -
-<size=17>Restore a small amount of <color=lime><i>Health</i></color> to every friendly unit on the field.</size>
+<size=17>Restore a small amount of <color=lime><i>Health</i></color> to every allied unit on the field.</size>
 <color=cyan>Cost: 18 Faith</color>
-	<color=yellow>Target: Friendly</color>
+	<color=yellow>Target: Allies</color>
 	<color=yellow>Range: All tiles</color>
 	<color=lime>+15 Health</color>
-	<color=lime>+10 Attack</color> (<color=red>Wrath</color>)
-	<color=lime>+10 Defence</color> (<color=red>Wrath</color>)
-	<color=yellow>Duration: 2 turns</color> (<color=red>Wrath</color>);
-	
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+10 Attack</color> and <color=lime>+10 Defence</color> for <color=yellow>2 turns</color>.;
+
 
 <size=20><b>Innangard</b></size> -
-<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each friendly unit adjacent to them.</size>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Radius: 1 tiles</color>
+<size=17>All units gain a small amount of <color=orange><i>defence</i></color> for each allied unit adjacent to them.</size>
+	<color=yellow>Target: Allies</color>
+	<color=yellow>Radius: 1x tiles</color>
 	<color=lime>+2 Defence</color>
 $
 <size=20><b>Bifrost Advance</b></size> -
-<size=17>Move a Friendly unit within 2 tiles of the Heimdall's hero, to an empty tile within 2 tiles of the unit.</size>
+<size=17>Any allied unit within a <color=yellow>2 tile radius</color> of <color=yellow><i>Heimdall's Guardian</i></color>, can be moved up to <color=yellow>2 tiles</color> from its current position.</size>
 <color=cyan>Cost: 20 Faith</color>
-	<color=yellow>Target: Friendly</color>, (<color=red>Wrath</color>) <color=yellow>Enemy</color>
-	<color=yellow>Range: 2 tiles (Heimdall), 2 tiles (Unit)</color>
+	<color=yellow>Target: Ally</color>
+	<color=yellow>Range: 2x tiles</color>
 	<color=lime>Move a unit up to 2 tiles</color>
-	<color=red>-20 defence</color> to adjacent Enemies (<color=red>Wrath</color>)
+	<color=red>Wrath Mode</color>: Also takes <color=red>-20 defence</color> from enemy units adjacent to the destination.
 $
 <size=20><b>Stalwart Defence</b></size> -
-<size=17>Improve the <color=orange><i>Defence</i></color> of friendly units near Heimdall's Hero.</size>
+<size=17>Improve the <color=orange><i>Defence</i></color> of allied units currently within a <color=yellow>2 tile radius</color> of <color=yellow><i>Heimdall's Guardian</i></color>.</size>
 <color=cyan>Cost: 20 Faith</color>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Radius: 2 tiles</color>
-	<color=yellow>Duration: 2 turns</color>
+	<color=yellow>Target: Allies</color>
+	<color=yellow>Radius: 2x tiles</color>
+	<color=yellow>Duration: 2x turns</color>
 	<color=lime>+25 Defence</color>
-	<color=lime>+25 Hit Chance</color> (<color=red>Wrath</color>);
-	
-	
-	
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+25 Hit Chance</color> for <color=yellow>2 turns</color>.;	
+
+
 <size=20><b>Grace Of The Huntress</b></size> -
-<size=17>Units no longer receive a movement penalty when traversing <color=cyan><i>snow</i></color>.</size>
-	<color=yellow>Target: Friendly</color>
+<size=17>Allied units do not receive a movement penalty when traversing <color=cyan><i>snow</i></color>.</size>
+	<color=yellow>Target: Allies</color>
 	<color=yellow>Range: All Tiles</color>
 $
 <size=20><b>Thrill Of The Hunt</b></size> -
-<size=17>All spearmen gain improved <color=orange><i>Attack Range</i></color> for a turn.</size>
+<size=17>All allied spearmen gain improved <color=orange><i>Attack Range</i></color> for <color=yellow>1 turn</color>.</size>
 <color=cyan>Cost: 15 Faith</color>
-	<color=yellow>Target: Friendly Spearmen</color>
+	<color=yellow>Target: Allied Spearmen</color>
 	<color=yellow>Range: All tiles</color>
 	<color=yellow>Duration: 1 Turn</color>
 	<color=lime>+1 Range</color>
-	<color=lime>+35 Hit Chance</color> (<color=red>Wrath</color>)
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+35 Hit Chance</color> for <color=yellow>1 turn</color>.
 $
 <size=20><b>In For The Kill</b></size> -
-<size=17>All spearmen gain <color=orange><i>Attack</i></color> but lose <color=orange><i>Attack Range</i></color> for a turn.</size>
+<size=17>All allied spearmen gain <color=orange><i>Attack</i></color> but lose <color=orange><i>Attack Range</i></color> for <color=yellow>1 turn</color>.</size>
 <color=cyan>Cost: 12 Faith</color>
-	<color=yellow>Target: Friendly Spearmen</color>
+	<color=yellow>Target: Allied Spearmen</color>
 	<color=yellow>Range: All tiles</color>
 	<color=yellow>Duration: 1 Turn</color>
 	<color=lime>+25 Attack</color>
 	<color=red>-1 Range</color>
-	<color=lime>+35 Hit Chance</color> (<color=red>Wrath</color>);
-	
-	
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+15 Attck</color> per adjacent allied spearman for <color=yellow>1 turn</color>.;
+
+
 <size=20><b>Inspire</b></size> -
-<size=17>Units nearby Thor's Hero receive bonus <color=orange><i>Attack</i></color>.</size>
-	<color=yellow>Target: Friendly</color>
-	<color=yellow>Range: 2 tiles</color>
+<size=17>Allied units within a <color=yellow>2 tile radius</color> of <color=yellow><i>Thor's Warrior</i></color> receive bonus <color=orange>Attack</color>.</size>
+	<color=yellow>Target: Allies</color>
+	<color=yellow>Range: 2x tiles</color>
 	<color=lime>+15 Attack</color>
 $
 <size=20><b>Thor's Wrath</b></size> -
 <size=17>Strike an enemy with lightning for massive <color=red><i>Damage</i></color>. (<color=yellow>Ignores <i>Defence</i></color>)</size>
 <color=cyan>Cost: 15 Faith</color>
 	<color=yellow>Target: Enemy</color>
-	<color=yellow>Range: 3 tiles</color>
+	<color=yellow>Range: 3x tiles</color>
 	<color=red>-40 Health</color>
-	<color=red>-20 Health</color> to adjacent enemies(<color=red>Wrath</color>)
+	<color=red>Wrath Mode</color>: Also takes <color=red>-20 Health</color> from enemies adjacent to the target.
 $
 <size=20><b>Odin's Beard</b></size> -
-<size=17>All friendly units gain a moderate boost <color=orange><i>Defence</i></color> for 2 turns. Promotes healthy <color=lime><i>beard growth</i></color>.</size>
+<size=17>All allied units gain a moderate boost to <color=orange><i>Defence</i></color> for <color=yellow>2 turns</color>. Promotes healthy <color=lime><i>beard growth</i></color>.</size>
 <color=cyan>Cost: 15 Faith</color>
-	<color=yellow>Target: Friendly</color>
+	<color=yellow>Target: Allies</color>
 	<color=yellow>Range: All tiles</color>
-	<color=yellow>Duration: 2 turns</color>
+	<color=yellow>Duration: 2x turns</color>
 	<color=lime>+15 Defence</color>
-	<color=lime>+2 Movement</color> (<color=red>Wrath</color>);
+	<color=red>Wrath Mode</color>: Also adds <color=lime>+2 Movement</color> for <color=yellow>2 turns</color>.;
 
 Sam Passive
 $
