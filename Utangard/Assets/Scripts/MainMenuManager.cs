@@ -18,6 +18,8 @@ public class MainMenuManager : MonoBehaviour {
 	}
 
 	public void QuitGame(){
-		Application.Quit();
+		if (!Application.isEditor) {
+			System.Diagnostics.Process.GetCurrentProcess().Kill();
+		}
 	}
 }

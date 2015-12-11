@@ -80,14 +80,14 @@ public class AbilityDescriptions : MonoBehaviour {
 		string[] strings = new string[5];
 		bool succeeded = false;
 		// Grab Ability Descriptions
-		if(System.IO.File.Exists("Assets/GameData/AbilityTooltips.txt")){
-			strings = file.GetCSV("Assets/GameData/AbilityTooltips.txt").Split(";"[0]); // Divide string into array elements, seperated by ;
+//		if(System.IO.File.Exists("Assets/GameData/AbilityTooltips.txt")){
+			strings = file.GetCSV("AbilityTooltips").Split(";"[0]); // Divide string into array elements, seperated by ;
 			succeeded = true;
-		}
-		else{
-			Debug.LogError("AbilityTooltips.txt not found");
-			succeeded = false;
-		}
+//		}
+//		else{
+//			Debug.LogError("AbilityTooltips.txt not found");
+//			succeeded = false;
+//		}
 
 		if(succeeded){
 			switch(Logic.Inst.Players[playerNum].hero.type){

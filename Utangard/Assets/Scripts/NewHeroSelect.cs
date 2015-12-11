@@ -184,20 +184,20 @@ public class NewHeroSelect : MonoBehaviour {
 		string[] strings = new string[numHeroes];
 
 		// Grab Character Descriptions
-		if(System.IO.File.Exists("Assets/GameData/CharacterDescriptions.txt")){
-			strings = fileCSV.GetCSV("Assets/GameData/CharacterDescriptions.txt").Split(";"[0]); // Divide string into array elements, seperated by ;
+//		if(System.IO.File.Exists("CharacterDescriptions.txt")){
+			strings = fileCSV.GetCSV("CharacterDescriptions").Split(";"[0]); // Divide string into array elements, seperated by ;
 			for(int i = 0; i < numHeroes; i++){
 				heroes[i].desc = strings[i].Trim(); // Remove any newlines in the string
 			}
-		}
-		else{
-			Debug.LogError("Abilities.txt not found");
-		}
+//		}
+//		else{
+//			Debug.LogError("Abilities.txt not found");
+//		}
 
 		string[] strings2 = new string[5];
 		// Grab Ability Descriptions
-		if(System.IO.File.Exists("Assets/GameData/AbilityTooltips.txt")){
-			strings2 = fileCSV.GetCSV("Assets/GameData/AbilityTooltips.txt").Split(";"[0]); // Divide string into array elements, seperated by ;
+//		if(System.IO.File.Exists("AbilityTooltips.txt")){
+			strings2 = fileCSV.GetCSV("AbilityTooltips").Split(";"[0]); // Divide string into array elements, seperated by ;
 			for(int i = 0; i < (strings2.Length - 1); i++){
 				string[] temp = new string[3];
 				temp = strings2[i].Split("$"[0]);
@@ -205,10 +205,10 @@ public class NewHeroSelect : MonoBehaviour {
 				heroes[i].active1 = temp[1].Trim();
 				heroes[i].active2 = temp[2].Trim();
 			}
-		}
-		else{
-			Debug.LogError("AbilityTooltips.txt not found");
-		}
+//		}
+//		else{
+//			Debug.LogError("AbilityTooltips.txt not found");
+//		}
 
 
 //		// Grab Character Passives

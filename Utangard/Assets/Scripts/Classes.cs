@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class CSVParser{
 	public string GetCSV(string filePath)
 	{
-		string fileData = System.IO.File.ReadAllText(filePath);
-		return fileData;
+		TextAsset data = Resources.Load (filePath) as TextAsset;
+		return data.text;
 	}
 }
 
