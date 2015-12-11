@@ -54,9 +54,9 @@ public class Hero : MonoBehaviour {
 			ActivateAbility2();
 		}
 
-		if (Input.GetKeyDown (KeyCode.F)) {
-			hero.Owner.Faith += 1000000;
-		}
+//		if (Input.GetKeyDown (KeyCode.F)) {
+//			hero.Owner.Faith += 1000000;
+//		}
 	}
 
 	public void ActivateAbility1(){
