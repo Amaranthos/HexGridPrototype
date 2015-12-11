@@ -50,7 +50,7 @@ public class Combat : MonoBehaviour {
 		for(int i = 0; i < spinCount; i++){
 			yield return new WaitForSeconds(0.05f);
 			hitRoll = RollTheDice();
-			rollText.text = atk.Owner.hero.type + "'s " + atk.type + " Rolled... " + hitRoll + "\nNeeds " + (100-hitChance) + "+ To Hit";
+			rollText.text = atk.Owner.hero.type + "'s " + atk.name+ " Rolled... " + hitRoll + "\nNeeds " + (100-hitChance) + "+ To Hit";
 		}
 
 		if (hitRoll >= 100-hitChance) {
