@@ -4,6 +4,8 @@ using System.Collections;
 
 public class MusicPlayer : MonoBehaviour {
 
+	public static MusicPlayer inst;
+
 	public AudioMixer master;
 
 	private float bpm = 128;
@@ -17,6 +19,15 @@ public class MusicPlayer : MonoBehaviour {
 	private MusicBaseState theme = MusicBaseState.None;
 
 	void Awake() {
+		if(inst == null) {
+			inst = this;
+		}
+		else {
+			Destroy(this);
+		}
+
+		DontDestroyOnLoad(this);
+
 		quarterNote = 60 / bpm;
 		timeIn = quarterNote * 8;
 		timeOut = quarterNote * 32;
@@ -27,7 +38,7 @@ public class MusicPlayer : MonoBehaviour {
 		foreach(AudioSource source in sources) {
 			Debug.Log("Stopping: " + source);
 			source.Stop();
-			// source.Play();
+			source.Play();
 		}
 	}
 
@@ -98,6 +109,8 @@ public class MusicPlayer : MonoBehaviour {
 			master.SetFloat(inGroup, vol);
 			yield return new WaitForEndOfFrame();
 		}
+
+		Unmute();
 
 		if(stopCurrent){
 			if(current != ""){

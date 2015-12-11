@@ -16,7 +16,6 @@ public class Logic : MonoBehaviour {
 	//private InfoPanel infoPanel;
 	private Audio _audio;
 	private Path path;
-	private MusicPlayer music;
 
 	private Combat combatManager;
 
@@ -113,16 +112,11 @@ public class Logic : MonoBehaviour {
 		if(!formations)
 			Debug.LogError("Formation object does not exist!");
 
-		music = Camera.main.gameObject.GetComponentInChildren<MusicPlayer>();
-
-		if (!music)
-			Debug.LogError("Music Player does not exist!");
-
 		Camera.main.GetComponent<Vision>().enabled = false;
 	}
 
 	private void Start() {
-		music.ChangeBase(MusicBaseState.Title);
+		MusicPlayer.inst.ChangeBase(MusicBaseState.Title);
 
 		turnsRemaining = turnsForVictory;
 	}
@@ -201,11 +195,11 @@ public class Logic : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.M)){
 			if(muted) {
-				music.Unmute();
+				MusicPlayer.inst.Unmute();
 				muted = false;
 			}
 			else {
-				music.Mute();
+				MusicPlayer.inst.Mute();
 				muted = true;
 			}
 		}
@@ -450,7 +444,7 @@ public class Logic : MonoBehaviour {
 	public void StartSetupPhase() {
 		GUIManager.inst.GUICanvas.SetActive(true);
 
-		music.ChangeBase(MusicBaseState.Placing);
+		MusicPlayer.inst.ChangeBase(MusicBaseState.Placing);
 
 		currentPlayer = startingPlayer = Random.Range(0, players.Length);
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
@@ -471,7 +465,7 @@ public class Logic : MonoBehaviour {
 	public void StartCombatPhase() {
 		currentPlayer = startingPlayer;
 		GUIManager.inst.UpdatePlayerGUI(currentPlayer);
-		music.ChangeBase(MusicBaseState.Battle);
+		MusicPlayer.inst.ChangeBase(MusicBaseState.Battle);
 	}
 
 	private void ChangeTileOutlines(List<Tile> tiles, Color colour, float thickness) {
@@ -809,11 +803,7 @@ public class Logic : MonoBehaviour {
 	public Grid Grid {
 		get { return grid; }
 	}
-
-	public MusicPlayer Music {
-		get { return music; }
-	}
-
+	
 	public UnitList UnitList {
 		get { return unitList; }
 	}

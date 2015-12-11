@@ -13,11 +13,11 @@ public class Altar : MonoBehaviour {
 		if (owner){
 			owner.capturedAltars.Remove(this);
 			if(player.capturedAltars.Count > 3){
-				Logic.Inst.Music.currentWinner = player.hero.type.ToString();
-				Logic.Inst.Music.ChangeBase(MusicBaseState.NearWin);
+				MusicPlayer.inst.currentWinner = player.hero.type.ToString();
+				MusicPlayer.inst.ChangeBase(MusicBaseState.NearWin);
 			}
 			else {
-				Logic.Inst.Music.ChangeBase(MusicBaseState.Battle);	
+				MusicPlayer.inst.ChangeBase(MusicBaseState.Battle);	
 			}
 		}
 		owner = player;
