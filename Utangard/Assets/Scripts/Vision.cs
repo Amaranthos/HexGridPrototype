@@ -47,7 +47,7 @@ public class Vision : MonoBehaviour {
 		Vector3 move = moveX + moveZ;
 		move.Normalize();
 
-		transform.parent.localPosition += move * moveSpeed;
+		transform.parent.localPosition += move * moveSpeed * Time.deltaTime;
 
 
 

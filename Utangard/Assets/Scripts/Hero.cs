@@ -159,26 +159,66 @@ public class Hero : MonoBehaviour {
 
 		inRange = Logic.Inst.Grid.TilesInRange(currentAbility.targets[currentStage].origin,currentAbility.castRange);
 
-		if(inRange.Contains(tile) && targets.Count < currentAbility.targets.Count){
+		if (inRange.Contains (tile) && targets.Count < currentAbility.targets.Count) {
 			//Oh god this if is so long...Designed to make sure you can't put the wrong kind of targets on the list. Eg. Makes sure you're targeting a tile with a unit, if the ability hurts a specific unit.
-			if((currentAbility.targets[currentStage].needsSpace && !tile.OccupyingUnit) || (currentAbility.targets[currentStage].needsUnit && tile.OccupyingUnit) || (!currentAbility.targets[currentStage].needsSpace && !currentAbility.targets[currentStage].needsUnit)){
-				targets.Add(new Target(tile.OccupyingUnit,tile.index,currentAbility.targets[currentStage].type,false,false));
-				currentAbility.targets[currentStage].unit = tile.OccupyingUnit;
+			if ((currentAbility.targets [currentStage].needsSpace && !tile.OccupyingUnit) || (currentAbility.targets [currentStage].needsUnit && tile.OccupyingUnit) || (!currentAbility.targets [currentStage].needsSpace && !currentAbility.targets [currentStage].needsUnit)) {
+				if(tile.OccupyingUnit){
+					if (((currentAbility.hitFoe && tile.OccupyingUnit.Owner != hero.Owner) || (!currentAbility.hitFoe && tile.OccupyingUnit.Owner == hero.Owner)) && currentAbility.affected.Contains (tile.OccupyingUnit.type)) {
+						targets.Add (new Target (tile.OccupyingUnit, tile.index, currentAbility.targets [currentStage].type, false, false));
+						currentAbility.targets [currentStage].unit = tile.OccupyingUnit;
+					
+						if (targets.Count < currentAbility.targets.Count) {
+							currentStage++;
+						}
 
-				if(targets.Count < currentAbility.targets.Count){
-					currentStage++;
+						Logic.Inst.ClearHighlightedTiles ();
+
+						if (currentStage > 0 && currentAbility.targets [currentStage - 1].unit) {
+							currentAbility.targets [currentStage].origin = currentAbility.targets [currentStage - 1].unit.Index;
+							Logic.Inst.HighlightAbilityRange (currentAbility, currentAbility.targets [currentStage].origin);
+						}
+					}
+					else{
+						ResetTargeting();
+					}
 				}
+				else if (currentAbility.abilityType == AbilityType.Teleport){
+					print ("DOING THE THING");
+					targets.Add (new Target (tile.OccupyingUnit, tile.index, currentAbility.targets [currentStage].type, false, false));
+					currentAbility.targets [currentStage].unit = tile.OccupyingUnit;
 
-				Logic.Inst.ClearHighlightedTiles();
-
-				if(currentStage > 0 && currentAbility.targets[currentStage-1].unit){
-					currentAbility.targets[currentStage].origin = currentAbility.targets[currentStage-1].unit.Index;
-					Logic.Inst.HighlightAbilityRange(currentAbility,currentAbility.targets[currentStage].origin);
+					if (targets.Count < currentAbility.targets.Count) {
+						currentStage++;
+						print ("ADVANCED STAGE");
+					}
+					
+					Logic.Inst.ClearHighlightedTiles ();
+					
+					if (currentStage > 0 && currentAbility.targets [currentStage - 1].unit) {
+						currentAbility.targets [currentStage].origin = currentAbility.targets [currentStage - 1].unit.Index;
+						Logic.Inst.HighlightAbilityRange (currentAbility, currentAbility.targets [currentStage].origin);
+						print ("SHIFTING ORIGIN");
+					}
 				}
 			}
+			else{
+				ResetTargeting();
+			}
+		} 
+		else {
+			ResetTargeting();
 		}
 	}
 
+	private void ResetTargeting(){
+		Logic.Inst.gamePhase = GamePhase.CombatPhase;
+		print ("PHASE CHANGE");
+		Logic.Inst.ClearHighlightedTiles ();
+		print ("GRID CLEARED");
+		Logic.Inst.UnitLClicked(Logic.Inst.heroList.heroes[Logic.Inst.currentPlayer].hero);
+		print ("HERO SELECTED");
+	}
+	
 	public void CalcBuffStrength(){
 		active1.cost = Mathf.RoundToInt(origActive1Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
 		active2.cost = Mathf.RoundToInt(origActive2Cost * (1 + (costIncrease * (4 - hero.Owner.capturedAltars.Count))));
