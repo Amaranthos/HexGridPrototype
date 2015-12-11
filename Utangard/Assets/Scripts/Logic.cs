@@ -60,6 +60,9 @@ public class Logic : MonoBehaviour {
 	public int firstPlayerFaith;
 	public int secondPlayerFaith;
 
+	public bool paused = false;
+	public GameObject pauseMenu;
+
 	private void Awake() {
 		if (!inst)
 			inst = this;
@@ -124,72 +127,101 @@ public class Logic : MonoBehaviour {
 	private bool muted = false;
 
 	private void Update() {
-		//This currently enables the generic sacrifice button, the button should be included with the player's gui
-		if(gamePhase == GamePhase.CombatPhase){
-			if(selectedUnit && selectedUnit.CanMove){
-				Altar altar = GetAltar(selectedUnit.Index);
-				if(altar){
-					//sacrifice.interactable = true;
-				}
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			if(!paused){
+				paused = true;
+				pauseMenu.SetActive(true);
 			}
-			else {
-				//sacrifice.interactable = false;
+			else{
+				paused = false;
+				pauseMenu.SetActive(false);
 			}
 		}
 
-		if (Input.GetMouseButtonUp(0)) {
-			RaycastHit hit = MouseClick();
-			if (hit.transform) {
-				GameObject go = hit.transform.gameObject;
-
-				Unit unit = go.GetComponent<Unit>();
-
-				if (unit)
-					UnitLClicked(unit);
-				else {
-					Tile tile = go.GetComponent<Tile>();
-
-					if (tile)
-						TileLClicked(tile);
-					else {
-						Altar altar = go.GetComponent<Altar>();
-
-						if (altar)
-							TileLClicked(grid.TileAt(altar.Index));
+		if (!paused) {
+			//This currently enables the generic sacrifice button, the button should be included with the player's gui
+			if (gamePhase == GamePhase.CombatPhase) {
+				if (selectedUnit && selectedUnit.CanMove) {
+					Altar altar = GetAltar (selectedUnit.Index);
+					if (altar) {
+						//sacrifice.interactable = true;
 					}
-				}
-
-			}
-		}
-
-		if (Input.GetMouseButtonUp(1)) {
-			RaycastHit hit = MouseClick();
-			if (hit.transform) {
-				GameObject go = hit.transform.gameObject;
-
-				Unit unit = go.GetComponent<Unit>();
-
-				if (unit)
-					UnitRClicked(unit);
-				else {
-					Tile tile = go.GetComponent<Tile>();
-
-					if (tile)
-						TileRClicked(tile);
-					else {
-						Altar altar = go.GetComponent<Altar>();
-
-						if (altar)
-							TileRClicked(grid.TileAt(altar.Index));
-					}
+				} else {
+					//sacrifice.interactable = false;
 				}
 			}
 
-			if(gamePhase == GamePhase.TargetPhase){	//So players can back out of an ability cast;
-				gamePhase = GamePhase.CombatPhase;
-				print ("TARGETING ABORTED");
-				ClearHighlightedTiles();
-				UnitLClicked(heroList.heroes[currentPlayer].hero);
+			if (Input.GetMouseButtonUp (0)) {
+				RaycastHit hit = MouseClick ();
+				if (hit.transform) {
+					GameObject go = hit.transform.gameObject;
+
+					Unit unit = go.GetComponent<Unit> ();
+
+					if (unit)
+						UnitLClicked (unit);
+					else {
+						Tile tile = go.GetComponent<Tile> ();
+
+						if (tile)
+							TileLClicked (tile);
+						else {
+							Altar altar = go.GetComponent<Altar> ();
+
+							if (altar)
+								TileLClicked (grid.TileAt (altar.Index));
+						}
+					}
+
+				}
+			}
+
+			if (Input.GetMouseButtonUp (1)) {
+				RaycastHit hit = MouseClick ();
+				if (hit.transform) {
+					GameObject go = hit.transform.gameObject;
+
+					Unit unit = go.GetComponent<Unit> ();
+
+					if (unit)
+						UnitRClicked (unit);
+					else {
+						Tile tile = go.GetComponent<Tile> ();
+
+						if (tile)
+							TileRClicked (tile);
+						else {
+							Altar altar = go.GetComponent<Altar> ();
+
+							if (altar)
+								TileRClicked (grid.TileAt (altar.Index));
+						}
+					}
+				}
+
+				if (gamePhase == GamePhase.TargetPhase) {	//So players can back out of an ability cast;
+					gamePhase = GamePhase.CombatPhase;
+					print ("TARGETING ABORTED");
+					ClearHighlightedTiles ();
+					UnitLClicked (heroList.heroes [currentPlayer].hero);
+				}
+			}
+
+			if(gamePhase == GamePhase.PlacingPhase){
+				if(Input.GetKeyDown(KeyCode.Alpha1)){
+					formations.form = UnitFormations.Aggressive;
+					formations.Reform(currentPlayer, CurrentPlayer.units);
+				}
+				
+				if(Input.GetKeyDown(KeyCode.Alpha2)){
+					formations.form = UnitFormations.Defensive;
+					formations.Reform(currentPlayer, CurrentPlayer.units);
+				}
+				
+				if(Input.GetKeyDown(KeyCode.Alpha3)){
+					formations.form = UnitFormations.SkirmishAgg;
+					formations.Reform(currentPlayer, CurrentPlayer.units);
+				}
 			}
 		}
 
@@ -203,23 +235,11 @@ public class Logic : MonoBehaviour {
 				muted = true;
 			}
 		}
+	}
 
-		if(gamePhase == GamePhase.PlacingPhase){
-			if(Input.GetKeyDown(KeyCode.Alpha1)){
-				formations.form = UnitFormations.Aggressive;
-				formations.Reform(currentPlayer, CurrentPlayer.units);
-			}
-
-			if(Input.GetKeyDown(KeyCode.Alpha2)){
-				formations.form = UnitFormations.Defensive;
-				formations.Reform(currentPlayer, CurrentPlayer.units);
-			}
-
-			if(Input.GetKeyDown(KeyCode.Alpha3)){
-				formations.form = UnitFormations.SkirmishAgg;
-				formations.Reform(currentPlayer, CurrentPlayer.units);
-			}
-		}
+	public void UnPause(){
+		paused = false;
+		pauseMenu.SetActive(false);
 	}
 
 	public void ReformUnits(int formation){
