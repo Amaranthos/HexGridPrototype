@@ -119,7 +119,7 @@ public class GUIManager : MonoBehaviour {
 		//CombatLog.text = "";
 		guiAnim.ResetStates();
 		if(currentPlayer == 0){
-			if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
+            if(Logic.Inst.gamePhase == GamePhase.PlacingPhase){
 				formationButtonPanels[0].SetActive(true);
 				deploymentText.SetActive(true);
 			}
@@ -127,7 +127,7 @@ public class GUIManager : MonoBehaviour {
 				formationButtonPanels[0].SetActive(false);
 				deploymentText.SetActive(false);
 			}
-			formationButtonPanels[1].SetActive(false);
+            formationButtonPanels[1].SetActive(false);
 			guiAnim.SetP1Turn();
 		}
 		else{
