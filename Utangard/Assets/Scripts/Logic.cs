@@ -10,7 +10,7 @@ public class Logic : MonoBehaviour {
 	private Grid grid;
 	private MapGen mapGen;
 	private UnitList unitList;
-	private HeroList heroList;
+	public HeroList heroList;
 	private TerrainList terrainList;
 	private Formations formations;
 	//private InfoPanel infoPanel;
@@ -229,7 +229,7 @@ public class Logic : MonoBehaviour {
 		formations.Reform(currentPlayer, CurrentPlayer.units);
 	}
 
-	private void UnitLClicked(Unit unit) {
+	public void UnitLClicked(Unit unit) {
 		if(selectedUnit && gamePhase == GamePhase.CombatPhase){
 			selectedUnit.OnDeselect();
 		}
@@ -295,6 +295,7 @@ public class Logic : MonoBehaviour {
 
 				if(hero.targets.Count == hero.currentAbility.targets.Count){
 					hero.CastAbility();
+					print ("CASTING");
 					gamePhase = GamePhase.CombatPhase;
 				}
 
