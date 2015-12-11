@@ -23,9 +23,11 @@ public class MusicPlayer : MonoBehaviour {
 	}
 
 	public void RestartTracks() {
-		foreach(AudioSource source in GetComponents<AudioSource>()) {
+		AudioSource[] sources = GetComponents<AudioSource>();
+		foreach(AudioSource source in sources) {
+			Debug.Log("Stopping: " + source);
 			source.Stop();
-			source.Play();
+			// source.Play();
 		}
 	}
 
