@@ -127,6 +127,8 @@ public class Logic : MonoBehaviour {
 		turnsRemaining = turnsForVictory;
 	}
 
+	private bool muted = false;
+
 	private void Update() {
 		//This currently enables the generic sacrifice button, the button should be included with the player's gui
 		if(gamePhase == GamePhase.CombatPhase){
@@ -197,14 +199,16 @@ public class Logic : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.Return)){
-			music.Mute();
+		if(Input.GetKeyDown(KeyCode.M)){
+			if(muted) {
+				music.Unmute();
+				muted = false;
+			}
+			else {
+				music.Mute();
+				muted = true;
+			}
 		}
-
-		if(Input.GetKeyDown(KeyCode.RightShift)){
-			music.Unmute();
-		}
-
 
 		if(gamePhase == GamePhase.PlacingPhase){
 			if(Input.GetKeyDown(KeyCode.Alpha1)){
@@ -342,6 +346,7 @@ public class Logic : MonoBehaviour {
 								}
 								
 								if(closest){
+									selectedUnit.CanMove = false;
 									selectedUnit.MoveTowardsTile(closest, unit);
 								}
 							}

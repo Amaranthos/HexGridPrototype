@@ -22,6 +22,13 @@ public class MusicPlayer : MonoBehaviour {
 		timeOut = quarterNote * 32;
 	}
 
+	public void RestartTracks() {
+		foreach(AudioSource source in GetComponents<AudioSource>()) {
+			source.Stop();
+			source.Play();
+		}
+	}
+
 	public void ChangeBase(MusicBaseState theme){
 		if(this.theme == theme){
 			return;
